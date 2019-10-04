@@ -3,6 +3,7 @@
  * -> Output file: -> `./_data/sc-urls.json`
  * -> This is later used for hyperlinking SC of rules to respective specifications
  */
+const assert = require('assert')
 const program = require('commander')
 const axios = require('axios')
 const createFile = require('../utils/create-file')
@@ -12,7 +13,7 @@ const createFile = require('../utils/create-file')
  */
 program
 	.option('-u, --url <url>', 'URL from which WCAG meta data should be fetched and constructed')
-	.option('-d, --dir <dir>', 'output directory to create the meta data')
+	.option('-o, --outputDir <outputDir>', 'output directory to create the meta data')
 	.parse(process.argv)
 
 /**
@@ -28,16 +29,18 @@ init(program)
 /**
  * Init
  */
-async function init({ url, dir }) {
-	if (!url) {
-		throw new Error('No reference URL for WCAG21 is specified in config.')
-	}
+async function init({ url, outputDir }) {
+	/**
+	 * assert `args`
+	 */
+	assert(url, '`url` is required')
+	assert(outputDir, '`outputDir` is required')
 
 	/**
 	 * Create a list of success criteria meta data
 	 */
 	const scMetaData = await getWaiWcagReferenceData(url)
-	await createFile(`${dir}/sc-urls.json`, JSON.stringify(scMetaData, undefined, 2))
+	await createFile(`${outputDir}/sc-urls.json`, JSON.stringify(scMetaData, undefined, 2))
 
 	/**
 	 * Create wcag em report tool friendly audit result array
@@ -57,7 +60,7 @@ async function init({ url, dir }) {
 			hasPart: [],
 		}
 	})
-	await createFile(`${dir}/sc-em-report-audit-result.json`, JSON.stringify(scEmReportAuditResult, undefined, 2))
+	await createFile(`${outputDir}/sc-em-report-audit-result.json`, JSON.stringify(scEmReportAuditResult, undefined, 2))
 }
 
 /**

@@ -1,3 +1,5 @@
+const assert = require('assert')
+const program = require('commander')
 const { copy } = require('fs-extra')
 const objectHash = require('object-hash')
 const codeBlocks = require('gfm-code-blocks')
@@ -9,22 +11,48 @@ const regexps = require('../utils/reg-exps')
 const getAllMatchesForRegex = require('../utils/get-all-matches-for-regex')
 const createTestcasesJson = require('./testcases/create-testcases-json')
 const createTestcasesOfRuleOfEmReportTool = require('./testcases/create-testcases-of-rule-of-em-report-tool')
-const getRulesMarkdownData = require('../utils/get-rules-markdown-data')
+const getMarkdownData = require('../utils/get-markdown-data')
+
+/**
+ * Parse `args`
+ */
+program
+	.option('-r, --rulesDir <rulesDir>', 'Directory containing rules markdown files')
+	.option('-t, --testAssetsDir <testAssetsDir>', 'Test assets directory')
+	.option('-o, --outputDir <outputDir>', 'output directory to create the meta data')
+	.parse(process.argv)
+
+/**
+ * Invoke
+ */
+init(program)
+	.catch(e => {
+		console.error(e)
+		process.write(1)
+	})
+	.finally(() => console.info('Completed'))
 
 /**
  * Create test case files & other meta-data  from test case in each rule.
- *
  * -> create test cases files into `_data` directory
  * -> copy test assets into `_data` directory
  * -> create `testcases.json`
- *
  * These files will be copied into `public` directory during gatsby `preBootstrap` hook/ build
  */
-const init = async () => {
+async function init(program) {
+	const { rulesDir, testAssetsDir, outputDir } = program
+
+	/**
+	 * assert `args`
+	 */
+	assert(rulesDir, '`rulesDir` is required')
+	assert(testAssetsDir, 'testAssetsDir is required')
+	assert(outputDir, '`outputDir` is required')
+
 	/**
 	 * Get all rules `markdown` data
 	 */
-	const rulesData = getRulesMarkdownData()
+	const rulesData = getMarkdownData(rulesDir)
 
 	let allRulesTestcases = []
 
@@ -81,7 +109,7 @@ const init = async () => {
 			/**
 			 * Create testcase file
 			 */
-			await createFile(`_data/rules-testcases/${testcasePath}`, code)
+			await createFile(`${outputDir}/rules-testcases/${testcasePath}`, code)
 
 			/**
 			 * Create meta data for testcase(s)
@@ -114,22 +142,13 @@ const init = async () => {
 	}
 
 	/**
-	 * Copy `test-assets` that are used by `testcases`
+	 * Copy test assets that are used by `testcases`
 	 */
-	await copy('./test-assets', './_data/rules-testcases/test-assets')
+	const assetsDirName = testAssetsDir.split('/').pop()
+	await copy(`${testAssetsDir}`, `${outputDir}/rules-testcases/${assetsDirName}`)
 
 	/**
 	 * Generate `testcases.json`
 	 */
 	await createTestcasesJson(allRulesTestcases)
 }
-
-/**
- * Invoke
- */
-init()
-	.then(() => console.log('Completed task: createTestcases'))
-	.catch(e => {
-		console.error(e)
-		process.write(1)
-	})
