@@ -3,18 +3,68 @@
  * -> Output file: -> `./_data/sc-urls.json`
  * -> This is later used for hyperlinking SC of rules to respective specifications
  */
-const path = require('path')
+const program = require('commander')
 const axios = require('axios')
 const createFile = require('../utils/create-file')
-const pkg = require('./../package.json')
-const outputFileScMetaData = path.join(__dirname, '..', '_data', 'sc-urls.json')
-const outputFileScEmReportAuditResult = path.join(__dirname, '..', '_data', 'sc-em-report-audit-result.json')
+
+/**
+ * Parse `args`
+ */
+program
+	.option('-u, --url <url>', 'URL from which WCAG meta data should be fetched and constructed')
+	.option('-d, --dir <dir>', 'output directory to create the meta data')
+	.parse(process.argv)
+
+/**
+ * Invoke
+ */
+init(program)
+	.catch(e => {
+		console.error(e)
+		process.write(1)
+	})
+	.finally(() => console.info('Completed'))
+
+/**
+ * Init
+ */
+async function init({ url, dir }) {
+	if (!url) {
+		throw new Error('No reference URL for WCAG21 is specified in config.')
+	}
+
+	/**
+	 * Create a list of success criteria meta data
+	 */
+	const scMetaData = await getWaiWcagReferenceData(url)
+	await createFile(`${dir}/sc-urls.json`, JSON.stringify(scMetaData, undefined, 2))
+
+	/**
+	 * Create wcag em report tool friendly audit result array
+	 */
+	const scEmReportAuditResult = Object.values(scMetaData).map(data => {
+		return {
+			type: 'Assertion',
+			test: data.test,
+			assertedBy: '_:evaluator',
+			subject: '_:website',
+			result: {
+				outcome: 'earl:inapplicable',
+				description: '',
+				date: '',
+			},
+			mode: 'earl:manual',
+			hasPart: [],
+		}
+	})
+	await createFile(`${dir}/sc-em-report-audit-result.json`, JSON.stringify(scEmReportAuditResult, undefined, 2))
+}
 
 /**
  * Determine if a given success criteria is 2.0
  * @param {Object} sc success criterion
  */
-const isScWcag20 = sc => {
+function isScWcag20(sc) {
 	const is20 = !(sc.versions && sc.versions.length === 1 && sc.versions.includes('2.1'))
 	return is20
 }
@@ -23,7 +73,7 @@ const isScWcag20 = sc => {
  * Get enhanced meta data of success criterion
  * @param {Object} sc success criteria
  */
-const getMetaData = sc => {
+function getMetaData(sc) {
 	const urlPrefix = `https://www.w3.org/TR/WCAG`
 	const is20 = isScWcag20(sc)
 	const wcagSuffix = is20 ? '20' : '21'
@@ -58,7 +108,7 @@ const getMetaData = sc => {
  * Get all WCAG SC reference data
  * @param {String} url URL
  */
-const getWaiWcagReferenceData = async url => {
+async function getWaiWcagReferenceData(url) {
 	const {
 		data: { principles },
 	} = await axios.get(url)
@@ -73,48 +123,3 @@ const getWaiWcagReferenceData = async url => {
 	)
 	return scMetaData
 }
-
-/**
- * Init
- */
-const init = async () => {
-	const wcagReferenceUrl = pkg.config.references.wcag21
-
-	if (!wcagReferenceUrl) {
-		throw new Error('No reference URL for WCAG21 is specified in config.')
-	}
-
-	/**
-	 * Create a list of success criteria meta data
-	 */
-	const scMetaData = await getWaiWcagReferenceData(wcagReferenceUrl)
-	await createFile(outputFileScMetaData, JSON.stringify(scMetaData, undefined, 2))
-
-	/**
-	 * Create wcag em report tool friendly audit result array
-	 */
-	const scEmReportAuditResult = Object.values(scMetaData).map(data => {
-		return {
-			type: 'Assertion',
-			test: data.test,
-			assertedBy: '_:evaluator',
-			subject: '_:website',
-			result: {
-				outcome: 'earl:inapplicable',
-				description: '',
-				date: '',
-			},
-			mode: 'earl:manual',
-			hasPart: [],
-		}
-	})
-
-	await createFile(outputFileScEmReportAuditResult, JSON.stringify(scEmReportAuditResult, undefined, 2))
-}
-
-/**
- * Invoke
- */
-init()
-	.then(() => console.info('Completed: task: get:wcag:data.\n'))
-	.catch(e => console.error(e))
