@@ -179,7 +179,7 @@
 	"license": "MIT",
 	"scripts": {
 		"getWcagMetaData": "node ./build/get-wcag-meta-data --url 'https://raw.githubusercontent.com/w3c/wai-wcag-quickref/gh-pages/_data/wcag21.json' --dir ${PWD}'/_data'",
-		"pregetImplementationAxeCore": "npm --prefix './node_modules/act-rules-implementation-axe-core/' run build -- --testsJson ${PWD}/_data/rules-testcases/testcases.json --testsDir ${PWD}/_data/rules-testcases --siteUrl $npm_package_www_url",
+		"pregetImplementationAxeCore": "npm --prefix './node_modules/act-rules-implementation-axe-core/' run build -- --testsJson ${PWD}'/_data/rules-testcases/testcases.json' --testsDir ${PWD}'/_data/rules-testcases' --siteUrl $npm_package_www_url",
 		"getImplementationAxeCore": "act-map-generator --organisation 'Deque Systems' --tool 'Axe-core' --jsonReports './node_modules/act-rules-implementation-axe-core/report.json' --testcases './_data/rules-testcases/testcases.json' --output './_data/implementations/axe.json'",
 		"getImplementationAccessEngine": "act-map-generator --organisation 'Level Access' --tool 'Access Engine' --jsonReports './node_modules/act-rules-implementation-access-engine/report.json' --testcases './_data/rules-testcases/testcases.json' --output './_data/implementations/access-engine.json'",
 		"getImplementationAlfa": "act-map-generator --organisation 'Siteimprove' --tool 'Alfa' --jsonReports './node_modules/act-rules-implementation-alfa/report.json' --testcases './_data/rules-testcases/testcases.json' --output './_data/implementations/alfa.json'",
@@ -219,9 +219,6 @@
 		"url": "https://act-rules.github.io"
 	},
 	"config": {
-		"references": {
-			"wcag21": "https://raw.githubusercontent.com/w3c/wai-wcag-quickref/gh-pages/_data/wcag21.json"
-		},
 		"rule-format-metadata": {
 			"input-aspects": {
 				"default": "https://www.w3.org/TR/act-rules-aspects/#intro",
