@@ -1,15 +1,41 @@
+const assert = require('assert')
+const program = require('commander')
 const globby = require('globby')
 const readFile = require('../utils/read-file')
 const createFile = require('../utils/create-file')
 
 /**
+ * Parse `args`
+ */
+program
+	.option('-i, --implementations <implementations>', 'JSON files containing implementations')
+	.option('-o, --outputDir <outputDir>', 'output directory to create the meta data')
+	.parse(process.argv)
+
+/**
+ * Invoke
+ */
+init(program)
+	.catch(e => {
+		console.error(e)
+		process.write(1)
+	})
+	.finally(() => console.info('Completed'))
+
+/**
  * Init
  */
-const init = async () => {
+async function init({ implementations, outputDir }) {
+	/**
+	 * assert `args`
+	 */
+	assert(implementations, '`implementations` is required')
+	assert(outputDir, '`outputDir` is required')
+
 	/**
 	 * Get all implementation reports
 	 */
-	const reports = globby.sync([`./_data/implementations/*.json`]).map(reportPath => {
+	const reports = globby.sync(implementations).map(reportPath => {
 		const fileContent = readFile(reportPath)
 		return JSON.parse(fileContent)
 	})
@@ -18,7 +44,7 @@ const init = async () => {
 	const implementationsGroupedByRuleId = {}
 
 	reports.forEach(report => {
-		const { tool, organisation, data } = report
+		const { tool, organisation, mapping } = report
 
 		/**
 		 * Create data that can be used in `src/templates/coverage.js`
@@ -28,7 +54,7 @@ const init = async () => {
 		/**
 		 * Iterate each implementation & group by rule id
 		 */
-		data.forEach(({ ruleId, implementation }) => {
+		mapping.forEach(({ ruleId, implementation }) => {
 			if (!implementation || !implementation.length) {
 				return
 			}
@@ -48,17 +74,10 @@ const init = async () => {
 	/**
 	 * Create `implementations.json`
 	 */
-	await createFile(`_data/implementers.json`, JSON.stringify(implementers, null, 2))
+	await createFile(`${outputDir}/implementers.json`, JSON.stringify(implementers, null, 2))
 
 	/**
-	 * Create metrics in `_data` for usage in `site`
+	 * Create `implementation-metrics.json`
 	 */
-	await createFile(`_data/implementation-metrics.json`, JSON.stringify(implementationsGroupedByRuleId, null, 2))
+	await createFile(`${outputDir}/implementation-metrics.json`, JSON.stringify(implementationsGroupedByRuleId, null, 2))
 }
-
-init()
-	.then(() => console.info(`\nImplementation metrics generated.\n`))
-	.catch(e => {
-		console.error(e)
-		process.exit(1)
-	})

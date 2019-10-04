@@ -3,11 +3,44 @@
  * -> for each (atomic) rule (find references in each (composite) rule)
  * -> this is saved in `_data` which is later used in `template/rule.js`
  */
+const assert = require('assert')
+const program = require('commander')
 const createFile = require('../utils/create-file')
-const getRulesMarkdownData = require('../utils/get-rules-markdown-data')
+const getMarkdownData = require('../utils/get-markdown-data')
 
-const init = async () => {
-	const rulesData = getRulesMarkdownData()
+/**
+ * Parse `args`
+ */
+program
+	.option('-r, --rulesDir <rulesDir>', 'Directory containing rules markdown files')
+	.option('-o, --outputDir <outputDir>', 'output directory to create the meta data')
+	.parse(process.argv)
+
+/**
+ * Invoke
+ */
+init(program)
+	.catch(e => {
+		console.error(e)
+		process.write(1)
+	})
+	.finally(() => console.info('Completed'))
+
+/**
+ * Init
+ */
+async function init({ rulesDir, outputDir }) {
+	/**
+	 * assert `args`
+	 */
+	assert(rulesDir, '`rulesDir` is required')
+	assert(outputDir, '`outputDir` is required')
+
+	/**
+	 * Get all rules `markdown` data
+	 */
+	const rulesData = getMarkdownData(rulesDir)
+
 	let rulesUsages = {}
 
 	rulesData.forEach(ruleData => {
@@ -24,14 +57,7 @@ const init = async () => {
 	})
 
 	/**
-	 * Create `_data/rules-usages.json`
+	 * Create rules-usages.json
 	 */
-	await createFile(`./_data/rules-usages.json`, JSON.stringify(rulesUsages, undefined, 2))
+	await createFile(`${outputDir}/rules-usages.json`, JSON.stringify(rulesUsages, undefined, 2))
 }
-
-/**
- * Invoke
- */
-init()
-	.then(() => console.info(`Completed: task: create:rules usages\n`))
-	.catch(e => console.error(e))
