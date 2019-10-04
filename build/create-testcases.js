@@ -116,6 +116,8 @@ async function init(program) {
 			 */
 			const testcase = {
 				testcaseId: codeId,
+				// todo: pass this as args
+				// todo: change all refs to `act-rules.github.io` in package.json
 				url: `${url}/${testcasePath}`,
 				relativePath: testcasePath,
 				expected: titleCurated[0],

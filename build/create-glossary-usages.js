@@ -1,18 +1,47 @@
 /**
  * Create glossary usages
  * -> for each glossary item (find references in each rule)
- * -> this is saved in `_data` which is later used in `pages/glossary`
+ * -> this is saved for later use in `pages/glossary`
  */
+const assert = require('assert')
+const program = require('commander')
 const regexps = require('../utils/reg-exps')
 const createFile = require('../utils/create-file')
 const getAllMatchesForRegex = require('../utils/get-all-matches-for-regex')
-const getRulesMarkdownData = require('../utils/get-rules-markdown-data')
+const getMarkdownData = require('../utils/get-markdown-data')
 
-const init = async () => {
+/**
+ * Parse `args`
+ */
+program
+	.option('-r, --rulesDir <rulesDir>', 'Directory containing rules markdown files')
+	.option('-o, --outputDir <outputDir>', 'output directory to create the meta data')
+	.parse(process.argv)
+
+/**
+ * Invoke
+ */
+init(program)
+	.catch(e => {
+		console.error(e)
+		process.write(1)
+	})
+	.finally(() => console.info('Completed'))
+
+/**
+ * Init
+ */
+async function init({ rulesDir, outputDir }) {
+	/**
+	 * assert `args`
+	 */
+	assert(rulesDir, '`rulesDir` is required')
+	assert(outputDir, '`outputDir` is required')
+
 	/**
 	 * Get all rules `markdown` data
 	 */
-	const rulesData = getRulesMarkdownData()
+	const rulesData = getMarkdownData(rulesDir)
 
 	/**
 	 * Eg:
@@ -94,14 +123,7 @@ const init = async () => {
 	})
 
 	/**
-	 * Create `_data/glossary-usages.json`
+	 * Create `glossary-usages.json`
 	 */
-	await createFile(`./_data/glossary-usages.json`, JSON.stringify(glossaryUsages, undefined, 2))
+	await createFile(`${outputDir}/glossary-usages.json`, JSON.stringify(glossaryUsages, undefined, 2))
 }
-
-/**
- * Invoke
- */
-init()
-	.then(() => console.info(`Completed: task: create:glossary\n`))
-	.catch(e => console.error(e))
