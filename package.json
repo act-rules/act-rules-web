@@ -178,6 +178,7 @@
 	],
 	"license": "MIT",
 	"scripts": {
+		"getWcagMetaData": "node ./build/get-wcag-meta-data --url 'https://raw.githubusercontent.com/w3c/wai-wcag-quickref/gh-pages/_data/wcag21.json' --dir ${PWD}'/_data'",
 		"pregetImplementationAxeCore": "npm --prefix './node_modules/act-rules-implementation-axe-core/' run build -- --testsJson ${PWD}/_data/rules-testcases/testcases.json --testsDir ${PWD}/_data/rules-testcases --siteUrl $npm_package_www_url",
 		"getImplementationAxeCore": "act-map-generator --organisation 'Deque Systems' --tool 'Axe-core' --jsonReports './node_modules/act-rules-implementation-axe-core/report.json' --testcases './_data/rules-testcases/testcases.json' --output './_data/implementations/axe.json'",
 		"getImplementationAccessEngine": "act-map-generator --organisation 'Level Access' --tool 'Access Engine' --jsonReports './node_modules/act-rules-implementation-access-engine/report.json' --testcases './_data/rules-testcases/testcases.json' --output './_data/implementations/access-engine.json'",
@@ -191,7 +192,6 @@
 		"createTestcases": "node ./build/create-testcases",
 		"createGlossary": "node ./build/create-glossary-usages",
 		"createRulesUsages": "node ./build/create-rules-usages.js",
-		"getWcagData": "node ./build/get-wcag-data",
 		"getData": "npm run getWcagData && npm run createTestcases && npm run createGlossary && npm run createRulesUsages && npm run implementations",
 		"clean": "gatsby clean",
 		"develop": "gatsby develop",
