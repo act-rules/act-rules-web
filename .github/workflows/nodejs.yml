@@ -25,7 +25,7 @@ jobs:
       env:
         CI: true
   publish:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v1
     - run: |
         npm install
         npm run build
