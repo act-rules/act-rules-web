@@ -74,7 +74,6 @@ export default ({ data }) => {
 	const frontmatter = JSON.parse(fastmatterAttributes)
 	const { id: ruleId, name } = frontmatter
 
-	const updatedTitle = `${pageTitle} | ${site.siteMetadata.title}`
 	const ruleChangelog = JSON.parse(changelog)
 	const {
 		repository: { url: actRulesRepoUrl },
@@ -82,7 +81,7 @@ export default ({ data }) => {
 
 	return (
 		<Layout>
-			<SEO title={updatedTitle} keywords={site.siteMetadata.keywords} />
+			<SEO title={pageTitle} />
 			<section className="page-container page-rule-changelog">
 				<h1>{pageTitle}</h1>
 
@@ -113,9 +112,7 @@ export const query = graphql`
 		}
 		site {
 			siteMetadata {
-				title
 				actRulesPackage
-				keywords
 			}
 		}
 	}

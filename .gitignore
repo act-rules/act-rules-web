@@ -56,8 +56,5 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-# Ignore package-lock.json
-package-lock.json
-
 # Data
 _data/

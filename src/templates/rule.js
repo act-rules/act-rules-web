@@ -25,7 +25,6 @@ export default ({ data }) => {
 	const ruleChangelog = JSON.parse(changelog)
 	const { accessibility_requirements } = JSON.parse(fastmatterAttributes)
 	const converter = new showdown.Converter()
-	const updatedTitle = `Rule | ${frontmatter.name} | ${site.siteMetadata.title}`
 	const { repository, config, contributors } = JSON.parse(site.siteMetadata.actRulesPackage)
 	const ruleId = frontmatter.id
 	const ruleTestcasesUrl = `/testcases/${ruleId}/rule-${ruleId}-testcases-for-em-report-tool.json`
@@ -36,7 +35,7 @@ export default ({ data }) => {
 
 	return (
 		<Layout>
-			<SEO title={updatedTitle} keywords={site.siteMetadata.keywords} />
+			<SEO title={`Rule | ${frontmatter.name}`} />
 			<section className="page-rule">
 				{/* rule content */}
 				<section>
@@ -212,9 +211,7 @@ export const query = graphql`
 		}
 		site {
 			siteMetadata {
-				title
 				actRulesPackage
-				keywords
 			}
 		}
 	}

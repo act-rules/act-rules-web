@@ -95,10 +95,10 @@ const getTabulatedImplementations = (ruleImplementations, showIncomplete) => {
 	)
 }
 
-const getPage = (updatedTitle, keywords, pageTitle, pageContent) => {
+const getPage = (pageTitle, pageContent) => {
 	return (
 		<Layout>
-			<SEO title={updatedTitle} keywords={keywords} />
+			<SEO title={pageTitle} />
 			<section className="page-container page-implementers">
 				<h1>{pageTitle}</h1>
 				{pageContent}
@@ -109,17 +109,13 @@ const getPage = (updatedTitle, keywords, pageTitle, pageContent) => {
 
 export default props => {
 	const { data, location } = props
-	const { site, sitePage } = data
+	const { sitePage } = data
 	const { context } = sitePage
 	const { title: pageTitle, data: contextData } = context
-
-	const updatedTitle = `${pageTitle} | ${site.siteMetadata.title}`
 	const report = JSON.parse(contextData)
-	const { data: ruleImplementations } = report
+	const { mapping } = report
 
-	const allIncompleteImplementations = ruleImplementations.every(impl =>
-		getRuleImplementationsWhereCompleteIs(false, impl)
-	)
+	const allIncompleteImplementations = mapping.every(impl => getRuleImplementationsWhereCompleteIs(false, impl))
 
 	let showIncomplete = false
 	if (location.search) {
@@ -135,11 +131,11 @@ export default props => {
 				All implementations provided are incomplete. Kindly submit amended implementation reports.
 			</div>
 		)
-		return getPage(updatedTitle, site.siteMetadata.keywords, pageTitle, content)
+		return getPage(pageTitle, content)
 	}
 
-	const pageContent = getTabulatedImplementations(ruleImplementations, showIncomplete)
-	return getPage(updatedTitle, site.siteMetadata.keywords, pageTitle, pageContent)
+	const pageContent = getTabulatedImplementations(mapping, showIncomplete)
+	return getPage(pageTitle, pageContent)
 }
 
 export const query = graphql`
@@ -148,12 +144,6 @@ export const query = graphql`
 			context {
 				data
 				title
-			}
-		}
-		site {
-			siteMetadata {
-				title
-				keywords
 			}
 		}
 	}

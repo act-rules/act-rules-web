@@ -4,14 +4,12 @@ import { graphql } from 'gatsby'
 import SEO from '../components/seo'
 
 export default ({ data }) => {
-	const { markdownRemark, site } = data
+	const { markdownRemark } = data
 	const { html, frontmatter } = markdownRemark
-
-	const updatedTitle = `${frontmatter.title} | ${site.siteMetadata.title}`
 
 	return (
 		<Layout>
-			<SEO title={updatedTitle} keywords={site.siteMetadata.keywords} />
+			<SEO title={frontmatter.title} />
 			<div>
 				<h1>{frontmatter.title}</h1>
 				<div dangerouslySetInnerHTML={{ __html: html }} />
@@ -26,12 +24,6 @@ export const query = graphql`
 			html
 			frontmatter {
 				title
-			}
-		}
-		site {
-			siteMetadata {
-				title
-				keywords
 			}
 		}
 	}

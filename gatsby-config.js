@@ -6,11 +6,6 @@ const actRulesPackageJson = require(`${__dirname}/${actRulesCommunityPkgJson}`)
 
 module.exports = {
 	siteMetadata: {
-		title: actRulesPackageJson.author,
-		description: actRulesPackageJson.description,
-		author: actRulesPackageJson.author,
-		keywords: actRulesPackageJson.keywords,
-		baseHref: process.env.NODE_ENV === 'development' ? '' : `${actRulesPackageJson.www.url}`,
 		actRulesPackage: JSON.stringify(actRulesPackageJson),
 	},
 	plugins: [

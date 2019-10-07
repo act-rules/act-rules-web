@@ -63,7 +63,6 @@ class Layout extends React.Component {
 					query {
 						getSiteTitle: site {
 							siteMetadata {
-								title
 								actRulesPackage
 							}
 						}
@@ -108,9 +107,11 @@ class Layout extends React.Component {
 				`}
 				render={data => {
 					const { getSiteTitle, getTopLevelNavigation, getNonRulesNavigation } = data
-					const { siteMetadata } = getSiteTitle
-					const { title: siteTitle, actRulesPackage } = siteMetadata
 					const {
+						siteMetadata: { actRulesPackage },
+					} = getSiteTitle
+					const {
+						author,
 						repository: { url: actRulesRepoUrl },
 					} = JSON.parse(actRulesPackage)
 					return (
@@ -130,7 +131,7 @@ class Layout extends React.Component {
 									☰
 								</button>
 								<div className="logo">
-									<Header siteTitle={siteTitle} />
+									<Header siteTitle={author.name} />
 								</div>
 								<nav className="navigation">
 									<ul>

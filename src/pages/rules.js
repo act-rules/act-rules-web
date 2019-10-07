@@ -10,13 +10,12 @@ import {
 } from './../utils/render-fragments'
 
 export default ({ data }) => {
-	const { rules, allRules, site } = data
-	const updatedTitle = `Rules | ${site.siteMetadata.title}`
+	const { rules, allRules } = data
 	const converter = new showdown.Converter()
 
 	return (
 		<Layout>
-			<SEO title={updatedTitle} keywords={site.siteMetadata.keywords} />
+			<SEO title="Rules" />
 			<section className="page-container page-rules">
 				{/* Heading */}
 				<h1>Rules</h1>
@@ -97,14 +96,6 @@ export const query = graphql`
 						name
 					}
 				}
-			}
-		}
-		site {
-			siteMetadata {
-				title
-				description
-				author
-				keywords
 			}
 		}
 	}
