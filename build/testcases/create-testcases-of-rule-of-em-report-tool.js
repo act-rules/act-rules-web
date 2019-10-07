@@ -1,6 +1,3 @@
-const {
-	www: { url },
-} = require('./../../package.json')
 const scUrlsMetaData = require('./../../_data/sc-urls.json')
 const scEmReportAuditResult = require('./../../_data/sc-em-report-audit-result.json')
 const graphContext = require('./wcag-em-report-tool-mappings/earl-context.json')
@@ -11,8 +8,11 @@ const createFile = require('../../utils/create-file')
 /**
  * Create testcases json file that can be used by
  */
-const createTestcasesOfRuleOfEmReportTool = async options => {
+const createTestcasesOfRuleOfEmReportTool = async (options, actRulesCommunityPkg) => {
 	const { ruleId, ruleName, ruleTestcases, ruleAccessibilityRequirements } = options
+	const {
+		www: { url },
+	} = actRulesCommunityPkg
 
 	const title = `Report for ACT-R Rule - ${ruleName}`
 	const siteName = `ACT-R Rule - ${ruleName}`

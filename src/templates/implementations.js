@@ -6,14 +6,12 @@ import implementers from './../../_data/implementers'
 import { getImplementationsTabulation } from './../utils/render-fragments'
 
 export default ({ data }) => {
-	const { markdownRemark, site } = data
+	const { markdownRemark } = data
 	const { html, frontmatter } = markdownRemark
-
-	const updatedTitle = `${frontmatter.title} | ${site.siteMetadata.title}`
 
 	return (
 		<Layout>
-			<SEO title={updatedTitle} keywords={site.siteMetadata.keywords} />
+			<SEO title={frontmatter.title} />
 			<section className="page-container">
 				<h1>{frontmatter.title}</h1>
 				<section>
@@ -32,12 +30,6 @@ export const query = graphql`
 			html
 			frontmatter {
 				title
-			}
-		}
-		site {
-			siteMetadata {
-				title
-				keywords
 			}
 		}
 	}

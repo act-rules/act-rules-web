@@ -1,18 +1,17 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout/'
 import SEO from '../components/seo'
 import { getGlossaryUsageInRules } from './../utils/render-fragments'
 import glossaryUsages from './../../_data/glossary-usages.json'
 
 export default ({ data }) => {
-	const { glossaryData, site } = data
+	const { glossaryData } = data
 	const { edges } = glossaryData
-	const updatedTitle = `Glossary | ${site.siteMetadata.title}`
 
 	return (
 		<Layout>
-			<SEO title={updatedTitle} keywords={site.siteMetadata.keywords} />
+			<SEO title="Glossary" />
 			<section className="page-container page-glossary">
 				<h1>Glossary</h1>
 				<section className="listing">
@@ -21,11 +20,11 @@ export default ({ data }) => {
 						const { key } = frontmatter
 						const usedInRules = glossaryUsages[`#${key}`]
 						return (
-							<article key={node.id}>
+							<article key={key}>
 								<section>
-									<a id={key} href={`#${key}`}>
+									<Link id={key} to={`#${key}`}>
 										<h2>{frontmatter.title}</h2>
-									</a>
+									</Link>
 									<i>key: {key}</i>
 									<div dangerouslySetInnerHTML={{ __html: html }} />
 								</section>
@@ -58,12 +57,6 @@ export const query = graphql`
 					}
 					excerpt
 				}
-			}
-		}
-		site {
-			siteMetadata {
-				title
-				keywords
 			}
 		}
 	}

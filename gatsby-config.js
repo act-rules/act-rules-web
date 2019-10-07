@@ -1,12 +1,12 @@
-const pkg = require('./package.json')
+const packageJson = require('./package.json')
+const {
+	config: { actRulesCommunityPkgJson, actRulesCommunityRulesDir, actRulesCommunityPagesDir },
+} = packageJson
+const actRulesPackageJson = require(`${__dirname}/${actRulesCommunityPkgJson}`)
 
 module.exports = {
 	siteMetadata: {
-		title: pkg.author,
-		description: pkg.description,
-		author: pkg.author,
-		keywords: pkg.keywords,
-		baseHref: process.env.NODE_ENV === 'development' ? '' : `${pkg.www.url}`,
+		actRulesPackage: JSON.stringify(actRulesPackageJson),
 	},
 	plugins: [
 		`gatsby-plugin-react-helmet`,
@@ -59,14 +59,14 @@ module.exports = {
 			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'rules',
-				path: `${__dirname}/_rules`,
+				path: `${__dirname}/${actRulesCommunityRulesDir}`,
 			},
 		},
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'pages',
-				path: `${__dirname}/pages`,
+				path: `${__dirname}/${actRulesCommunityPagesDir}`,
 			},
 		},
 		{

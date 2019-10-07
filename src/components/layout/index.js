@@ -63,7 +63,7 @@ class Layout extends React.Component {
 					query {
 						getSiteTitle: site {
 							siteMetadata {
-								title
+								actRulesPackage
 							}
 						}
 						getTopLevelNavigation: allSitePage(
@@ -107,6 +107,13 @@ class Layout extends React.Component {
 				`}
 				render={data => {
 					const { getSiteTitle, getTopLevelNavigation, getNonRulesNavigation } = data
+					const {
+						siteMetadata: { actRulesPackage },
+					} = getSiteTitle
+					const {
+						author,
+						repository: { url: actRulesRepoUrl },
+					} = JSON.parse(actRulesPackage)
 					return (
 						<section className="layout-container">
 							{/* hide menu when width <= 600px */}
@@ -124,7 +131,7 @@ class Layout extends React.Component {
 									☰
 								</button>
 								<div className="logo">
-									<Header siteTitle={getSiteTitle.siteMetadata.title} />
+									<Header siteTitle={author.name} />
 								</div>
 								<nav className="navigation">
 									<ul>
@@ -168,7 +175,7 @@ class Layout extends React.Component {
 							</aside>
 							<main>
 								<section>{children}</section>
-								<Footer />
+								<Footer actRulesRepoUrl={actRulesRepoUrl} />
 							</main>
 						</section>
 					)

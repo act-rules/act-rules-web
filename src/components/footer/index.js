@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import pkg from './../../../package.json'
 
 import './index.scss'
 
-const Footer = ({ siteTitle }) => (
+const Footer = ({ actRulesRepoUrl }) => (
 	<footer className="app-footer">
 		<div className="tags">
 			<p className="tag">
@@ -47,7 +46,7 @@ const Footer = ({ siteTitle }) => (
 
 			{/* github logo */}
 			<a
-				href={pkg.repository.url}
+				href={actRulesRepoUrl}
 				target="_blank"
 				rel="noopener noreferrer"
 				className="logo-github"
@@ -72,11 +71,11 @@ const Footer = ({ siteTitle }) => (
 )
 
 Footer.propTypes = {
-	siteTitle: PropTypes.string,
+	actRulesRepoUrl: PropTypes.string,
 }
 
 Footer.defaultProps = {
-	siteTitle: ``,
+	actRulesRepoUrl: ``,
 }
 
 export default Footer

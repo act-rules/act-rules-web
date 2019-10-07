@@ -3,9 +3,6 @@ const program = require('commander')
 const { copy } = require('fs-extra')
 const objectHash = require('object-hash')
 const codeBlocks = require('gfm-code-blocks')
-const {
-	www: { url },
-} = require('./../package.json')
 const createFile = require('../utils/create-file')
 const regexps = require('../utils/reg-exps')
 const getAllMatchesForRegex = require('../utils/get-all-matches-for-regex')
@@ -19,6 +16,7 @@ const getMarkdownData = require('../utils/get-markdown-data')
 program
 	.option('-r, --rulesDir <rulesDir>', 'Directory containing rules markdown files')
 	.option('-t, --testAssetsDir <testAssetsDir>', 'Test assets directory')
+	.option('-t, --actRulesCommunityPkgJson <actRulesCommunityPkgJson>', 'Package json file of act rules community')
 	.option('-o, --outputDir <outputDir>', 'output directory to create the meta data')
 	.parse(process.argv)
 
@@ -40,14 +38,17 @@ init(program)
  * These files will be copied into `public` directory during gatsby `preBootstrap` hook/ build
  */
 async function init(program) {
-	const { rulesDir, testAssetsDir, outputDir } = program
+	const { rulesDir, testAssetsDir, outputDir, actRulesCommunityPkgJson } = program
 
 	/**
 	 * assert `args`
 	 */
 	assert(rulesDir, '`rulesDir` is required')
 	assert(testAssetsDir, 'testAssetsDir is required')
+	assert(actRulesCommunityPkgJson, 'actRulesCommunityPkgJson is required')
 	assert(outputDir, '`outputDir` is required')
+
+	const actRulesCommunityPkg = require(actRulesCommunityPkgJson)
 
 	/**
 	 * Get all rules `markdown` data
@@ -116,14 +117,12 @@ async function init(program) {
 			 */
 			const testcase = {
 				testcaseId: codeId,
-				// todo: pass this as args
-				// todo: change all refs to `act-rules.github.io` in package.json
-				url: `${url}/${testcasePath}`,
+				url: `${actRulesCommunityPkg.www.url}/${testcasePath}`,
 				relativePath: testcasePath,
 				expected: titleCurated[0],
 				ruleId,
 				ruleName,
-				rulePage: `${url}/rules/${ruleId}`,
+				rulePage: `${actRulesCommunityPkg.www.url}/rules/${ruleId}`,
 				ruleAccessibilityRequirements,
 			}
 			ruleTestcases.push(testcase)
@@ -135,12 +134,15 @@ async function init(program) {
 		/**
 		 * Create test cases of rule for use with `em report tool`
 		 */
-		await createTestcasesOfRuleOfEmReportTool({
-			ruleId,
-			ruleName,
-			ruleTestcases,
-			ruleAccessibilityRequirements,
-		})
+		await createTestcasesOfRuleOfEmReportTool(
+			{
+				ruleId,
+				ruleName,
+				ruleTestcases,
+				ruleAccessibilityRequirements,
+			},
+			actRulesCommunityPkg
+		)
 	}
 
 	/**
@@ -152,5 +154,5 @@ async function init(program) {
 	/**
 	 * Generate `testcases.json`
 	 */
-	await createTestcasesJson(allRulesTestcases)
+	await createTestcasesJson(allRulesTestcases, actRulesCommunityPkg)
 }

@@ -6,14 +6,16 @@ import glossaryUsages from './../../_data/glossary-usages.json'
 
 export default ({ data }) => {
 	const { markdownRemark, site } = data
+	const {
+		www: { url },
+	} = JSON.parse(site.siteMetadata.actRulesPackage)
 	const { html, frontmatter } = markdownRemark
-	const updatedTitle = `${frontmatter.title} | ${site.siteMetadata.title}`
 
 	const linkUpGlossaryTerms = (content, data) => {
 		if (!data) {
 			return content
 		}
-		const baseUrl = site.siteMetadata.baseHref.length <= 0 ? window.location.origin : site.siteMetadata.baseHref
+		const baseUrl = process.env.NODE_ENV === `development` ? window.location.origin : url
 		return content.replace(/href="#(.*?)"/g, (match, key) => {
 			const glossaryKey = `#${key.toLowerCase()}`
 			if (!Object.keys(data).includes(glossaryKey)) {
@@ -36,7 +38,7 @@ export default ({ data }) => {
 
 	return (
 		<Layout>
-			<SEO title={updatedTitle} keywords={site.siteMetadata.keywords} />
+			<SEO title={frontmatter.title} />
 			<section className="page-container">
 				<h1>{frontmatter.title}</h1>
 				<div
@@ -59,9 +61,7 @@ export const query = graphql`
 		}
 		site {
 			siteMetadata {
-				title
-				keywords
-				baseHref
+				actRulesPackage
 			}
 		}
 	}
