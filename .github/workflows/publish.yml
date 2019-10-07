@@ -1,0 +1,26 @@
+name: Publish Website to ACT-Rules Repo
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+    - name: npm install & build
+      run: |
+        npm install
+        npm run build
+      env:
+        CI: true
+    - uses: seanmiddleditch/gha-publish-to-git@master
+      with:
+        branch: gh-pages
+        github_token: '${{ secrets.GITHUB_TOKEN  }}'
+        github_pat: '${{ secrets.ACT_R_PAT_TOKEN }}'
+        source_folder: public
+      if: success() && github.event == 'push'
