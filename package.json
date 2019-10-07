@@ -1,114 +1,8 @@
 {
-	"name": "act-rules-community",
-	"description": "Accessibility conformance testing rules for HTML",
+	"name": "act-rules-web",
+	"description": "Website for ACT Rules Community",
 	"version": "1.0.0",
 	"author": "ACT-Rules Community",
-	"contributors": [
-		{
-			"name": "Anne Thyme Nørregaard",
-			"url": "https://github.com/annethyme"
-		},
-		{
-			"name": "Annika Nietzio",
-			"url": "https://github.com/annika-FTB"
-		},
-		{
-			"name": "Audrey Maniez",
-			"url": "https://github.com/audreymaniez"
-		},
-		{
-			"name": "Brian Bors",
-			"url": "https://www.linkedin.com/in/brianbors/"
-		},
-		{
-			"name": "Bryn Anderson",
-			"url": "https://github.com/brynanders"
-		},
-		{
-			"name": "Carlos Duarte",
-			"url": "https://github.com/carlosapaduarte"
-		},
-		{
-			"name": "Christina Adams",
-			"url": "https://github.com/offsetChris"
-		},
-		{
-			"name": "Corbb O'Connor",
-			"url": "https://github.com/corbb"
-		},
-		{
-			"name": "Dagfinn Rømen",
-			"url": "https://github.com/DagfinnRomen"
-		},
-		{
-			"name": "Daniël Strik",
-			"url": "https://github.com/danistr"
-		},
-		{
-			"name": "Emma Pratt Richens",
-			"url": "https://github.com/EmmaJP"
-		},
-		{
-			"name": "Frank Berker",
-			"url": "https://github.com/yetanothereye"
-		},
-		{
-			"name": "Geir Sindre Fossøy",
-			"url": "https://github.com/geirsf"
-		},
-		{
-			"name": "Jean-Yves Moyen",
-			"url": "https://github.com/Jym77"
-		},
-		{
-			"name": "Jey Nandakumar",
-			"url": "https://github.com/jkodu"
-		},
-		{
-			"name": "João Vicente",
-			"url": "https://github.com/joao-vicente"
-		},
-		{
-			"name": "John Hicks",
-			"url": "https://github.com/john-urbilog"
-		},
-		{
-			"name": "Malin Øvrebø",
-			"url": "https: //github.com/MaliinO"
-		},
-		{
-			"name": "Marie Trudelle",
-			"url": "https://github.com/marietrudelle"
-		},
-		{
-			"name": "Kasper Isager",
-			"url": "https: //github.com/kasperisager"
-		},
-		{
-			"name": "Rafal Charlampowicz",
-			"url": "https://github.com/Rafalchar"
-		},
-		{
-			"name": "Ramit Garg",
-			"url": "https://github.com/ramitgarg"
-		},
-		{
-			"name": "Rob Fentress",
-			"url": "https://github.com/robfentress"
-		},
-		{
-			"name": "Shadi Abou-Zahra",
-			"url": "https://github.com/nitedog"
-		},
-		{
-			"name": "Stein Erik Skotkjerra",
-			"url": "https://github.com/skotkjerra"
-		},
-		{
-			"name": "Wilco Fiers",
-			"url": "https://github.com/wilcofiers"
-		}
-	],
 	"dependencies": {
 		"act-rules-community": "git+https://github.com/act-rules/act-rules.github.io.git#develop",
 		"act-rules-implementation-access-board": "git+https://git@github.com/act-rules/act-rules-implementation-trusted-tester.git",
@@ -158,30 +52,25 @@
 		"showdown": "^1.9.0"
 	},
 	"devDependencies": {
-		"dictionary-en-us": "^2.1.1",
 		"husky": "^3.0.5",
-		"jest": "^24.9.0",
-		"jest-extended": "^0.11.2",
 		"js-yaml": "^3.13.1",
 		"lint-staged": "^9.3.0",
 		"marked": "^0.7.0",
-		"prettier": "^1.18.2",
-		"retext": "^7.0.0",
-		"retext-spell": "^3.0.0",
-		"vfile-reporter": "^6.0.0"
+		"prettier": "^1.18.2"
 	},
 	"keywords": [
 		"WCAG",
 		"ACT Rules",
 		"Accessibility",
-		"W3C"
+		"W3C",
+		"GatsbyJs"
 	],
 	"license": "MIT",
 	"scripts": {
 		"getWcagMetaData": "node ./build/get-wcag-meta-data --url 'https://raw.githubusercontent.com/w3c/wai-wcag-quickref/gh-pages/_data/wcag21.json' --outputDir ${PWD}'/_data'",
-		"createTestcases": "node ./build/create-testcases --rulesDir './node_modules/act-rules-community/_rules' --testAssetsDir './node_modules/act-rules-community/test-assets' --outputDir ${PWD}'/_data'",
-		"createGlossaryUsages": "node ./build/create-glossary-usages --rulesDir './node_modules/act-rules-community/_rules' --outputDir ${PWD}'/_data'",
-		"createRulesUsages": "node ./build/create-rules-usages.js --rulesDir './node_modules/act-rules-community/_rules' --outputDir ${PWD}'/_data'",
+		"createTestcases": "node ./build/create-testcases --rulesDir $npm_package_config_actRulesCommunityRulesDir --testAssetsDir $npm_package_config_actRulesCommunityTestAssetsDir --actRulesCommunityPkgJson ${PWD}/$npm_package_config_actRulesCommunityPkgJson --outputDir ${PWD}'/_data'",
+		"createGlossaryUsages": "node ./build/create-glossary-usages --rulesDir $npm_package_config_actRulesCommunityRulesDir --outputDir ${PWD}'/_data'",
+		"createRulesUsages": "node ./build/create-rules-usages.js --rulesDir $npm_package_config_actRulesCommunityRulesDir --outputDir ${PWD}'/_data'",
 		"pregetImplementationAxeCore": "npm --prefix './node_modules/act-rules-implementation-axe-core/' run build -- --testsJson ${PWD}'/_data/rules-testcases/testcases.json' --testsDir ${PWD}'/_data/rules-testcases' --siteUrl $npm_package_www_url",
 		"getImplementationAxeCore": "act-map-generator --organisation 'Deque Systems' --tool 'Axe-core' --jsonReports './node_modules/act-rules-implementation-axe-core/report.json' --testcases './_data/rules-testcases/testcases.json' --output './_data/implementations/axe.json'",
 		"getImplementationAccessEngine": "act-map-generator --organisation 'Level Access' --tool 'Access Engine' --jsonReports './node_modules/act-rules-implementation-access-engine/report.json' --testcases './_data/rules-testcases/testcases.json' --output './_data/implementations/access-engine.json'",
@@ -195,52 +84,33 @@
 		"getData": "npm run getWcagMetaData && npm run createTestcases && npm run createGlossaryUsages && npm run createRulesUsages && npm run implementations",
 		"clean": "gatsby clean",
 		"develop": "gatsby develop",
-		"prebuild": "npm run clean && npm run formatRulesDir && npm run getData",
+		"prebuild": "npm run clean && npm --prefix './node_modules/act-rules-community' run formatRulesDir && npm run getData",
 		"build": "gatsby build",
-		"formatRulesDir": "prettier --write './_rules/**/*.md'",
-		"format": "prettier --write *.{json,md,js,jsx} './{_data,_rules,build,gatsby,pages,src,test-assets}/**/*.{json,md,js,jsx}'",
+		"format": "prettier --write *.{json,md,js,jsx} './{_data,_rules,build,gatsby,src}/**/*.{json,md,js,jsx}'",
 		"start": "npm run clean && npm run develop",
 		"serve": "gatsby serve",
 		"pretest": "npm run getData",
 		"test": "jest --coverage"
 	},
-	"homepage": "https://github.com/act-rules/act-rules.github.io",
+	"homepage": "https://github.com/act-rules/act-rules-web",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/act-rules/act-rules.github.io"
+		"url": "https://github.com/act-rules/act-rules-web.git"
 	},
 	"bugs": {
-		"url": "https://github.com/act-rules/act-rules.github.io/issues"
+		"url": "https://github.com/act-rules/act-rules-web/issues"
 	},
 	"pulls": {
-		"url": "https://github.com/act-rules/act-rules.github.io/pulls"
+		"url": "https://github.com/act-rules/act-rules-web/pulls"
 	},
 	"www": {
 		"url": "https://act-rules.github.io"
 	},
 	"config": {
-		"rule-format-metadata": {
-			"input-aspects": {
-				"default": "https://www.w3.org/TR/act-rules-aspects/#intro",
-				"HTTP Messages": "https://www.w3.org/TR/act-rules-aspects/#input-aspects-http",
-				"DOM Tree": "https://www.w3.org/TR/act-rules-aspects/#input-aspects-dom",
-				"CSS Styling": "https://www.w3.org/TR/act-rules-aspects/#input-aspects-css",
-				"Accessibility Tree": "https://www.w3.org/TR/act-rules-aspects/#input-aspects-accessibility",
-				"Language": "https://www.w3.org/TR/act-rules-aspects/#input-aspects-text"
-			}
-		}
-	},
-	"jest": {
-		"verbose": false,
-		"setupFilesAfterEnv": [
-			"jest-extended",
-			"jest-expect-message"
-		],
-		"testPathIgnorePatterns": [
-			"<rootDir>/test-utils/",
-			"<rootDir>/.cache/",
-			"<rootDir>/.public/"
-		]
+		"actRulesCommunityPkgJson": "node_modules/act-rules-community/package.json",
+		"actRulesCommunityRulesDir": "node_modules/act-rules-community/_rules",
+		"actRulesCommunityPagesDir": "node_modules/act-rules-community/pages",
+		"actRulesCommunityTestAssetsDir": "node_modules/act-rules-community/test-assets"
 	},
 	"lint-staged": {
 		"*.{md,json,js,html}": [

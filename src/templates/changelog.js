@@ -3,7 +3,6 @@ import Layout from '../components/layout'
 import { graphql, Link } from 'gatsby'
 import SEO from '../components/seo'
 import { getDateTimeFromUnixTimestamp } from '../utils/render-fragments'
-import { repository } from './../../package.json'
 
 const changesSvgIcon = () => {
 	return (
@@ -77,6 +76,9 @@ export default ({ data }) => {
 
 	const updatedTitle = `${pageTitle} | ${site.siteMetadata.title}`
 	const ruleChangelog = JSON.parse(changelog)
+	const {
+		repository: { url: actRulesRepoUrl },
+	} = JSON.parse(site.siteMetadata.actRulesPackage)
 
 	return (
 		<Layout>
@@ -85,7 +87,7 @@ export default ({ data }) => {
 				<h1>{pageTitle}</h1>
 
 				{/* changelog */}
-				{getChangelogTabulation(ruleChangelog, repository.url, `_rules/${ruleMarkdownFileName}`)}
+				{getChangelogTabulation(ruleChangelog, actRulesRepoUrl, `_rules/${ruleMarkdownFileName}`)}
 
 				{/* backlink to rule */}
 				<br />
@@ -112,6 +114,7 @@ export const query = graphql`
 		site {
 			siteMetadata {
 				title
+				actRulesPackage
 				keywords
 			}
 		}

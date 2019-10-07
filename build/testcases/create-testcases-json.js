@@ -1,14 +1,14 @@
-const {
-	www: { url },
-	author,
-	description,
-} = require('./../../package.json')
 const createFile = require('../../utils/create-file')
 
 /**
  * Create `testcases.json`
  */
-const createTestcasesJson = async testcases => {
+const createTestcasesJson = async (testcases, actRulesCommunityPkg) => {
+	const {
+		www: { url },
+		author,
+		description,
+	} = actRulesCommunityPkg
 	const AllTestcasesData = {
 		name: `${author} test cases`,
 		website: url,

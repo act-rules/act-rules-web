@@ -16,7 +16,6 @@ import {
 	getDateTimeFromUnixTimestamp,
 } from './../utils/render-fragments'
 import SEO from '../components/seo'
-import { contributors, repository, config } from './../../package.json'
 
 export default ({ data }) => {
 	const { rule, allRules, allGlossary, site } = data
@@ -27,6 +26,7 @@ export default ({ data }) => {
 	const { accessibility_requirements } = JSON.parse(fastmatterAttributes)
 	const converter = new showdown.Converter()
 	const updatedTitle = `Rule | ${frontmatter.name} | ${site.siteMetadata.title}`
+	const { repository, config, contributors } = JSON.parse(site.siteMetadata.actRulesPackage)
 	const ruleId = frontmatter.id
 	const ruleTestcasesUrl = `/testcases/${ruleId}/rule-${ruleId}-testcases-for-em-report-tool.json`
 	const proposeChangeUrl = `${repository.url}/edit/develop/_rules/${relativePath}`
@@ -213,6 +213,7 @@ export const query = graphql`
 		site {
 			siteMetadata {
 				title
+				actRulesPackage
 				keywords
 			}
 		}
