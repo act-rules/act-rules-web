@@ -24,3 +24,15 @@ jobs:
         npm run build
       env:
         CI: true
+  publish:
+    - uses: actions/checkout@master
+    - run: |
+        npm install
+        npm run build
+    - uses: seanmiddleditch/gha-publish-to-git@master
+      with:
+        branch: gh-pages
+        github_token: '${{ secrets.ACT_R_PAT_TOKEN  }}'
+        github_pat: '${{ secrets.ACT_R_PAT_TOKEN }}'
+        source_folder: public
+      if: success() && github.event == 'push'
