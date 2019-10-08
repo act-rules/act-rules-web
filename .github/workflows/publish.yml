@@ -25,15 +25,14 @@ jobs:
         # reset `package-lock.json`
         git checkout -- package-lock.json
 
-        # add `act-rules-communuty` repo as a remote
-        git remote add act-r-repo https://${{ secrets.USER_PAT }}@github.com/act-rules/act-rules.github.io
-
-        # checkout & pull master branch
-        git checkout act-r-repo master
-        git pull act-r-repo origin master
-
         # remove all files except the generated public directory and required git folders
         find . -maxdepth 1 ! -name 'public' ! -name '.git' ! -name '.gitignore' -exec rm -rf {} \;	
+
+        # add `act-rules-communuty` repo as a remote, get latest of master branch
+        git remote add act-r-repo https://${{ secrets.USER_PAT }}@github.com/act-rules/act-rules.github.io
+        git fetch act-r-repo master
+        git checkout act-r-repo/master
+        git pull act-r-repo master
 
         # move generated public in the root folder and remove the empty generated public folder
         mv public/* .
@@ -43,4 +42,3 @@ jobs:
         git add -fA
         git commit --allow-empty -m "update site [ci skip]"
         git push act-r-repo master --no-verify --force
-
