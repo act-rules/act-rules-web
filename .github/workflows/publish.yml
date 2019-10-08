@@ -1,6 +1,7 @@
 name: Publish Website to ACT-Rules Repo
 
 on:
+  repository_dispatch:
   push:
     branches:
     - master
