@@ -27,7 +27,6 @@ jobs:
 
         # add `act-rules-communuty` repo as a remote, get latest of master branch
         git remote add act-r-repo https://${{ secrets.USER_PAT }}@github.com/act-rules/act-rules.github.io
-        git remote add act-r-repo https://github.com/act-rules/act-rules.github.io
         git fetch act-r-repo master
         git checkout act-r-repo/master
         git pull act-r-repo master
