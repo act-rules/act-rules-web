@@ -16,8 +16,9 @@ jobs:
         npm install
         npm run build
     - shell: bash
+      name: push to ACT R master branch
       run: |
-        # set up git config
+        # git config
         git config user.name "${{ secrets.USER_NAME }}"
         git config user.email "${{ secrets.USER_EMAIL }}"
 
@@ -25,19 +26,17 @@ jobs:
         git checkout -- package-lock.json
 
         # add `act-rules-communuty` repo as a remote
-        git remote add act-r-repo https://github.com/act-rules/act-rules.github.io
+        git remote add act-r-repo https://${{ secrets.USER_PAT }}@github.com/act-rules/act-rules.github.io
 
         # remove all files except the generated public directory and required git folders
-        shopt -s extglob
-        rm -rv !('public'|'.circleci'|'.git'|'.gitignore'|'node_modules')
-        shopt -u extglob
+        find . -maxdepth 1 ! -name 'public' ! -name '.git' ! -name '.gitignore' -exec rm -rf {} \;	
 
         # move generated public in the root folder and remove the empty generated public folder
         mv public/* .
         rm -R public/
 
-        # commit and push
+        # commit and push to ACT R repositories master branch
         git add -fA
         git commit --allow-empty -m "update site [ci skip]"
-        git push act-r-repo gh-pages --no-verify
+        git push act-r-repo master --no-verify --force
 
