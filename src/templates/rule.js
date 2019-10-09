@@ -52,7 +52,12 @@ export default ({ data }) => {
 						</li>
 						<li>
 							<span className="heading">Last modified:</span>
-							<span> {getDateTimeFromUnixTimestamp(ruleChangelog[0].date)}</span>
+							<span>
+								{' '}
+								{ruleChangelog && ruleChangelog.length ? getDateTimeFromUnixTimestamp(ruleChangelog[0].date) : '-'
+								// todo: auto play audio rule merge fails getting git logs, to be investigated
+								}
+							</span>
 						</li>
 						<li>{getAccessibilityRequirements(accessibility_requirements)}</li>
 						<li>{getRuleUsageInRules(ruleId)}</li>
