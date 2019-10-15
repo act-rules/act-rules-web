@@ -292,56 +292,48 @@ section.layout-container {
         padding-top:3rem;
         overflow-y:auto;
 
-        // section {
-        //   flex: 1;
-        //   position: relative;
-        //   width: 100%;
-        //   padding-bottom: 6rem;
-
-
-
-          ul.meta,
-          div.meta {
-            @include reset-list();
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            h3.heading, 
-            span.heading {
-              padding: 0.25rem 0.5rem;
-              background-color: $sep;
-              border: 1px solid $transparent;
-              text-transform: capitalize;
-              display: inline-block;
-              font-weight: bold;
-              margin-top: 1em;
-              font-size: 90%;
-              color: $fg-primary;
-              cursor: auto;
-              &:hover {
-                text-decoration: none;
-              }
-            }
-            p{
-              margin: 0;
-              display: block;
-              padding: 0.25rem 0.5rem;
-              text-transform: capitalize;
-            }
-            a.sc-item {
-              cursor: pointer;
+        ul.meta,
+        div.meta {
+          @include reset-list();
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          h3.heading, 
+          span.heading {
+            padding: 0.25rem 0.5rem;
+            background-color: $sep;
+            border: 1px solid $transparent;
+            text-transform: capitalize;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 1em;
+            font-size: 90%;
+            color: $fg-primary;
+            cursor: auto;
+            &:hover {
               text-decoration: none;
-              text-transform: capitalize;
-              &:hover {
-                color: $accent;
-              }
-              &.block {
-                display:block;
-              }
             }
           }
-        // }
+          p{
+            margin: 0;
+            display: block;
+            padding: 0.25rem 0.5rem;
+            text-transform: capitalize;
+          }
+          a.sc-item {
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: capitalize;
+            &:hover {
+              color: $accent;
+            }
+            &.block {
+              display:block;
+            }
+          }
+        }
       }
+      
       .toc {
         border-left: 1px solid $sep;
         min-width: 225px;
