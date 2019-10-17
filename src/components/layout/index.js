@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import ReactMedia from 'react-media'
 
-import Header from '../header/index'
+import Navigation from '../navigation'
 import Footer from '../footer'
 
 import 'normalize.css'
@@ -66,54 +66,14 @@ class Layout extends React.Component {
 								actRulesPackage
 							}
 						}
-						getTopLevelNavigation: allSitePage(
-							sort: { fields: [context___title], order: ASC }
-							filter: { context: { markdownType: { eq: "default" } } }
-						) {
-							group(field: context___markdownType) {
-								fieldValue
-								totalCount
-								edges {
-									node {
-										path
-										context {
-											sourceInstanceName
-											title
-											markdownType
-										}
-									}
-								}
-							}
-						}
-						getNonRulesNavigation: allSitePage(
-							sort: { fields: [context___title], order: ASC }
-							filter: { context: { markdownType: { nin: ["default", "rules", "glossary"] } } }
-						) {
-							group(field: context___markdownType) {
-								fieldValue
-								totalCount
-								edges {
-									node {
-										path
-										context {
-											title
-											markdownType
-										}
-									}
-								}
-							}
-						}
 					}
 				`}
 				render={data => {
-					const { getSiteTitle, getTopLevelNavigation, getNonRulesNavigation } = data
-					const {
-						siteMetadata: { actRulesPackage },
-					} = getSiteTitle
+					const { getSiteTitle } = data
 					const {
 						author,
 						repository: { url: actRulesRepoUrl },
-					} = JSON.parse(actRulesPackage)
+					} = JSON.parse(getSiteTitle.siteMetadata.actRulesPackage)
 					return (
 						<section className="layout-container">
 							{/* hide menu when width <= 600px */}
@@ -126,53 +86,9 @@ class Layout extends React.Component {
 								query="(min-width: 601px)"
 								onChange={matches => matches && !this.state.showMenu && this.handleHideShowMenu()}
 							/>
-							<aside className={this.state.showMenu ? 'show' : 'hide'}>
-								<button className="nav-hide-show-menu" onClick={e => this.handleHideShowMenu()}>
-									☰
-								</button>
-								<div className="logo">
-									<Header siteTitle={author.name} />
-								</div>
-								<nav className="navigation">
-									<ul>
-										{/* Top level Navigation */}
-										{getTopLevelNavigation.group.map(item => this.getListItemFromEdges(item.edges))}
-										<li>
-											<hr />
-										</li>
-										{/* Rules */}
-										<li key="rules">
-											<Link to="/rules/" activeClassName="active">
-												Rules
-											</Link>
-										</li>
-										{/* Glossary */}
-										<li key="glossary">
-											<Link to="/glossary/" activeClassName="active">
-												Glossary
-											</Link>
-										</li>
-										<li>
-											<hr />
-										</li>
-										{/* Other Navigation */}
-										{getNonRulesNavigation.group.map((item, index) => {
-											const { totalCount, edges, fieldValue } = item
-											if (totalCount <= 0) {
-												return null
-											}
-											const groupKey = `${fieldValue}-${index}`
-											return (
-												<li key={groupKey}>
-													<p className="parent-item">{fieldValue}</p>
-													<ul>{this.getListItemFromEdges(edges)}</ul>
-													<hr />
-												</li>
-											)
-										})}
-									</ul>
-								</nav>
-							</aside>
+							{/* side bar navigation  */}
+							<Navigation logoName={author.name} logoNavigateTo={'/pages/about'} />
+							{/* main content  */}
 							<main>
 								<section>{children}</section>
 								<Footer actRulesRepoUrl={actRulesRepoUrl} />
