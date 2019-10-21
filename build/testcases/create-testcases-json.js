@@ -10,7 +10,7 @@ const createTestcasesJson = async (testcases, actRulesCommunityPkg) => {
 		description,
 	} = actRulesCommunityPkg
 	const AllTestcasesData = {
-		name: `${author} test cases`,
+		name: `${author.name} test cases`,
 		website: url,
 		license: `${url}/pages/license/`,
 		description,

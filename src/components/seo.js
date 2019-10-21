@@ -37,13 +37,13 @@ function SEO({ title }) {
 
 	const metaTags = [
 		{ name: `description`, content: description },
-		{ property: `og:title`, content: author },
+		{ property: `og:title`, content: author.name },
 		{ property: `og:description`, content: description },
 		{ property: `og:type`, content: `website` },
 	].concat(metaKeywords)
 
 	return (
-		<Helmet title={`${title} | ${author}`} meta={metaTags}>
+		<Helmet title={`${title} | ${author.name}`} meta={metaTags}>
 			{/* Busting cache as advised by Gatsby  */}
 			<meta http-equiv="Cache-Control" content="public, max-age=0, must-revalidate" />
 			<meta http-equiv="Pragma" content="no-cache" />
