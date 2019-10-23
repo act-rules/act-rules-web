@@ -40,7 +40,11 @@ export default ({ data }) => {
 				{/* rule content */}
 				<header>
 					{/* title */}
-					<h1>{frontmatter.name}</h1>
+					<h1
+						dangerouslySetInnerHTML={{
+							__html: converter.makeHtml(frontmatter.name),
+						}}
+					/>
 				</header>
 				{/* frontmatter */}
 				<ul className="meta">
