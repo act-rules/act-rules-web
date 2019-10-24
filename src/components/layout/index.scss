@@ -211,6 +211,9 @@ section.layout-container {
                 h2{
                   margin: 0;
                   margin-bottom: 0.5rem;
+                  >p{
+                    margin: 0;
+                  }
                 }
                 &:last-child{
                   border-bottom: none;

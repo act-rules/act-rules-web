@@ -31,7 +31,11 @@ export default ({ data }) => {
 								<section>
 									{/* rule id */}
 									<a href={slug.replace('rules/', '')}>
-										<h2>{name}</h2>
+										<h2
+											dangerouslySetInnerHTML={{
+												__html: converter.makeHtml(name),
+											}}
+										/>
 									</a>
 									{/* rule sc's */}
 									{getAccessibilityRequirements(accessibility_requirements, 'text')}
