@@ -305,13 +305,16 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 	)
 }
 
-export function getAuthors(authors, contributors) {
+export function getAuthors(authors, contributors, authorsHeading) {
 	if (!authors) {
 		return null
 	}
+	if (!authorsHeading) {
+		authorsHeading = 'Authors'
+	}
 	return (
 		<div>
-			<h3 className="heading">Authors</h3>
+			<h3 className="heading">{authorsHeading}</h3>
 			<ul>
 				{authors.map(author => {
 					const authorData = contributors.find(c => {

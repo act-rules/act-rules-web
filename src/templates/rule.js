@@ -129,7 +129,8 @@ export default ({ data }) => {
 				<a id="acknowledgements" href="#acknowledgements">
 					<h2>Acknowledgements</h2>
 				</a>
-				<div className="meta">{getAuthors(frontmatter.authors, contributors)}</div>
+				<div className="meta">{getAuthors(frontmatter.authors, contributors, 'Authors')}</div>
+				<div className="meta">{getAuthors(frontmatter.previous_authors, contributors, 'Previous Authors')}</div>
 			</section>
 			{/* Toc */}
 			<section className="toc">
@@ -168,6 +169,7 @@ export const query = graphql`
 				input_aspects
 				input_rules
 				authors
+				previous_authors
 			}
 			fields {
 				fileName {
