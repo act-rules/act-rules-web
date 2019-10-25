@@ -8,7 +8,6 @@ import {
 	getGlossaryUsedLink,
 	getRuleType,
 	getAccessibilityRequirements,
-	getAuthors,
 	getInputRulesForRule,
 	getInputAspects,
 	getImplementations,
@@ -16,6 +15,7 @@ import {
 	getDateTimeFromUnixTimestamp,
 } from './../utils/render-fragments'
 import SEO from '../components/seo'
+import Acknowledgements from '../components/acknowledgements'
 
 export default ({ data }) => {
 	const { rule, allRules, allGlossary, site } = data
@@ -23,7 +23,7 @@ export default ({ data }) => {
 	const { slug, fastmatterAttributes, changelog, fileName } = fields
 	const { relativePath } = fileName
 	const ruleChangelog = JSON.parse(changelog)
-	const { accessibility_requirements } = JSON.parse(fastmatterAttributes)
+	const { accessibility_requirements, acknowledgements } = JSON.parse(fastmatterAttributes)
 	const converter = new showdown.Converter()
 	const { repository, config, contributors } = JSON.parse(site.siteMetadata.actRulesPackage)
 	const ruleId = frontmatter.id
@@ -126,11 +126,7 @@ export default ({ data }) => {
 				{getImplementations(slug)}
 				{/* acknowledgements */}
 				<hr />
-				<a id="acknowledgements" href="#acknowledgements">
-					<h2>Acknowledgements</h2>
-				</a>
-				<div className="meta">{getAuthors(frontmatter.authors, contributors, 'Authors')}</div>
-				<div className="meta">{getAuthors(frontmatter.previous_authors, contributors, 'Previous Authors')}</div>
+				<Acknowledgements scrollLinkId={`acknowledgements`} items={acknowledgements} contributors={contributors} />
 			</section>
 			{/* Toc */}
 			<section className="toc">
@@ -168,8 +164,6 @@ export const query = graphql`
 				description
 				input_aspects
 				input_rules
-				authors
-				previous_authors
 			}
 			fields {
 				fileName {
