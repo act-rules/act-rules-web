@@ -305,36 +305,6 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 	)
 }
 
-export function getAuthors(authors, contributors) {
-	if (!authors) {
-		return null
-	}
-	return (
-		<div>
-			<h3 className="heading">Authors</h3>
-			<ul>
-				{authors.map(author => {
-					const authorData = contributors.find(c => {
-						return c.name.toLowerCase() === author.toLowerCase()
-					})
-					if (!authorData) {
-						console.warn(`Author ${author}, not in contributor list.`)
-						return null
-					}
-					const { url, name } = authorData
-					return (
-						<li key={name}>
-							<a className="sc-item block" target="_blank" rel="noopener noreferrer" href={url}>
-								{name}
-							</a>
-						</li>
-					)
-				})}
-			</ul>
-		</div>
-	)
-}
-
 export function getInputAspects(aspects, ruleFormatInputAspects) {
 	if (!aspects) {
 		return null
