@@ -16,21 +16,40 @@ import PropTypes from 'prop-types'
  * @param {Object} props Props
  */
 const Acknowledgements = ({ scrollLinkId, items, contributors }) => {
+	const preferredAcknowledgementsOrder = ['authors', 'previous_authors', 'reviewers', 'funding']
+
+	const otherItems = Object.keys(items).reduce((out, key) => {
+		if (!preferredAcknowledgementsOrder.includes(key)) {
+			out[key] = items[key]
+		}
+		return out
+	}, {})
+
+	const curatedItems = {
+		Authors: items['authors'],
+		'Previous Authors': items['previous_authors'],
+		Reviewers: items['reviewers'],
+		funding: items['funding'],
+		...otherItems,
+	}
+
+	console.log(items)
+	console.log(curatedItems)
+
 	return (
 		<>
 			<a id={scrollLinkId} href={`#${scrollLinkId}`}>
 				<h2>Acknowledgements</h2>
 			</a>
-			{Object.keys(items).map(key => {
-				const values = items[key] || []
-				const heading = key.split('_').join(' ')
+			{Object.keys(curatedItems).map(key => {
+				const values = curatedItems[key] || []
 
 				if (!values || !values.length) {
 					return null
 				}
 				return (
 					<div className="meta" key={key}>
-						<h3 className="heading">{heading}</h3>
+						<h3 className="heading">{key}</h3>
 						<ul>
 							{values.map(value => {
 								const data = contributors.find(({ name }) => name.toLowerCase() === value.toLowerCase())
