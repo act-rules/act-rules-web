@@ -117,6 +117,7 @@ async function init(program) {
 			 */
 			const testcase = {
 				testcaseId: codeId,
+				testcaseTitle: title.value,
 				url: `${actRulesCommunityPkg.www.url}/${testcasePath}`,
 				relativePath: testcasePath,
 				expected: titleCurated[0],
