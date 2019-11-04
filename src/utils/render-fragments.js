@@ -359,26 +359,6 @@ export function getInputRulesForRule(inputRules, allRules, stripBasePath = false
 	)
 }
 
-export function getGlossaryUsageInRules(usages) {
-	if (!usages) {
-		return null
-	}
-	return (
-		<div className="used-rules">
-			<h3>Used In Rules ({usages.length}):</h3>
-			<ul>
-				{usages.map(usage => (
-					<li>
-						<Link key={usage.slug} to={usage.slug}>
-							{usage.name}
-						</Link>
-					</li>
-				))}
-			</ul>
-		</div>
-	)
-}
-
 export function getRuleUsageInRules(ruleId) {
 	const usages = rulesUsages[ruleId]
 	if (!usages) {
