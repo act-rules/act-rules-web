@@ -50,7 +50,11 @@ const Glossary = ({ location }) => {
 									<i>key: {frontmatter.key}</i>
 									<div dangerouslySetInnerHTML={{ __html: html }} />
 								</section>
-								<ListWithHeading cls={``} heading={`Used In Rules`} items={glossaryUsages[`#${frontmatter.key}`]} />
+								<ListWithHeading
+									cls={`used-rules`}
+									heading={`Used In Rules`}
+									items={glossaryUsages[`#${frontmatter.key}`]}
+								/>
 							</article>
 						)
 					})}
