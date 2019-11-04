@@ -1,34 +1,56 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/layout/'
 import SEO from '../components/seo'
-import { getGlossaryUsageInRules } from './../utils/render-fragments'
 import glossaryUsages from './../../_data/glossary-usages.json'
+import ListWithHeading from '../components/list-with-heading'
 
-export default ({ data }) => {
-	const { glossaryData } = data
-	const { edges } = glossaryData
+const Glossary = ({ location }) => {
+	const { glossaryData } = useStaticQuery(
+		graphql`
+			query {
+				glossaryData: allMarkdownRemark(
+					sort: { fields: [frontmatter___title], order: ASC }
+					filter: { fields: { markdownType: { eq: "glossary" } } }
+				) {
+					edges {
+						node {
+							id
+							html
+							frontmatter {
+								title
+								key
+							}
+							fields {
+								markdownType
+							}
+							excerpt
+						}
+					}
+				}
+			}
+		`
+	)
 
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title="Glossary" />
 			<section className="page-container page-glossary">
 				<h1>Glossary</h1>
 				<section className="listing">
-					{edges.map(({ node }) => {
+					{glossaryData.edges.map(({ node }) => {
 						const { frontmatter, html } = node
-						const { key } = frontmatter
-						const usedInRules = glossaryUsages[`#${key}`]
+
 						return (
-							<article key={key}>
+							<article key={frontmatter.key}>
 								<section>
-									<Link id={key} to={`#${key}`}>
+									<a id={frontmatter.key} href={`#${frontmatter.key}`}>
 										<h2>{frontmatter.title}</h2>
-									</Link>
-									<i>key: {key}</i>
+									</a>
+									<i>key: {frontmatter.key}</i>
 									<div dangerouslySetInnerHTML={{ __html: html }} />
 								</section>
-								{getGlossaryUsageInRules(usedInRules)}
+								<ListWithHeading cls={``} heading={`Used In Rules`} items={glossaryUsages[`#${frontmatter.key}`]} />
 							</article>
 						)
 					})}
@@ -38,26 +60,4 @@ export default ({ data }) => {
 	)
 }
 
-export const query = graphql`
-	query {
-		glossaryData: allMarkdownRemark(
-			sort: { fields: [frontmatter___title], order: ASC }
-			filter: { fields: { markdownType: { eq: "glossary" } } }
-		) {
-			edges {
-				node {
-					id
-					html
-					frontmatter {
-						title
-						key
-					}
-					fields {
-						markdownType
-					}
-					excerpt
-				}
-			}
-		}
-	}
-`
+export default Glossary
