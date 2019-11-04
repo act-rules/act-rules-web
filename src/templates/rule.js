@@ -17,7 +17,7 @@ import {
 import SEO from '../components/seo'
 import Acknowledgements from '../components/acknowledgements'
 
-export default ({ data }) => {
+export default ({ data, location }) => {
 	const { rule, allRules, allGlossary, site } = data
 	const { html, frontmatter, tableOfContents, fields } = rule
 	const { slug, fastmatterAttributes, changelog, fileName } = fields
@@ -34,7 +34,7 @@ export default ({ data }) => {
 	const ruleFormatInputAspects = config['rule-format-metadata']['input-aspects']
 
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title={`Rule | ${frontmatter.name}`} />
 			<section className="page-rule">
 				{/* rule content */}

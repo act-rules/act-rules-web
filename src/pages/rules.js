@@ -9,12 +9,12 @@ import {
 	getImplementationsCount,
 } from './../utils/render-fragments'
 
-export default ({ data }) => {
+export default ({ data, location }) => {
 	const { rules, allRules } = data
 	const converter = new showdown.Converter()
 
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title="Rules" />
 			<section className="page-container page-rules">
 				{/* Heading */}

@@ -3,12 +3,12 @@ import Layout from '../components/layout/'
 import { graphql } from 'gatsby'
 import SEO from '../components/seo'
 
-export default ({ data }) => {
+export default ({ data, location }) => {
 	const { markdownRemark } = data
 	const { html, frontmatter } = markdownRemark
 
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title={frontmatter.title} />
 			<div>
 				<h1>{frontmatter.title}</h1>

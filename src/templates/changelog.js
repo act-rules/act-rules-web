@@ -64,7 +64,7 @@ const getChangelogTabulation = (changelog, url, file) => {
 	)
 }
 
-export default ({ data }) => {
+export default ({ data, location }) => {
 	const { site, sitePage } = data
 	const { context } = sitePage
 	const { title: pageTitle, fastmatterAttributes, changelog, fileName } = context
@@ -80,7 +80,7 @@ export default ({ data }) => {
 	} = JSON.parse(site.siteMetadata.actRulesPackage)
 
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title={pageTitle} />
 			<section className="page-container page-rule-changelog">
 				<h1>{pageTitle}</h1>
