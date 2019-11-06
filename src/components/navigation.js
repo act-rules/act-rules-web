@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql, Link } from 'gatsby'
+import ReactMedia from 'react-media'
 
 import Logo from './logo'
 
@@ -52,12 +53,19 @@ const Navigation = props => {
 	const { logoName, logoNavigateTo } = props
 	const { getTopLevelNavigation, getNonRulesNavigation } = data
 
+	const [isMenuShown, setIsMenuShown] = useState(true)
+	const toggleMenu = () => setIsMenuShown(!isMenuShown)
+
 	return (
-		<aside>
-			{/* className={this.state.showMenu ? 'show' : 'hide'} */}
-			{/* <button className="nav-hide-show-menu" onClick={e => this.handleHideShowMenu()}>
-        ☰
-    </button> */}
+		<aside className={isMenuShown ? 'show' : 'hide'}>
+			{/* hide menu when width <= 600px */}
+			<ReactMedia query="(max-width: 600px)" onChange={matches => matches && isMenuShown && toggleMenu()} />
+			{/* show menu when width > 600px */}
+			<ReactMedia query="(min-width: 601px)" onChange={matches => matches && !isMenuShown && toggleMenu()} />
+			{/* toggle menu  */}
+			<button className="nav-hide-show-menu" onClick={() => toggleMenu()}>
+				☰
+			</button>
 			{/* Logo  */}
 			<Logo name={logoName} navigateTo={logoNavigateTo} />
 			{/* Nav  */}
@@ -105,8 +113,8 @@ const Navigation = props => {
 }
 
 Navigation.propTypes = {
-	logoName: PropTypes.string,
-	logoNavigateTo: PropTypes.string,
+	logoName: PropTypes.string.isRequired,
+	logoNavigateTo: PropTypes.string.isRequired,
 }
 
 Logo.defaultProps = {
