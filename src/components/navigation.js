@@ -54,23 +54,12 @@ const Navigation = props => {
 	const { getTopLevelNavigation, getNonRulesNavigation } = data
 
 	const [isMenuShown, setIsMenuShown] = useState(true)
-	const onMediaQueryChange = matches => {
-		if (matches.small) {
-			return setIsMenuShown(false)
-		}
-		return setIsMenuShown(true)
-	}
+	const onMediaQueryChange = matches => setIsMenuShown(!matches.small)
 
 	return (
 		<aside className={isMenuShown ? 'show' : 'hide'}>
 			{/* hide menu when width <= 600px */}
-			<ReactMedia
-				queries={{
-					small: '(max-width: 599px)',
-					medium: '(min-width: 600px)',
-				}}
-				onChange={onMediaQueryChange}
-			/>
+			<ReactMedia queries={{ small: '(max-width: 599px)' }} onChange={onMediaQueryChange} />
 			{/* toggle menu  */}
 			<button
 				className="nav-hide-show-menu"
