@@ -1,13 +1,11 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/layout/'
 import SEO from '../components/seo'
 import glossaryUsages from './../../_data/glossary-usages.json'
 import ListWithHeading from '../components/list-with-heading'
 
-export default ({ data, location }) => {
+const Glossary = ({ data, location }) => {
 	const { glossaryData } = data
-	const { edges } = glossaryData
 
 	return (
 		<Layout location={location}>
