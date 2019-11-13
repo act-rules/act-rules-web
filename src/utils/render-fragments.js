@@ -199,15 +199,15 @@ function OutcomeMapping({
 	)
 }
 
-function AccessibilityRequirementsText({ key, title, url }) {
-	return (
-		<li key={key}>
-			<a href={url}>{title}</a>
-		</li>
-	)
-}
+function AccessibilityRequirementsListing({ item, listType, title, learnMore, conformanceTo, url, mapping }) {
+	if (listType === 'text') {
+		return (
+			<li key={item}>
+				<a href={url}>{title}</a>
+			</li>
+		)
+	}
 
-function AccessibilityRequirementsDetails({ title, learnMore, conformanceTo, url, mapping }) {
 	return (
 		<li>
 			<details>
@@ -229,27 +229,11 @@ function AccessibilityRequirementsDetails({ title, learnMore, conformanceTo, url
 	)
 }
 
-function AccessibilityRequirementsListing({ key, listType, title, learnMore, conformanceTo, url, mapping }) {
-	if (listType === 'text') {
-		return <AccessibilityRequirementsText key={key} title={title} url={url} />
-	}
-
-	return (
-		<AccessibilityRequirementsDetails
-			key={key}
-			title={title}
-			learnMore={learnMore}
-			conformanceTo={conformanceTo}
-			url={url}
-			mapping={mapping}
-		/>
-	)
-}
-
 function AriaListing({ item, mapping, listType }) {
+	console.dir(mapping)
 	return (
 		<AccessibilityRequirementsListing
-			key={item}
+			item={item}
 			listType={listType}
 			title={mapping.title}
 			learnMore={mapping.title}
@@ -267,7 +251,7 @@ function WcagListing({ item, mapping, listType }) {
 
 	return (
 		<AccessibilityRequirementsListing
-			key={item}
+			item={item}
 			listType={listType}
 			title={title}
 			learnMore={learnMore}
@@ -290,13 +274,9 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 		)
 	}
 
-	const conformanceRequirements = Object.entries(accessibility_requirements).filter(([_, value]) => {
-		if (!value) {
-			return false
-		}
-		const { forConformance } = value
-		return !!forConformance
-	})
+	const conformanceRequirements = Object.entries(accessibility_requirements).filter(
+		([_, value]) => value && !!value.forConformance
+	)
 
 	return (
 		<div className="meta">
@@ -309,10 +289,10 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 
 					switch (conformanceDocument) {
 						case 'aria11':
-							return <AriaListing item={conformanceItem} mapping={mapping} listType={type} />
+							return <AriaListing key={conformanceItem} item={conformanceItem} mapping={mapping} listType={type} />
 						case 'wcag20':
 						case 'wcag21':
-							return <WcagListing item={conformanceItem} mapping={mapping} listType={type} />
+							return <WcagListing key={conformanceItem} item={conformanceItem} mapping={mapping} listType={type} />
 						default:
 							return <>Accessibility Requirements have no mapping.</>
 					}
