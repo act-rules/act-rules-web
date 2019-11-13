@@ -229,39 +229,46 @@ function AccessibilityRequirementsDetails({ title, learnMore, conformanceTo, url
 	)
 }
 
-function AriaListing({ item, mapping, listType }) {
-	const url = `https://www.w3.org/TR/wai-aria-1.1/#${item}`
-
+function AccessibilityRequirementsListing({ key, listType, title, learnMore, conformanceTo, url, mapping }) {
 	if (listType === 'text') {
-		return <AccessibilityRequirementsText key={item} title={mapping.title} url={url} />
+		return <AccessibilityRequirementsText key={key} title={title} url={url} />
 	}
 
 	return (
 		<AccessibilityRequirementsDetails
-			key={item}
-			title={mapping.title}
-			learnMore={mapping.title}
+			key={key}
+			title={title}
+			learnMore={learnMore}
+			conformanceTo={conformanceTo}
 			url={url}
 			mapping={mapping}
 		/>
 	)
 }
 
-function WcagListing({ item, mapping, listType }) {
-	const scData = scUrls[item]
+function AriaListing({ item, mapping, listType }) {
+	return (
+		<AccessibilityRequirementsListing
+			key={item}
+			listType={listType}
+			title={mapping.title}
+			learnMore={mapping.title}
+			url={`https://www.w3.org/TR/wai-aria-1.1/#${item}`}
+			mapping={mapping}
+		/>
+	)
+}
 
-	const { num, url, handle, wcagType, level } = scData
+function WcagListing({ item, mapping, listType }) {
+	const { num, url, handle, wcagType, level } = scUrls[item]
 	const title = `${num} ${handle} (Level: ${level})`
 	const learnMore = `${num} (${handle})`
 	const conformanceTo = ` to WCAG ${wcagType} and above on level ${level} and above`
 
-	if (listType === 'text') {
-		return <AccessibilityRequirementsText key={item} title={title} url={url} />
-	}
-
 	return (
-		<AccessibilityRequirementsDetails
+		<AccessibilityRequirementsListing
 			key={item}
+			listType={listType}
 			title={title}
 			learnMore={learnMore}
 			conformanceTo={conformanceTo}
