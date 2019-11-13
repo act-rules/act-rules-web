@@ -219,8 +219,9 @@ function AccessibilityRequirementsListing({ item, listType, title, learnMore, co
 						</a>
 					</li>
 					<li>
-						<strong>Required for conformance</strong>
-						{conformanceTo}.
+						<>
+							<strong>Required for conformance</strong> {conformanceTo}.
+						</>
 					</li>
 					<OutcomeMapping failed={mapping.failed} passed={mapping.passed} inapplicable={mapping.inapplicable} />
 				</ul>
@@ -230,13 +231,13 @@ function AccessibilityRequirementsListing({ item, listType, title, learnMore, co
 }
 
 function AriaListing({ item, mapping, listType }) {
-	console.dir(mapping)
 	return (
 		<AccessibilityRequirementsListing
 			item={item}
 			listType={listType}
 			title={mapping.title}
 			learnMore={mapping.title}
+			conformanceTo="to WAI-ARIA 1.1 specifications"
 			url={`https://www.w3.org/TR/wai-aria-1.1/#${item}`}
 			mapping={mapping}
 		/>
@@ -247,7 +248,7 @@ function WcagListing({ item, mapping, listType }) {
 	const { num, url, handle, wcagType, level } = scUrls[item]
 	const title = `${num} ${handle} (Level: ${level})`
 	const learnMore = `${num} (${handle})`
-	const conformanceTo = ` to WCAG ${wcagType} and above on level ${level} and above`
+	const conformanceTo = `to WCAG ${wcagType} and above on level ${level} and above`
 
 	return (
 		<AccessibilityRequirementsListing
