@@ -2,6 +2,9 @@
  * Get meta data of all WCAG success criteria
  * -> Output file: -> `./_data/sc-urls.json`
  * -> This is later used for hyperlinking SC of rules to respective specifications
+ * Get titles of all WCAG techniques
+ * -> Output file: -> ./_data/technique-titles.json
+ * -> This is later used for outputting the correct title of the technique
  */
 const assert = require('assert')
 const program = require('commander')
@@ -39,8 +42,12 @@ async function init({ url, outputDir }) {
 	/**
 	 * Create a list of success criteria meta data
 	 */
-	const scMetaData = await getWaiWcagReferenceData(url)
+	const [scMetaData, techniqueTitles] = await getWaiWcagReferenceData(url)
 	await createFile(`${outputDir}/sc-urls.json`, JSON.stringify(scMetaData, undefined, 2))
+	await createFile(
+		`${outputDir}/technique-titles.json`,
+		JSON.stringify(techniqueTitles, Object.keys(techniqueTitles).sort(), 2)
+	)
 
 	/**
 	 * Create wcag em report tool friendly audit result array
@@ -108,6 +115,34 @@ function getMetaData(sc) {
 }
 
 /**
+ * Get all techniques referenced in a WCAG SC
+ * This get messy because of various way they are nested in the meta data
+ * We just stupidly and recursively gather all (id, title) pairs where the id starts by "TECH"
+ * @param {Object} techs list of techniques used by a SC
+ */
+function getTechniqueTitle(techs) {
+	const result = []
+	if (techs && techs.id && techs.id.split(':')[0] === 'TECH' && techs.id !== 'TECH:text' && techs.id !== 'TECH:text1') {
+		// We've likely found an actual technique!
+		result.push({ id: techs.id, title: techs.title })
+	}
+
+	// In any case, we want to go down to all attributes.
+	if (techs instanceof Array) {
+		// it's an array of stuff
+		techs.forEach(val => result.push(...getTechniqueTitle(val)))
+	}
+	if (techs instanceof Object) {
+		// it can be a nested object, stupidly go down on all keys
+		for (const prop in techs) {
+			result.push(...getTechniqueTitle(techs[prop]))
+		}
+	}
+
+	return result
+}
+
+/**
  * Get all WCAG SC reference data
  * @param {String} url URL
  */
@@ -117,12 +152,19 @@ async function getWaiWcagReferenceData(url) {
 	} = await axios.get(url)
 
 	const scMetaData = {}
+	const techniqueTitles = []
 	principles.forEach(p =>
 		p.guidelines.forEach(g =>
 			g.successcriteria.forEach(sc => {
 				scMetaData[sc.num] = getMetaData(sc)
+				techniqueTitles.push(...getTechniqueTitle(sc.techniques))
 			})
 		)
 	)
-	return scMetaData
+
+	// cleaning up duplicates
+	const techniques = {}
+	techniqueTitles.forEach(({ id, title }) => (techniques[id.split(':')[1]] = title))
+
+	return [scMetaData, techniques]
 }
