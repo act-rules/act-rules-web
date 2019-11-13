@@ -58,3 +58,6 @@ yarn-error.log
 
 # Data
 _data/
+
+# IntelliJ IDEs
+.idea
