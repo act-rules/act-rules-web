@@ -207,7 +207,7 @@ function AccessibilityRequirementsText({ key, title, url }) {
 	)
 }
 
-function AccessibilityRequirementsDetails({ title, learnMore, conformanceTo, url }) {
+function AccessibilityRequirementsDetails({ title, learnMore, conformanceTo, url, mapping }) {
 	return (
 		<li>
 			<details>
@@ -222,10 +222,52 @@ function AccessibilityRequirementsDetails({ title, learnMore, conformanceTo, url
 						<strong>Required for conformance</strong>
 						{conformanceTo}.
 					</li>
-					<OutcomeMapping />
+					<OutcomeMapping failed={mapping.failed} passed={mapping.passed} inapplicable={mapping.inapplicable} />
 				</ul>
 			</details>
 		</li>
+	)
+}
+
+function AriaListing({ item, mapping, listType }) {
+	const url = `https://www.w3.org/TR/wai-aria-1.1/#${item}`
+
+	if (listType === 'text') {
+		return <AccessibilityRequirementsText key={item} title={mapping.title} url={url} />
+	}
+
+	return (
+		<AccessibilityRequirementsDetails
+			key={item}
+			title={mapping.title}
+			learnMore={mapping.title}
+			url={url}
+			mapping={mapping}
+		/>
+	)
+}
+
+function WcagListing({ item, mapping, listType }) {
+	const scData = scUrls[item]
+
+	const { num, url, handle, wcagType, level } = scData
+	const title = `${num} ${handle} (Level: ${level})`
+	const learnMore = `${num} (${handle})`
+	const conformanceTo = ` to WCAG ${wcagType} and above on level ${level} and above`
+
+	if (listType === 'text') {
+		return <AccessibilityRequirementsText key={item} title={title} url={url} />
+	}
+
+	return (
+		<AccessibilityRequirementsDetails
+			key={item}
+			title={title}
+			learnMore={learnMore}
+			conformanceTo={conformanceTo}
+			url={url}
+			mapping={mapping}
+		/>
 	)
 }
 
@@ -249,58 +291,24 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 		return !!forConformance
 	})
 
-	const wcagListing = (sc, listType) => {
-		const scData = scUrls[sc]
-
-		const { num, url, handle, wcagType, level } = scData
-		const title = `${num} ${handle} (Level: ${level})`
-		const learnMore = `${num} (${handle})`
-		const conformanceTo = ` to WCAG ${wcagType} and above on level ${level} and above`
-
-		if (listType === 'text') {
-			return <AccessibilityRequirementsText key={sc} title={title} url={url} />
-		}
-
-		return (
-			<AccessibilityRequirementsDetails
-				key={sc}
-				title={title}
-				learnMore={learnMore}
-				conformanceTo={conformanceTo}
-				url={url}
-			/>
-		)
-	}
-
-	const ariaListing = (key, mapping, listType) => {
-		const ref = key
-			.split(':')
-			.slice(-1)
-			.pop()
-		const url = `https://www.w3.org/TR/wai-aria-1.1/#${ref}`
-
-		if (listType === 'text') {
-			return <AccessibilityRequirementsText key={ref} title={mapping.title} url={url} />
-		}
-
-		return <AccessibilityRequirementsDetails key={ref} title={mapping.title} learnMore={mapping.title} url={url} />
-	}
-
 	return (
 		<div className="meta">
 			<span className="heading">Accessibility Requirements Mapping</span>
 			<ul>
 				{conformanceRequirements.map(([req, mapping]) => {
-					if (req.toLowerCase().includes('aria11')) {
-						return ariaListing(req, mapping, type)
-					}
+					const [conformanceDocument, conformanceItem] = req // technically, it's not always a *conformance* document…
+						.toLocaleLowerCase()
+						.split(':')
 
-					if (req.toLowerCase().includes('wcag')) {
-						const sc = req.split(':').pop()
-						return wcagListing(sc, type)
+					switch (conformanceDocument) {
+						case 'aria11':
+							return <AriaListing item={conformanceItem} mapping={mapping} listType={type} />
+						case 'wcag20':
+						case 'wcag21':
+							return <WcagListing item={conformanceItem} mapping={mapping} listType={type} />
+						default:
+							return <>Accessibility Requirements have no mapping.</>
 					}
-
-					return <>Accessibility Requirements have no mapping.</>
 				})}
 			</ul>
 		</div>
