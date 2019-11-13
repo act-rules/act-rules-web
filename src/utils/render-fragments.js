@@ -5,6 +5,7 @@ import glossaryUsages from './../../_data/glossary-usages.json'
 import implementationMetrics from './../../_data/implementation-metrics.json'
 
 import rulesUsages from './../../_data/rules-usages.json'
+import * as PropTypes from 'prop-types'
 
 export const getImplementationsTabulation = (implementers, cls = 'compact', ruleId) => {
 	return (
@@ -206,6 +207,28 @@ function AccessibilityRequirementsText({ key, title, url }) {
 	)
 }
 
+function AccessibilityRequirementsDetails({ title, learnMore, conformanceTo, url }) {
+	return (
+		<li>
+			<details>
+				<summary>{title}</summary>
+				<ul>
+					<li>
+						<a className="sc-item" href={url} target="_blank" rel="noopener noreferrer">
+							Learn More about {learnMore}
+						</a>
+					</li>
+					<li>
+						<strong>Required for conformance</strong>
+						{conformanceTo}.
+					</li>
+					<OutcomeMapping />
+				</ul>
+			</details>
+		</li>
+	)
+}
+
 export function getAccessibilityRequirements(accessibility_requirements, type = 'details') {
 	if (!accessibility_requirements) {
 		return (
@@ -231,30 +254,21 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 
 		const { num, url, handle, wcagType, level } = scData
 		const title = `${num} ${handle} (Level: ${level})`
+		const learnMore = `${num} (${handle})`
+		const conformanceTo = ` to WCAG ${wcagType} and above on level ${level} and above`
 
 		if (listType === 'text') {
 			return <AccessibilityRequirementsText key={sc} title={title} url={url} />
 		}
 
 		return (
-			<li key={sc}>
-				<details>
-					<summary>
-						{num} {handle} (Level: {level})
-					</summary>
-					<ul>
-						<li>
-							<a className="sc-item" href={url} target="_blank" rel="noopener noreferrer">
-								Learn More about {num} ({handle})
-							</a>
-						</li>
-						<li>
-							<strong>Required for conformance</strong> to WCAG {wcagType} and above on level {level} and above
-						</li>
-						<OutcomeMapping />
-					</ul>
-				</details>
-			</li>
+			<AccessibilityRequirementsDetails
+				key={sc}
+				title={title}
+				learnMore={learnMore}
+				conformanceTo={conformanceTo}
+				url={url}
+			/>
 		)
 	}
 
@@ -263,30 +277,13 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 			.split(':')
 			.slice(-1)
 			.pop()
-		const href = `https://www.w3.org/TR/wai-aria-1.1/#${ref}`
+		const url = `https://www.w3.org/TR/wai-aria-1.1/#${ref}`
 
 		if (listType === 'text') {
-			return <AccessibilityRequirementsText key={ref} title={mapping.title} url={href} />
+			return <AccessibilityRequirementsText key={ref} title={mapping.title} url={url} />
 		}
 
-		return (
-			<li key={ref}>
-				<details>
-					<summary>{mapping.title}</summary>
-					<ul>
-						<li>
-							<a className="sc-item" href={href} target="_blank" rel="noopener noreferrer">
-								Learn More about {mapping.title}
-							</a>
-						</li>
-						<li>
-							<strong>Required for conformance</strong>
-						</li>
-						<OutcomeMapping failed={mapping.failed} passed={mapping.passed} inapplicable={mapping.inapplicable} />
-					</ul>
-				</details>
-			</li>
-		)
+		return <AccessibilityRequirementsDetails key={ref} title={mapping.title} learnMore={mapping.title} url={url} />
 	}
 
 	return (
