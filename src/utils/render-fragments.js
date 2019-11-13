@@ -175,6 +175,38 @@ export function getRuleType(rule_type) {
 	)
 }
 
+function OutcomeMapping({
+	failed = 'not satisfied',
+	passed = 'further testing is needed',
+	inapplicable = 'further testing is needed',
+}) {
+	return (
+		<li>
+			Outcome mapping:
+			<ul>
+				<li>
+					Any <code>failed</code> outcomes: {failed}
+				</li>
+				<li>
+					All <code>passed</code> outcomes: {passed}
+				</li>
+				<li>
+					An <code>inapplicable</code> outcome: {inapplicable}
+				</li>
+			</ul>
+		</li>
+	)
+}
+
+function AccessibilityRequirementsText({ key, title, url }) {
+	return (
+		<li key={key}>
+			{' '}
+			<a href={url}>{title}</a>{' '}
+		</li>
+	)
+}
+
 export function getAccessibilityRequirements(accessibility_requirements, type = 'details') {
 	if (!accessibility_requirements) {
 		return (
@@ -194,29 +226,6 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 		const { forConformance } = value
 		return !!forConformance
 	})
-
-	const getOutcomeMapping = ({
-		failed = 'not satisfied',
-		passed = 'further testing is needed',
-		inapplicable = 'further testing is needed',
-	} = {}) => {
-		return (
-			<li>
-				Outcome mapping:
-				<ul>
-					<li>
-						Any <code>failed</code> outcomes: {failed}
-					</li>
-					<li>
-						All <code>passed</code> outcomes: {passed}
-					</li>
-					<li>
-						An <code>inapplicable</code> outcome: {inapplicable}
-					</li>
-				</ul>
-			</li>
-		)
-	}
 
 	const wcagListing = (sc, listType) => {
 		const scData = scUrls[sc]
@@ -246,7 +255,7 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 						<li>
 							<strong>Required for conformance</strong> to WCAG {wcagType} and above on level {level} and above
 						</li>
-						{getOutcomeMapping()}
+						<OutcomeMapping />
 					</ul>
 				</details>
 			</li>
@@ -277,7 +286,7 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 						<li>
 							<strong>Required for conformance</strong>
 						</li>
-						{getOutcomeMapping(mapping)}
+						<OutcomeMapping failed={mapping.failed} passed={mapping.passed} inapplicable={mapping.inapplicable} />
 					</ul>
 				</details>
 			</li>
