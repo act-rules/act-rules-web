@@ -201,8 +201,7 @@ function OutcomeMapping({
 function AccessibilityRequirementsText({ key, title, url }) {
 	return (
 		<li key={key}>
-			{' '}
-			<a href={url}>{title}</a>{' '}
+			<a href={url}>{title}</a>
 		</li>
 	)
 }
@@ -231,13 +230,10 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 		const scData = scUrls[sc]
 
 		const { num, url, handle, wcagType, level } = scData
+		const title = `${num} ${handle} (Level: ${level})`
 
 		if (listType === 'text') {
-			return (
-				<li key={sc}>
-					{num} {handle} (Level: {level})
-				</li>
-			)
+			return <AccessibilityRequirementsText key={sc} title={title} url={url} />
 		}
 
 		return (
@@ -267,12 +263,12 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 			.split(':')
 			.slice(-1)
 			.pop()
+		const href = `https://www.w3.org/TR/wai-aria-1.1/#${ref}`
 
 		if (listType === 'text') {
-			return <li key={ref}>{mapping.title}</li>
+			return <AccessibilityRequirementsText key={ref} title={mapping.title} url={href} />
 		}
 
-		const href = `https://www.w3.org/TR/wai-aria-1.1/#${ref}`
 		return (
 			<li key={ref}>
 				<details>
