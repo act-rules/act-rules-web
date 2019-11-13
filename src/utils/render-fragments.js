@@ -186,13 +186,13 @@ function OutcomeMapping({
 			Outcome mapping:
 			<ul>
 				<li>
-					Any <code>failed</code> outcomes: {failed}
+					Any <code>failed</code> outcomes: {failed}.
 				</li>
 				<li>
-					All <code>passed</code> outcomes: {passed}
+					All <code>passed</code> outcomes: {passed}.
 				</li>
 				<li>
-					An <code>inapplicable</code> outcome: {inapplicable}
+					An <code>inapplicable</code> outcome: {inapplicable}.
 				</li>
 			</ul>
 		</li>
@@ -277,7 +277,7 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 			<div className="meta">
 				<span className="heading">Accessibility Requirements Mapping</span>
 				<ul>
-					<li>This rule is not required for conformance</li>
+					<li>This rule is not required for conformance.</li>
 				</ul>
 			</div>
 		)
