@@ -244,19 +244,49 @@ function AriaListing({ item, mapping, listType }) {
 	)
 }
 
-function WcagListing({ item, mapping, listType }) {
-	const { num, url, handle, wcagType, level } = scUrls[item]
-	const title = `${num} ${handle} (Level: ${level})`
-	const learnMore = `${num} (${handle})`
-	const conformanceTo = `to WCAG ${wcagType} and above on level ${level} and above`
+const getTitle = url => {
+	return fetch(url)
+		.then(response => response.text())
+		.then(html => {
+			const doc = new DOMParser().parseFromString(html, 'text/html')
+			const title = doc.querySelectorAll('title')[0]
+			return title.innerText
+		})
+}
+
+function TechniqueListing({ item, mapping, listType }) {
+	const techniqueId = item.toUpperCase()
+	const techniqueKind = {
+		aria: 'aria',
+		g: 'general',
+		h: 'html',
+	}[item.replace(/[0-9]/g, '')]
+
+	const url = `https://www.w3.org/WAI/WCAG21/Techniques/${techniqueKind}/${techniqueId}`
 
 	return (
 		<AccessibilityRequirementsListing
 			item={item}
 			listType={listType}
-			title={title}
-			learnMore={learnMore}
-			conformanceTo={conformanceTo}
+			title={getTitle(url).then(title => title)}
+			learnMore={techniqueId}
+			conformanceTo={`to WCAG technique ${techniqueId}`}
+			url={url}
+			mapping={mapping}
+		/>
+	)
+}
+
+function WcagListing({ item, mapping, listType }) {
+	const { num, url, handle, wcagType, level } = scUrls[item]
+
+	return (
+		<AccessibilityRequirementsListing
+			item={item}
+			listType={listType}
+			title={`${num} ${handle} (Level: ${level})`}
+			learnMore={`${num} (${handle})`}
+			conformanceTo={`to WCAG ${wcagType} and above on level ${level} and above`}
 			url={url}
 			mapping={mapping}
 		/>
@@ -294,6 +324,8 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 						case 'wcag20':
 						case 'wcag21':
 							return <WcagListing key={conformanceItem} item={conformanceItem} mapping={mapping} listType={type} />
+						case 'wcag-technique':
+							return <TechniqueListing key={conformanceItem} item={conformanceItem} mapping={mapping} listType={type} />
 						default:
 							return <>Accessibility Requirements have no mapping.</>
 					}
