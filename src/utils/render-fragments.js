@@ -234,9 +234,11 @@ function AccessibilityRequirementsListing({ item, listType, title, learnMore, co
 function BasicListing({ document, item, mapping, listType }) {
 	const conformanceTo = {
 		aria11: 'to WAI-ARIA 1.1 specifications',
+		'using-aria': 'to "Using ARIA" specifications',
 	}[document]
 	const baseURL = {
 		aria11: 'https://www.w3.org/TR/wai-aria-1.1/#',
+		'using-aria': 'https://www.w3.org/TR/using-aria/#',
 	}[document]
 
 	return (
@@ -328,6 +330,7 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 
 					switch (conformanceDocument) {
 						case 'aria11':
+						case 'using-aria':
 							return (
 								<BasicListing
 									key={conformanceItem}
