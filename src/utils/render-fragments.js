@@ -230,20 +230,29 @@ function AccessibilityRequirementsListing({ item, listType, title, learnMore, co
 	)
 }
 
-function AriaListing({ item, mapping, listType }) {
+// For documents where we provide the title, and where the item is an URL anchor
+function BasicListing({ document, item, mapping, listType }) {
+	const conformanceTo = {
+		aria11: 'to WAI-ARIA 1.1 specifications',
+	}[document]
+	const baseURL = {
+		aria11: 'https://www.w3.org/TR/wai-aria-1.1/#',
+	}[document]
+
 	return (
 		<AccessibilityRequirementsListing
 			item={item}
 			listType={listType}
 			title={mapping.title}
 			learnMore={mapping.title}
-			conformanceTo="to WAI-ARIA 1.1 specifications"
-			url={`https://www.w3.org/TR/wai-aria-1.1/#${item}`}
+			conformanceTo={conformanceTo}
+			url={`${baseURL}${item}`}
 			mapping={mapping}
 		/>
 	)
 }
 
+// For WCAG techniques. Title is grabbed from data fetched during build. URL is handcrafted.
 function TechniqueListing({ item, mapping, listType }) {
 	const techniqueId = item.toUpperCase()
 	const techniqueKind = {
@@ -277,6 +286,7 @@ function TechniqueListing({ item, mapping, listType }) {
 	)
 }
 
+// For WCAG SC. Title, URL and more is grabbed from data fetched during build.
 function WcagListing({ item, mapping, listType }) {
 	const { num, url, handle, wcagType, level } = scUrls[item]
 
@@ -314,13 +324,19 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 			<span className="heading">Accessibility Requirements Mapping</span>
 			<ul>
 				{conformanceRequirements.map(([req, mapping]) => {
-					const [conformanceDocument, conformanceItem] = req // technically, it's not always a *conformance* document…
-						.toLocaleLowerCase()
-						.split(':')
+					const [conformanceDocument, conformanceItem] = req.toLocaleLowerCase().split(':')
 
 					switch (conformanceDocument) {
 						case 'aria11':
-							return <AriaListing key={conformanceItem} item={conformanceItem} mapping={mapping} listType={type} />
+							return (
+								<BasicListing
+									key={conformanceItem}
+									document={conformanceDocument}
+									item={conformanceItem}
+									mapping={mapping}
+									listType={type}
+								/>
+							)
 						case 'wcag20':
 						case 'wcag21':
 							return <WcagListing key={conformanceItem} item={conformanceItem} mapping={mapping} listType={type} />
