@@ -2,8 +2,9 @@
  * Get meta data of all WCAG success criteria
  * -> Output file: -> `./_data/sc-urls.json`
  * -> This is later used for hyperlinking SC of rules to respective specifications
- * Get titles of all WCAG techniques
- * -> Output file: -> ./_data/technique-titles.json
+
+ * Get titles of all WCAG techniques used in SC
+ * -> Output file: -> ./_data/techniques-titles.json
  * -> This is later used for outputting the correct title of the technique
  */
 const assert = require('assert')
@@ -45,7 +46,7 @@ async function init({ url, outputDir }) {
 	const [scMetaData, techniqueTitles] = await getWaiWcagReferenceData(url)
 	await createFile(`${outputDir}/sc-urls.json`, JSON.stringify(scMetaData, undefined, 2))
 	await createFile(
-		`${outputDir}/technique-titles.json`,
+		`${outputDir}/techniques-titles.json`,
 		JSON.stringify(techniqueTitles, Object.keys(techniqueTitles).sort(), 2)
 	)
 
@@ -116,30 +117,30 @@ function getMetaData(sc) {
 
 /**
  * Get all techniques referenced in a WCAG SC
- * This get messy because of various way they are nested in the meta data
+ * This gets messy because of various ways they are nested in the meta data
  * We just stupidly and recursively gather all (id, title) pairs where the id starts by "TECH"
  * @param {Object} techs list of techniques used by a SC
  */
-function getTechniqueTitle(techs) {
-	const result = []
+function getTechniquesTitles(techs) {
+	const techniquesTitles = []
 	if (techs && techs.id && techs.id.split(':')[0] === 'TECH' && techs.id !== 'TECH:text' && techs.id !== 'TECH:text1') {
 		// We've likely found an actual technique!
-		result.push({ id: techs.id, title: techs.title })
+		techniquesTitles.push({ id: techs.id, title: techs.title })
 	}
 
-	// In any case, we want to go down to all attributes.
+	// In any cases, we want to go down to all attributes.
 	if (techs instanceof Array) {
 		// it's an array of stuff
-		techs.forEach(val => result.push(...getTechniqueTitle(val)))
+		techs.forEach(val => techniquesTitles.push(...getTechniquesTitles(val)))
 	}
 	if (techs instanceof Object) {
-		// it can be a nested object, stupidly go down on all keys
+		// It can be a nested object, stupidly go down on all keys
 		for (const prop in techs) {
-			result.push(...getTechniqueTitle(techs[prop]))
+			techniquesTitles.push(...getTechniquesTitles(techs[prop]))
 		}
 	}
 
-	return result
+	return techniquesTitles
 }
 
 /**
@@ -152,19 +153,19 @@ async function getWaiWcagReferenceData(url) {
 	} = await axios.get(url)
 
 	const scMetaData = {}
-	const techniqueTitles = []
+	const techniquesTitles = []
 	principles.forEach(p =>
 		p.guidelines.forEach(g =>
 			g.successcriteria.forEach(sc => {
 				scMetaData[sc.num] = getMetaData(sc)
-				techniqueTitles.push(...getTechniqueTitle(sc.techniques))
+				techniquesTitles.push(...getTechniquesTitles(sc.techniques))
 			})
 		)
 	)
 
-	// aggressively cleaning up duplicates. We assume the same key (G10, …) always has the same title.
+	// Aggressively cleaning up duplicates. We assume the same key (G10, …) always has the same title.
 	const techniques = {}
-	techniqueTitles.forEach(({ id, title }) => (techniques[id.split(':')[1]] = title))
+	techniquesTitles.forEach(({ id, title }) => (techniques[id.split(':')[1]] = title))
 
 	return [scMetaData, techniques]
 }

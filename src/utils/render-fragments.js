@@ -1,6 +1,6 @@
 import React from 'react'
 import scUrls from './../../_data/sc-urls'
-import techniquesTitles from './../../_data/technique-titles'
+import techniquesTitles from './../../_data/techniques-titles'
 import { Link } from 'gatsby'
 import glossaryUsages from './../../_data/glossary-usages.json'
 import implementationMetrics from './../../_data/implementation-metrics.json'
