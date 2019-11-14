@@ -162,7 +162,7 @@ async function getWaiWcagReferenceData(url) {
 		)
 	)
 
-	// cleaning up duplicates
+	// aggressively cleaning up duplicates. We assume the same key (G10, …) always has the same title.
 	const techniques = {}
 	techniqueTitles.forEach(({ id, title }) => (techniques[id.split(':')[1]] = title))
 
