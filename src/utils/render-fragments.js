@@ -1,11 +1,11 @@
 import React from 'react'
 import scUrls from './../../_data/sc-urls'
+import techniquesTitles from './../../_data/technique-titles'
 import { Link } from 'gatsby'
 import glossaryUsages from './../../_data/glossary-usages.json'
 import implementationMetrics from './../../_data/implementation-metrics.json'
 
 import rulesUsages from './../../_data/rules-usages.json'
-import * as PropTypes from 'prop-types'
 
 export const getImplementationsTabulation = (implementers, cls = 'compact', ruleId) => {
 	return (
@@ -244,32 +244,32 @@ function AriaListing({ item, mapping, listType }) {
 	)
 }
 
-const getTitle = url => {
-	return fetch(url)
-		.then(response => response.text())
-		.then(html => {
-			const doc = new DOMParser().parseFromString(html, 'text/html')
-			const title = doc.querySelectorAll('title')[0]
-			return title.innerText
-		})
-}
-
 function TechniqueListing({ item, mapping, listType }) {
 	const techniqueId = item.toUpperCase()
 	const techniqueKind = {
 		aria: 'aria',
+		c: 'css',
+		f: 'failures',
+		flash: 'flash',
 		g: 'general',
 		h: 'html',
+		pdf: 'pdf',
+		scr: 'client-side-script',
+		sl: 'silverlight',
+		sm: 'smil',
+		svr: 'server-side-script',
+		t: 'text',
 	}[item.replace(/[0-9]/g, '')]
 
 	const url = `https://www.w3.org/WAI/WCAG21/Techniques/${techniqueKind}/${techniqueId}`
+	const title = `${techniqueId}: ${techniquesTitles[techniqueId]}`
 
 	return (
 		<AccessibilityRequirementsListing
 			item={item}
 			listType={listType}
-			title={getTitle(url).then(title => title)}
-			learnMore={techniqueId}
+			title={title}
+			learnMore={title}
 			conformanceTo={`to WCAG technique ${techniqueId}`}
 			url={url}
 			mapping={mapping}
@@ -327,7 +327,7 @@ export function getAccessibilityRequirements(accessibility_requirements, type = 
 						case 'wcag-technique':
 							return <TechniqueListing key={conformanceItem} item={conformanceItem} mapping={mapping} listType={type} />
 						default:
-							return <>Accessibility Requirements have no mapping.</>
+							return <>Accessibility Requirements have no or unknown mapping.</>
 					}
 				})}
 			</ul>
