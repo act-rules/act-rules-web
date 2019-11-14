@@ -203,7 +203,9 @@ function AccessibilityRequirementsListing({ item, listType, title, learnMore, co
 	if (listType === 'text') {
 		return (
 			<li key={item}>
-				<a href={url}>{title}</a>
+				<a className="sc-item" href={url} target="_blank" rel="noopener noreferrer">
+					{title}
+				</a>
 			</li>
 		)
 	}
