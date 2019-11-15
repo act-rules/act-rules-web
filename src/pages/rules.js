@@ -3,11 +3,8 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout/'
 import SEO from '../components/seo'
 import showdown from 'showdown'
-import {
-	getAccessibilityRequirements,
-	getInputRulesForRule,
-	getImplementationsCount,
-} from './../utils/render-fragments'
+import { getInputRulesForRule, getImplementationsCount } from './../utils/render-fragments'
+import AccessibilityRequirements from '../components/accessibility_requirements'
 
 export default ({ data }) => {
 	const { rules, allRules } = data
@@ -38,7 +35,7 @@ export default ({ data }) => {
 										/>
 									</a>
 									{/* rule sc's */}
-									{getAccessibilityRequirements(accessibility_requirements, 'text')}
+									<AccessibilityRequirements accessibility_requirements={accessibility_requirements} type="text" />
 									{/* input rules */}
 									{getInputRulesForRule(input_rules, allRules.edges, true)}
 									{/* implementation count */}
