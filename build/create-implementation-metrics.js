@@ -44,7 +44,7 @@ async function init({ implementations, outputDir }) {
 	const implementationsGroupedByRuleId = {}
 
 	reports.forEach(report => {
-		const { tool, organisation, mapping } = report
+		const { organisation, toolName, summary, actMapping } = report
 
 		/**
 		 * Create data that can be used in `src/templates/coverage.js`
@@ -52,10 +52,10 @@ async function init({ implementations, outputDir }) {
 		implementers.push(report)
 
 		/**
-		 * Iterate each implementation & group by rule id
+		 * Iterate each implementations & group by rule id
 		 */
-		mapping.forEach(({ ruleId, implementation }) => {
-			if (!implementation || !implementation.length) {
+		actMapping.forEach(({ ruleId, implementations }) => {
+			if (!implementations || !implementations.length) {
 				return
 			}
 
@@ -65,8 +65,8 @@ async function init({ implementations, outputDir }) {
 
 			implementationsGroupedByRuleId[ruleId].push({
 				organisation,
-				tool,
-				implementation,
+				toolName,
+				implementations,
 			})
 		})
 	})
