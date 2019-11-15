@@ -118,7 +118,7 @@ function getMetaData(sc) {
 /**
  * Get all techniques referenced in a WCAG SC
  * This gets messy because of various ways they are nested in the meta data
- * We just stupidly and recursively gather all (id, title) pairs where the id starts by "TECH"
+ * We just naively and recursively gather all (id, title) pairs where the id starts by "TECH"
  * @param {Object} techs list of techniques used by a SC
  */
 function getTechniquesTitles(techs) {
