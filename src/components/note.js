@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
+
+import './note.scss'
 
 const Note = ({ cls = ``, title = ``, body = `` }) => {
 	return (
-		<div className={cls}>
+		<div className={classnames('note', cls)}>
 			<b>{title}</b>
-			<br />
-			{body}
+			<p>{body}</p>
 		</div>
 	)
 }
