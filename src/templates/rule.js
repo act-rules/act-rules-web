@@ -7,7 +7,6 @@ import {
 	getRuleUsageInRules,
 	getGlossaryUsedLink,
 	getRuleType,
-	getAccessibilityRequirements,
 	getInputRulesForRule,
 	getInputAspects,
 	getImplementations,
@@ -16,6 +15,7 @@ import {
 } from './../utils/render-fragments'
 import SEO from '../components/seo'
 import Acknowledgements from '../components/acknowledgements'
+import AccessibilityRequirements from '../components/accessibility_requirements'
 
 export default ({ data }) => {
 	const { rule, allRules, allGlossary, site } = data
@@ -62,7 +62,9 @@ export default ({ data }) => {
 							}
 						</span>
 					</li>
-					<li>{getAccessibilityRequirements(accessibility_requirements)}</li>
+					<li>
+						<AccessibilityRequirements accessibility_requirements={accessibility_requirements} />
+					</li>
 					<li>{getRuleUsageInRules(ruleId)}</li>
 					<li>{getInputAspects(frontmatter.input_aspects, ruleFormatInputAspects)}</li>
 					<li>{getInputRulesForRule(frontmatter.input_rules, allRules.edges, true)}</li>

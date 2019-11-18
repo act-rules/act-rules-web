@@ -1,9 +1,7 @@
 import React from 'react'
-import scUrls from './../../_data/sc-urls'
 import { Link } from 'gatsby'
 import glossaryUsages from './../../_data/glossary-usages.json'
 import implementationMetrics from './../../_data/implementation-metrics.json'
-
 import rulesUsages from './../../_data/rules-usages.json'
 
 export const getImplementationsTabulation = (implementers, cls = 'compact', ruleId) => {
@@ -172,136 +170,6 @@ export function getRuleType(rule_type) {
 			<span className="heading">Rule Type</span>
 			<span>{rule_type}</span>
 		</li>
-	)
-}
-
-export function getAccessibilityRequirements(accessibility_requirements, type = 'details') {
-	if (!accessibility_requirements) {
-		return (
-			<div className="meta">
-				<span className="heading">Accessibility Requirements Mapping</span>
-				<ul>
-					<li>This rule is not required for conformance</li>
-				</ul>
-			</div>
-		)
-	}
-
-	const conformanceRequirements = Object.entries(accessibility_requirements).filter(([_, value]) => {
-		if (!value) {
-			return false
-		}
-		const { forConformance } = value
-		return !!forConformance
-	})
-
-	const getOutcomeMapping = ({
-		failed = 'not satisfied',
-		passed = 'further testing is needed',
-		inapplicable = 'further testing is needed',
-	} = {}) => {
-		return (
-			<li>
-				Outcome mapping:
-				<ul>
-					<li>
-						Any <code>failed</code> outcomes: {failed}
-					</li>
-					<li>
-						All <code>passed</code> outcomes: {passed}
-					</li>
-					<li>
-						An <code>inapplicable</code> outcome: {inapplicable}
-					</li>
-				</ul>
-			</li>
-		)
-	}
-
-	const wcagListing = (sc, listType) => {
-		const scData = scUrls[sc]
-
-		const { num, url, handle, wcagType, level } = scData
-
-		if (listType === 'text') {
-			return (
-				<li key={sc}>
-					{num} {handle} (Level: {level})
-				</li>
-			)
-		}
-
-		return (
-			<li key={sc}>
-				<details>
-					<summary>
-						{num} {handle} (Level: {level})
-					</summary>
-					<ul>
-						<li>
-							<a className="sc-item" href={url} target="_blank" rel="noopener noreferrer">
-								Learn More about {num} ({handle})
-							</a>
-						</li>
-						<li>
-							<strong>Required for conformance</strong> to WCAG {wcagType} and above on level {level} and above
-						</li>
-						{getOutcomeMapping()}
-					</ul>
-				</details>
-			</li>
-		)
-	}
-
-	const ariaListing = (key, mapping, listType) => {
-		const ref = key
-			.split(':')
-			.slice(-1)
-			.pop()
-
-		if (listType === 'text') {
-			return <li key={ref}>{mapping.title}</li>
-		}
-
-		const href = `https://www.w3.org/TR/wai-aria-1.1/#${ref}`
-		return (
-			<li key={ref}>
-				<details>
-					<summary>{mapping.title}</summary>
-					<ul>
-						<li>
-							<a className="sc-item" href={href} target="_blank" rel="noopener noreferrer">
-								Learn More about {mapping.title}
-							</a>
-						</li>
-						<li>
-							<strong>Required for conformance</strong>
-						</li>
-						{getOutcomeMapping(mapping)}
-					</ul>
-				</details>
-			</li>
-		)
-	}
-
-	return (
-		<div className="meta">
-			<span className="heading">Accessibility Requirements Mapping</span>
-			<ul>
-				{conformanceRequirements.map(([req, mapping]) => {
-					if (req.toLowerCase().includes('aria11')) {
-						return ariaListing(req, mapping, type)
-					}
-
-					if (req.toLowerCase().includes('wcag')) {
-						const sc = req.split(':').pop()
-						return wcagListing(sc, type)
-					}
-
-					return <>Accessibility Requirements have no mapping.</>
-				})}
-			</ul>
-		</div>
 	)
 }
 
