@@ -1,150 +1,93 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import queryString from 'query-string'
 
 import Layout from '../components/layout'
-import { graphql, Link } from 'gatsby'
 import SEO from '../components/seo'
+import Note from '../components/note'
+import ListOfImplementations from '../components/list-of-implementations'
 
-const getTabulation = data => {
+const Implementer = ({ location, data }) => {
+	const { title, implementerData } = data.sitePage.context
+	const implementerReport = JSON.parse(implementerData)
+
+	const areAllMappingsIncomplete = implementerReport.actMapping.every(({ complete }) => complete === false)
+	const showIncomplete = getShowIncomplete(location.search)
+
 	return (
-		<table className="compact">
-			<thead>
-				<tr>
-					<th>Testcase Url</th>
-					<th width="100px">Expected</th>
-					<th width="100px">Actual</th>
-				</tr>
-			</thead>
-			<tbody>
-				{data.map((assertion, index) => {
-					const { url, expected, actual } = assertion
-					const key = `${index}-${url}`
-					return (
-						<tr key={key}>
-							<td>
-								<a target="_blank" rel="noopener noreferrer" href={url}>
-									{url}
-								</a>
-							</td>
-							<td>{expected}</td>
-							<td>{actual}</td>
-						</tr>
-					)
-				})}
-			</tbody>
-		</table>
-	)
-}
-
-const getImplementationMarkup = (ruleId, ruleName, tabulation, showIncomplete) => {
-	return (
-		<div key={ruleId}>
-			<Link to={`/rules/${ruleId}`}>
-				<h2 id={`#${ruleId}`}>{ruleName}</h2>
-			</Link>
-			{showIncomplete && (
-				<div className="invalid">
-					<b>INCOMPLETE IMPLEMENTATION.</b> <br />
-					Listed below are the incomplete assertions. Kindly submit an amended implementation report.
-				</div>
-			)}
-			{tabulation}
-		</div>
-	)
-}
-
-const getRuleImplementationsWhereCompleteIs = (isComplete = false, ruleImplementation) => {
-	const { implementation } = ruleImplementation
-	const { complete } = implementation[0]
-	return complete === isComplete
-}
-
-const getTabulatedImplementations = (ruleImplementations, showIncomplete) => {
-	if (showIncomplete) {
-		const inCompleteImplementations = ruleImplementations.filter(impl =>
-			getRuleImplementationsWhereCompleteIs(false, impl)
-		)
-		if (!inCompleteImplementations || !inCompleteImplementations.length) {
-			return (
-				<div className="valid">
-					<b>WELL DONE.</b> <br />
-					All submitted implementation reports are complete.
-				</div>
-			)
-		}
-		return (
-			<div>
-				{inCompleteImplementations.map(({ ruleId, ruleName, implementation }) => {
-					const { incorrect, assertions } = implementation[0]
-					const tabulatedAssertions = getTabulation(assertions.filter(({ url }) => incorrect.includes(url)))
-					return getImplementationMarkup(ruleId, ruleName, tabulatedAssertions, showIncomplete)
-				})}
-			</div>
-		)
-	}
-
-	const completeImplementations = ruleImplementations.filter(impl => getRuleImplementationsWhereCompleteIs(true, impl))
-	return (
-		<div>
-			{completeImplementations.map(({ ruleId, ruleName, implementation }) => {
-				const { assertions } = implementation[0]
-				const tabulatedAssertions = getTabulation(assertions)
-				return getImplementationMarkup(ruleId, ruleName, tabulatedAssertions)
-			})}
-		</div>
-	)
-}
-
-const getPage = (pageTitle, pageContent) => {
-	return (
-		<Layout>
-			<SEO title={pageTitle} />
+		<Layout location={location}>
+			<SEO title={title} />
 			<section className="page-container page-implementers">
-				<h1>{pageTitle}</h1>
-				{pageContent}
+				<h1>{title}</h1>
+				{areAllMappingsIncomplete && !showIncomplete ? (
+					<Note
+						cls={`invalid`}
+						title={`Incomplete Implementation`}
+						body={`All implementations provided are incomplete. Kindly submit an amended implementation report.`}
+					/>
+				) : (
+					<>{getPageContent(implementerReport.actMapping, showIncomplete)}</>
+				)}
 			</section>
 		</Layout>
 	)
 }
 
-export default props => {
-	const { data, location } = props
-	const { sitePage } = data
-	const { context } = sitePage
-	const { title: pageTitle, data: contextData } = context
-	const report = JSON.parse(contextData)
-	const { mapping } = report
-
-	const allIncompleteImplementations = mapping.every(impl => getRuleImplementationsWhereCompleteIs(false, impl))
-
-	let showIncomplete = false
-	if (location.search) {
-		const parsedSearch = queryString.parse(location.search)
-		const { incomplete = false } = parsedSearch
-		showIncomplete = incomplete === 'true'
-	}
-
-	if (allIncompleteImplementations && !showIncomplete) {
-		const content = (
-			<div className="invalid">
-				<b>INCOMPLETE IMPLEMENTATIONS.</b> <br />
-				All implementations provided are incomplete. Kindly submit amended implementation reports.
-			</div>
-		)
-		return getPage(pageTitle, content)
-	}
-
-	const pageContent = getTabulatedImplementations(mapping, showIncomplete)
-	return getPage(pageTitle, pageContent)
-}
+export default Implementer
 
 export const query = graphql`
-	query($path: String!) {
+	query($path: String) {
 		sitePage(path: { eq: $path }) {
 			context {
-				data
+				filename
 				title
+				implementerData
 			}
 		}
 	}
 `
+
+/**
+ * Get page content
+ * @param {Array<Object>} mapping actMapping
+ * @param {Boolean} showIncomplete should show incomplete assertions
+ */
+function getPageContent(mapping, showIncomplete) {
+	if (showIncomplete) {
+		const incompleteMaps = filterByConsistency(mapping, ['inconsistent'])
+		if (!incompleteMaps.length) {
+			return <Note cls={`valid`} title={`Well Done`} body={`All submitted implementation reports are complete.`} />
+		}
+		return <ListOfImplementations mapping={incompleteMaps} showIncomplete={showIncomplete} />
+	}
+
+	const completeMaps = filterByConsistency(mapping, ['consistent', 'partially-consistent'])
+	return <ListOfImplementations mapping={completeMaps} showIncomplete={showIncomplete} />
+}
+
+/**
+ * Parse query params to determine of `incomplete` implementations should be shown
+ * @param {String} search search string from `location` object
+ * @returns {Boolean}
+ */
+function getShowIncomplete(search) {
+	if (!search) {
+		return false
+	}
+
+	const parsedSearch = queryString.parse(search)
+	const { incomplete = false } = parsedSearch
+	return incomplete === 'true'
+}
+
+/**
+ * Filter a given set of implementations based on consistency
+ * @param {Array<Object>} items array of implementations
+ * @param {Array<String>} values allowed values
+ * @returns {Array<Object>}
+ */
+export function filterByConsistency(items, values) {
+	return items.filter(({ consistency }) => {
+		return values.includes(consistency)
+	})
+}
