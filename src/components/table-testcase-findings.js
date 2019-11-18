@@ -62,10 +62,10 @@ export default TableTestcaseFindings
 function groupFindingsOfImplementations(ruleId, implementations, filter) {
 	const result = {}
 
-	for (const { implementationId, findings } of implementations) {
-		const filteredFindings = findings.filter(filter)
+	const filteredImplementations = implementations.filter(filter)
 
-		for (const { url, testcase, expected, actual } of filteredFindings) {
+	for (const { implementationId, findings } of filteredImplementations) {
+		for (const { url, testcase, expected, actual } of findings) {
 			if (!result[testcase]) {
 				result[testcase] = {
 					url,

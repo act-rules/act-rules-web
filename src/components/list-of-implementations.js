@@ -48,23 +48,26 @@ function getPageContent(implementations, showIncomplete, ruleId) {
 
 	return (
 		<>
-			{showIncomplete && (
-				<Note
-					cls={`invalid`}
-					title={`Incomplete Implementation`}
-					body={`Listed below are the incomplete assertions. Kindly submit an amended implementation report.`}
+			{showIncomplete ? (
+				<>
+					<Note
+						cls={`invalid`}
+						title={`Incomplete Implementation`}
+						body={`Listed below are the incomplete assertions. Kindly submit an amended implementation report.`}
+					/>
+					<TableTestcaseFindings
+						ruleId={ruleId}
+						implementations={implementations}
+						filter={({ consistency }) => consistency === `inconsistent`}
+					/>
+				</>
+			) : (
+				<TableTestcaseFindings
+					ruleId={ruleId}
+					implementations={implementations}
+					filter={({ consistency }) => consistency !== `inconsistent`}
 				/>
 			)}
-			<TableTestcaseFindings
-				ruleId={ruleId}
-				implementations={implementations}
-				filter={finding => {
-					if (showIncomplete) {
-						return finding.consistency === `inconsistent`
-					}
-					return finding.consistency !== `inconsistent`
-				}}
-			/>
 		</>
 	)
 }
