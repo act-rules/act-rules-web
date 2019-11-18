@@ -1,15 +1,13 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import Navigation from '../navigation'
-import Footer from '../footer'
+import Navigation from './navigation'
+import Footer from './footer'
 
 import 'normalize.css'
-import './index.scss'
+import './layout.scss'
 
 const Layout = ({ children, location }) => {
-	const [showMenu, setShowMenu] = useState(true)
-
 	const data = useStaticQuery(
 		graphql`
 			query {
@@ -39,8 +37,6 @@ const Layout = ({ children, location }) => {
 	const { getSiteTitle } = data
 	const { author, repository } = JSON.parse(getSiteTitle.siteMetadata.actRulesPackage)
 	const { url: actRulesRepoUrl } = repository
-
-	const handleHideShowMenu = () => setShowMenu(!showMenu)
 
 	return (
 		<section className="layout-container">
