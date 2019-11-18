@@ -4,15 +4,9 @@ import { Link } from 'gatsby'
 
 import getHyphenatedString from '../../utils/get-hyphenated-string'
 
-import Note from './note'
-
 const TableTestcaseFindings = ({ ruleId, implementations = [], filter = defaultFilter }) => {
-	if (!implementations || !implementations.length) {
-		return <Note cls={`invalid`} title={`No Implementation`} body={`There is not implementation for this rule.`} />
-	}
-
 	return (
-		<table className="compact">
+		<table>
 			<thead>
 				<tr>
 					<th>Testcase Url</th>
