@@ -1,10 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import getHyphenatedString from '../../utils/get-hyphenated-string'
 
-const ListOfImplementers = ({ items = [], type = ``, ruleId = `` }) => {
+import Note from './note'
+
+const ListOfImplementers = ({ implementers = [], cls = `compact`, ruleId = `` }) => {
+	if (!implementers || !implementers.length) {
+		return (
+			<Note cls={``} title={`No Implementations`} body={`Implementation reports are not provided for this rule.`} />
+		)
+	}
+
 	return (
-		<table className={type}>
+		<table className={cls}>
 			<thead>
 				<tr>
 					<th>Organisation</th>
@@ -13,7 +22,7 @@ const ListOfImplementers = ({ items = [], type = ``, ruleId = `` }) => {
 				</tr>
 			</thead>
 			<tbody>
-				{items.map(({ organisation, toolName }) => {
+				{implementers.map(({ organisation, toolName }) => {
 					const filename = getHyphenatedString(toolName)
 					const reportUrl = ruleId ? `/implementation/${filename}#${ruleId}` : `/implementation/${filename}`
 					return (
@@ -32,8 +41,8 @@ const ListOfImplementers = ({ items = [], type = ``, ruleId = `` }) => {
 }
 
 ListOfImplementers.propTypes = {
-	items: PropTypes.array.isRequired,
-	type: PropTypes.string,
+	implementers: PropTypes.array.isRequired,
+	cls: PropTypes.string,
 	ruleId: PropTypes.string,
 }
 

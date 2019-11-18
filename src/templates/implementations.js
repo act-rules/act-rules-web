@@ -19,7 +19,7 @@ const Implementations = ({ data }) => {
 				{/* Inject list of implementations table  */}
 				<section>
 					<h2>Implementation Overview</h2>
-					<ListOfImplementers items={implementers} />
+					<ListOfImplementers implementers={implementers} />
 				</section>
 
 				{/* Render the rest of th page  */}
