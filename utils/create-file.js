@@ -11,7 +11,6 @@ const writeFile = promisify(fs.writeFile)
  * @param {String} content contents of the file
  * @returns {Promise}
  */
-const createFile = (path, content) =>
-	makeDir(getDirName(path)).then(() => writeFile(path, content))
+const createFile = (path, content) => makeDir(getDirName(path)).then(() => writeFile(path, content))
 
 module.exports = createFile

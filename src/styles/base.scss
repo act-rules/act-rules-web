@@ -2,19 +2,24 @@
 @import './mixins';
 
 body {
-  font-family: 'Lora', serif;
+	font-family: 'Lora', serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	@include header-style($fg-primary);
 }
 
-ul{
+ul {
 	margin: 0;
 }
 
 hr {
-  opacity: 0.1;
+	opacity: 0.1;
 }
 
 a {
@@ -28,12 +33,12 @@ a {
 table {
 	border-collapse: collapse;
 	width: 100%;
-   
+
 	thead {
 		border-bottom: 2px solid $accent;
 		th {
 			@include header-style($fg-primary);
-      font-weight: bold;
+			font-weight: bold;
 			text-align: left;
 			display: table-cell;
 			background-color: $sep;
@@ -49,11 +54,13 @@ table {
 				a {
 					text-decoration: none;
 					display: inline-block;
-					margin: 0 .5em 0 0;
+					margin: 0 0.5em 0 0;
 					svg {
 						fill: currentColor;
 					}
-					&:hover, &:active, &:focus {
+					&:hover,
+					&:active,
+					&:focus {
 						color: darken($fg-primary, 10%);
 						border: none;
 					}
@@ -71,16 +78,16 @@ table {
 				}
 			}
 		}
-
 	}
 }
 
-button, .btn {
+button,
+.btn {
 	padding: 1em;
 	text-decoration: none;
-  line-height: 1em;
-  display: inline-block;
-  letter-spacing: 0.1em;
+	line-height: 1em;
+	display: inline-block;
+	letter-spacing: 0.1em;
 	transition: border-color 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;
 	@include btn($bg-secondary, $fg-secondary, $accent);
 	cursor: pointer;
@@ -94,15 +101,15 @@ blockquote {
 }
 
 figure {
-	background: #FFE;
-  margin: 0 1em;
-  padding: .5em 1em;
-  border: solid 1px #880;
+	background: #ffe;
+	margin: 0 1em;
+	padding: 0.5em 1em;
+	border: solid 1px #880;
 	border-radius: 4px;
 	display: inline-block;
-	
+
 	> figcaption {
-		margin-bottom: .5em;
+		margin-bottom: 0.5em;
 	}
 
 	> img {
