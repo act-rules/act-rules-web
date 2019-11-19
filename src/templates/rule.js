@@ -227,10 +227,19 @@ export const query = graphql`
  * Curate a given URL with
  * @param {String} url given string/ url
  * @returns {String}
+ *
+ * Example:
+ * 		curateGitUrl("git+https://github.com/act-rules/act-rules.github.io.git")
+ * yeilds
+ * 		"https://github.com/act-rules/act-rules.github.io"
  */
 function curateGitUrl(url) {
-	return [/^git\+/, /\.git$/].reduce((out, searchValue) => {
-		const updatedUrl = out.replace(searchValue, ``)
-		return updatedUrl
-	}, url)
+	const regexToRemove = [/^git\+/, /\.git$/]
+
+	let result = url
+	for (const regex of regexToRemove) {
+		result = result.replace(regex, '')
+	}
+
+	return result
 }
