@@ -1,7 +1,13 @@
 import React from 'react'
-import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import showdown from 'showdown'
+
+import SEO from '../components/seo'
+import Layout from '../components/layout'
+import Acknowledgements from '../components/acknowledgements'
+import AccessibilityRequirements from '../components/accessibility_requirements'
+import ListOfImplementers from '../components/list-of-implementers'
+
 import {
 	getGlossaryUsed,
 	getRuleUsageInRules,
@@ -9,13 +15,10 @@ import {
 	getRuleType,
 	getInputRulesForRule,
 	getInputAspects,
-	getImplementations,
-	getImplementationsLink,
 	getDateTimeFromUnixTimestamp,
 } from './../utils/render-fragments'
-import SEO from '../components/seo'
-import Acknowledgements from '../components/acknowledgements'
-import AccessibilityRequirements from '../components/accessibility_requirements'
+
+import implementers from '../../_data/implementers.json'
 
 export default ({ location, data }) => {
 	const { rule, allRules, allGlossary, site } = data
@@ -33,6 +36,14 @@ export default ({ location, data }) => {
 	const changelogUrl = `/rules/${ruleId}/changelog`
 	const issuesUrl = `${repositoryUrl}/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+${ruleId}+`
 	const ruleFormatInputAspects = config['rule-format-metadata']['input-aspects']
+
+	const validImplementers = implementers.filter(({ actMapping }) => {
+		const validMappings = actMapping.filter(({ ruleId: mappedRuleId, consistency }) => {
+			return mappedRuleId === ruleId && ['consistent', 'partially-consistent'].includes(consistency)
+		})
+
+		return validMappings.length > 0
+	})
 
 	return (
 		<Layout location={location}>
@@ -126,9 +137,13 @@ export default ({ location, data }) => {
 				</ul>
 				<hr />
 				{/* implementations */}
-				{getImplementations(slug)}
+				<>
+					<a id="implementation-metrics" href="#implementation-metrics">
+						<h2>Implementations</h2>
+					</a>
+					<ListOfImplementers implementers={validImplementers} ruleId={`id-${ruleId}`} />
+				</>
 				{/* acknowledgements */}
-				<hr />
 				<Acknowledgements scrollLinkId={`acknowledgements`} items={acknowledgements} contributors={contributors} />
 			</section>
 			{/* Toc */}
@@ -145,7 +160,9 @@ export default ({ location, data }) => {
 						<a href="#useful-links">Useful Links</a>
 					</li>
 					{/* implementations */}
-					{getImplementationsLink(slug)}
+					<li>
+						<a href="#implementation-metrics">Implementations</a>
+					</li>
 					<li>
 						<a href="#acknowledgements">Acknowledgements</a>
 					</li>

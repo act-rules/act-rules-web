@@ -1,21 +1,12 @@
 const implementers = require('../_data/implementers.json')
 const getTemplate = require('./get-template')
+const getHyphenatedString = require('../utils/get-hyphenated-string')
 
-const createPageImplementerReport = options => {
-	const { actions } = options
-	const { createPage } = actions
+const createPageImplementerReport = ({ actions: { createPage } }) => {
+	for (const impl of implementers) {
+		const { organisation, toolName } = impl
 
-	// Your component that should be rendered for every item in JSON.
-
-	// Create pages for each JSON entry.
-	implementers.forEach(implementer => {
-		const { tool, organisation } = implementer
-
-		const filename = tool
-			.split(' ')
-			.join('-')
-			.toLowerCase()
-
+		const filename = getHyphenatedString(toolName)
 		const slug = `implementation/${filename}`
 
 		createPage({
@@ -24,11 +15,11 @@ const createPageImplementerReport = options => {
 			context: {
 				slug,
 				filename,
-				title: `Implementation Report of ${tool} (${organisation})`,
-				data: JSON.stringify(implementer),
+				title: `Implementation Report of ${toolName} (${organisation})`,
+				implementerData: JSON.stringify(impl),
 			},
 		})
-	})
+	}
 }
 
 module.exports = createPageImplementerReport
