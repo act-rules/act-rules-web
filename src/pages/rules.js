@@ -3,8 +3,9 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import showdown from 'showdown'
-import { getInputRulesForRule, getImplementationsCount } from './../utils/render-fragments'
+import { getInputRulesForRule } from './../utils/render-fragments'
 import AccessibilityRequirements from '../components/accessibility_requirements'
+import CountImplementations from '../components/count-implementations'
 
 export default ({ location, data }) => {
 	const { rules, allRules } = data
@@ -39,7 +40,7 @@ export default ({ location, data }) => {
 									{/* input rules */}
 									{getInputRulesForRule(input_rules, allRules.edges, true)}
 									{/* implementation count */}
-									{getImplementationsCount(slug)}
+									<CountImplementations ruleId={slug.replace('rules/', '')} />
 									{/* rule description */}
 									<div
 										dangerouslySetInnerHTML={{
