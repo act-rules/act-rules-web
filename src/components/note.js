@@ -4,7 +4,7 @@ import classnames from 'classnames'
 
 import './note.scss'
 
-const Note = ({ cls = ``, title = ``, body = `` }) => {
+const Note = ({ cls = '', title = '', body = '' }) => {
 	return (
 		<div className={classnames('note', cls)}>
 			<b>{title}</b>

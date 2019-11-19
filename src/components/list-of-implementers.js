@@ -6,7 +6,7 @@ import getHyphenatedString from '../../utils/get-hyphenated-string'
 import Note from './note'
 
 const ListOfImplementers = ({ implementers = [], cls = ``, ruleId = `` }) => {
-	if (!implementers || !implementers.length) {
+	if (!implementers.length) {
 		return (
 			<Note cls={``} title={`No Implementations`} body={`Implementation reports are not provided for this rule.`} />
 		)

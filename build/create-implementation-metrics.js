@@ -44,7 +44,7 @@ async function init({ implementations, outputDir }) {
 	const implementationsGroupedByRuleId = {}
 
 	reports.forEach(report => {
-		const { organisation, toolName, summary, actMapping } = report
+		const { organisation, toolName, actMapping } = report
 
 		/**
 		 * Create data that can be used in `src/templates/coverage.js`

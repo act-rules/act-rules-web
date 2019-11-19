@@ -4,6 +4,10 @@ import implementationMetrics from '../../_data/implementation-metrics.json'
 
 const CountImplementations = ({ ruleId = `` }) => {
 	const metrics = implementationMetrics[ruleId] || []
+
+	/**
+	 * Get count of implementations which are either `consistent` or `partially-consistent`
+	 */
 	const count = metrics.filter(
 		metric => filterByConsistency(metric.implementations, ['consistent', 'partially-consistent']).length > 0
 	).length
