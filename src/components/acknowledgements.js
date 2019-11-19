@@ -33,9 +33,6 @@ const Acknowledgements = ({ scrollLinkId, items, contributors }) => {
 		...otherItems,
 	}
 
-	console.log(items)
-	console.log(curatedItems)
-
 	return (
 		<>
 			<a id={scrollLinkId} href={`#${scrollLinkId}`}>
