@@ -86,7 +86,7 @@
 		"develop": "gatsby develop",
 		"prebuild": "npm run clean && npm --prefix './node_modules/act-rules-community' run formatRulesDir && npm run getData",
 		"build": "gatsby build",
-		"format": "prettier --write *.{json,md,js,jsx} './{_data,_rules,build,gatsby,src}/**/*.{json,md,js,jsx}'",
+		"format": "prettier --write *.{json,md,js,jsx,yml,scss} './{.github,build,gatsby,src,utils}/**/*.{json,md,js,jsx,yml,scss}'",
 		"start": "npm run clean && npm run develop",
 		"serve": "gatsby serve"
 	},
