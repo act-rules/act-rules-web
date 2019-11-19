@@ -1,10 +1,9 @@
 import React from 'react'
-
 import { graphql } from 'gatsby'
 import showdown from 'showdown'
 
-import Layout from '../components/layout/'
 import SEO from '../components/seo'
+import Layout from '../components/layout'
 import Acknowledgements from '../components/acknowledgements'
 import AccessibilityRequirements from '../components/accessibility_requirements'
 import ListOfImplementers from '../components/list-of-implementers'
@@ -21,7 +20,7 @@ import {
 
 import implementers from '../../_data/implementers.json'
 
-export default ({ data }) => {
+export default ({ location, data }) => {
 	const { rule, allRules, allGlossary, site } = data
 	const { html, frontmatter, tableOfContents, fields } = rule
 	const { slug, fastmatterAttributes, changelog, fileName } = fields
@@ -46,7 +45,7 @@ export default ({ data }) => {
 	})
 
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title={`Rule | ${frontmatter.name}`} />
 			<section className="page-rule">
 				{/* rule content */}
@@ -141,7 +140,7 @@ export default ({ data }) => {
 					<a id="implementation-metrics" href="#implementation-metrics">
 						<h2>Implementations</h2>
 					</a>
-					<ListOfImplementers items={validImplementers} ruleId={ruleId} />
+					<ListOfImplementers implementers={validImplementers} ruleId={`id-${ruleId}`} />
 				</>
 				{/* acknowledgements */}
 				<Acknowledgements scrollLinkId={`acknowledgements`} items={acknowledgements} contributors={contributors} />

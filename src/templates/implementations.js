@@ -7,11 +7,11 @@ import ListOfImplementers from '../components/list-of-implementers'
 
 import implementers from './../../_data/implementers'
 
-const Implementations = ({ data }) => {
+const Implementations = ({ location, data }) => {
 	const { html, frontmatter } = data.markdownRemark
 
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title={frontmatter.title} />
 			<section className="page-container">
 				<h1>{frontmatter.title}</h1>

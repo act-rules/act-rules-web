@@ -12,7 +12,7 @@ const ListOfImplementations = ({ mapping = [], showIncomplete = false }) => {
 				return (
 					<div key={ruleId}>
 						<Link to={`/rules/${ruleId}`}>
-							<h2 id={`#${ruleId}`}>{ruleName}</h2>
+							<h2 id={`id-${ruleId}`}>{ruleName}</h2>
 						</Link>
 						{getPageContent(implementations, showIncomplete, ruleId)}
 					</div>

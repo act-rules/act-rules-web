@@ -1,18 +1,18 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/layout/'
+import Layout from '../components/layout'
 import SEO from '../components/seo'
 import showdown from 'showdown'
 import { getInputRulesForRule } from './../utils/render-fragments'
 import AccessibilityRequirements from '../components/accessibility_requirements'
 import CountImplementations from '../components/count-implementations'
 
-export default ({ data }) => {
+export default ({ location, data }) => {
 	const { rules, allRules } = data
 	const converter = new showdown.Converter()
 
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title="Rules" />
 			<section className="page-container page-rules">
 				{/* Heading */}
