@@ -5,12 +5,12 @@ import SEO from '../components/seo'
 import implementers from './../../_data/implementers'
 import { getImplementationsTabulation } from './../utils/render-fragments'
 
-export default ({ data }) => {
+export default ({ location, data }) => {
 	const { markdownRemark } = data
 	const { html, frontmatter } = markdownRemark
 
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title={frontmatter.title} />
 			<section className="page-container">
 				<h1>{frontmatter.title}</h1>

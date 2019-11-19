@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/layout/'
+import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import showdown from 'showdown'
 import {
@@ -17,7 +17,7 @@ import SEO from '../components/seo'
 import Acknowledgements from '../components/acknowledgements'
 import AccessibilityRequirements from '../components/accessibility_requirements'
 
-export default ({ data }) => {
+export default ({ location, data }) => {
 	const { rule, allRules, allGlossary, site } = data
 	const { html, frontmatter, tableOfContents, fields } = rule
 	const { slug, fastmatterAttributes, changelog, fileName } = fields
@@ -35,7 +35,7 @@ export default ({ data }) => {
 	const ruleFormatInputAspects = config['rule-format-metadata']['input-aspects']
 
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title={`Rule | ${frontmatter.name}`} />
 			<section className="page-rule">
 				{/* rule content */}
