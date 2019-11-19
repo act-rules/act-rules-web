@@ -26,11 +26,12 @@ export default ({ location, data }) => {
 	const { accessibility_requirements, acknowledgements } = JSON.parse(fastmatterAttributes)
 	const converter = new showdown.Converter()
 	const { repository, config, contributors } = JSON.parse(site.siteMetadata.actRulesPackage)
+	const repositoryUrl = curateGitUrl(repository.url)
 	const ruleId = frontmatter.id
 	const ruleTestcasesUrl = `/testcases/${ruleId}/rule-${ruleId}-testcases-for-em-report-tool.json`
-	const proposeChangeUrl = `${repository.url}/edit/develop/_rules/${relativePath}`
+	const proposeChangeUrl = `${repositoryUrl}/edit/develop/_rules/${relativePath}`
 	const changelogUrl = `/rules/${ruleId}/changelog`
-	const issuesUrl = `${repository.url}/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+${ruleId}+`
+	const issuesUrl = `${repositoryUrl}/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+${ruleId}+`
 	const ruleFormatInputAspects = config['rule-format-metadata']['input-aspects']
 
 	return (
@@ -221,3 +222,24 @@ export const query = graphql`
 		}
 	}
 `
+
+/**
+ * Curate a given URL with
+ * @param {String} url given string/ url
+ * @returns {String}
+ *
+ * Example:
+ * 		curateGitUrl("git+https://github.com/act-rules/act-rules.github.io.git")
+ * yeilds
+ * 		"https://github.com/act-rules/act-rules.github.io"
+ */
+function curateGitUrl(url) {
+	const regexToRemove = [/^git\+/, /\.git$/]
+
+	let result = url
+	for (const regex of regexToRemove) {
+		result = result.replace(regex, '')
+	}
+
+	return result
+}
