@@ -1,6 +1,7 @@
 # ACT-Rules Website
 
 <!-- badges  -->
+
 ![](https://github.com/act-rules/act-rules-web/workflows/build/badge.svg)
 ![](https://github.com/act-rules/act-rules-web/workflows/publish/badge.svg)
 
