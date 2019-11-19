@@ -1,10 +1,10 @@
 import React from 'react'
-import Layout from '../components/layout/'
+import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import SEO from '../components/seo'
 import glossaryUsages from './../../_data/glossary-usages.json'
 
-export default ({ data }) => {
+export default ({ location, data }) => {
 	const { markdownRemark, site } = data
 	const {
 		www: { url },
@@ -37,7 +37,7 @@ export default ({ data }) => {
 	}, {})
 
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title={frontmatter.title} />
 			<section className="page-container">
 				<h1>{frontmatter.title}</h1>

@@ -95,9 +95,9 @@ const getTabulatedImplementations = (ruleImplementations, showIncomplete) => {
 	)
 }
 
-const getPage = (pageTitle, pageContent) => {
+const getPage = (pageTitle, pageContent, location) => {
 	return (
-		<Layout>
+		<Layout location={location}>
 			<SEO title={pageTitle} />
 			<section className="page-container page-implementers">
 				<h1>{pageTitle}</h1>
@@ -131,11 +131,11 @@ export default props => {
 				All implementations provided are incomplete. Kindly submit amended implementation reports.
 			</div>
 		)
-		return getPage(pageTitle, content)
+		return getPage(pageTitle, content, location)
 	}
 
 	const pageContent = getTabulatedImplementations(mapping, showIncomplete)
-	return getPage(pageTitle, pageContent)
+	return getPage(pageTitle, pageContent, location)
 }
 
 export const query = graphql`
