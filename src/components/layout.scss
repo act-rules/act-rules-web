@@ -4,376 +4,383 @@
 @import '../styles/prism-a11y';
 
 section.layout-container {
-  @include fixed-stretch();
-  overflow: hidden;
-  display: flex;
+	@include fixed-stretch();
+	overflow: hidden;
+	display: flex;
 
-  >aside {
-    @include flex-column();
-    @include flex-scroll-container();
-    flex-grow: 0;
-    flex-shrink: 0;
-    background-color: $bg-secondary;
-    border-right: 1px solid $bg-primary;
-    color: $fg-secondary;
-    width: 225px;
-    padding-left: 1rem;
-    position: relative;
-    transition: all 0.25s;
-   
-    button.nav-hide-show-menu {
-      position: fixed;
-      left: 240px;
-      z-index: 1;
-      top: 5px;
-      border-radius: 50%;
-      transform: scale(0.7) translateX(-25px);
-      background-color: $accent;
-      border-color: $accent;
-      color: $fg-primary;
-      transition: all 0.25s;
-      transform-origin: center center;
-      &:hover {
-        background-color: $bg-primary;
-        border-color: $fg-primary;
-        transform: scale(1) translateX(-5px);
-      }
-    }
+	> aside {
+		@include flex-column();
+		@include flex-scroll-container();
+		flex-grow: 0;
+		flex-shrink: 0;
+		background-color: $bg-secondary;
+		border-right: 1px solid $bg-primary;
+		color: $fg-secondary;
+		width: 225px;
+		padding-left: 1rem;
+		position: relative;
+		transition: all 0.25s;
 
-    &.hide{
-      left: -230px;
-      position: absolute;
+		button.nav-hide-show-menu {
+			position: fixed;
+			left: 240px;
+			z-index: 1;
+			top: 5px;
+			border-radius: 50%;
+			transform: scale(0.7) translateX(-25px);
+			background-color: $accent;
+			border-color: $accent;
+			color: $fg-primary;
+			transition: all 0.25s;
+			transform-origin: center center;
+			&:hover {
+				background-color: $bg-primary;
+				border-color: $fg-primary;
+				transform: scale(1) translateX(-5px);
+			}
+		}
 
-      button.nav-hide-show-menu {
-        left: 10px;
-      }
-    }
-    &.show {
-      left: 0;
-      position: relative;
-    }
+		&.hide {
+			left: -230px;
+			position: absolute;
 
-    >div.logo {
-      flex-shrink: 0;
-    }
+			button.nav-hide-show-menu {
+				left: 10px;
+			}
+		}
+		&.show {
+			left: 0;
+			position: relative;
+		}
 
-    >nav {
-      >ul {
-        @include reset-list();
-        >li {
-          transition: all ease;
-          a, p {
-            @include header-style($fg-secondary);
-            text-transform: capitalize;
-            font-size: 0.83em;
-            position: relative;
-            &:hover {
-              color: $accent;
-            }
-            &.active{
-              color: $accent;
-              &::after{
-                opacity: 1;
-              }
-            }
-            &.parent-item{
-              color: currentColor;
-            }
-            &::after{
-              content: '';
-              right: 0;
-              top: -10px;
-              height: 30px;
-              position: absolute;
-              width: 7px;
-              background-color: $accent;
-              opacity: 0;
-            }
-          }
-          >ul {
-            @include reset-list();
-            padding-inline-start: 1rem;
-            padding-inline-end: 0rem;
-            >li {
-              >a {
-                text-transform: capitalize;
-                padding-right: 1rem;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+		> div.logo {
+			flex-shrink: 0;
+		}
 
-  >main {
-    @include flex-column();
-    width: 100%;
-    >section {
-      @include flex-row();
-      @include flex-scroll-container();
-      color: $black;
-      line-height: 1.5;
+		> nav {
+			> ul {
+				@include reset-list();
+				> li {
+					transition: all ease;
+					a,
+					p {
+						@include header-style($fg-secondary);
+						text-transform: capitalize;
+						font-size: 0.83em;
+						position: relative;
+						&:hover {
+							color: $accent;
+						}
+						&.active {
+							color: $accent;
+							&::after {
+								opacity: 1;
+							}
+						}
+						&.parent-item {
+							color: currentColor;
+						}
+						&::after {
+							content: '';
+							right: 0;
+							top: -10px;
+							height: 30px;
+							position: absolute;
+							width: 7px;
+							background-color: $accent;
+							opacity: 0;
+						}
+					}
+					> ul {
+						@include reset-list();
+						padding-inline-start: 1rem;
+						padding-inline-end: 0rem;
+						> li {
+							> a {
+								text-transform: capitalize;
+								padding-right: 1rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
-      .page-container {
-        @include page-container-default-styles;
+	> main {
+		@include flex-column();
+		width: 100%;
+		> section {
+			@include flex-row();
+			@include flex-scroll-container();
+			color: $black;
+			line-height: 1.5;
 
-        h2 {
-          margin-top: 3rem;
-        }
+			.page-container {
+				@include page-container-default-styles;
 
-        &.page-implementers {
-          h1, h2, h3, h4, h5, h6 { 
-            display: inline-block;
-          }
-        }
+				h2 {
+					margin-top: 3rem;
+				}
 
-        // Styles for rules page
-        &.page-rules{
-          .rules-listing {
-            counter-reset: rule-item; 
-            
-            >article {
-              border: 1px solid $sep;
-              padding: 0.5rem;
-              display: flex;
-              flex-direction: column;
-              position: relative;
-              background-color: $bg-primary;
+				&.page-implementers {
+					h1,
+					h2,
+					h3,
+					h4,
+					h5,
+					h6 {
+						display: inline-block;
+					}
+				}
 
-              &:nth-child(2n) {
-                background-color: lighten($sep, 2%);
-                &::before{
-                  background-color: lighten($sep, 2%);
-                }
-              }
+				// Styles for rules page
+				&.page-rules {
+					.rules-listing {
+						counter-reset: rule-item;
 
-              // Index/ counter
-              &:before {
-                counter-increment: rule-item;
-                content: counter(rule-item); 
-                position: absolute;
-                width: 30px;
-                left: -31px;
-                top: -1px;
-                border: 1px solid $sep;
-                border-right: none;
-                font-weight: bold;
-                text-align: center;
-                padding: 11px 0;
-                background-color: $bg-primary;
-              }
+						> article {
+							border: 1px solid $sep;
+							padding: 0.5rem;
+							display: flex;
+							flex-direction: column;
+							position: relative;
+							background-color: $bg-primary;
 
-              div.meta {
-                h3.heading,
-                span.heading {
-                  padding: 0.25rem 0.5rem;
-                  background-color: $sep;
-                  border: 1px solid $transparent;
-                  text-transform: capitalize;
-                  display: inline-block;
-                  font-weight: bold;
-                  margin-top: 1em;
-                  font-size: 90%;
-                  color: inherit;
-                  cursor: auto;
-                  &:hover {
-                    text-decoration: none;
-                  }
-                }
-                a.sc-item {
-                  cursor: pointer;
-                  text-decoration: none;
-                  text-transform: capitalize;
-                  &:hover {
-                    color: $accent;
-                  }
-                }
-              }
+							&:nth-child(2n) {
+								background-color: lighten($sep, 2%);
+								&::before {
+									background-color: lighten($sep, 2%);
+								}
+							}
 
-              >section {
-                flex: 1;
-                >a{
-                  text-decoration: none;
-                }
-                h2{
-                  margin: 0;
-                  margin-bottom: 0.5rem;
-                  >p{
-                    margin: 0;
-                  }
-                }
-                &:last-child{
-                  border-bottom: none;
-                }
-              }
-            }
-          }
-        }
+							// Index/ counter
+							&:before {
+								counter-increment: rule-item;
+								content: counter(rule-item);
+								position: absolute;
+								width: 30px;
+								left: -31px;
+								top: -1px;
+								border: 1px solid $sep;
+								border-right: none;
+								font-weight: bold;
+								text-align: center;
+								padding: 11px 0;
+								background-color: $bg-primary;
+							}
 
-        // Styles for glossary page
-        &.page-glossary{
-          .listing {
-            counter-reset: glossary-item; 
-            
-            >article {
-              border: 1px solid $sep;
-              padding: 0.5rem;
-              position: relative;
-              background-color: $bg-primary;
-              display: flex;
+							div.meta {
+								h3.heading,
+								span.heading {
+									padding: 0.25rem 0.5rem;
+									background-color: $sep;
+									border: 1px solid $transparent;
+									text-transform: capitalize;
+									display: inline-block;
+									font-weight: bold;
+									margin-top: 1em;
+									font-size: 90%;
+									color: inherit;
+									cursor: auto;
+									&:hover {
+										text-decoration: none;
+									}
+								}
+								a.sc-item {
+									cursor: pointer;
+									text-decoration: none;
+									text-transform: capitalize;
+									&:hover {
+										color: $accent;
+									}
+								}
+							}
 
-              &:nth-child(2n) {
-                background-color: lighten($sep, 2%);
-                &::before{
-                  background-color: lighten($sep, 2%);
-                }
-              }
+							> section {
+								flex: 1;
+								> a {
+									text-decoration: none;
+								}
+								h2 {
+									margin: 0;
+									margin-bottom: 0.5rem;
+									> p {
+										margin: 0;
+									}
+								}
+								&:last-child {
+									border-bottom: none;
+								}
+							}
+						}
+					}
+				}
 
-              // Index/ counter
-              &:before {
-                counter-increment: glossary-item;
-                content: counter(glossary-item); 
-                position: absolute;
-                width: 30px;
-                left: -31px;
-                top: -1px;
-                border: 1px solid $sep;
-                border-right: none;
-                font-weight: bold;
-                text-align: center;
-                padding: 11px 0;
-                background-color: $bg-primary;
-              }
+				// Styles for glossary page
+				&.page-glossary {
+					.listing {
+						counter-reset: glossary-item;
 
-              h2, h3 {
-                margin: 0;
-              }
-              i {
-                font-family: 'Courier New', Courier, monospace;
-              }
-              >section {
-                flex: 1;
-                padding-right: 0.5rem;
-              }
+						> article {
+							border: 1px solid $sep;
+							padding: 0.5rem;
+							position: relative;
+							background-color: $bg-primary;
+							display: flex;
 
-              >div.used-rules {
-                padding: 1.5rem;
-                padding-left: 0;
-                width: 30%;
-                ul {
-                  @include reset-list;
-                }
-                a {
-                  display: block;
-                  text-transform: capitalize;
-                }
-              }
-            }
-          }
-        }
-      }
+							&:nth-child(2n) {
+								background-color: lighten($sep, 2%);
+								&::before {
+									background-color: lighten($sep, 2%);
+								}
+							}
 
+							// Index/ counter
+							&:before {
+								counter-increment: glossary-item;
+								content: counter(glossary-item);
+								position: absolute;
+								width: 30px;
+								left: -31px;
+								top: -1px;
+								border: 1px solid $sep;
+								border-right: none;
+								font-weight: bold;
+								text-align: center;
+								padding: 11px 0;
+								background-color: $bg-primary;
+							}
 
-      // Style for a rule page
-      .page-rule {
-        @include page-container-default-styles;
-        margin:0;
-        padding-bottom:3rem;
-        padding-top:3rem;
-        overflow-y:auto;
+							h2,
+							h3 {
+								margin: 0;
+							}
+							i {
+								font-family: 'Courier New', Courier, monospace;
+							}
+							> section {
+								flex: 1;
+								padding-right: 0.5rem;
+							}
 
-        ul.meta,
-        div.meta {
-          @include reset-list();
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          h3.heading, 
-          span.heading {
-            padding: 0.25rem 0.5rem;
-            background-color: $sep;
-            border: 1px solid $transparent;
-            text-transform: capitalize;
-            display: inline-block;
-            font-weight: bold;
-            margin-top: 1em;
-            font-size: 90%;
-            color: $fg-primary;
-            cursor: auto;
-            &:hover {
-              text-decoration: none;
-            }
-          }
-          p{
-            margin: 0;
-            display: block;
-            padding: 0.25rem 0.5rem;
-            text-transform: capitalize;
-          }
-          a.sc-item {
-            cursor: pointer;
-            text-decoration: none;
-            text-transform: capitalize;
-            &:hover {
-              color: $accent;
-            }
-            &.block {
-              display:block;
-            }
-          }
-        }
-      }
-      
-      .toc {
-        border-left: 1px solid $sep;
-        min-width: 225px;
-        max-width: 300px;
-        overflow: auto;
-        font-size: 85%;
-        padding-bottom: 3rem;
-        
-        span.heading {
-          padding: 0.25rem 0.5rem;
-          @include header-style($fg-primary);
-          text-transform: capitalize;
-          background-color: $sep;
-          margin: 1rem 0.5rem 0.5rem 0;
-          display: inline-block;
-          &:first-child {
-            margin-top: 6rem;
-          }
-        }
+							> div.used-rules {
+								padding: 1.5rem;
+								padding-left: 0;
+								width: 30%;
+								ul {
+									@include reset-list;
+								}
+								a {
+									display: block;
+									text-transform: capitalize;
+								}
+							}
+						}
+					}
+				}
+			}
 
-        ul{
-          @include reset-list;
-          margin: 0.5rem 0;
-          li {
-            span, a {
-              display: inline-block;
-            }
-            a{
-              cursor: pointer;
-              text-decoration: none;
-              padding: 0rem 1rem;
-              display: block;
-              &:hover {
-                color: $accent;
-              }
-            }
-          }
-          ul {
-            margin-left: 1rem;
-          }
-        }
-      }
-    }
+			// Style for a rule page
+			.page-rule {
+				@include page-container-default-styles;
+				margin: 0;
+				padding-bottom: 3rem;
+				padding-top: 3rem;
+				overflow-y: auto;
 
-    >footer {
-      @include flex-row();
-      flex-shrink:0;
-    }
-  } 
+				ul.meta,
+				div.meta {
+					@include reset-list();
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					h3.heading,
+					span.heading {
+						padding: 0.25rem 0.5rem;
+						background-color: $sep;
+						border: 1px solid $transparent;
+						text-transform: capitalize;
+						display: inline-block;
+						font-weight: bold;
+						margin-top: 1em;
+						font-size: 90%;
+						color: $fg-primary;
+						cursor: auto;
+						&:hover {
+							text-decoration: none;
+						}
+					}
+					p {
+						margin: 0;
+						display: block;
+						padding: 0.25rem 0.5rem;
+						text-transform: capitalize;
+					}
+					a.sc-item {
+						cursor: pointer;
+						text-decoration: none;
+						text-transform: capitalize;
+						&:hover {
+							color: $accent;
+						}
+						&.block {
+							display: block;
+						}
+					}
+				}
+			}
+
+			.toc {
+				border-left: 1px solid $sep;
+				min-width: 225px;
+				max-width: 300px;
+				overflow: auto;
+				font-size: 85%;
+				padding-bottom: 3rem;
+
+				span.heading {
+					padding: 0.25rem 0.5rem;
+					@include header-style($fg-primary);
+					text-transform: capitalize;
+					background-color: $sep;
+					margin: 1rem 0.5rem 0.5rem 0;
+					display: inline-block;
+					&:first-child {
+						margin-top: 6rem;
+					}
+				}
+
+				ul {
+					@include reset-list;
+					margin: 0.5rem 0;
+					li {
+						span,
+						a {
+							display: inline-block;
+						}
+						a {
+							cursor: pointer;
+							text-decoration: none;
+							padding: 0rem 1rem;
+							display: block;
+							&:hover {
+								color: $accent;
+							}
+						}
+					}
+					ul {
+						margin-left: 1rem;
+					}
+				}
+			}
+		}
+
+		> footer {
+			@include flex-row();
+			flex-shrink: 0;
+		}
+	}
 }
 
 /* Smartphones (portrait and landscape) ----------- */
