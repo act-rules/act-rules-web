@@ -20,6 +20,8 @@ import {
 
 import implementers from '../../_data/implementers.json'
 
+import './rule.scss'
+
 export default ({ location, data }) => {
 	const { rule, allRules, allGlossary, site } = data
 	const { html, frontmatter, tableOfContents, fields } = rule

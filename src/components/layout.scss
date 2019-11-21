@@ -115,134 +115,6 @@ section.layout-container {
       color: $black;
       line-height: 1.5;
 
-      .page-container {
-        @include page-container-default-styles;
-
-        h2 {
-          margin-top: 3rem;
-        }
-
-        &.page-implementers {
-          h1, h2, h3, h4, h5, h6 { 
-            display: inline-block;
-          }
-        }
-
-      
-        // Styles for glossary page
-        &.page-glossary{
-          .listing {
-            counter-reset: glossary-item; 
-            
-            >article {
-              border: 1px solid $sep;
-              padding: 0.5rem;
-              position: relative;
-              background-color: $bg-primary;
-              display: flex;
-
-              &:nth-child(2n) {
-                background-color: lighten($sep, 2%);
-                &::before{
-                  background-color: lighten($sep, 2%);
-                }
-              }
-
-              // Index/ counter
-              &:before {
-                counter-increment: glossary-item;
-                content: counter(glossary-item); 
-                position: absolute;
-                width: 30px;
-                left: -31px;
-                top: -1px;
-                border: 1px solid $sep;
-                border-right: none;
-                font-weight: bold;
-                text-align: center;
-                padding: 11px 0;
-                background-color: $bg-primary;
-              }
-
-              h2, h3 {
-                margin: 0;
-              }
-              i {
-                font-family: 'Courier New', Courier, monospace;
-              }
-              >section {
-                flex: 1;
-                padding-right: 0.5rem;
-              }
-
-              >div.used-rules {
-                padding: 1.5rem;
-                padding-left: 0;
-                width: 30%;
-                ul {
-                  @include reset-list;
-                }
-                a {
-                  display: block;
-                  text-transform: capitalize;
-                }
-              }
-            }
-          }
-        }
-      }
-
-
-      // Style for a rule page
-      .page-rule {
-        @include page-container-default-styles;
-        margin:0;
-        padding-bottom:3rem;
-        padding-top:3rem;
-        overflow-y:auto;
-
-        ul.meta,
-        div.meta {
-          @include reset-list();
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          h3.heading, 
-          span.heading {
-            padding: 0.25rem 0.5rem;
-            background-color: $sep;
-            border: 1px solid $transparent;
-            text-transform: capitalize;
-            display: inline-block;
-            font-weight: bold;
-            margin-top: 1em;
-            font-size: 90%;
-            color: $fg-primary;
-            cursor: auto;
-            &:hover {
-              text-decoration: none;
-            }
-          }
-          p{
-            margin: 0;
-            display: block;
-            padding: 0.25rem 0.5rem;
-            text-transform: capitalize;
-          }
-          a.sc-item {
-            cursor: pointer;
-            text-decoration: none;
-            text-transform: capitalize;
-            &:hover {
-              color: $accent;
-            }
-            &.block {
-              display:block;
-            }
-          }
-        }
-      }
-      
       .toc {
         border-left: 1px solid $sep;
         min-width: 225px;
@@ -298,13 +170,6 @@ section.layout-container {
 @media only screen and (min-width: 320px) and (max-width: 600px) {
 	section.layout-container {
 		> main {
-			.page-container {
-				margin: 1.5rem 0 !important;
-				padding: 0 3rem !important;
-			}
-			.page-rule {
-				padding-right: 3rem !important;
-			}
 			.toc {
 				display: none;
 			}
@@ -319,35 +184,9 @@ section.layout-container {
 @media only screen and (max-width: 1024px) {
 	section.layout-container {
 		> main {
-			.page-container {
-				&.page-glossary {
-					.listing {
-						> article {
-							flex-direction: column;
-							> aside {
-								width: 100% !important;
-							}
-							> div.used-rules {
-								width: 100% !important;
-							}
-						}
-					}
-				}
-			}
-			.page-rule {
-				padding-right: 4rem !important;
-			}
 			.toc {
 				display: none;
 			}
 		}
 	}
-}
-
-/* Desktops and laptops ----------- */
-@media only screen and (min-width: 1200px) {
-}
-
-/* Large screens ----------- */
-@media only screen and (min-width: 1600px) {
 }
