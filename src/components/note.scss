@@ -1,31 +1,31 @@
-@import "../styles/variables.scss";
+@import '../styles/variables.scss';
 
 div.note {
-  border-left: 5px solid currentColor;
-  color: $accent;
-  background-color: rgba($accent, 0.05);
-  padding: 0.5rem 1rem;
+	border-left: 5px solid currentColor;
+	color: $accent;
+	background-color: rgba($accent, 0.05);
+	padding: 0.5rem 1rem;
 
-  > b {
-    padding: 0.25rem 0;
-    text-transform: uppercase;
-    display: block;
-    margin: 0;
-  }
+	> b {
+		padding: 0.25rem 0;
+		text-transform: uppercase;
+		display: block;
+		margin: 0;
+	}
 
-  >p {
-    margin: 0;
-  }
+	> p {
+		margin: 0;
+	}
 
-  &.valid {
-    border-left-color: $success;
-    color: $success;
-    background-color: rgba($success, 0.05);
-  }
+	&.valid {
+		border-left-color: $success;
+		color: $success;
+		background-color: rgba($success, 0.05);
+	}
 
-  &.invalid {
-    border-left-color: $error;
-    color: $error;
-    background-color: rgba($error, 0.05);
-  }
+	&.invalid {
+		border-left-color: $error;
+		color: $error;
+		background-color: rgba($error, 0.05);
+	}
 }
