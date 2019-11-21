@@ -2,58 +2,58 @@
 @import '../styles/mixins.scss';
 
 article.ruleCard {
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba($sep, 0.5);
-  box-shadow: 0px 0px 12px rgba($black, 0.2);
+	padding: 1rem;
+	margin-bottom: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	background-color: rgba($sep, 0.5);
+	box-shadow: 0px 0px 12px rgba($black, 0.2);
 
-  &:hover {
-    outline: 2px solid $accent;
-  }
-  
-  div.meta {
-    h3.heading,
-    span.heading {
-      padding: 0.25rem 0.5rem;
-      background-color: $sep;
-      border: 1px solid $transparent;
-      text-transform: capitalize;
-      display: inline-block;
-      font-weight: bold;
-      margin-top: 1em;
-      font-size: 90%;
-      color: inherit;
-      cursor: auto;
-      &:hover {
-        text-decoration: none;
-      }
-    }
-    a.sc-item {
-      cursor: pointer;
-      text-decoration: none;
-      text-transform: capitalize;
-      &:hover {
-        color: $accent;
-      }
-    }
-  }
+	&:hover {
+		outline: 2px solid $accent;
+	}
 
-  > section {
-    flex: 1;
-    > a {
-      text-decoration: none;
-    }
-    h2 {
-      margin: 0;
-      margin-bottom: 0.5rem;
-      > p {
-        margin: 0;
-      }
-    }
-    &:last-child {
-      border-bottom: none;
-    }
-  }
+	div.meta {
+		h3.heading,
+		span.heading {
+			padding: 0.25rem 0.5rem;
+			background-color: $sep;
+			border: 1px solid $transparent;
+			text-transform: capitalize;
+			display: inline-block;
+			font-weight: bold;
+			margin-top: 1em;
+			font-size: 90%;
+			color: inherit;
+			cursor: auto;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+		a.sc-item {
+			cursor: pointer;
+			text-decoration: none;
+			text-transform: capitalize;
+			&:hover {
+				color: $accent;
+			}
+		}
+	}
+
+	> section {
+		flex: 1;
+		> a {
+			text-decoration: none;
+		}
+		h2 {
+			margin: 0;
+			margin-bottom: 0.5rem;
+			> p {
+				margin: 0;
+			}
+		}
+		&:last-child {
+			border-bottom: none;
+		}
+	}
 }
