@@ -107,10 +107,12 @@ async function init(program) {
 			const testcaseFileName = `${ruleId}/${codeId}.${type}`
 			const testcasePath = `testcases/${testcaseFileName}`
 
+			const updatedCodeBlock = type === 'html' && !/\<\!doctype html\>/i.test(code) ? `<!doctype html> ${code}` : code
+
 			/**
 			 * Create testcase file
 			 */
-			await createFile(`${outputDir}/rules-testcases/${testcasePath}`, code)
+			await createFile(`${outputDir}/rules-testcases/${testcasePath}`, updatedCodeBlock)
 
 			/**
 			 * Create meta data for testcase(s)
