@@ -2,53 +2,33 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import showdown from 'showdown'
-import { getInputRulesForRule } from './../utils/render-fragments'
-import AccessibilityRequirements from '../components/accessibility_requirements'
-import CountImplementations from '../components/count-implementations'
+import RuleCard from '../components/rule-card'
+
+import './rules.scss'
 
 export default ({ location, data }) => {
 	const { rules, allRules } = data
-	const converter = new showdown.Converter()
 
 	return (
 		<Layout location={location}>
 			<SEO title="Rules" />
-			<section className="page-container page-rules">
+			<section className="page-rules">
 				{/* Heading */}
 				<h1>Rules</h1>
 				{/* Table of rules */}
-				<section className="rules-listing">
+				<section>
 					{rules.edges.map(({ node }) => {
-						const { frontmatter, id, fields } = node
-						const { name, description, input_rules } = frontmatter
-						const { slug, fastmatterAttributes } = fields
-						const { accessibility_requirements } = JSON.parse(fastmatterAttributes)
+						const { frontmatter, fields } = node
 						return (
-							<article key={id}>
-								<section>
-									{/* rule id */}
-									<a href={slug.replace('rules/', '')}>
-										<h2
-											dangerouslySetInnerHTML={{
-												__html: converter.makeHtml(name),
-											}}
-										/>
-									</a>
-									{/* rule sc's */}
-									<AccessibilityRequirements accessibility_requirements={accessibility_requirements} type="text" />
-									{/* input rules */}
-									{getInputRulesForRule(input_rules, allRules.edges, true)}
-									{/* implementation count */}
-									<CountImplementations ruleId={slug.replace('rules/', '')} />
-									{/* rule description */}
-									<div
-										dangerouslySetInnerHTML={{
-											__html: converter.makeHtml(description),
-										}}
-									/>
-								</section>
-							</article>
+							<RuleCard
+								key={frontmatter.id}
+								id={frontmatter.id}
+								name={frontmatter.name}
+								description={frontmatter.description}
+								accessibilityRequirements={JSON.parse(fields.fastmatterAttributes).accessibility_requirements}
+								inputRules={frontmatter.input_rules}
+								allRules={allRules}
+							/>
 						)
 					})}
 				</section>
@@ -69,6 +49,7 @@ export const query = graphql`
 					fileAbsolutePath
 					id
 					frontmatter {
+						id
 						name
 						description
 						rule_type

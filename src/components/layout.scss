@@ -128,89 +128,7 @@ section.layout-container {
           }
         }
 
-        // Styles for rules page
-        &.page-rules{
-          .rules-listing {
-            counter-reset: rule-item; 
-            
-            >article {
-              border: 1px solid $sep;
-              padding: 0.5rem;
-              display: flex;
-              flex-direction: column;
-              position: relative;
-              background-color: $bg-primary;
-
-              &:nth-child(2n) {
-                background-color: lighten($sep, 2%);
-                &::before{
-                  background-color: lighten($sep, 2%);
-                }
-              }
-
-              // Index/ counter
-              &:before {
-                counter-increment: rule-item;
-                content: counter(rule-item); 
-                position: absolute;
-                width: 30px;
-                left: -31px;
-                top: -1px;
-                border: 1px solid $sep;
-                border-right: none;
-                font-weight: bold;
-                text-align: center;
-                padding: 11px 0;
-                background-color: $bg-primary;
-              }
-
-              div.meta {
-                h3.heading,
-                span.heading {
-                  padding: 0.25rem 0.5rem;
-                  background-color: $sep;
-                  border: 1px solid $transparent;
-                  text-transform: capitalize;
-                  display: inline-block;
-                  font-weight: bold;
-                  margin-top: 1em;
-                  font-size: 90%;
-                  color: inherit;
-                  cursor: auto;
-                  &:hover {
-                    text-decoration: none;
-                  }
-                }
-                a.sc-item {
-                  cursor: pointer;
-                  text-decoration: none;
-                  text-transform: capitalize;
-                  &:hover {
-                    color: $accent;
-                  }
-                }
-              }
-
-              >section {
-                flex: 1;
-                >a{
-                  text-decoration: none;
-                }
-                h2{
-                  margin: 0;
-                  margin-bottom: 0.5rem;
-                  >p{
-                    margin: 0;
-                  }
-                }
-                &:last-child{
-                  border-bottom: none;
-                }
-              }
-            }
-          }
-        }
-
+      
         // Styles for glossary page
         &.page-glossary{
           .listing {
@@ -402,13 +320,6 @@ section.layout-container {
 	section.layout-container {
 		> main {
 			.page-container {
-				&.page-rules {
-					.rules-listing {
-						> article {
-							flex-direction: column;
-						}
-					}
-				}
 				&.page-glossary {
 					.listing {
 						> article {
