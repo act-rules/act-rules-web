@@ -29,7 +29,6 @@
 	text-decoration: none;
 	margin: 1rem 0;
 	display: block;
-	cursor: pointer;
 }
 
 @mixin reset-list() {
@@ -67,7 +66,7 @@
 @mixin page-default-styles() {
 	margin: 3rem 0;
 	padding: 0 4rem;
-	
+
 	h1 {
 		border-bottom: 1px solid $sep;
 		padding: 2rem 0;
