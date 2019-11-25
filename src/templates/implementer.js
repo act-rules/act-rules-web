@@ -7,6 +7,8 @@ import SEO from '../components/seo'
 import Note from '../components/note'
 import ListOfImplementations from '../components/list-of-implementations'
 
+import './implementer.scss'
+
 const Implementer = ({ location, data }) => {
 	const { title, implementerData } = data.sitePage.context
 	const implementerReport = JSON.parse(implementerData)
@@ -17,7 +19,7 @@ const Implementer = ({ location, data }) => {
 	return (
 		<Layout location={location}>
 			<SEO title={title} />
-			<section className="page-container page-implementers">
+			<section className="page-implementers">
 				<h1>{title}</h1>
 				{areAllMappingsIncomplete && !showIncomplete ? (
 					<Note
