@@ -34,7 +34,7 @@ const Implementer = ({ location, data }) => {
 	return (
 		<Layout location={location}>
 			<SEO title={title} />
-			<section className="page-container page-implementers">
+			<section className="page-implementer">
 				<h1>{title}</h1>
 				<ListOfImplementations mapping={completeMaps} showIncomplete={false} />
 			</section>

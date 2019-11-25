@@ -2,7 +2,6 @@ const path = require('path')
 
 const getTemplate = (type, slug) => {
 	const map = {
-		glossary: './src/templates/glossary.js',
 		rules: './src/templates/rule.js',
 		implementer: './src/templates/implementer.js',
 		implementerIncomplete: './src/templates/implementer-incomplete.js',

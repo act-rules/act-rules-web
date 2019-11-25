@@ -4,6 +4,8 @@ import { graphql } from 'gatsby'
 import SEO from '../components/seo'
 import glossaryUsages from './../../_data/glossary-usages.json'
 
+import './default.scss'
+
 export default ({ location, data }) => {
 	const { markdownRemark, site } = data
 	const {
@@ -39,7 +41,7 @@ export default ({ location, data }) => {
 	return (
 		<Layout location={location}>
 			<SEO title={frontmatter.title} />
-			<section className="page-container">
+			<section className="page-default">
 				<h1>{frontmatter.title}</h1>
 				<div
 					dangerouslySetInnerHTML={{
