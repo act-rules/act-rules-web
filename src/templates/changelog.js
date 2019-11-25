@@ -4,6 +4,8 @@ import { graphql, Link } from 'gatsby'
 import SEO from '../components/seo'
 import { getDateTimeFromUnixTimestamp } from '../utils/render-fragments'
 
+import './changelog.scss'
+
 const changesSvgIcon = () => {
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 31.568 31.568">
@@ -82,7 +84,7 @@ export default ({ location, data }) => {
 	return (
 		<Layout location={location}>
 			<SEO title={pageTitle} />
-			<section className="page-container page-rule-changelog">
+			<section className="page-changelog">
 				<h1>{pageTitle}</h1>
 
 				{/* changelog */}

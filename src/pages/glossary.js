@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import classnames from 'classnames'
 import { graphql, useStaticQuery } from 'gatsby'
+import ReactMedia from 'react-media'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import glossaryUsages from './../../_data/glossary-usages.json'
 import ListWithHeading from '../components/list-with-heading'
+
+import './glossary.scss'
 
 const Glossary = ({ location }) => {
 	const { glossaryData } = useStaticQuery(
@@ -32,12 +36,33 @@ const Glossary = ({ location }) => {
 		`
 	)
 
+	const [viewportSize, setViewportSize] = useState(``)
+	const onMediaQueryChange = matches => {
+		if (matches.small) {
+			return setViewportSize(`sm`)
+		}
+
+		if (matches.medium) {
+			return setViewportSize(`md`)
+		}
+
+		return setViewportSize(`lg`)
+	}
+
 	return (
 		<Layout location={location}>
+			<ReactMedia
+				queries={{
+					small: '(max-width: 599px)',
+					medium: '(min-width: 600px) and (max-width: 1199px)',
+					large: '(min-width: 1200px)',
+				}}
+				onChange={onMediaQueryChange}
+			/>
 			<SEO title="Glossary" />
-			<section className="page-container page-glossary">
+			<section className="page-glossary">
 				<h1>Glossary</h1>
-				<section className="listing">
+				<section className={classnames('listing', viewportSize)}>
 					{glossaryData.edges.map(({ node }) => {
 						const { frontmatter, html } = node
 
