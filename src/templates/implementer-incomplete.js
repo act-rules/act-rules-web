@@ -5,21 +5,22 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Note from '../components/note'
 import ListOfImplementations from '../components/list-of-implementations'
+import { filterByConsistency } from './implementer'
 
-import './implementer.scss'
+import './implementer-incomplete.scss'
 
-const Implementer = ({ location, data }) => {
+const ImplementerIncomplete = ({ location, data }) => {
 	const { title, implementerData } = data.sitePage.context
 	const implementerReport = JSON.parse(implementerData)
 
 	const areAllMappingsIncomplete = implementerReport.actMapping.every(({ complete }) => complete === false)
-	const completeMaps = filterByConsistency(implementerReport.actMapping, ['consistent', 'partially-consistent'])
+	const incompleteMaps = filterByConsistency(implementerReport.actMapping, ['inconsistent'])
 
 	if (areAllMappingsIncomplete) {
 		return (
 			<Layout location={location}>
 				<SEO title={title} />
-				<section className="page-implementer">
+				<section className="page-implementer-incomplete">
 					<h1>{title}</h1>
 					<Note
 						cls={`invalid`}
@@ -31,18 +32,30 @@ const Implementer = ({ location, data }) => {
 		)
 	}
 
+	if (!incompleteMaps.length) {
+		return (
+			<Layout location={location}>
+				<SEO title={title} />
+				<section className="page-container page-implementers">
+					<h1>{title}</h1>
+					<Note cls={`valid`} title={`Well Done`} body={`All submitted implementation reports are complete.`} />
+				</section>
+			</Layout>
+		)
+	}
+
 	return (
 		<Layout location={location}>
 			<SEO title={title} />
 			<section className="page-container page-implementers">
 				<h1>{title}</h1>
-				<ListOfImplementations mapping={completeMaps} showIncomplete={false} />
+				<ListOfImplementations mapping={incompleteMaps} showIncomplete={true} />
 			</section>
 		</Layout>
 	)
 }
 
-export default Implementer
+export default ImplementerIncomplete
 
 export const query = graphql`
 	query($path: String) {
@@ -55,15 +68,3 @@ export const query = graphql`
 		}
 	}
 `
-
-/**
- * Filter a given set of implementations based on consistency
- * @param {Array<Object>} items array of implementations
- * @param {Array<String>} values allowed values
- * @returns {Array<Object>}
- */
-export function filterByConsistency(items, values) {
-	return items.filter(({ consistency }) => {
-		return values.includes(consistency)
-	})
-}
