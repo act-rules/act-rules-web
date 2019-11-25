@@ -46,11 +46,7 @@ function AccessibilityRequirementsListing({ item, listType, title, learnMore, co
 							Learn More about {learnMore}
 						</a>
 					</li>
-					<li>
-						<>
-							<strong>Required for conformance</strong> {conformanceTo}.
-						</>
-					</li>
+					<li>{conformanceTo}</li>
 					<OutcomeMapping failed={mapping.failed} passed={mapping.passed} inapplicable={mapping.inapplicable} />
 				</ul>
 			</details>
@@ -59,17 +55,21 @@ function AccessibilityRequirementsListing({ item, listType, title, learnMore, co
 }
 
 // For documents where we provide the title, and where the item is an URL anchor
-function BasicListing({ conformanceDocument, item, mapping, listType }) {
+function BasicListing({ accessibilityDocument, item, mapping, listType }) {
 	const { conformanceTo, baseURL } = {
 		aria11: {
-			conformanceTo: 'to WAI-ARIA 1.1 specifications',
+			conformanceTo: (
+				<>
+					<strong>Required for conformance</strong> to WAI-ARIA 1.1 specifications.
+				</>
+			),
 			baseURL: 'https://www.w3.org/TR/wai-aria-1.1/#',
 		},
 		'using-aria': {
-			conformanceTo: 'to "Using ARIA" specifications',
+			conformanceTo: 'Not required to conformance to any known conformance document.',
 			baseURL: 'https://www.w3.org/TR/using-aria/#',
 		},
-	}[conformanceDocument]
+	}[accessibilityDocument]
 
 	return (
 		<AccessibilityRequirementsListing
@@ -111,7 +111,7 @@ function TechniqueListing({ item, mapping, listType }) {
 			listType={listType}
 			title={title}
 			learnMore={title}
-			conformanceTo={`to WCAG technique ${techniqueId}`}
+			conformanceTo="Not required to conformance to any known conformance document."
 			url={url}
 			mapping={mapping}
 		/>
@@ -128,7 +128,11 @@ function WcagListing({ item, mapping, listType }) {
 			listType={listType}
 			title={`${num} ${handle} (Level: ${level})`}
 			learnMore={`${num} (${handle})`}
-			conformanceTo={`to WCAG ${wcagType} and above on level ${level} and above`}
+			conformanceTo={
+				<>
+					<strong>Required for conformance</strong> {`to WCAG ${wcagType} and above on level ${level} and above`}
+				</>
+			}
 			url={url}
 			mapping={mapping}
 		/>
@@ -147,34 +151,32 @@ export default function AccessibilityRequirements({ accessibility_requirements, 
 		)
 	}
 
-	const conformanceRequirements = Object.entries(accessibility_requirements).filter(
-		([_, value]) => value && !!value.forConformance
-	)
-
 	return (
 		<div className="meta">
 			<span className="heading">Accessibility Requirements Mapping</span>
 			<ul>
-				{conformanceRequirements.map(([req, mapping]) => {
-					const [conformanceDocument, conformanceItem] = req.toLocaleLowerCase().split(':')
+				{accessibility_requirements.map(([req, mapping]) => {
+					const [accessibilityDocument, accessibilityItem] = req.toLocaleLowerCase().split(':')
 
-					switch (conformanceDocument) {
+					switch (accessibilityDocument) {
 						case 'aria11':
 						case 'using-aria':
 							return (
 								<BasicListing
-									key={conformanceItem}
-									conformanceDocument={conformanceDocument}
-									item={conformanceItem}
+									key={accessibilityItem}
+									accessibilityDocument={accessibilityDocument}
+									item={accessibilityItem}
 									mapping={mapping}
 									listType={type}
 								/>
 							)
 						case 'wcag20':
 						case 'wcag21':
-							return <WcagListing key={conformanceItem} item={conformanceItem} mapping={mapping} listType={type} />
+							return <WcagListing key={accessibilityItem} item={accessibilityItem} mapping={mapping} listType={type} />
 						case 'wcag-technique':
-							return <TechniqueListing key={conformanceItem} item={conformanceItem} mapping={mapping} listType={type} />
+							return (
+								<TechniqueListing key={accessibilityItem} item={accessibilityItem} mapping={mapping} listType={type} />
+							)
 						default:
 							return <>Accessibility Requirements have no or unknown mapping.</>
 					}
