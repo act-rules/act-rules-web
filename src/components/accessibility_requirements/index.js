@@ -1,6 +1,7 @@
 import techniquesTitles from '../../../_data/techniques-titles'
 import scUrls from '../../../_data/sc-urls'
 import React from 'react'
+import { instanceOf } from 'prop-types'
 
 function OutcomeMapping({
 	failed = 'not satisfied',
@@ -155,7 +156,7 @@ export default function AccessibilityRequirements({ accessibility_requirements, 
 		<div className="meta">
 			<span className="heading">Accessibility Requirements Mapping</span>
 			<ul>
-				{accessibility_requirements.map(([req, mapping]) => {
+				{Object.entries(accessibility_requirements).map(([req, mapping]) => {
 					const [accessibilityDocument, accessibilityItem] = req.toLocaleLowerCase().split(':')
 
 					switch (accessibilityDocument) {
