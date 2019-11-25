@@ -130,7 +130,7 @@ function WcagListing({ item, mapping, listType }) {
 			learnMore={`${num} (${handle})`}
 			conformanceTo={
 				<>
-					<strong>Required for conformance</strong> {`to WCAG ${wcagType} and above on level ${level} and above`}
+					<strong>Required for conformance</strong> to WCAG {wcagType} and above on level {level} and above.
 				</>
 			}
 			url={url}
