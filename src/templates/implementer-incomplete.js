@@ -12,25 +12,7 @@ import './implementer-incomplete.scss'
 const ImplementerIncomplete = ({ location, data }) => {
 	const { title, implementerData } = data.sitePage.context
 	const implementerReport = JSON.parse(implementerData)
-
-	const areAllMappingsIncomplete = implementerReport.actMapping.every(({ complete }) => complete === false)
 	const incompleteMaps = filterByConsistency(implementerReport.actMapping, ['inconsistent'])
-
-	if (areAllMappingsIncomplete) {
-		return (
-			<Layout location={location}>
-				<SEO title={title} />
-				<section className="page-implementer-incomplete">
-					<h1>{title}</h1>
-					<Note
-						cls={`invalid`}
-						title={`Incomplete Implementation`}
-						body={`All implementations provided are incomplete. Kindly submit an amended implementation report.`}
-					/>
-				</section>
-			</Layout>
-		)
-	}
 
 	if (!incompleteMaps.length) {
 		return (
