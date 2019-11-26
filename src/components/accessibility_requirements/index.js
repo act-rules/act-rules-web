@@ -1,7 +1,6 @@
 import techniquesTitles from '../../../_data/techniques-titles'
 import scUrls from '../../../_data/sc-urls'
 import React from 'react'
-import { instanceOf } from 'prop-types'
 
 function OutcomeMapping({
 	failed = 'not satisfied',
@@ -112,7 +111,7 @@ function TechniqueListing({ item, mapping, listType }) {
 			listType={listType}
 			title={title}
 			learnMore={title}
-			conformanceTo="Not required to conformance to any known conformance document."
+			conformanceTo="Not required to conform to any known conformance document."
 			url={url}
 			mapping={mapping}
 		/>
