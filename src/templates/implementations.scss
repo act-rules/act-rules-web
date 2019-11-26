@@ -1,0 +1,6 @@
+@import "../styles/variables.scss";
+@import "../styles/mixins.scss";
+
+.page-implementations {
+  @include page-default-styles;
+}

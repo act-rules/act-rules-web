@@ -43,10 +43,10 @@ const RuleCard = ({ id = '', name = '', description = '', accessibilityRequireme
 RuleCard.propTypes = {
 	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
-	description: PropTypes.array.isRequired,
+	description: PropTypes.string.isRequired,
 	accessibilityRequirements: PropTypes.object,
 	inputRules: PropTypes.array,
-	allRules: PropTypes.array,
+	allRules: PropTypes.object,
 }
 
 export default RuleCard
