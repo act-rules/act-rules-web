@@ -94,8 +94,8 @@ async function init(program) {
 				throw new Error('No title found for code snippet.')
 			}
 
-			const { code, block } = codeSnippet
-			let { type = 'html' } = codeSnippet
+			const { block } = codeSnippet
+			let { code, type = 'html' } = codeSnippet
 
 			if (regexps.testcaseCodeSnippetTypeIsSvg.test(block.substring(0, 15))) {
 				type = 'svg'
@@ -107,12 +107,14 @@ async function init(program) {
 			const testcaseFileName = `${ruleId}/${codeId}.${type}`
 			const testcasePath = `testcases/${testcaseFileName}`
 
-			const updatedCodeBlock = type === 'html' && !/\<\!doctype html\>/i.test(code) ? `<!doctype html> ${code}` : code
+			if (type === 'html' && !/^\s*\<\!DOCTYPE\s/i.test(code)) {
+				code = `<!DOCTYPE html> ${code}`
+			}
 
 			/**
 			 * Create testcase file
 			 */
-			await createFile(`${outputDir}/rules-testcases/${testcasePath}`, updatedCodeBlock)
+			await createFile(`${outputDir}/rules-testcases/${testcasePath}`, code)
 
 			/**
 			 * Create meta data for testcase(s)
