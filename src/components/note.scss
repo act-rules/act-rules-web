@@ -24,8 +24,8 @@ div.note {
 	}
 
 	&.invalid {
-		border-left-color: $error;
-		color: $error;
-		background-color: rgba($error, 0.05);
+		border-left-color: $warning;
+		color: $warning;
+		background-color: rgba($warning, 0.05);
 	}
 }

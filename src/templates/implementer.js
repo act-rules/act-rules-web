@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import queryString from 'query-string'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -14,22 +13,30 @@ const Implementer = ({ location, data }) => {
 	const implementerReport = JSON.parse(implementerData)
 
 	const areAllMappingsIncomplete = implementerReport.actMapping.every(({ complete }) => complete === false)
-	const showIncomplete = getShowIncomplete(location.search)
+	const completeMaps = filterByConsistency(implementerReport.actMapping, ['consistent', 'partially-consistent'])
 
-	return (
-		<Layout location={location}>
-			<SEO title={title} />
-			<section className="page-implementers">
-				<h1>{title}</h1>
-				{areAllMappingsIncomplete && !showIncomplete ? (
+	if (areAllMappingsIncomplete) {
+		return (
+			<Layout location={location}>
+				<SEO title={title} />
+				<section className="page-implementer">
+					<h1>{title}</h1>
 					<Note
 						cls={`invalid`}
 						title={`Incomplete Implementation`}
 						body={`All implementations provided are incomplete. Kindly submit an amended implementation report.`}
 					/>
-				) : (
-					<>{getPageContent(implementerReport.actMapping, showIncomplete)}</>
-				)}
+				</section>
+			</Layout>
+		)
+	}
+
+	return (
+		<Layout location={location}>
+			<SEO title={title} />
+			<section className="page-implementer">
+				<h1>{title}</h1>
+				<ListOfImplementations mapping={completeMaps} showIncomplete={false} />
 			</section>
 		</Layout>
 	)
@@ -48,39 +55,6 @@ export const query = graphql`
 		}
 	}
 `
-
-/**
- * Get page content
- * @param {Array<Object>} mapping actMapping
- * @param {Boolean} showIncomplete should show incomplete assertions
- */
-function getPageContent(mapping, showIncomplete) {
-	if (showIncomplete) {
-		const incompleteMaps = filterByConsistency(mapping, ['inconsistent'])
-		if (!incompleteMaps.length) {
-			return <Note cls={`valid`} title={`Well Done`} body={`All submitted implementation reports are complete.`} />
-		}
-		return <ListOfImplementations mapping={incompleteMaps} showIncomplete={showIncomplete} />
-	}
-
-	const completeMaps = filterByConsistency(mapping, ['consistent', 'partially-consistent'])
-	return <ListOfImplementations mapping={completeMaps} showIncomplete={showIncomplete} />
-}
-
-/**
- * Parse query params to determine of `incomplete` implementations should be shown
- * @param {String} search search string from `location` object
- * @returns {Boolean}
- */
-function getShowIncomplete(search) {
-	if (!search) {
-		return false
-	}
-
-	const parsedSearch = queryString.parse(search)
-	const { incomplete = false } = parsedSearch
-	return incomplete === 'true'
-}
 
 /**
  * Filter a given set of implementations based on consistency

@@ -9,13 +9,30 @@ const createPageImplementerReport = ({ actions: { createPage } }) => {
 		const filename = getHyphenatedString(toolName)
 		const slug = `implementation/${filename}`
 
+		/**
+		 * Complete implementations page
+		 */
 		createPage({
 			path: slug,
 			component: getTemplate('implementer'),
 			context: {
 				slug,
 				filename,
-				title: `Implementation Report of ${toolName} (${organisation})`,
+				title: `Implementation report of ${toolName} (${organisation})`,
+				implementerData: JSON.stringify(impl),
+			},
+		})
+
+		/**
+		 * Incomplete implementations page
+		 */
+		createPage({
+			path: `${slug}/incomplete`,
+			component: getTemplate('implementerIncomplete'),
+			context: {
+				slug,
+				filename,
+				title: `Incomplete implementations report of ${toolName} (${organisation})`,
 				implementerData: JSON.stringify(impl),
 			},
 		})
