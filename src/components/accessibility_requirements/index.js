@@ -66,7 +66,7 @@ function BasicListing({ accessibilityDocument, item, mapping, listType }) {
 			baseURL: 'https://www.w3.org/TR/wai-aria-1.1/#',
 		},
 		'using-aria': {
-			conformanceTo: 'Not required to conformance to any known conformance document.',
+			conformanceTo: 'Not required to conformance to any W3C accessibility recommendation.',
 			baseURL: 'https://www.w3.org/TR/using-aria/#',
 		},
 	}[accessibilityDocument]
