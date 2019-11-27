@@ -9,7 +9,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-function SEO({ title }) {
+function SEO({ title, lang = 'en' }) {
 	const { getSiteMetaData } = useStaticQuery(
 		graphql`
 			query {
@@ -44,6 +44,8 @@ function SEO({ title }) {
 
 	return (
 		<Helmet title={`${title} | ${author.name}`} meta={metaTags}>
+			{/* html attributes */}
+			<html lang={lang} />
 			{/* Busting cache as advised by Gatsby  */}
 			<meta http-equiv="Cache-Control" content="public, max-age=0, must-revalidate" />
 			<meta http-equiv="Pragma" content="no-cache" />
