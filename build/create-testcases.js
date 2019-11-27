@@ -94,8 +94,8 @@ async function init(program) {
 				throw new Error('No title found for code snippet.')
 			}
 
-			const { code, block } = codeSnippet
-			let { type = 'html' } = codeSnippet
+			const { block } = codeSnippet
+			let { code, type = 'html' } = codeSnippet
 
 			if (regexps.testcaseCodeSnippetTypeIsSvg.test(block.substring(0, 15))) {
 				type = 'svg'
@@ -106,6 +106,10 @@ async function init(program) {
 			const titleCurated = title.value.split(' ').map(t => t.toLowerCase())
 			const testcaseFileName = `${ruleId}/${codeId}.${type}`
 			const testcasePath = `testcases/${testcaseFileName}`
+
+			if (type === 'html' && !/^\s*\<\!DOCTYPE\s/i.test(code)) {
+				code = `<!DOCTYPE html> ${code}`
+			}
 
 			/**
 			 * Create testcase file
