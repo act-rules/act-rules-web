@@ -111,7 +111,7 @@ function TechniqueListing({ item, mapping, listType }) {
 			listType={listType}
 			title={title}
 			learnMore={title}
-			conformanceTo="Not required to conform to any known conformance document."
+			conformanceTo="Not required to conformance to any W3C accessibility recommendation."
 			url={url}
 			mapping={mapping}
 		/>
