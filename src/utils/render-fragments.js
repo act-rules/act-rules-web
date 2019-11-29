@@ -42,27 +42,6 @@ export const getGlossaryUsed = (slug, allGlossary) => {
 	)
 }
 
-export const getGlossaryUsedLink = (slug, allGlossary) => {
-	const usedKeys = getGlossaryItemsUsedInRule(slug)
-	if (!usedKeys) {
-		return null
-	}
-	const glossaries = allGlossary.edges.filter(({ node }) => {
-		const {
-			frontmatter: { key },
-		} = node
-		return usedKeys.includes(`#${key}`)
-	})
-	if (!glossaries.length) {
-		return null
-	}
-	return (
-		<li>
-			<a href="#glossary-listing">Glossary</a>
-		</li>
-	)
-}
-
 export const getGlossaryItemsUsedInRule = slug => {
 	const keys = []
 	Object.keys(glossaryUsages).forEach(key => {
