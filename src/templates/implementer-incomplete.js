@@ -29,7 +29,7 @@ const ImplementerIncomplete = ({ location, data }) => {
 	return (
 		<Layout location={location}>
 			<SEO title={title} />
-			<section className="page-container page-implementers">
+			<section className="page-implementer-incomplete">
 				<h1>{title}</h1>
 				<ListOfImplementations mapping={incompleteMaps} showIncomplete={true} />
 			</section>

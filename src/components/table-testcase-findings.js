@@ -10,13 +10,9 @@ const TableTestcaseFindings = ({ ruleId, implementations = [], filter = defaultF
 			<thead>
 				<tr>
 					<th>Testcase Url</th>
-					<th width="100px">Expected</th>
+					<th>Expected</th>
 					{implementations.map(({ implementationId }, index) => {
-						return (
-							<th width="100px" key={`${implementationId}- ${index}`}>
-								{implementationId}
-							</th>
-						)
+						return <th key={`${implementationId}- ${index}`}>{implementationId}</th>
 					})}
 				</tr>
 			</thead>
@@ -30,11 +26,7 @@ const TableTestcaseFindings = ({ ruleId, implementations = [], filter = defaultF
 								</td>
 								<td>{expected}</td>
 								{implementations.map(({ implementationId }, index) => {
-									return (
-										<td width="100px" key={`${implementationId}-${url}=${index}`}>
-											{actuals[implementationId]}
-										</td>
-									)
+									return <td key={`${implementationId}-${url}=${index}`}>{actuals[implementationId]}</td>
 								})}
 							</tr>
 						)
