@@ -7,11 +7,11 @@ import Layout from '../components/layout'
 import Acknowledgements from '../components/acknowledgements'
 import AccessibilityRequirements from '../components/accessibility_requirements'
 import ListOfImplementers from '../components/list-of-implementers'
+import RuleTableOfContents from '../components/rule-table-of-contents'
 
 import {
 	getGlossaryUsed,
 	getRuleUsageInRules,
-	getGlossaryUsedLink,
 	getRuleType,
 	getInputRulesForRule,
 	getInputAspects,
@@ -149,27 +149,7 @@ export default ({ location, data }) => {
 				<Acknowledgements scrollLinkId={`acknowledgements`} items={acknowledgements} contributors={contributors} />
 			</section>
 			{/* Toc */}
-			<section className="toc">
-				{/* todo:jey needs fixing up */}
-				<span role="heading" aria-level="1" className="heading">
-					Table of Contents
-				</span>
-				<div dangerouslySetInnerHTML={{ __html: tableOfContents }} />
-				<ul>
-					{/* glossary */}
-					{getGlossaryUsedLink(slug, allGlossary)}
-					<li>
-						<a href="#useful-links">Useful Links</a>
-					</li>
-					{/* implementations */}
-					<li>
-						<a href="#implementation-metrics">Implementations</a>
-					</li>
-					<li>
-						<a href="#acknowledgements">Acknowledgements</a>
-					</li>
-				</ul>
-			</section>
+			<RuleTableOfContents toc={tableOfContents} />
 		</Layout>
 	)
 }
