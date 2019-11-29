@@ -1,10 +1,22 @@
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
 
-import './index.scss'
+import './header.scss'
 
-const Footer = ({ actRulesRepoUrl }) => (
-	<footer className="app-footer">
+const Header = ({ actRulesRepoUrl, onToggleMenu }) => (
+	<header className="appHeader">
+		{/* show hide menu button  */}
+		<button
+			className="btn-secondary menuBtn"
+			onClick={e => {
+				e.preventDefault()
+				onToggleMenu()
+			}}
+		>
+			☰
+		</button>
+
+		{/* tags  */}
 		<div className="tags">
 			<p className="tag">
 				A Community Group of the
@@ -21,6 +33,7 @@ const Footer = ({ actRulesRepoUrl }) => (
 			</p>
 		</div>
 
+		{/* logos  */}
 		<div className="logos">
 			{/* w3c logo */}
 			<a lang="en" className="logo-w3c" href="https://www.w3.org/" rel="noopener noreferrer" target="_blank">
@@ -67,15 +80,16 @@ const Footer = ({ actRulesRepoUrl }) => (
 				</svg>
 			</a>
 		</div>
-	</footer>
+	</header>
 )
 
-Footer.propTypes = {
+Header.propTypes = {
 	actRulesRepoUrl: PropTypes.string,
+	onToggleMenu: PropTypes.func.isRequired,
 }
 
-Footer.defaultProps = {
+Header.defaultProps = {
 	actRulesRepoUrl: ``,
 }
 
-export default Footer
+export default Header

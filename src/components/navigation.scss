@@ -1,0 +1,72 @@
+@import "./../styles/variables";
+@import "./../styles/mixins";
+
+aside.navigation {
+  @include flex-column();
+  @include flex-scroll-container();
+  flex-shrink: 0;
+  background-color: $bg-secondary;
+  color: $fg-secondary;
+  width: $nav-w;
+  position: relative;
+  left: 0;
+  box-shadow: $shadow-right;
+
+  &.hide{
+    left: -1 * $nav-w;
+    position: absolute;
+  }
+
+  >div.logo {
+    flex-shrink: 0;
+  }
+
+  >nav {
+    >ul {
+      @include reset-list();
+      padding-left: 1rem;
+      >li {
+        transition: all ease;
+        a, p {
+          @include header-style($fg-secondary);
+          text-transform: capitalize;
+          font-size: 0.83em;
+          position: relative;
+          &:hover {
+            color: $accent;
+          }
+          &.active{
+            color: $accent;
+            &::after{
+              opacity: 1;
+            }
+          }
+          &.parent-item{
+            color: currentColor;
+          }
+          &::after{
+            content: '';
+            right: 0;
+            top: -10px;
+            height: 30px;
+            position: absolute;
+            width: 7px;
+            background-color: $accent;
+            opacity: 0;
+          }
+        }
+        >ul {
+          @include reset-list();
+          padding-inline-start: 1rem;
+          padding-inline-end: 0rem;
+          >li {
+            >a {
+              text-transform: capitalize;
+              padding-right: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

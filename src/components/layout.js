@@ -1,8 +1,10 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
+import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
+
 import Navigation from './navigation'
-import Footer from './footer'
+import Header from './header'
 
 import 'normalize.css'
 import './layout.scss'
@@ -38,14 +40,25 @@ const Layout = ({ children, location }) => {
 	const { author, repository } = JSON.parse(getSiteTitle.siteMetadata.actRulesPackage)
 	const { url: actRulesRepoUrl } = repository
 
+	const [isMenuShown, setIsMenuShown] = useState(true)
+	const onToggleMenu = (value = undefined) => {
+		if (!value) {
+			return setIsMenuShown(!isMenuShown)
+		}
+		return setIsMenuShown(value)
+	}
+
 	return (
-		<section className="layout-container">
-			{/* side bar navigation  */}
-			<Navigation logoName={author.name} logoNavigateTo={'/pages/about'} />
-			{/* main content  */}
+		<section className={classnames('layoutContainer', { hasMenu: isMenuShown })}>
+			<Navigation
+				logoName={author.name}
+				logoNavigateTo={'/pages/about'}
+				isMenuShown={isMenuShown}
+				onToggleMenu={onToggleMenu}
+			/>
 			<main>
+				<Header actRulesRepoUrl={actRulesRepoUrl} onToggleMenu={onToggleMenu} />
 				<section>{children}</section>
-				<Footer actRulesRepoUrl={actRulesRepoUrl} />
 			</main>
 		</section>
 	)
