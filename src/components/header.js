@@ -7,7 +7,9 @@ const Header = ({ actRulesRepoUrl, onToggleMenu }) => (
 	<header className="appHeader">
 		{/* show hide menu button  */}
 		<button
+			type="button"
 			className="btn-secondary menuBtn"
+			aria-label="Toggle navigation menu"
 			onClick={e => {
 				e.preventDefault()
 				onToggleMenu()

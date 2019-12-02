@@ -41,12 +41,7 @@ const Layout = ({ children, location }) => {
 	const { url: actRulesRepoUrl } = repository
 
 	const [isMenuShown, setIsMenuShown] = useState(true)
-	const onToggleMenu = (value = undefined) => {
-		if (!value) {
-			return setIsMenuShown(!isMenuShown)
-		}
-		return setIsMenuShown(value)
-	}
+	const onToggleMenu = (value = false) => setIsMenuShown(value || !isMenuShown)
 
 	return (
 		<section className={classnames('layoutContainer', { hasMenu: isMenuShown })}>
