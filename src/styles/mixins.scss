@@ -91,3 +91,9 @@
 		margin-top: 3rem;
 	}
 }
+
+
+@mixin overflow-text {
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
