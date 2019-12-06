@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import Navigation from './navigation'
 import Header from './header'
+import Footer from './footer'
 
 import curateGitUrl from '../../utils/curate-git-url'
 
@@ -48,14 +49,21 @@ const Layout = ({ children, location }) => {
 	return (
 		<section className={classnames('layoutContainer', { hasMenu: isMenuShown })}>
 			<Navigation
-				logoName={author.name}
-				logoNavigateTo={'/pages/about'}
+				name={author.name}
+				navigateTo={'/pages/about'}
 				isMenuShown={isMenuShown}
 				onToggleMenu={onToggleMenu}
 			/>
 			<main>
-				<Header actRulesRepoUrl={repositoryUrl} onToggleMenu={onToggleMenu} />
+				<Header
+					name={author.name}
+					navigateTo={'/pages/about'}
+					actRulesRepoUrl={repositoryUrl}
+					isMenuShown={isMenuShown}
+					onToggleMenu={onToggleMenu}
+				/>
 				<section>{children}</section>
+				<Footer actRulesRepoUrl={repositoryUrl} />
 			</main>
 		</section>
 	)

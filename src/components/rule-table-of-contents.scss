@@ -9,10 +9,6 @@ section.tableOfContents {
   font-size: 85%;
   padding-bottom: 3rem;
 
-  &.hide {
-    display: none;
-  }
-
   span.heading {
     padding: 0.25rem 0.5rem;
     @include header-style($fg-primary);
