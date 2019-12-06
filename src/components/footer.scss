@@ -5,6 +5,9 @@ footer.appFooter {
   width: auto;
   box-shadow: $shadow;
   display: flex;
+  font-size: 85%;
+  align-items: center;
+  z-index: 1;
 
   a {
     color: $accent;
@@ -36,7 +39,6 @@ footer.appFooter {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 1rem;
 
     a.logo-w3c {
       margin-top: 0.25rem;

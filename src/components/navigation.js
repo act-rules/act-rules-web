@@ -8,7 +8,7 @@ import Logo from './logo'
 
 import './navigation.scss'
 
-const Navigation = ({ logoName, logoNavigateTo, isMenuShown, onToggleMenu }) => {
+const Navigation = ({ name, navigateTo, isMenuShown, onToggleMenu }) => {
 	const data = useStaticQuery(
 		graphql`
 			query {
@@ -60,7 +60,7 @@ const Navigation = ({ logoName, logoNavigateTo, isMenuShown, onToggleMenu }) => 
 			{/* hide menu when width <= 600px */}
 			<ReactMedia queries={{ small: '(max-width: 599px)' }} onChange={matches => onToggleMenu(!matches.small)} />
 			{/* Logo  */}
-			<Logo name={logoName} navigateTo={logoNavigateTo} />
+			<Logo name={name} navigateTo={navigateTo} />
 			{/* Nav  */}
 			<nav className="navigation">
 				<ul>
@@ -106,15 +106,15 @@ const Navigation = ({ logoName, logoNavigateTo, isMenuShown, onToggleMenu }) => 
 }
 
 Navigation.propTypes = {
-	logoName: PropTypes.string.isRequired,
-	logoNavigateTo: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	navigateTo: PropTypes.string.isRequired,
 	isMenuShown: PropTypes.bool.isRequired,
 	onToggleMenu: PropTypes.func.isRequired,
 }
 
 Logo.defaultProps = {
-	logoName: ``,
-	logoNavigateTo: ``,
+	name: ``,
+	navigateTo: ``,
 }
 
 export default Navigation

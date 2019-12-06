@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './header.scss'
+import './footer.scss'
 
 const Footer = ({ actRulesRepoUrl }) => (
 	<footer className="appFooter">
