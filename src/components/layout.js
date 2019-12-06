@@ -6,6 +6,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Navigation from './navigation'
 import Header from './header'
 
+import curateGitUrl from '../../utils/curate-git-url'
+
 import 'normalize.css'
 import './layout.scss'
 
@@ -38,7 +40,7 @@ const Layout = ({ children, location }) => {
 
 	const { getSiteTitle } = data
 	const { author, repository } = JSON.parse(getSiteTitle.siteMetadata.actRulesPackage)
-	const { url: actRulesRepoUrl } = repository
+	const repositoryUrl = curateGitUrl(repository.url)
 
 	const [isMenuShown, setIsMenuShown] = useState(true)
 	const onToggleMenu = (value = false) => setIsMenuShown(value || !isMenuShown)
@@ -52,7 +54,7 @@ const Layout = ({ children, location }) => {
 				onToggleMenu={onToggleMenu}
 			/>
 			<main>
-				<Header actRulesRepoUrl={actRulesRepoUrl} onToggleMenu={onToggleMenu} />
+				<Header actRulesRepoUrl={repositoryUrl} onToggleMenu={onToggleMenu} />
 				<section>{children}</section>
 			</main>
 		</section>
