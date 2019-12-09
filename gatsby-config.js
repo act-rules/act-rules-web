@@ -40,7 +40,14 @@ module.exports = {
 			resolve: `gatsby-transformer-remark`,
 			options: {
 				plugins: [
-					// md -> plugin(code snippets) (spits out a new html snippet) (each snippet gets generated as html) -> html
+					{
+						resolve: `swap-heading-level`,
+						options: {
+							matchPath: /pages\/glossary\//,
+							fromHeadingDepth: 4,
+							toHeadingDepth: 3,
+						},
+					},
 					`gatsby-remark-autolink-headers`,
 					`gatsby-remark-copy-linked-files`,
 					`gatsby-remark-prismjs`,
