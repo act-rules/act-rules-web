@@ -7,7 +7,7 @@ module.exports = ({ markdownAST, markdownNode }, pluginOptions) => {
 	} = markdownNode
 
 	/**
-	 * Only run on markdown paths. that match a given path as option
+	 * Only run on markdown paths that match a given path as option
 	 */
 	if (!new RegExp(matchPath).test(slug)) {
 		return markdownAST
