@@ -1,6 +1,7 @@
 const regexps = {
 	testcaseTitle: /^#### (.*)/m,
 	testcaseCodeSnippetTypeIsSvg: /```svg/gm,
+	testcaseCodeSnippetTypeIsXhtml: /```xhtml/gm,
 	/*
 	  Detecting glossary usages in rules.
 		1. Classical usage => "the element has an [accessible name](#accessible-name)"
