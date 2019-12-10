@@ -100,6 +100,9 @@ async function init(program) {
 			if (regexps.testcaseCodeSnippetTypeIsSvg.test(block.substring(0, 15))) {
 				type = 'svg'
 			}
+			if (regexps.testcaseCodeSnippetTypeIsXhtml.test(block.substring(0, 15))) {
+				type = 'xhtml'
+			}
 
 			const codeId = objectHash({ block, type, ruleId })
 
@@ -109,6 +112,9 @@ async function init(program) {
 
 			if (type === 'html' && !/^\s*\<\!DOCTYPE\s/i.test(code)) {
 				code = `<!DOCTYPE html> ${code}`
+			}
+			if (type === 'xhtml' && !/^\s*\<\!DOCTYPE\s/i.test(code)) {
+				code = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> ${code}`
 			}
 
 			/**
