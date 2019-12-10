@@ -1,13 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import RuleCard from '../components/rule-card'
+import FuzzySearch from 'fuzzy-search' // Or: var FuzzySearch = require('fuzzy-search');
 
 import './rules.scss'
+import RulesFilter from '../components/rules-filter'
 
 export default ({ location, data }) => {
 	const { rules, allRules } = data
+
+	const [renderedRules, setRenderedRules] = useState(rules.edges)
+	const onFilter = value => {
+		if (value.length < 3) {
+			setRenderedRules(rules.edges)
+			return
+		}
+		const s = new FuzzySearch(rules.edges, [
+			'node.frontmatter.id',
+			'node.frontmatter.name',
+			'node.frontmatter.description',
+			'node.frontmatter.rule_type',
+		])
+		const results = s.search(value)
+		setRenderedRules(results)
+	}
 
 	return (
 		<Layout location={location}>
@@ -15,9 +33,13 @@ export default ({ location, data }) => {
 			<section className="page-rules">
 				{/* Heading */}
 				<h1>Rules</h1>
+
+				<div>
+					<RulesFilter onFilter={onFilter} />
+				</div>
 				{/* Table of rules */}
 				<section>
-					{rules.edges.map(({ node }) => {
+					{renderedRules.map(({ node }) => {
 						const { frontmatter, fields } = node
 						return (
 							<RuleCard
