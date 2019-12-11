@@ -1,6 +1,36 @@
-@import '../styles//variables.scss';
-@import '../styles/mixins.scss';
+@import "../styles//variables.scss";
+@import "../styles/mixins.scss";
 
 .page-rules {
   @include page-default-styles;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+
+  h1 {
+    border: none;
+    padding: 2rem 0;
+		margin-bottom: 0;
+  }
+
+  > header.titleAndFilter {
+    display: flex;
+    border-bottom: 1px solid $sep;
+    padding: 0 4rem;
+    align-items: center;
+
+    >h1 {
+      flex: 1;
+    }
+  }
+
+  > section.content {
+    flex: 1;
+    height: 100%;
+    overflow: auto;
+    padding: 4rem;
+  }
 }

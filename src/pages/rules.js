@@ -1,29 +1,26 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
+
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import RuleCard from '../components/rule-card'
-import FuzzySearch from 'fuzzy-search' // Or: var FuzzySearch = require('fuzzy-search');
+import FuzzySearch from 'fuzzy-search'
+import RulesFilter from '../components/rules-filter'
 
 import './rules.scss'
-import RulesFilter from '../components/rules-filter'
 
 export default ({ location, data }) => {
 	const { rules, allRules } = data
-
 	const [renderedRules, setRenderedRules] = useState(rules.edges)
+
 	const onFilter = value => {
-		if (value.length < 3) {
-			setRenderedRules(rules.edges)
-			return
-		}
-		const s = new FuzzySearch(rules.edges, [
+		const fuzzy = new FuzzySearch(rules.edges, [
 			'node.frontmatter.id',
 			'node.frontmatter.name',
 			'node.frontmatter.description',
 			'node.frontmatter.rule_type',
 		])
-		const results = s.search(value)
+		const results = fuzzy.search(value)
 		setRenderedRules(results)
 	}
 
@@ -31,14 +28,14 @@ export default ({ location, data }) => {
 		<Layout location={location}>
 			<SEO title="Rules" />
 			<section className="page-rules">
-				{/* Heading */}
-				<h1>Rules</h1>
-
-				<div>
+				{/* title and filter  */}
+				<header className="titleAndFilter">
+					<h1>Rules</h1>
+					{/* filter input  */}
 					<RulesFilter onFilter={onFilter} />
-				</div>
-				{/* Table of rules */}
-				<section>
+				</header>
+				{/* Rules list */}
+				<section className="content">
 					{renderedRules.map(({ node }) => {
 						const { frontmatter, fields } = node
 						return (
