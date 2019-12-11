@@ -4,24 +4,15 @@ import { useDebounce } from 'react-use'
 
 import './rules-filter.scss'
 
-const RulesFilter = ({ onFilter, debounceTime = 400, minimumFilterTextLength = 3 }) => {
+const RulesFilter = ({ onFilter, minimumFilterTextLength = 3, debounceTime = 300 }) => {
 	const [filterText, setFilterText] = useState(``)
 
-	useDebounce(
-		() => {
-			if (filterText.length < minimumFilterTextLength) {
-				return
-			}
-			onFilter(filterText)
-		},
-		debounceTime,
-		[filterText]
-	)
+	useDebounce(() => onFilter(filterText), debounceTime, [filterText])
 
 	return (
 		<form onSubmit={e => e.preventDefault()} className="rulesFilter">
 			<div className="filterTextInputGroup">
-				<label htmlFor="filterTextInput">Filter Rules:</label>
+				<label htmlFor="filterTextInput">Filter:</label>
 				<input
 					id="filterTextInput"
 					type="text"

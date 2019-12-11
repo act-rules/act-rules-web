@@ -12,8 +12,12 @@ import './rules.scss'
 export default ({ location, data }) => {
 	const { rules, allRules } = data
 	const [renderedRules, setRenderedRules] = useState(rules.edges)
-
+	const minimumFilterTextLength = 3
 	const onFilter = value => {
+		if (value.length < minimumFilterTextLength) {
+			setRenderedRules(rules.edges)
+			return
+		}
 		const fuzzy = new FuzzySearch(rules.edges, [
 			'node.frontmatter.id',
 			'node.frontmatter.name',
@@ -32,7 +36,7 @@ export default ({ location, data }) => {
 				<header className="titleAndFilter">
 					<h1>Rules</h1>
 					{/* filter input  */}
-					<RulesFilter onFilter={onFilter} />
+					<RulesFilter onFilter={onFilter} minimumFilterTextLength={minimumFilterTextLength} />
 				</header>
 				{/* Rules list */}
 				<section className="content">
