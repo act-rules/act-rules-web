@@ -5,10 +5,10 @@ const objectHash = require('object-hash')
 const codeBlocks = require('gfm-code-blocks')
 const createFile = require('../utils/create-file')
 const regexps = require('../utils/reg-exps')
-const getAllMatchesForRegex = require('../utils/get-all-matches-for-regex')
 const createTestcasesJson = require('./testcases/create-testcases-json')
 const createTestcasesOfRuleOfEmReportTool = require('./testcases/create-testcases-of-rule-of-em-report-tool')
 const getMarkdownData = require('../utils/get-markdown-data')
+const getMarkdownAstNodesOfType = require('../utils/get-markdown-ast-nodes-of-type')
 
 /**
  * Parse `args`
@@ -62,20 +62,26 @@ async function init(program) {
 	 * -> get code snippets
 	 * -> and their relevant titles
 	 */
-	for (const { frontmatter, body } of rulesData) {
+	for (const { frontmatter, body, markdownAST } of rulesData) {
 		const { id: ruleId, name: ruleName, accessibility_requirements: ruleAccessibilityRequirements } = frontmatter
 
 		/**
 		 * get all titles of test case examples (eg: #### Failed Example 1)
 		 */
-		const codeTitles = getAllMatchesForRegex(regexps.testcaseTitle, body)
+		const testcaseTitles = getMarkdownAstNodesOfType(markdownAST, 'heading')
+			.filter(({ depth, children }) => {
+				return depth === 4 && children && children.length > 0
+			})
+			.map(({ children }) => {
+				const [textNode] = children
+				return textNode.value
+			})
 
 		/**
 		 * get code blocks in markdown body
 		 */
-		const codeSnippets = codeBlocks(body)
-
-		if (codeTitles.length !== codeSnippets.length) {
+		const testcaseCodeSnippets = getMarkdownAstNodesOfType(markdownAST, 'code')
+		if (testcaseTitles.length !== testcaseCodeSnippets.length) {
 			throw new Error(
 				`Number of matching titles for code snippets is wrong. Check markdown '${ruleName}' for irregularities.`
 			)
@@ -88,49 +94,29 @@ async function init(program) {
 		 */
 		const ruleTestcases = []
 
-		for (const [index, codeSnippet] of codeSnippets.entries()) {
-			const title = codeTitles[index]
-			if (!title) {
-				throw new Error('No title found for code snippet.')
-			}
+		for (const [index, codeSnippet] of testcaseCodeSnippets.entries()) {
+			const title = testcaseTitles[index]
+			const [expectedOutcome] = title.split(' ')
 
-			const { block } = codeSnippet
-			let { code, type = 'html' } = codeSnippet
-
-			if (regexps.testcaseCodeSnippetTypeIsSvg.test(block.substring(0, 15))) {
-				type = 'svg'
-			}
-			if (regexps.testcaseCodeSnippetTypeIsXhtml.test(block.substring(0, 15))) {
-				type = 'xhtml'
-			}
-
-			const codeId = objectHash({ block, type, ruleId })
-
-			const titleCurated = title.value.split(' ').map(t => t.toLowerCase())
-			const testcaseFileName = `${ruleId}/${codeId}.${type}`
-			const testcasePath = `testcases/${testcaseFileName}`
-
-			if (type === 'html' && !/^\s*\<\!DOCTYPE\s/i.test(code)) {
-				code = `<!DOCTYPE html> ${code}`
-			}
-			if (type === 'xhtml' && !/^\s*\<\!DOCTYPE\s/i.test(code)) {
-				code = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> ${code}`
-			}
+			const { lang = `html`, value: code } = codeSnippet
+			const codeId = objectHash({ code, lang, ruleId })
+			const testcasePath = `testcases/${ruleId}/${codeId}.${lang}`
+			const codeWithDoctype = wrapCodeWithDoctype(lang, code)
 
 			/**
 			 * Create testcase file
 			 */
-			await createFile(`${outputDir}/rules-testcases/${testcasePath}`, code)
+			await createFile(`${outputDir}/rules-testcases/${testcasePath}`, codeWithDoctype)
 
 			/**
 			 * Create meta data for testcase(s)
 			 */
 			const testcase = {
 				testcaseId: codeId,
-				testcaseTitle: title.value,
+				testcaseTitle: title,
 				url: `${actRulesCommunityPkg.www.url}/${testcasePath}`,
 				relativePath: testcasePath,
-				expected: titleCurated[0],
+				expected: expectedOutcome.toLowerCase(),
 				ruleId,
 				ruleName,
 				rulePage: `${actRulesCommunityPkg.www.url}/rules/${ruleId}`,
@@ -166,4 +152,17 @@ async function init(program) {
 	 * Generate `testcases.json`
 	 */
 	await createTestcasesJson(allRulesTestcases, actRulesCommunityPkg)
+}
+
+function wrapCodeWithDoctype(lang, code) {
+	const doctypeMap = {
+		html: `<!DOCTYPE html>`,
+		xhtml: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">`,
+	}
+
+	if (Object.keys(doctypeMap).includes(lang)) {
+		return `${doctypeMap[lang]} ${code}`
+	}
+
+	return code
 }
