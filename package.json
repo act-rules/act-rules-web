@@ -107,7 +107,7 @@
 		"actRulesCommunityTestAssetsDir": "node_modules/act-rules-community/test-assets"
 	},
 	"lint-staged": {
-		"*.{md,json,js,html}": [
+		"*.{json,md,js,jsx,yml,scss}": [
 			"prettier --write",
 			"git add"
 		]
