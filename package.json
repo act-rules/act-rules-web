@@ -32,7 +32,6 @@
 		"gatsby-source-filesystem": "^2.1.37",
 		"gatsby-transformer-remark": "^2.6.36",
 		"gatsby-transformer-sharp": "^2.3.5",
-		"gfm-code-blocks": "^1.0.0",
 		"globby": "^10.0.1",
 		"htmlhint": "^0.11.0",
 		"is-url": "^1.2.4",
@@ -50,8 +49,10 @@
 		"react-helmet": "^5.2.1",
 		"react-media": "^1.10.0",
 		"react-use": "^13.12.2",
+		"remark": "^11.0.2",
 		"remove-markdown": "^0.3.0",
-		"showdown": "^1.9.1"
+		"showdown": "^1.9.1",
+		"unist-util-visit": "^2.0.1"
 	},
 	"devDependencies": {
 		"husky": "^3.1.0",
