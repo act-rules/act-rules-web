@@ -1,7 +1,6 @@
-
 @import '../styles/variables.scss';
 @import '../styles/mixins.scss';
 
 .page-implementer {
-  @include page-default-styles;
+	@include page-default-styles;
 }

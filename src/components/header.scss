@@ -1,45 +1,45 @@
-@import "./../styles/variables";
+@import './../styles/variables';
 
 header.appHeader {
-  color: $bg-secondary;
-  width: auto;
-  box-shadow: $shadow;
-  display: flex;
-  align-items: center;
-  z-index: 1;
+	color: $bg-secondary;
+	width: auto;
+	box-shadow: $shadow;
+	display: flex;
+	align-items: center;
+	z-index: 1;
 
-  div.name {
-    margin: 0 1rem;
-    flex: 1;
-    a {
-      color: $accent;
-      text-decoration: none;
-      flex: 1;
-    }
-  }
+	div.name {
+		margin: 0 1rem;
+		flex: 1;
+		a {
+			color: $accent;
+			text-decoration: none;
+			flex: 1;
+		}
+	}
 
-  div.logos {
-    padding: 0 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+	div.logos {
+		padding: 0 1rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
 
-    a.logo-github {
-      svg {
-        color: inherit;
-        vertical-align: middle;
-        path {
-          fill: $bg-secondary;
-        }
-      }
+		a.logo-github {
+			svg {
+				color: inherit;
+				vertical-align: middle;
+				path {
+					fill: $bg-secondary;
+				}
+			}
 
-      &:hover {
-        svg {
-          path {
-            fill: darken($accent, 30%);
-          }
-        }
-      }
-    }
-  }
+			&:hover {
+				svg {
+					path {
+						fill: darken($accent, 30%);
+					}
+				}
+			}
+		}
+	}
 }
