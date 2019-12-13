@@ -12,12 +12,12 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
 
-      - name: Install NPM dependencies 
+      - name: Install NPM dependencies
         run: npm install
 
       - name: Build Gatsby website
         run: npm run build
-      
+
       - name: Verify broken links
         run: npx linkinator ./public
 

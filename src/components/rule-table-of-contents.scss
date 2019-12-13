@@ -1,45 +1,45 @@
-@import "../styles/variables.scss";
-@import "../styles/mixins.scss";
+@import '../styles/variables.scss';
+@import '../styles/mixins.scss';
 
 section.tableOfContents {
-  background-color: $sep;
-  min-width: 225px;
-  max-width: 300px;
-  overflow: auto;
-  font-size: 85%;
-  padding-bottom: 3rem;
+	background-color: $sep;
+	min-width: 225px;
+	max-width: 300px;
+	overflow: auto;
+	font-size: 85%;
+	padding-bottom: 3rem;
 
-  span.heading {
-    padding: 0.25rem 0.5rem;
-    @include header-style($fg-primary);
-    text-transform: capitalize;
-    margin: 1rem 0.5rem 0.5rem 0;
-    display: inline-block;
-    &:first-child {
-      margin-top: 6rem;
-    }
-  }
+	span.heading {
+		padding: 0.25rem 0.5rem;
+		@include header-style($fg-primary);
+		text-transform: capitalize;
+		margin: 1rem 0.5rem 0.5rem 0;
+		display: inline-block;
+		&:first-child {
+			margin-top: 6rem;
+		}
+	}
 
-  ul {
-    @include reset-list;
-    margin: 0.5rem 0;
-    li {
-      span,
-      a {
-        display: inline-block;
-      }
-      a {
-        cursor: pointer;
-        text-decoration: none;
-        padding: 0rem 1rem;
-        display: block;
-        &:hover {
-          color: $accent;
-        }
-      }
-    }
-    ul {
-      margin-left: 1rem;
-    }
-  }
+	ul {
+		@include reset-list;
+		margin: 0.5rem 0;
+		li {
+			span,
+			a {
+				display: inline-block;
+			}
+			a {
+				cursor: pointer;
+				text-decoration: none;
+				padding: 0rem 1rem;
+				display: block;
+				&:hover {
+					color: $accent;
+				}
+			}
+		}
+		ul {
+			margin-left: 1rem;
+		}
+	}
 }
