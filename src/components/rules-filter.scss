@@ -1,23 +1,23 @@
-@import "../styles/variables.scss";
-@import "../styles/mixins.scss";
+@import '../styles/variables.scss';
+@import '../styles/mixins.scss';
 
 form.rulesFilter {
-  padding: 2rem 0;
-  div.filterTextInputGroup {
-    > label {
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-    > input {
-      padding: 0.5rem 0.2rem;
-      min-width: 240px;
-      background-color: $sep;
-    }
-    >small {
-      font-size: 80%;
-      font-style: italic;
-      display: block;
-      text-align: right;
-    }
-  }
+	padding: 2rem 0;
+	div.filterTextInputGroup {
+		> label {
+			display: block;
+			margin-bottom: 0.25rem;
+		}
+		> input {
+			padding: 0.5rem 0.2rem;
+			min-width: 240px;
+			background-color: $sep;
+		}
+		> small {
+			font-size: 80%;
+			font-style: italic;
+			display: block;
+			text-align: right;
+		}
+	}
 }

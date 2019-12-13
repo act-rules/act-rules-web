@@ -1,8 +1,8 @@
-@import "./variables";
-@import "./mixins";
+@import './variables';
+@import './mixins';
 
 body {
-  font-family: "Lora", serif;
+	font-family: 'Lora', serif;
 }
 
 h1,
@@ -11,119 +11,118 @@ h3,
 h4,
 h5,
 h6 {
-  @include header-style($fg-primary);
+	@include header-style($fg-primary);
 }
 
 ul {
-  margin: 0;
+	margin: 0;
 }
 
 hr {
-  opacity: 0.1;
+	opacity: 0.1;
 }
 
 a {
-  color: darken($accent, 25%);
-  font-weight: 500;
-  &:hover {
-    opacity: 0.8;
-  }
+	color: darken($accent, 25%);
+	font-weight: 500;
+	&:hover {
+		opacity: 0.8;
+	}
 }
 
 table {
-  border-collapse: collapse;
-  width: 100%;
-  table-layout: fixed;
+	border-collapse: collapse;
+	width: 100%;
+	table-layout: fixed;
 
-  thead {
-    border-bottom: 2px solid $accent;
-    th {
-      @include header-style($fg-primary);
-      font-weight: bold;
-      text-align: left;
-      display: table-cell;
-      background-color: $sep;
+	thead {
+		border-bottom: 2px solid $accent;
+		th {
+			@include header-style($fg-primary);
+			font-weight: bold;
+			text-align: left;
+			display: table-cell;
+			background-color: $sep;
 			padding: 0.25rem 0;
 			@include overflow-text;
-    }
-  }
+		}
+	}
 
-  tbody {
-    tr {
-      border-bottom: 2px solid $sep;
-      td {
-        padding: 0.25rem 0;
+	tbody {
+		tr {
+			border-bottom: 2px solid $sep;
+			td {
+				padding: 0.25rem 0;
 				@include overflow-text;
 
-        a {
-          text-decoration: none;
-          display: inline-block;
+				a {
+					text-decoration: none;
+					display: inline-block;
 					margin: 0 0.5em 0 0;
 					@include overflow-text;
-          svg {
-            fill: currentColor;
-          }
-          &:hover,
-          &:active,
-          &:focus {
-            color: darken($fg-primary, 10%);
-            border: none;
-          }
-        }
-      }
-    }
-  }
+					svg {
+						fill: currentColor;
+					}
+					&:hover,
+					&:active,
+					&:focus {
+						color: darken($fg-primary, 10%);
+						border: none;
+					}
+				}
+			}
+		}
+	}
 
-  &.compact {
-    tbody {
-      tr {
-        border-bottom: none;
-        td {
-          padding: none;
-        }
-      }
-    }
-  }
+	&.compact {
+		tbody {
+			tr {
+				border-bottom: none;
+				td {
+					padding: none;
+				}
+			}
+		}
+	}
 }
 
 button,
 .btn {
-  padding: 1em;
-  text-decoration: none;
-  line-height: 1em;
-  display: inline-block;
-  letter-spacing: 0.1em;
-  transition: border-color 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;
-  @include btn($bg-secondary, $fg-secondary, $accent);
-  cursor: pointer;
+	padding: 1em;
+	text-decoration: none;
+	line-height: 1em;
+	display: inline-block;
+	letter-spacing: 0.1em;
+	transition: border-color 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;
+	@include btn($bg-secondary, $fg-secondary, $accent);
+	cursor: pointer;
 }
 
 blockquote {
-  margin: 2rem 0;
-  background-color: lighten($accent, 40%);
-  border: 1px solid $accent;
-  padding: 1rem;
+	margin: 2rem 0;
+	background-color: lighten($accent, 40%);
+	border: 1px solid $accent;
+	padding: 1rem;
 }
 
 figure {
-  background: #ffe;
-  margin: 0 1em;
-  padding: 0.5em 1em;
-  border: solid 1px #880;
-  border-radius: 4px;
-  display: inline-block;
+	background: #ffe;
+	margin: 0 1em;
+	padding: 0.5em 1em;
+	border: solid 1px #880;
+	border-radius: 4px;
+	display: inline-block;
 
-  > figcaption {
-    margin-bottom: 0.5em;
-  }
+	> figcaption {
+		margin-bottom: 0.5em;
+	}
 
-  > img {
-    display: block;
-    margin: 0 auto;
-  }
+	> img {
+		display: block;
+		margin: 0 auto;
+	}
 }
 
-
 .hide {
-  display: none !important;
+	display: none !important;
 }
