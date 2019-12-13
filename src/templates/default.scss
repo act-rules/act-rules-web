@@ -1,6 +1,6 @@
-@import "../styles/variables.scss";
-@import "../styles/mixins.scss";
+@import '../styles/variables.scss';
+@import '../styles/mixins.scss';
 
 .page-default {
-  @include page-default-styles;
+	@include page-default-styles;
 }
