@@ -1,112 +1,112 @@
-@import "./../styles/variables";
+@import './../styles/variables';
 
 footer.appFooter {
-  color: $bg-secondary;
-  width: auto;
-  box-shadow: $shadow;
-  display: flex;
-  font-size: 85%;
-  align-items: center;
-  z-index: 1;
+	color: $bg-secondary;
+	width: auto;
+	box-shadow: $shadow;
+	display: flex;
+	font-size: 85%;
+	align-items: center;
+	z-index: 1;
 
-  a {
-    color: $accent;
-  }
+	a {
+		color: $accent;
+	}
 
-  h2 {
-    padding: 0.75rem 0;
-    margin: 0;
-    color: $accent;
-    font-weight: bolder;
-    width: 150px;
-  }
+	h2 {
+		padding: 0.75rem 0;
+		margin: 0;
+		color: $accent;
+		font-weight: bolder;
+		width: 150px;
+	}
 
-  div.tags {
-    padding: 0 1rem;
-    flex: 1;
-    p.tag {
-      a {
-        color: darken($accent, 30%);
-      }
-      font-size: 75%;
-      font-style: italic;
-      opacity: 0.9;
-    }
-  }
+	div.tags {
+		padding: 0 1rem;
+		flex: 1;
+		p.tag {
+			a {
+				color: darken($accent, 30%);
+			}
+			font-size: 75%;
+			font-style: italic;
+			opacity: 0.9;
+		}
+	}
 
-  div.logos {
-    padding: 0 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+	div.logos {
+		padding: 0 1rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
 
-    a.logo-w3c {
-      margin-top: 0.25rem;
-      margin-right: 1rem;
-      svg {
-        color: inherit;
-        vertical-align: middle;
+		a.logo-w3c {
+			margin-top: 0.25rem;
+			margin-right: 1rem;
+			svg {
+				color: inherit;
+				vertical-align: middle;
 
-        path {
-          fill: $bg-secondary;
-        }
-      }
+				path {
+					fill: $bg-secondary;
+				}
+			}
 
-      &:hover {
-        svg {
-          path {
-            fill: darken($accent, 30%);
-          }
-        }
-      }
-    }
+			&:hover {
+				svg {
+					path {
+						fill: darken($accent, 30%);
+					}
+				}
+			}
+		}
 
-    a.logo-wai {
-      color: darken($accent, 30%);
-      color: $bg-secondary;
-      margin-right: 1rem;
-      text-decoration: none;
-      &:hover {
-        span {
-          color: darken($accent, 30%);
-        }
-      }
-      span.wai {
-        font-size: 0.75rem;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
+		a.logo-wai {
+			color: darken($accent, 30%);
+			color: $bg-secondary;
+			margin-right: 1rem;
+			text-decoration: none;
+			&:hover {
+				span {
+					color: darken($accent, 30%);
+				}
+			}
+			span.wai {
+				font-size: 0.75rem;
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
 
-        span.wa {
-          padding-bottom: 2px;
-        }
-        span.i {
-          border-top: 1px solid #eed009;
-          padding-top: 2px;
-          display: flex;
-          -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-          justify-content: space-between;
-        }
-      }
-    }
+				span.wa {
+					padding-bottom: 2px;
+				}
+				span.i {
+					border-top: 1px solid #eed009;
+					padding-top: 2px;
+					display: flex;
+					-webkit-box-pack: justify;
+					-ms-flex-pack: justify;
+					justify-content: space-between;
+				}
+			}
+		}
 
-    a.logo-github {
-      svg {
-        color: inherit;
-        vertical-align: middle;
-        path {
-          fill: $bg-secondary;
-        }
-      }
+		a.logo-github {
+			svg {
+				color: inherit;
+				vertical-align: middle;
+				path {
+					fill: $bg-secondary;
+				}
+			}
 
-      &:hover {
-        svg {
-          path {
-            fill: darken($accent, 30%);
-          }
-        }
-      }
-    }
-  }
+			&:hover {
+				svg {
+					path {
+						fill: darken($accent, 30%);
+					}
+				}
+			}
+		}
+	}
 }
