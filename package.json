@@ -83,7 +83,7 @@
 		"develop": "gatsby develop",
 		"prebuild": "npm run clean && npm --prefix './node_modules/act-rules-community' run formatRulesDir && npm run getData",
 		"build": "gatsby build",
-		"format": "prettier --write *.{json,md,js,jsx,yml,scss} './{.github,build,gatsby,plugins,src,utils}/**/*.{json,md,js,jsx,yml,scss}'",
+		"format": "prettier --write *.{html,js,jsx,json,md,scss,yml} './{.github,build,gatsby,plugins,src,utils}/**/*.{html,js,jsx,json,md,scss,yml}'",
 		"start": "npm run clean && npm run develop",
 		"serve": "gatsby serve"
 	},
@@ -108,7 +108,7 @@
 		"actRulesCommunityTestAssetsDir": "node_modules/act-rules-community/test-assets"
 	},
 	"lint-staged": {
-		"*.{md,json,js,html}": [
+		"*.{html,js,jsx,json,md,scss,yml}": [
 			"prettier --write",
 			"git add"
 		]
