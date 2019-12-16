@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useState } from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
+import ReactMedia from 'react-media'
 
 import Navigation from './navigation'
 import Header from './header'
@@ -63,7 +64,16 @@ const Layout = ({ children, location }) => {
 					onToggleMenu={onToggleMenu}
 				/>
 				<section>{children}</section>
-				<Footer actRulesRepoUrl={repositoryUrl} />
+
+				{/* hide footer when width <= 600px */}
+				<ReactMedia queries={{ small: '(max-width: 599px)' }}>
+					{matches => {
+						if (!matches || matches.small) {
+							return null
+						}
+						return <Footer actRulesRepoUrl={repositoryUrl} />
+					}}
+				</ReactMedia>
 			</main>
 		</section>
 	)
