@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
+import classnames from 'classnames'
+import ReactMedia from 'react-media'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -11,7 +13,10 @@ import './rules.scss'
 
 export default ({ location, data }) => {
 	const { rules, allRules } = data
+
+	const [isSmallViewport, setIsSmallViewport] = useState(false)
 	const [renderedRules, setRenderedRules] = useState(rules.edges)
+
 	const minimumFilterTextLength = 3
 	const onFilter = value => {
 		if (value.length < minimumFilterTextLength) {
@@ -30,8 +35,11 @@ export default ({ location, data }) => {
 
 	return (
 		<Layout location={location}>
+			<ReactMedia queries={{ small: '(max-width: 599px)' }} onChange={matches => setIsSmallViewport(matches.small)} />
+
 			<SEO title="Rules" />
-			<section className="page-rules">
+
+			<section className={classnames(`page-rules`, { sm: isSmallViewport })}>
 				{/* title and filter  */}
 				<header className="titleAndFilter">
 					<h1>Rules</h1>
