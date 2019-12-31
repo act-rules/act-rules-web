@@ -1,0 +1,9 @@
+# List of ids of rules whose testing methodology is manual
+
+- e6952f # Attribute is not duplicated
+- 80af7b # Focusable element has no keyboard trap
+- ebe86a # Focusable element has no keyboard trap via non-standard navigation
+- a1b64e # Focusable element has no keyboard trap via standard navigation
+- cc0f0a # Form control label is descriptive
+- c4a8a4 # HTML page title is descriptive
+- b49b2e # Heading is descriptive

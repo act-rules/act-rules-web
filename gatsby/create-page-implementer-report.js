@@ -1,3 +1,7 @@
+const fs = require('fs')
+const yaml = require('js-yaml')
+const manualRules = yaml.safeLoad(fs.readFileSync('./manual-rules.yml', 'utf8'))
+
 const implementers = require('../_data/implementers.json')
 const getTemplate = require('./get-template')
 const getHyphenatedString = require('../utils/get-hyphenated-string')
@@ -5,7 +9,6 @@ const getHyphenatedString = require('../utils/get-hyphenated-string')
 const createPageImplementerReport = ({ actions: { createPage } }) => {
 	for (const impl of implementers) {
 		const { organisation, toolName } = impl
-
 		const filename = getHyphenatedString(toolName)
 		const slug = `implementation/${filename}`
 
@@ -20,6 +23,7 @@ const createPageImplementerReport = ({ actions: { createPage } }) => {
 				filename,
 				title: `Implementation report of ${toolName} (${organisation})`,
 				implementerData: JSON.stringify(impl),
+				manualRules
 			},
 		})
 
@@ -34,6 +38,7 @@ const createPageImplementerReport = ({ actions: { createPage } }) => {
 				filename,
 				title: `Incomplete implementations report of ${toolName} (${organisation})`,
 				implementerData: JSON.stringify(impl),
+				manualRules
 			},
 		})
 	}
