@@ -36,23 +36,25 @@ table {
 	table-layout: fixed;
 
 	thead {
-		border-bottom: 2px solid $accent;
+		border-bottom: 1px solid $accent;
 		th {
 			@include header-style($fg-primary);
-			font-weight: bold;
+			font-weight: 300;
+			font-style: italic;
 			text-align: left;
+			font-size: 85%;
 			display: table-cell;
 			background-color: $sep;
-			padding: 0.25rem 0;
+			padding: 0.2rem 0;
 			@include overflow-text;
 		}
 	}
 
 	tbody {
 		tr {
-			border-bottom: 2px solid $sep;
+			border-bottom: 1px solid $sep;
 			td {
-				padding: 0.25rem 0;
+				padding: 0.2rem 0;
 				@include overflow-text;
 
 				a {
