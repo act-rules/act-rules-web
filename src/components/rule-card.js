@@ -8,33 +8,31 @@ import CountImplementations from './count-implementations'
 import { getInputRulesForRule } from '../utils/render-fragments'
 
 import './rule-card.scss'
+import RuleHeader from './rule-header'
 
-const RuleCard = ({ id = '', name = '', description = '', accessibilityRequirements, inputRules, allRules }) => {
+const RuleCard = ({ id = '', name = '', type = '', description = '', accessibilityRequirements, inputRules, allRules }) => {
 	const converter = new showdown.Converter()
 
 	return (
 		<article className="ruleCard">
 			<section>
-				{/* rule id */}
-				<a href={id}>
-					<h2
-						dangerouslySetInnerHTML={{
-							__html: converter.makeHtml(name),
-						}}
-					/>
-				</a>
-				{/* rule sc's */}
-				<AccessibilityRequirements accessibility_requirements={accessibilityRequirements} type="text" />
-				{/* input rules */}
-				{getInputRulesForRule(inputRules, allRules.edges, true)}
-				{/* implementation count */}
-				<CountImplementations ruleId={id} />
+				{/* header  */}
+				<RuleHeader
+					ruleId={id}
+					ruleType={type}
+					ruleName={name} />
 				{/* rule description */}
 				<div
 					dangerouslySetInnerHTML={{
 						__html: converter.makeHtml(description),
 					}}
 				/>
+				{/* rule sc's */}
+				<AccessibilityRequirements accessibility_requirements={accessibilityRequirements} type="text" />
+				{/* input rules */}
+				{getInputRulesForRule(inputRules, allRules.edges, true)}
+				{/* implementation count */}
+				<CountImplementations ruleId={id} />
 			</section>
 		</article>
 	)
@@ -43,6 +41,7 @@ const RuleCard = ({ id = '', name = '', description = '', accessibilityRequireme
 RuleCard.propTypes = {
 	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
+	type: PropTypes.string.isRequired,
 	description: PropTypes.string.isRequired,
 	accessibilityRequirements: PropTypes.object,
 	inputRules: PropTypes.array,

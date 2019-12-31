@@ -1,26 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import showdown from 'showdown'
-
-import Note from './note'
 import TableTestcaseFindings from './table-testcase-findings'
+import Note from './note'
 
 const ListOfImplementations = ({ mapping = [], showIncomplete = false }) => {
-	const converter = new showdown.Converter()
-
 	return (
 		<div>
-			{mapping.map(({ ruleId, ruleName, implementations }) => {
-				return (
-					<div key={ruleId}>
-						<Link to={`/rules/${ruleId}`}>
-							<h2 id={`id-${ruleId}`} dangerouslySetInnerHTML={{ __html: converter.makeHtml(ruleName) }}></h2>
-						</Link>
-						{getPageContent(implementations, showIncomplete, ruleId)}
-					</div>
-				)
-			})}
+			{mapping.map(({ ruleId = '', ruleName = '', ruleType = '', implementations }) =>
+				<div>{getPageContent(implementations, showIncomplete, ruleId)}</div>
+			)}
 		</div>
 	)
 }

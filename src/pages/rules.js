@@ -36,9 +36,7 @@ export default ({ location, data }) => {
 	return (
 		<Layout location={location}>
 			<ReactMedia queries={{ small: '(max-width: 599px)' }} onChange={matches => setIsSmallViewport(matches.small)} />
-
 			<SEO title="Rules" />
-
 			<section className={classnames(`page-rules`, { sm: isSmallViewport })}>
 				{/* title and filter  */}
 				<header className="titleAndFilter">
@@ -55,6 +53,7 @@ export default ({ location, data }) => {
 								key={frontmatter.id}
 								id={frontmatter.id}
 								name={frontmatter.name}
+								type={frontmatter.rule_type}
 								description={frontmatter.description}
 								accessibilityRequirements={JSON.parse(fields.fastmatterAttributes).accessibility_requirements}
 								inputRules={frontmatter.input_rules}

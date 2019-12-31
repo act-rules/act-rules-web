@@ -3,4 +3,8 @@
 
 .page-implementer-incomplete {
 	@include page-default-styles;
+
+	.cardItem {
+		@include card;
+  }
 }
