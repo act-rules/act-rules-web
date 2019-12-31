@@ -34,81 +34,53 @@ const ImplementerIncomplete = ({ location, data }) => {
 			<SEO title={title} />
 			<section className="page-implementer-incomplete">
 				<h1>{title}</h1>
-				{
-					data.allRules.edges
-						.map(({ node }) => {
-							const { frontmatter: { id, name, rule_type }, fields: { fastmatterAttributes } } = node
-							const { accessibility_requirements } = JSON.parse(fastmatterAttributes)
-							const ruleScs = Object.keys(accessibility_requirements || {})
-								.filter(key => key.includes('wcag20') || key.includes('wcag21'))
-								.map(key => key.split(':').pop())
-								.map(sc => 'wcag' + sc.replace(/\./g, ''))
-							const completeImpl = completeMaps.find(({ ruleId }) => ruleId === id)
-							const impl = incompleteMaps.find(({ ruleId }) => ruleId === id)
+				{data.allRules.edges.map(({ node }) => {
+					const {
+						frontmatter: { id, name, rule_type },
+						fields: { fastmatterAttributes },
+					} = node
+					const { accessibility_requirements } = JSON.parse(fastmatterAttributes)
+					const ruleScs = Object.keys(accessibility_requirements || {})
+						.filter(key => key.includes('wcag20') || key.includes('wcag21'))
+						.map(key => key.split(':').pop())
+						.map(sc => 'wcag' + sc.replace(/\./g, ''))
+					const completeImpl = completeMaps.find(({ ruleId }) => ruleId === id)
+					const impl = incompleteMaps.find(({ ruleId }) => ruleId === id)
 
-							if (completeImpl || !ruleScs.length) {
-								return null
-							}
+					if (completeImpl || !ruleScs.length) {
+						return null
+					}
 
-							if (!impl) {
-								return (
-									<div
-										className='cardItem'
-										key={id}
-										data-rule-id={id}>
-										<RuleHeader
-											ruleId={id}
-											ruleType={rule_type}
-											ruleName={name}>
-											<Badge title={`Id:`} value={id} />
-											<Badge title={`Type:`} value={rule_type} />
-											{
-												manualRules.includes(id) && <Badge title={`Mode:`} value={`manual`} />
-											}
-										</RuleHeader>
-										<AccessibilityRequirements
-											accessibility_requirements={accessibility_requirements}
-											type='text' />
-									</div>
-								)
-							}
+					if (!impl) {
+						return (
+							<div className="cardItem" key={id} data-rule-id={id}>
+								<RuleHeader ruleId={id} ruleType={rule_type} ruleName={name}>
+									<Badge title={`Id:`} value={id} />
+									<Badge title={`Type:`} value={rule_type} />
+									{manualRules.includes(id) && <Badge title={`Mode:`} value={`manual`} />}
+								</RuleHeader>
+								<AccessibilityRequirements accessibility_requirements={accessibility_requirements} type="text" />
+							</div>
+						)
+					}
 
-							/**
-						   * show incomplete implementation tabulation
-						   */
-							return (
-								<div
-									className='cardItem'
-									key={id}
-									data-rule-id={id}>
-									<RuleHeader
-										ruleId={id}
-										ruleType={rule_type}
-										ruleName={name}>
-										<Badge title={`Id:`} value={id} />
-										<Badge title={`Type:`} value={rule_type} />
-										{
-											manualRules.includes(id) && <Badge title={`Mode:`} value={`manual`} />
-										}
-									</RuleHeader>
-									<ListOfImplementations
-										mapping={[
-											{
-												...impl,
-												ruleType: rule_type
-											}
-										]}
-										showIncomplete={true}
-									/>
-								</div>
-							)
-						})
-				}
+					/**
+					 * show incomplete implementation tabulation
+					 */
+					return (
+						<div className="cardItem" key={id} data-rule-id={id}>
+							<RuleHeader ruleId={id} ruleType={rule_type} ruleName={name}>
+								<Badge title={`Id:`} value={id} />
+								<Badge title={`Type:`} value={rule_type} />
+								{manualRules.includes(id) && <Badge title={`Mode:`} value={`manual`} />}
+							</RuleHeader>
+							<ListOfImplementations mapping={[impl]} showIncomplete={true} />
+						</div>
+					)
+				})}
 			</section>
 		</Layout>
 	)
-
-
 }
 
 export default ImplementerIncomplete

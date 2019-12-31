@@ -1,10 +1,19 @@
-@import "../styles/variables.scss";
-@import "../styles/mixins.scss";
+@import '../styles/variables.scss';
+@import '../styles/mixins.scss';
 
 .page-implementer {
-  @include page-default-styles;
+	@include page-default-styles;
+	counter-reset: item 0;
 
-  .cardItem {
+	.cardItem {
 		@include card;
-  }
+
+		&::before {
+			opacity: 0;
+			counter-increment: item;
+			content: counter(item);
+			position: absolute;
+			left: -20px;
+		}
+	}
 }

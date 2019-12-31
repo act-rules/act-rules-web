@@ -19,74 +19,50 @@ const Implementer = ({ location, data }) => {
 			<SEO title={title} />
 			<section className="page-implementer">
 				<h1>{title}</h1>
-				{
-					data.allRules.edges
-						.map(({ node }) => {
-							const { frontmatter: { id, name, rule_type }, fields: { fastmatterAttributes } } = node
-							const { accessibility_requirements } = JSON.parse(fastmatterAttributes)
-							const ruleScs = Object.keys(accessibility_requirements || {})
-								.filter(key => key.includes('wcag20') || key.includes('wcag21'))
-								.map(key => key.split(':').pop())
-								.map(sc => 'wcag' + sc.replace(/\./g, ''))
+				{data.allRules.edges.map(({ node }) => {
+					const {
+						frontmatter: { id, name, rule_type },
+						fields: { fastmatterAttributes },
+					} = node
+					const { accessibility_requirements } = JSON.parse(fastmatterAttributes)
+					const ruleScs = Object.keys(accessibility_requirements || {})
+						.filter(key => key.includes('wcag20') || key.includes('wcag21'))
+						.map(key => key.split(':').pop())
+						.map(sc => 'wcag' + sc.replace(/\./g, ''))
 
-							const impl = completeMaps.find(({ ruleId }) => ruleId === id)
-							const isIncomplete = incompleteMaps.find(({ ruleId }) => ruleId === id)
+					const impl = completeMaps.find(({ ruleId }) => ruleId === id)
+					const isIncomplete = incompleteMaps.find(({ ruleId }) => ruleId === id)
 
+					if (!impl && isIncomplete) {
+						return null
+					}
 
-							if (!impl && isIncomplete) {
-								return null
-							}
+					/**
+					 * When there is no complete implementation & SC's are not WCAG, list the accessibility requirements
+					 */
+					if (!ruleScs.length) {
+						return (
+							<div className="cardItem" key={id} data-rule-id={id}>
+								<RuleHeader ruleId={id} ruleType={rule_type} ruleName={name}></RuleHeader>
+								<AccessibilityRequirements accessibility_requirements={accessibility_requirements} type="text" />
+							</div>
+						)
+					}
 
-							/**
-							 * When there is no complete implementation & SC's are not WCAG, list the accessibility requirements
-							 */
-							if (!ruleScs.length) {
-								return (
-									<div
-										className='cardItem'
-										key={id}
-										data-rule-id={id}>
-										<RuleHeader
-											ruleId={id}
-											ruleType={rule_type}
-											ruleName={name}>
-										</RuleHeader>
-										<AccessibilityRequirements
-											accessibility_requirements={accessibility_requirements}
-											type='text' />
-									</div>
-								)
-							}
+					if (!impl) {
+						return null
+					}
 
-							if (!impl) {
-								return null
-							}
-
-							/**
-							 * show complete implementation tabulation
-							 */
-							return (
-								<div
-									className='cardItem'
-									key={id}
-									data-rule-id={id}>
-									<RuleHeader
-										ruleId={id}
-										ruleType={rule_type}
-										ruleName={name}>
-									</RuleHeader>
-									<ListOfImplementations
-										mapping={[
-											{
-												...impl,
-												ruleType: rule_type
-											}
-										]}
-										showIncomplete={false} />
-								</div>
-							)
-						})
-				}
+					/**
+					 * show complete implementation tabulation
+					 */
+					return (
+						<div className="cardItem" key={id} data-rule-id={id}>
+							<RuleHeader ruleId={id} ruleType={rule_type} ruleName={name}></RuleHeader>
+							<ListOfImplementations mapping={[impl]} showIncomplete={false} />
+						</div>
+					)
+				})}
 			</section>
 		</Layout>
 	)

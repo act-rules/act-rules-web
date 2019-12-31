@@ -6,9 +6,9 @@ import Note from './note'
 const ListOfImplementations = ({ mapping = [], showIncomplete = false }) => {
 	return (
 		<div>
-			{mapping.map(({ ruleId = '', ruleName = '', ruleType = '', implementations }) =>
-				<div>{getPageContent(implementations, showIncomplete, ruleId)}</div>
-			)}
+			{mapping.map(({ ruleId = '', implementations }) => (
+				<div key={ruleId}>{getPageContent(implementations, showIncomplete, ruleId)}</div>
+			))}
 		</div>
 	)
 }
@@ -53,12 +53,12 @@ function getPageContent(implementations, showIncomplete, ruleId) {
 					/>
 				</>
 			) : (
-					<TableTestcaseFindings
-						ruleId={ruleId}
-						implementations={implementations}
-						filter={({ consistency }) => consistency !== `inconsistent`}
-					/>
-				)}
+				<TableTestcaseFindings
+					ruleId={ruleId}
+					implementations={implementations}
+					filter={({ consistency }) => consistency !== `inconsistent`}
+				/>
+			)}
 		</>
 	)
 }
