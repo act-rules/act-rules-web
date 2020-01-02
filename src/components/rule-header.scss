@@ -1,0 +1,12 @@
+@import "../styles/variables.scss";
+@import "../styles/mixins.scss";
+
+div.ruleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  > div.childContainer {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

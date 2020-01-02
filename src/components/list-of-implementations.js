@@ -1,23 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-
-import Note from './note'
 import TableTestcaseFindings from './table-testcase-findings'
+import Note from './note'
 
 const ListOfImplementations = ({ mapping = [], showIncomplete = false }) => {
 	return (
 		<div>
-			{mapping.map(({ ruleId, ruleName, implementations }) => {
-				return (
-					<div key={ruleId}>
-						<Link to={`/rules/${ruleId}`}>
-							<h2 id={`id-${ruleId}`}>{ruleName}</h2>
-						</Link>
-						{getPageContent(implementations, showIncomplete, ruleId)}
-					</div>
-				)
-			})}
+			{mapping.map(({ ruleId = '', implementations }) => (
+				<div key={ruleId}>{getPageContent(implementations, showIncomplete, ruleId)}</div>
+			))}
 		</div>
 	)
 }
