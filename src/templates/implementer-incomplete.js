@@ -10,9 +10,6 @@ import RuleHeader from '../components/rule-header'
 import Badge from '../components/badge'
 
 import './implementer-incomplete.scss'
-import AccessibilityRequirements from '../components/accessibility_requirements'
-import RuleHeader from '../components/rule-header'
-import Badge from '../components/badge'
 
 const ImplementerIncomplete = ({ location, data }) => {
 	const { title, implementerData, manualRules } = data.sitePage.context
