@@ -5,25 +5,22 @@ import showdown from 'showdown'
 
 import './rule-header.scss'
 
-const RuleHeader = ({ ruleId, ruleType, ruleName, children }) => {
-  const converter = new showdown.Converter()
+const RuleHeader = ({ ruleId, ruleName, children }) => {
+	const converter = new showdown.Converter()
 
-  return (
-    <div className='ruleHeader'>
-      <Link to={`/rules/${ruleId}`}>
-        <h2 id={`id-${ruleId}`} dangerouslySetInnerHTML={{ __html: converter.makeHtml(ruleName) }}></h2>
-      </Link>
-      <div className='childContainer'>
-        {children}
-      </div>
-    </div>
-  )
+	return (
+		<div className="ruleHeader">
+			<Link to={`/rules/${ruleId}`}>
+				<h2 id={`id-${ruleId}`} dangerouslySetInnerHTML={{ __html: converter.makeHtml(ruleName) }}></h2>
+			</Link>
+			<div className="childContainer">{children}</div>
+		</div>
+	)
 }
 
 RuleHeader.propTypes = {
-  ruleId: PropTypes.string.isRequired,
-  ruleType: PropTypes.string.isRequired,
-  ruleName: PropTypes.string.isRequired,
+	ruleId: PropTypes.string.isRequired,
+	ruleName: PropTypes.string.isRequired,
 }
 
 export default RuleHeader

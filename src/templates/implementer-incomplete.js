@@ -5,11 +5,11 @@ import SEO from '../components/seo'
 import Note from '../components/note'
 import ListOfImplementations from '../components/list-of-implementations'
 import { filterByConsistency } from './implementer'
-
-import './implementer-incomplete.scss'
 import AccessibilityRequirements from '../components/accessibility_requirements'
 import RuleHeader from '../components/rule-header'
 import Badge from '../components/badge'
+
+import './implementer-incomplete.scss'
 
 const ImplementerIncomplete = ({ location, data }) => {
 	const { title, implementerData, manualRules } = data.sitePage.context
@@ -54,7 +54,7 @@ const ImplementerIncomplete = ({ location, data }) => {
 					if (!impl) {
 						return (
 							<div className="cardItem" key={id} data-rule-id={id}>
-								<RuleHeader ruleId={id} ruleType={rule_type} ruleName={name}>
+								<RuleHeader ruleId={id} ruleName={name}>
 									<Badge title={`Id:`} value={id} />
 									<Badge title={`Type:`} value={rule_type} />
 									{manualRules.includes(id) && <Badge title={`Mode:`} value={`manual`} />}
@@ -69,7 +69,7 @@ const ImplementerIncomplete = ({ location, data }) => {
 					 */
 					return (
 						<div className="cardItem" key={id} data-rule-id={id}>
-							<RuleHeader ruleId={id} ruleType={rule_type} ruleName={name}>
+							<RuleHeader ruleId={id} ruleName={name}>
 								<Badge title={`Id:`} value={id} />
 								<Badge title={`Type:`} value={rule_type} />
 								{manualRules.includes(id) && <Badge title={`Mode:`} value={`manual`} />}

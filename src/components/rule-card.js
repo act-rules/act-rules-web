@@ -10,17 +10,22 @@ import { getInputRulesForRule } from '../utils/render-fragments'
 import './rule-card.scss'
 import RuleHeader from './rule-header'
 
-const RuleCard = ({ id = '', name = '', type = '', description = '', accessibilityRequirements, inputRules, allRules }) => {
+const RuleCard = ({
+	id = '',
+	name = '',
+	type = '',
+	description = '',
+	accessibilityRequirements,
+	inputRules,
+	allRules,
+}) => {
 	const converter = new showdown.Converter()
 
 	return (
 		<article className="ruleCard">
 			<section>
 				{/* header  */}
-				<RuleHeader
-					ruleId={id}
-					ruleType={type}
-					ruleName={name} />
+				<RuleHeader ruleId={id} ruleName={name} />
 				{/* rule description */}
 				<div
 					dangerouslySetInnerHTML={{

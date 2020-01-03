@@ -5,6 +5,7 @@ import SEO from '../components/seo'
 import ListOfImplementations from '../components/list-of-implementations'
 import AccessibilityRequirements from '../components/accessibility_requirements'
 import RuleHeader from '../components/rule-header'
+import Badge from '../components/badge'
 
 import './implementer.scss'
 
@@ -43,7 +44,10 @@ const Implementer = ({ location, data }) => {
 					if (!ruleScs.length) {
 						return (
 							<div className="cardItem" key={id} data-rule-id={id}>
-								<RuleHeader ruleId={id} ruleType={rule_type} ruleName={name}></RuleHeader>
+								<RuleHeader ruleId={id} ruleName={name}>
+									<Badge title={`Id:`} value={id} />
+									<Badge title={`Type:`} value={rule_type} />
+								</RuleHeader>
 								<AccessibilityRequirements accessibility_requirements={accessibility_requirements} type="text" />
 							</div>
 						)
@@ -58,7 +62,10 @@ const Implementer = ({ location, data }) => {
 					 */
 					return (
 						<div className="cardItem" key={id} data-rule-id={id}>
-							<RuleHeader ruleId={id} ruleType={rule_type} ruleName={name}></RuleHeader>
+							<RuleHeader ruleId={id} ruleName={name}>
+								<Badge title={`Id:`} value={id} />
+								<Badge title={`Type:`} value={rule_type} />
+							</RuleHeader>
 							<ListOfImplementations mapping={[impl]} showIncomplete={false} />
 						</div>
 					)
