@@ -12,7 +12,7 @@ import Badge from '../components/badge'
 import './implementer-incomplete.scss'
 
 const ImplementerIncomplete = ({ location, data }) => {
-	const { title, implementerData, manualRules } = data.sitePage.context
+	const { title, implementerData } = data.sitePage.context
 	const { actMapping } = JSON.parse(implementerData)
 	const completeMaps = filterByConsistency(actMapping, ['consistent', 'partially-consistent'])
 	const incompleteMaps = filterByConsistency(actMapping, ['inconsistent'])
@@ -57,7 +57,6 @@ const ImplementerIncomplete = ({ location, data }) => {
 								<RuleHeader ruleId={id} ruleName={name}>
 									<Badge title={`Id:`} value={id} />
 									<Badge title={`Type:`} value={rule_type} />
-									{manualRules.includes(id) && <Badge title={`Mode:`} value={`manual`} />}
 								</RuleHeader>
 								<AccessibilityRequirements accessibility_requirements={accessibility_requirements} type="text" />
 							</div>
@@ -72,7 +71,6 @@ const ImplementerIncomplete = ({ location, data }) => {
 							<RuleHeader ruleId={id} ruleName={name}>
 								<Badge title={`Id:`} value={id} />
 								<Badge title={`Type:`} value={rule_type} />
-								{manualRules.includes(id) && <Badge title={`Mode:`} value={`manual`} />}
 							</RuleHeader>
 							<ListOfImplementations mapping={[impl]} showIncomplete={true} />
 						</div>
@@ -92,7 +90,6 @@ export const query = graphql`
 				filename
 				title
 				implementerData
-				manualRules
 			}
 		}
 		allRules: allMarkdownRemark(
