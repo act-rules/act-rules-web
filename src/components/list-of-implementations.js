@@ -32,7 +32,7 @@ function getPageContent(implementations, showIncomplete, ruleId) {
 			<Note
 				cls={`invalid`}
 				title={`No Implementations`}
-				body={`Feel free to submit an implementation for this rule.`}
+				body={`No complete implemenations are provided. Kindly submit a new or amended implementation report.`}
 			/>
 		)
 	}
