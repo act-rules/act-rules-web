@@ -85,17 +85,13 @@ function isScWcag20(sc) {
  * @param {Object} sc success criteria
  */
 function getMetaData(sc) {
-	const urlPrefix = `https://www.w3.org/TR/WCAG`
+	const urlPrefix = `https://www.w3.org/TR/WCAG21`
 	const is20 = isScWcag20(sc)
 	const wcagSuffix = is20 ? '20' : '21'
-	const path = is20 ? sc.alt_id[0] : sc.id.split(':').reverse()[0]
-	const url = `${urlPrefix}${wcagSuffix}/#${path}`
-	const howToMeetUrl = `${
-		is20 ? 'http://www.w3.org/WAI/WCAG20/quickref/#qr-' : 'https://www.w3.org/WAI/WCAG21/quickref/#'
-	}${path}`
-	const understandingUrl = `${
-		is20 ? 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/' : 'https://www.w3.org/WAI/WCAG21/Understanding/'
-	}/${path}.html`
+	const path = sc.id.split(':').reverse()[0]
+	const url = `${urlPrefix}/#${path}`
+	const howToMeetUrl = `https://www.w3.org/WAI/WCAG21/quickref/#${path}`
+	const understandingUrl = `https://www.w3.org/WAI/WCAG21/Understanding/${path}.html`
 	/**
 	 * Construct `test` - used by `wcag em report tool`
 	 */

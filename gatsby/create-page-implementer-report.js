@@ -1,6 +1,5 @@
 const fs = require('fs')
 const yaml = require('js-yaml')
-const manualRules = yaml.safeLoad(fs.readFileSync('./manual-rules.yml', 'utf8'))
 
 const implementers = require('../_data/implementers.json')
 const getTemplate = require('./get-template')
@@ -23,7 +22,6 @@ const createPageImplementerReport = ({ actions: { createPage } }) => {
 				filename,
 				title: `Implementation report of ${toolName} (${organisation})`,
 				implementerData: JSON.stringify(impl),
-				manualRules
 			},
 		})
 
@@ -38,7 +36,6 @@ const createPageImplementerReport = ({ actions: { createPage } }) => {
 				filename,
 				title: `Incomplete implementations report of ${toolName} (${organisation})`,
 				implementerData: JSON.stringify(impl),
-				manualRules
 			},
 		})
 	}
