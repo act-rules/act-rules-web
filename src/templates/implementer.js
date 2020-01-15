@@ -3,17 +3,33 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import ListOfImplementations from '../components/list-of-implementations'
-import AccessibilityRequirements from '../components/accessibility_requirements'
 import RuleHeader from '../components/rule-header'
 import Badge from '../components/badge'
 
 import './implementer.scss'
+import Note from '../components/note'
 
 const Implementer = ({ location, data }) => {
 	const { title, implementerData } = data.sitePage.context
 	const { actMapping } = JSON.parse(implementerData)
 	const completeMaps = filterByConsistency(actMapping, ['consistent', 'partially-consistent'])
 	const incompleteMaps = filterByConsistency(actMapping, ['inconsistent'])
+
+	if (!completeMaps || !completeMaps.length) {
+		return (
+			<Layout location={location}>
+				<SEO title={title} />
+				<section className="page-implementer">
+					<h1>{title}</h1>
+					<Note
+						cls={`invalid`}
+						title={`No Complete Implementations`}
+						body={`None of the provided implemenations are complete. Kindly submit a new or amended implementation report.`}
+					/>
+				</section>
+			</Layout>
+		)
+	}
 
 	return (
 		<Layout location={location}>
@@ -23,34 +39,13 @@ const Implementer = ({ location, data }) => {
 				{data.allRules.edges.map(({ node }) => {
 					const {
 						frontmatter: { id, name, rule_type },
-						fields: { fastmatterAttributes },
 					} = node
-					const { accessibility_requirements } = JSON.parse(fastmatterAttributes)
-					const ruleScs = Object.keys(accessibility_requirements || {})
-						.filter(key => key.includes('wcag20') || key.includes('wcag21'))
-						.map(key => key.split(':').pop())
-						.map(sc => 'wcag' + sc.replace(/\./g, ''))
 
 					const impl = completeMaps.find(({ ruleId }) => ruleId === id)
 					const isIncomplete = incompleteMaps.find(({ ruleId }) => ruleId === id)
 
 					if (!impl && isIncomplete) {
 						return null
-					}
-
-					/**
-					 * When there is no complete implementation & SC's are not WCAG, list the accessibility requirements
-					 */
-					if (!ruleScs.length) {
-						return (
-							<div className="cardItem" key={id} data-rule-id={id}>
-								<RuleHeader ruleId={id} ruleName={name}>
-									<Badge title={`Id:`} value={id} />
-									<Badge title={`Type:`} value={rule_type} />
-								</RuleHeader>
-								<AccessibilityRequirements accessibility_requirements={accessibility_requirements} type="text" />
-							</div>
-						)
 					}
 
 					if (!impl) {

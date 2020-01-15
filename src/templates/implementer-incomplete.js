@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import Note from '../components/note'
 import ListOfImplementations from '../components/list-of-implementations'
 import { filterByConsistency } from './implementer'
 import AccessibilityRequirements from '../components/accessibility_requirements'
@@ -16,18 +15,6 @@ const ImplementerIncomplete = ({ location, data }) => {
 	const { actMapping } = JSON.parse(implementerData)
 	const completeMaps = filterByConsistency(actMapping, ['consistent', 'partially-consistent'])
 	const incompleteMaps = filterByConsistency(actMapping, ['inconsistent'])
-
-	if (!incompleteMaps.length) {
-		return (
-			<Layout location={location}>
-				<SEO title={title} />
-				<section className="page-implementer-incomplete">
-					<h1>{title}</h1>
-					<Note cls={`valid`} title={`Well Done`} body={`All submitted implementation reports are complete.`} />
-				</section>
-			</Layout>
-		)
-	}
 
 	return (
 		<Layout location={location}>
@@ -47,8 +34,23 @@ const ImplementerIncomplete = ({ location, data }) => {
 					const completeImpl = completeMaps.find(({ ruleId }) => ruleId === id)
 					const impl = incompleteMaps.find(({ ruleId }) => ruleId === id)
 
-					if (completeImpl || !ruleScs.length) {
+					if (completeImpl) {
 						return null
+					}
+
+					/**
+					 * When there is no complete implementation & SC's are not WCAG, list the accessibility requirements
+					 */
+					if (!ruleScs.length) {
+						return (
+							<div className="cardItem" key={id} data-rule-id={id}>
+								<RuleHeader ruleId={id} ruleName={name}>
+									<Badge title={`Id:`} value={id} />
+									<Badge title={`Type:`} value={rule_type} />
+								</RuleHeader>
+								<AccessibilityRequirements accessibility_requirements={accessibility_requirements} type="text" />
+							</div>
+						)
 					}
 
 					if (!impl) {
