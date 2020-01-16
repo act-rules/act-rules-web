@@ -1,10 +1,10 @@
 @import '../styles/variables.scss';
 
 div.note {
-	border-left: 5px solid currentColor;
-	color: $accent;
-	background-color: rgba($accent, 0.05);
 	padding: 0.5rem 1rem;
+	border: 1px solid $accent;
+	border-left-width: 4px;
+	background-color: rgba($accent, 0.4);
 
 	> b {
 		padding: 0.25rem 0;
@@ -18,14 +18,12 @@ div.note {
 	}
 
 	&.valid {
-		border-left-color: $success;
-		color: $success;
-		background-color: rgba($success, 0.05);
+		border-color: $success;
+		background-color: rgba($success, 0.4);
 	}
 
 	&.invalid {
-		border-left-color: $warning;
-		color: $warning;
-		background-color: rgba($warning, 0.05);
+		border-color: $warning;
+		background-color: rgba($warning, 0.4);
 	}
 }
