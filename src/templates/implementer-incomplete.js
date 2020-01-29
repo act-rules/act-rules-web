@@ -73,6 +73,7 @@ const ImplementerIncomplete = ({ location, data }) => {
 							<RuleHeader ruleId={id} ruleName={name}>
 								<Badge title={`Id:`} value={id} />
 								<Badge title={`Type:`} value={rule_type} />
+								<Badge title={`Consistency:`} value={impl.consistency} />
 							</RuleHeader>
 							<ListOfImplementations mapping={[impl]} showIncomplete={true} />
 						</div>
