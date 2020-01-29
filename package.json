@@ -52,7 +52,8 @@
 		"remark": "^11.0.2",
 		"remove-markdown": "^0.3.0",
 		"showdown": "^1.9.1",
-		"unist-util-visit": "^2.0.1"
+		"unist-util-visit": "^2.0.1",
+		"zip-folder": "^1.0.0"
 	},
 	"devDependencies": {
 		"husky": "^3.1.0",
@@ -71,10 +72,10 @@
 	"license": "MIT",
 	"scripts": {
 		"getWcagMetaData": "node ./build/get-wcag-meta-data --url 'https://raw.githubusercontent.com/w3c/wai-wcag-quickref/gh-pages/_data/wcag21.json' --outputDir ${PWD}'/_data'",
-		"createTestcases": "node ./build/create-testcases --rulesDir $npm_package_config_actRulesCommunityRulesDir --testAssetsDir $npm_package_config_actRulesCommunityTestAssetsDir --actRulesCommunityPkgJson ${PWD}/$npm_package_config_actRulesCommunityPkgJson --outputDir ${PWD}'/_data'",
+		"createTestcases": "node ./build/create-testcases --rulesDir $npm_package_config_actRulesCommunityRulesDir --testAssetsDir $npm_package_config_actRulesCommunityTestAssetsDir --actRulesCommunityPkgJson ${PWD}/$npm_package_config_actRulesCommunityPkgJson --outputDir ${PWD}'/_data/testcases'",
 		"createGlossaryUsages": "node ./build/create-glossary-usages --rulesDir $npm_package_config_actRulesCommunityRulesDir --outputDir ${PWD}'/_data'",
 		"createRulesUsages": "node ./build/create-rules-usages.js --rulesDir $npm_package_config_actRulesCommunityRulesDir --outputDir ${PWD}'/_data'",
-		"pregetImplementationAxeCore": "npm --prefix './node_modules/act-rules-implementation-axe-core/' install && npm --prefix './node_modules/act-rules-implementation-axe-core/' run build -- --testsJson ${PWD}'/_data/rules-testcases/testcases.json' --testsDir ${PWD}'/_data/rules-testcases' --siteUrl $npm_package_www_url",
+		"pregetImplementationAxeCore": "npm --prefix './node_modules/act-rules-implementation-axe-core/' install && npm --prefix './node_modules/act-rules-implementation-axe-core/' run build -- --testsJson ${PWD}'/_data/testcases/testcases.json' --testsDir ${PWD}'/_data/testcases' --siteUrl $npm_package_www_url",
 		"getImplementations": "npm run pregetImplementationAxeCore && node ./build/get-implementations --implementationsFile './implementations.yml'",
 		"createImplementationsMetrics": "node ./build/create-implementation-metrics --implementations ${PWD}'/_data/implementations/*.json' --outputDir ${PWD}'/_data'",
 		"implementations": "npm run getImplementations && npm run createImplementationsMetrics",

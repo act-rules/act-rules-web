@@ -7,6 +7,7 @@ const createTestcasesJson = require('./testcases/create-testcases-json')
 const createTestcasesOfRuleOfEmReportTool = require('./testcases/create-testcases-of-rule-of-em-report-tool')
 const getMarkdownData = require('../utils/get-markdown-data')
 const getMarkdownAstNodesOfType = require('../utils/get-markdown-ast-nodes-of-type')
+const createZip = require('../utils/create-zip')
 
 /**
  * Parse `args`
@@ -104,7 +105,7 @@ async function init(program) {
 			/**
 			 * Create testcase file
 			 */
-			await createFile(`${outputDir}/rules-testcases/${testcasePath}`, codeWithDoctype)
+			await createFile(`${outputDir}/${testcasePath}`, codeWithDoctype)
 
 			/**
 			 * Create meta data for testcase(s)
@@ -136,7 +137,8 @@ async function init(program) {
 				ruleTestcases,
 				ruleAccessibilityRequirements,
 			},
-			actRulesCommunityPkg
+			actRulesCommunityPkg,
+			outputDir
 		)
 	}
 
@@ -144,12 +146,17 @@ async function init(program) {
 	 * Copy test assets that are used by `testcases`
 	 */
 	const assetsDirName = testAssetsDir.split('/').pop()
-	await copy(`${testAssetsDir}`, `${outputDir}/rules-testcases/${assetsDirName}`)
+	await copy(`${testAssetsDir}`, `${outputDir}/${assetsDirName}`)
 
 	/**
 	 * Generate `testcases.json`
 	 */
-	await createTestcasesJson(allRulesTestcases, actRulesCommunityPkg)
+	await createTestcasesJson(allRulesTestcases, actRulesCommunityPkg, outputDir)
+
+	/**
+	 * Zip up the testcases and assets directory
+	 */
+	await createZip(outputDir, `_data/testcases.zip`)
 }
 
 function wrapCodeWithDoctype(lang, code) {

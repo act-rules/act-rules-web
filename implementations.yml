@@ -3,35 +3,35 @@
 - organisation: 'Access42'
   toolName: 'RGAA 3.0'
   jsonReports: ./node_modules/act-rules-implementation-rgaa/reports/*.json
-  testcases: ./_data/rules-testcases/testcases.json
+  testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/rgaa.json
 
 - organisation: 'Deque Systems'
   toolName: 'Axe Core'
   jsonReports: ./node_modules/act-rules-implementation-axe-core/report.json
-  testcases: ./_data/rules-testcases/testcases.json
+  testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/axe.json
 
 - organisation: 'LASIGE, Faculdade de Ciências da Universidade de Lisboa'
   toolName: 'QualWeb'
   jsonReports: ./node_modules/act-rules-implementation-qualweb/reports/*.json
-  testcases: ./_data/rules-testcases/testcases.json
+  testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/qualweb.json
 
 - organisation: 'Level Access'
   toolName: 'Access Engine'
   jsonReports: ./node_modules/act-rules-implementation-access-engine/report.json
-  testcases: ./_data/rules-testcases/testcases.json
+  testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/access-engine.json
 
 - organisation: 'Siteimprove'
   toolName: 'Alfa'
   jsonReports: ./node_modules/act-rules-implementation-alfa/report.json
-  testcases: ./_data/rules-testcases/testcases.json
+  testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/alfa.json
 
 - organisation: 'Trusted Tester'
   toolName: 'Trusted Tester'
   jsonReports: ./node_modules/act-rules-implementation-trusted-tester/reports/*.json
-  testcases: ./_data/rules-testcases/testcases.json
+  testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/trusted-tester.json
