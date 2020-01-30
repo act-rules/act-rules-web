@@ -17,9 +17,5 @@ jobs:
 
       - name: Build Gatsby website
         run: npm run build
-
-      - name: Verify broken links
-        run: npx linkinator ./public
-
         env:
           CI: true
