@@ -22,9 +22,8 @@ const Implementer = ({ location, data }) => {
 				<section className="page-implementer">
 					<h1>{title}</h1>
 					<Note
-						cls={`invalid`}
-						title={`No Complete Implementations`}
-						body={`None of the provided implemenations are complete. Kindly submit a new or amended implementation report.`}
+						title={`Insufficient implementation data`}
+						body={`There are no known implementations. This is likely because the rule has been updated and the implementation report has not yet been updated.`}
 					/>
 				</section>
 			</Layout>
