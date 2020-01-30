@@ -24,7 +24,7 @@ program
 init(program)
 	.catch(e => {
 		console.error(e)
-		process.write(1)
+		process.exit(1)
 	})
 	.finally(() => console.info('Completed'))
 
