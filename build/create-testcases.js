@@ -7,7 +7,6 @@ const createTestcasesJson = require('./testcases/create-testcases-json')
 const createTestcasesOfRuleOfEmReportTool = require('./testcases/create-testcases-of-rule-of-em-report-tool')
 const getMarkdownData = require('../utils/get-markdown-data')
 const getMarkdownAstNodesOfType = require('../utils/get-markdown-ast-nodes-of-type')
-const createZip = require('../utils/create-zip')
 
 /**
  * Parse `args`
@@ -152,11 +151,6 @@ async function init(program) {
 	 * Generate `testcases.json`
 	 */
 	await createTestcasesJson(allRulesTestcases, actRulesCommunityPkg, outputDir)
-
-	/**
-	 * Zip up the testcases and assets directory
-	 */
-	await createZip(outputDir, `_data/testcases.zip`)
 }
 
 function wrapCodeWithDoctype(lang, code) {
