@@ -1,6 +1,7 @@
 const { copy } = require('fs-extra')
 const onCreateNode = require('./gatsby/on-create-node')
 const createPages = require('./gatsby/create-pages')
+const createZip = require('./utils/create-zip')
 
 exports.onPreBootstrap = async () => {
 	/**
@@ -8,7 +9,8 @@ exports.onPreBootstrap = async () => {
 	 * Note:
 	 * `gatsby build` cleans all `html` and `css` files within the destination directory, hence the need to copy these during `bootstrap` step
 	 */
-	await copy('./_data/rules-testcases', 'public')
+	await copy('./_data/testcases', 'public')
+	await createZip('./_data/testcases', 'public/testcases.zip')
 
 	/**
 	 * copy `earl-context.json` so it can be available in URL - `https://act-rules.github.io/earl-context.json`

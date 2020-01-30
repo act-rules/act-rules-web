@@ -3,7 +3,7 @@ const createFile = require('../../utils/create-file')
 /**
  * Create `testcases.json`
  */
-const createTestcasesJson = async (testcases, actRulesCommunityPkg) => {
+const createTestcasesJson = async (testcases, actRulesCommunityPkg, outputDir) => {
 	const {
 		www: { url },
 		author,
@@ -18,7 +18,7 @@ const createTestcasesJson = async (testcases, actRulesCommunityPkg) => {
 		testcases,
 	}
 
-	await createFile(`_data/rules-testcases/testcases.json`, JSON.stringify(AllTestcasesData, undefined, 2))
+	await createFile(`${outputDir}/testcases.json`, JSON.stringify(AllTestcasesData, undefined, 2))
 }
 
 module.exports = createTestcasesJson

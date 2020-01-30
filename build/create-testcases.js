@@ -104,7 +104,7 @@ async function init(program) {
 			/**
 			 * Create testcase file
 			 */
-			await createFile(`${outputDir}/rules-testcases/${testcasePath}`, codeWithDoctype)
+			await createFile(`${outputDir}/${testcasePath}`, codeWithDoctype)
 
 			/**
 			 * Create meta data for testcase(s)
@@ -136,7 +136,8 @@ async function init(program) {
 				ruleTestcases,
 				ruleAccessibilityRequirements,
 			},
-			actRulesCommunityPkg
+			actRulesCommunityPkg,
+			outputDir
 		)
 	}
 
@@ -144,12 +145,12 @@ async function init(program) {
 	 * Copy test assets that are used by `testcases`
 	 */
 	const assetsDirName = testAssetsDir.split('/').pop()
-	await copy(`${testAssetsDir}`, `${outputDir}/rules-testcases/${assetsDirName}`)
+	await copy(`${testAssetsDir}`, `${outputDir}/${assetsDirName}`)
 
 	/**
 	 * Generate `testcases.json`
 	 */
-	await createTestcasesJson(allRulesTestcases, actRulesCommunityPkg)
+	await createTestcasesJson(allRulesTestcases, actRulesCommunityPkg, outputDir)
 }
 
 function wrapCodeWithDoctype(lang, code) {

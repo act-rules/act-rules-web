@@ -8,7 +8,7 @@ const createFile = require('../../utils/create-file')
 /**
  * Create testcases json file that can be used by
  */
-const createTestcasesOfRuleOfEmReportTool = async (options, actRulesCommunityPkg) => {
+const createTestcasesOfRuleOfEmReportTool = async (options, actRulesCommunityPkg, outputDir) => {
 	const { ruleId, ruleName, ruleTestcases, ruleAccessibilityRequirements } = options
 	const {
 		www: { url },
@@ -82,7 +82,7 @@ const createTestcasesOfRuleOfEmReportTool = async (options, actRulesCommunityPkg
 	}
 
 	await createFile(
-		`_data/rules-testcases/testcases/${ruleId}/rule-${ruleId}-testcases-for-em-report-tool.json`,
+		`${outputDir}/testcases/${ruleId}/rule-${ruleId}-testcases-for-em-report-tool.json`,
 		JSON.stringify(json, undefined, 2)
 	)
 }
