@@ -1,7 +1,7 @@
 const { copy } = require('fs-extra')
 const onCreateNode = require('./gatsby/on-create-node')
 const createPages = require('./gatsby/create-pages')
-const createZip = require('./utils/create-zip')
+// const createZip = require('./utils/create-zip')
 
 exports.onPreBootstrap = async () => {
 	/**
