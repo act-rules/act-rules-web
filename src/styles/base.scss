@@ -57,6 +57,10 @@ table {
 				padding: 0.2rem 0;
 				@include overflow-text;
 
+				&.capitalize {
+					text-transform: capitalize;
+				}
+
 				a {
 					text-decoration: none;
 					display: inline-block;

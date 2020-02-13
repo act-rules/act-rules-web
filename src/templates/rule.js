@@ -144,7 +144,7 @@ export default ({ location, data }) => {
 					<a id="implementation-metrics" href="#implementation-metrics">
 						<h2>Implementations</h2>
 					</a>
-					<ListOfImplementers implementers={validImplementers} ruleId={`id-${ruleId}`} />
+					<ListOfImplementers implementers={validImplementers} ruleId={ruleId} />
 				</>
 				{/* acknowledgements */}
 				<Acknowledgements scrollLinkId={`acknowledgements`} items={acknowledgements} contributors={contributors} />
