@@ -6,16 +6,14 @@ const CountImplementations = ({ ruleId = `` }) => {
 	const metrics = implementationMetrics[ruleId] || []
 
 	/**
-	 * Get count of implementations which are either `consistent` or `partially-consistent`
+	 * Get count of implementations which are only `consistent`
 	 */
-	const count = metrics.filter(
-		metric => filterByConsistency(metric.implementations, ['consistent', 'partially-consistent']).length > 0
-	).length
+	const count = metrics.filter(metric => filterByConsistency(metric.implementations, ['consistent']).length > 0).length
 
 	return (
 		<div className="side-notes">
 			<div className="meta">
-				<span className="heading">Implementations: {count}</span>
+				<span className="heading">Complete Implementations: {count}</span>
 			</div>
 		</div>
 	)
