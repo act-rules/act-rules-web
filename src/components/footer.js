@@ -15,7 +15,7 @@ const Footer = ({ actRulesRepoUrl }) => (
 			</p>
 			<p className="tag">
 				Developed with the support of the EU-funded{' '}
-				<a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/WAI/">
+				<a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/WAI/about/projects/wai-tools/">
 					WAI-Tools{' '}
 				</a>{' '}
 				Project.
