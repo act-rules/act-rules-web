@@ -46,7 +46,7 @@ const Acknowledgements = ({ scrollLinkId, items, contributors }) => {
 				}
 				return (
 					<div className="meta" key={key}>
-						<h3 className="heading">{key}</h3>
+						<h3 className="heading">{key.split('_').join(' ')}</h3>
 						<ul>
 							{values.map(value => {
 								const data = contributors.find(({ name }) => name.toLowerCase() === value.toLowerCase())
