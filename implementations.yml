@@ -20,7 +20,7 @@
 
 - organisation: 'Level Access'
   toolName: 'Access Engine'
-  jsonReports: ./node_modules/act-rules-implementation-access-engine/report.json
+  jsonReports: ./node_modules/act-rules-implementation-access-engine/reports/*.json
   testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/access-engine.json
 
