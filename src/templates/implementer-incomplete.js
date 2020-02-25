@@ -26,7 +26,7 @@ const ImplementerIncomplete = ({ location, data }) => {
 				{/* title  */}
 				<h1>{title}</h1>
 				{/* desc  */}
-				{description && <Note body={description} />}
+				{description && <p>{description}</p>}
 				{/* impl  */}
 				{data.allRules.edges.map(({ node }) => {
 					const {

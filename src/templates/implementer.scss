@@ -5,10 +5,6 @@
 	@include page-default-styles;
 	counter-reset: item 0;
 
-	> div.note {
-		margin: 1.5rem 0;
-	}
-
 	.cardItem {
 		@include card;
 

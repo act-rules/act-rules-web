@@ -12,7 +12,6 @@ import './implementer.scss'
 const Implementer = ({ location, data }) => {
 	const { implementerData } = data.sitePage.context
 	const { organisation, toolName, actMapping, description } = JSON.parse(implementerData)
-	console.log(implementerData)
 
 	const title = `Implementation report of ${toolName} (${organisation})`
 	const completeMaps = filterByConsistency(actMapping, ['consistent', 'partially-consistent'])
@@ -40,7 +39,7 @@ const Implementer = ({ location, data }) => {
 				{/* title  */}
 				<h1>{title}</h1>
 				{/* desc  */}
-				{description && <Note body={description} />}
+				{description && <p>{description}</p>}
 				{/* impl  */}
 				{data.allRules.edges.map(({ node }) => {
 					const {
