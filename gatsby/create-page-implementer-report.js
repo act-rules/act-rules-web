@@ -7,8 +7,7 @@ const getHyphenatedString = require('../utils/get-hyphenated-string')
 
 const createPageImplementerReport = ({ actions: { createPage } }) => {
 	for (const impl of implementers) {
-		const { organisation, toolName } = impl
-		const filename = getHyphenatedString(toolName)
+		const filename = getHyphenatedString(impl.toolName)
 		const slug = `implementation/${filename}`
 
 		/**
@@ -20,7 +19,6 @@ const createPageImplementerReport = ({ actions: { createPage } }) => {
 			context: {
 				slug,
 				filename,
-				title: `Implementation report of ${toolName} (${organisation})`,
 				implementerData: JSON.stringify(impl),
 			},
 		})
@@ -34,7 +32,6 @@ const createPageImplementerReport = ({ actions: { createPage } }) => {
 			context: {
 				slug,
 				filename,
-				title: `Incomplete implementations report of ${toolName} (${organisation})`,
 				implementerData: JSON.stringify(impl),
 			},
 		})
