@@ -1,6 +1,3 @@
-const fs = require('fs')
-const yaml = require('js-yaml')
-
 const implementers = require('../_data/implementers.json')
 const getTemplate = require('./get-template')
 const getHyphenatedString = require('../utils/get-hyphenated-string')
