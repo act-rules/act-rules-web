@@ -12,6 +12,7 @@
 		"act-rules-implementation-mapper": "github:act-rules/act-rules-implementation-mapper",
 		"act-rules-implementation-qualweb": "github:act-rules/act-rules-implementation-qualweb",
 		"act-rules-implementation-rgaa": "github:act-rules/act-rules-implementation-rgaa",
+		"act-rules-implementation-sortsite": "github:act-rules/act-rules-implementation-sortsite",
 		"act-rules-implementation-trusted-tester": "github:act-rules/act-rules-implementation-trusted-tester",
 		"axios": "^0.19.0",
 		"classnames": "^2.2.6",

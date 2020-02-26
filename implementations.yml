@@ -24,6 +24,12 @@
   testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/access-engine.json
 
+- organisation: 'PowerMapper'
+  toolName: 'SortSite'
+  jsonReports: ./node_modules/act-rules-implementation-sortsite/report.json
+  testcases: ./_data/testcases/testcases.json
+  output: ./_data/implementations/sortsite.json
+
 - organisation: 'Siteimprove'
   toolName: 'Alfa'
   jsonReports: ./node_modules/act-rules-implementation-alfa/report.json
