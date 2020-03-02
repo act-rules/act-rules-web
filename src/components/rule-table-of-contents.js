@@ -26,7 +26,7 @@ const RuleTableOfContents = ({ toc }) => {
 					<a href="#implementation-metrics">Implementations</a>
 				</li>
 				<li>
-					<a href="#acknowledgements">Acknowledgements</a>
+					<a href="#acknowledgments">Acknowledgments</a>
 				</li>
 			</ul>
 		</section>

@@ -15,11 +15,11 @@ import PropTypes from 'prop-types'
  *
  * @param {Object} props Props
  */
-const Acknowledgements = ({ scrollLinkId, items, contributors }) => {
-	const preferredAcknowledgementsOrder = ['authors', 'previous_authors', 'reviewers', 'funding']
+const Acknowledgments = ({ scrollLinkId, items, contributors }) => {
+	const preferredAcknowledgmentsOrder = ['authors', 'previous_authors', 'reviewers', 'funding']
 
 	const otherItems = Object.keys(items).reduce((out, key) => {
-		if (!preferredAcknowledgementsOrder.includes(key)) {
+		if (!preferredAcknowledgmentsOrder.includes(key)) {
 			out[key] = items[key]
 		}
 		return out
@@ -36,7 +36,7 @@ const Acknowledgements = ({ scrollLinkId, items, contributors }) => {
 	return (
 		<>
 			<a id={scrollLinkId} href={`#${scrollLinkId}`}>
-				<h2>Acknowledgements</h2>
+				<h2>Acknowledgments</h2>
 			</a>
 			{Object.keys(curatedItems).map(key => {
 				const values = curatedItems[key] || []
@@ -70,13 +70,13 @@ const Acknowledgements = ({ scrollLinkId, items, contributors }) => {
 	)
 }
 
-Acknowledgements.propTypes = {
+Acknowledgments.propTypes = {
 	scrollLinkId: PropTypes.string.isRequired,
 	items: PropTypes.object.isRequired,
 	contributors: PropTypes.array.isRequired,
 }
 
-Acknowledgements.defaultProps = {
+Acknowledgments.defaultProps = {
 	scrollLinkId: ``,
 	items: {
 		authors: [],
@@ -86,4 +86,4 @@ Acknowledgements.defaultProps = {
 	contributors: [],
 }
 
-export default Acknowledgements
+export default Acknowledgments
