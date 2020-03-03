@@ -4,7 +4,7 @@ import showdown from 'showdown'
 
 import SEO from '../components/seo'
 import Layout from '../components/layout'
-import Acknowledgements from '../components/acknowledgements'
+import Acknowledgments from '../components/acknowledgments'
 import AccessibilityRequirements from '../components/accessibility_requirements'
 import ListOfImplementers from '../components/list-of-implementers'
 import RuleTableOfContents from '../components/rule-table-of-contents'
@@ -29,7 +29,7 @@ export default ({ location, data }) => {
 	const { slug, fastmatterAttributes, changelog, fileName } = fields
 	const { relativePath } = fileName
 	const ruleChangelog = JSON.parse(changelog)
-	const { accessibility_requirements, acknowledgements } = JSON.parse(fastmatterAttributes)
+	const parsedFrontmatter = JSON.parse(fastmatterAttributes)
 	const converter = new showdown.Converter()
 	const { repository, config, contributors } = JSON.parse(site.siteMetadata.actRulesPackage)
 	const repositoryUrl = curateGitUrl(repository.url)
@@ -78,7 +78,7 @@ export default ({ location, data }) => {
 						</span>
 					</li>
 					<li>
-						<AccessibilityRequirements accessibility_requirements={accessibility_requirements} />
+						<AccessibilityRequirements accessibility_requirements={parsedFrontmatter.accessibility_requirements} />
 					</li>
 					<li>{getRuleUsageInRules(ruleId)}</li>
 					<li>{getInputAspects(frontmatter.input_aspects, ruleFormatInputAspects)}</li>
@@ -146,8 +146,12 @@ export default ({ location, data }) => {
 					</a>
 					<ListOfImplementers implementers={validImplementers} ruleId={ruleId} />
 				</>
-				{/* acknowledgements */}
-				<Acknowledgements scrollLinkId={`acknowledgements`} items={acknowledgements} contributors={contributors} />
+				{/* Acknowledgments */}
+				<Acknowledgments
+					scrollLinkId={`acknowledgments`}
+					items={parsedFrontmatter.acknowledgments || parsedFrontmatter.acknowledgements}
+					contributors={contributors}
+				/>
 			</section>
 			{/* Toc */}
 			<RuleTableOfContents toc={tableOfContents} />
