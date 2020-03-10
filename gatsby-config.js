@@ -41,11 +41,13 @@ module.exports = {
 			options: {
 				plugins: [
 					{
-						resolve: `append-heading-with-title`,
+						resolve: `modify-heading`,
 						options: {
 							matchPath: /pages\/glossary\//,
 							matchHeadingDepths: [4],
-							suffixFrontmatterKey: 'title',
+							getHeading: (currentValue, frontmatter) => {
+								return `${currentValue} for ${frontmatter.title}`
+							},
 						},
 					},
 					{

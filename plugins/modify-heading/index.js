@@ -1,7 +1,7 @@
 const visit = require('unist-util-visit')
 
 module.exports = ({ markdownAST, markdownNode }, pluginOptions) => {
-	const { matchPath, matchHeadingDepths, suffixFrontmatterKey } = pluginOptions
+	const { matchPath, matchHeadingDepths, getHeading } = pluginOptions
 	const {
 		fields: { slug },
 		frontmatter,
@@ -22,8 +22,7 @@ module.exports = ({ markdownAST, markdownNode }, pluginOptions) => {
 		 * Change value of child text node
 		 */
 		const newChild = [...node.children]
-		newChild[0].value = `${newChild[0].value} for ${frontmatter[suffixFrontmatterKey].toLowerCase()}`
-
+		newChild[0].value = getHeading(newChild[0].value, frontmatter)
 		node.children = newChild
 	})
 	return markdownAST
