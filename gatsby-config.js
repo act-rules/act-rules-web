@@ -41,6 +41,14 @@ module.exports = {
 			options: {
 				plugins: [
 					{
+						resolve: `append-heading-with-title`,
+						options: {
+							matchPath: /pages\/glossary\//,
+							matchHeadingDepths: [4],
+							suffixFrontmatterKey: 'title',
+						},
+					},
+					{
 						resolve: `swap-heading-level`,
 						options: {
 							matchPath: /pages\/glossary\//,
@@ -48,6 +56,7 @@ module.exports = {
 							toHeadingDepth: 3,
 						},
 					},
+
 					`gatsby-remark-autolink-headers`,
 					`gatsby-remark-copy-linked-files`,
 					`gatsby-remark-prismjs`,
