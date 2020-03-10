@@ -144,6 +144,11 @@ export default ({ location, data }) => {
 					<a id="implementation-metrics" href="#implementation-metrics">
 						<h2>Implementations</h2>
 					</a>
+					<p>
+						This section is not part of the official rule. It is populated dynamically and not accounted for in the
+						change history or the last modified date. This section will not be included in the rule when it is published
+						on the W3C website.
+					</p>
 					<ListOfImplementers implementers={validImplementers} ruleId={ruleId} />
 				</>
 				{/* Acknowledgments */}
