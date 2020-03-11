@@ -46,21 +46,31 @@ export default ({ location, data }) => {
 				</header>
 				{/* Rules list */}
 				<section className="content">
-					{renderedRules.map(({ node }) => {
-						const { frontmatter, fields } = node
-						return (
-							<RuleCard
-								key={frontmatter.id}
-								id={frontmatter.id}
-								name={frontmatter.name}
-								type={frontmatter.rule_type}
-								description={frontmatter.description}
-								accessibilityRequirements={JSON.parse(fields.fastmatterAttributes).accessibility_requirements}
-								inputRules={frontmatter.input_rules}
-								allRules={allRules}
-							/>
-						)
-					})}
+					{renderedRules
+						.sort((a, b) => {
+							/**
+							 * Remove markdown backticks for sort comparison
+							 */
+							const nameOfA = a.node.frontmatter.name.replace(/`/g, '').toLowerCase()
+							const nameOfB = b.node.frontmatter.name.replace(/`/g, '').toLowerCase()
+							// Reference - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare
+							return nameOfA.localeCompare(nameOfB)
+						})
+						.map(({ node }) => {
+							const { frontmatter, fields } = node
+							return (
+								<RuleCard
+									key={frontmatter.id}
+									id={frontmatter.id}
+									name={frontmatter.name}
+									type={frontmatter.rule_type}
+									description={frontmatter.description}
+									accessibilityRequirements={JSON.parse(fields.fastmatterAttributes).accessibility_requirements}
+									inputRules={frontmatter.input_rules}
+									allRules={allRules}
+								/>
+							)
+						})}
 				</section>
 			</section>
 		</Layout>
