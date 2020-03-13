@@ -11,6 +11,7 @@ section.layoutContainer {
 	> main {
 		@include flex-column();
 		width: 100%;
+		background-color: $bg-primary;
 		> section {
 			@include flex-row();
 			@include flex-scroll-container();
