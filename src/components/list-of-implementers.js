@@ -42,6 +42,33 @@ const ListOfImplementers = ({ implementers = [], cls = ``, ruleId }) => {
 		)
 	}
 
+	const ruleMappings = implementers.reduce((out, { toolName, actMapping }) => {
+		const impl = actMapping.find(impl => impl.ruleId === ruleId)
+		if (!impl) {
+			return out
+		}
+
+		const reportUrl = `/implementation/${getHyphenatedString(toolName)}#id-${ruleId}`
+		out.push({
+			toolName,
+			consistency: impl.consistency,
+			complete: impl.complete,
+			reportUrl,
+		})
+
+		return out
+	}, [])
+
+	const sortedRuleMappings = ruleMappings.sort((a, b) => {
+		if (a.consistency !== b.consistency) {
+			return a.consistency === 'consistent' ? -1 : 1 // ascending with consistent followed by others
+		}
+		if (a.complete !== b.complete) {
+			return a.complete ? -1 : 1 // ascending with complete followed by others
+		}
+		return a.toolName.localeCompare(b.toolName) //sort alphabetically as fallback
+	})
+
 	return (
 		<table className={cls}>
 			<thead>
@@ -53,22 +80,18 @@ const ListOfImplementers = ({ implementers = [], cls = ``, ruleId }) => {
 				</tr>
 			</thead>
 			<tbody>
-				{implementers
-					.sort((a, b) => a.organisation.localeCompare(b.organisation))
-					.map(({ toolName, actMapping }) => {
-						const reportUrl = `/implementation/${getHyphenatedString(toolName)}#id-${ruleId}`
-						const impl = actMapping.find(impl => impl.ruleId === ruleId)
-						return (
-							<tr key={toolName}>
-								<td>{toolName}</td>
-								<td className="capitalize">{impl.consistency}</td>
-								<td>{impl.complete ? `Yes` : `No`}</td>
-								<td>
-									<a href={reportUrl}>View Report</a>
-								</td>
-							</tr>
-						)
-					})}
+				{sortedRuleMappings.map(({ toolName, consistency, complete, reportUrl }) => {
+					return (
+						<tr key={toolName}>
+							<td>{toolName}</td>
+							<td className="capitalize">{consistency}</td>
+							<td>{complete ? `Yes` : `No`}</td>
+							<td>
+								<a href={reportUrl}>View Report</a>
+							</td>
+						</tr>
+					)
+				})}
 			</tbody>
 		</table>
 	)
