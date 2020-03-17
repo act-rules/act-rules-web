@@ -1,0 +1,11 @@
+{
+	"name": "modify-heading",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"unist-util-visit": "^2.0.1"
+	}
+}

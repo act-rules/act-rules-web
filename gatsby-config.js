@@ -41,6 +41,16 @@ module.exports = {
 			options: {
 				plugins: [
 					{
+						resolve: `modify-heading`,
+						options: {
+							matchPath: /pages\/glossary\//,
+							matchHeadingDepths: [4],
+							getHeading: (currentValue, frontmatter) => {
+								return `${currentValue} for ${frontmatter.title}`
+							},
+						},
+					},
+					{
 						resolve: `swap-heading-level`,
 						options: {
 							matchPath: /pages\/glossary\//,
@@ -48,6 +58,7 @@ module.exports = {
 							toHeadingDepth: 3,
 						},
 					},
+
 					`gatsby-remark-autolink-headers`,
 					`gatsby-remark-copy-linked-files`,
 					`gatsby-remark-prismjs`,
