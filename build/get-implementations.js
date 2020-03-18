@@ -3,6 +3,8 @@ const assert = require('assert')
 const program = require('commander')
 const yaml = require('js-yaml')
 const { exec } = require('child_process')
+const { actMapGenerator, loadJson } = require('act-rules-implementation-mapper')
+const createFile = require('../utils/create-file')
 
 /**
  * Parse `args`
@@ -34,15 +36,16 @@ async function init({ implementationsFile }) {
 	// create implementations directory, as `act-map-generator` fails if directory does not exist
 	execCommand(`mkdir -p "./_data/implementations"`)
 
-	for (const impl of implementations) {
-		const { toolName, organisation } = impl
-		const command = Object.entries(impl).reduce((out, [key, value]) => {
-			const argument = `--${key} "${value}"`
-			return `${out} ${argument}`
-		}, ``)
-
+	for (const { organisation, toolName, jsonReports, testcases: actTestcases, output, description } of implementations) {
 		try {
-			await execCommand(`act-map-generator ${command}`)
+			const earlReports = await loadJson(jsonReports)
+			const [testcases] = await loadJson(actTestcases)
+			const mapping = await actMapGenerator(earlReports, testcases, { organisation, toolName })
+			const result = {
+				...mapping,
+				description,
+			}
+			await createFile(output, JSON.stringify(result, undefined, 2))
 			console.info(`Generated implementations for ${toolName} from ${organisation}`)
 		} catch (error) {
 			throw error
