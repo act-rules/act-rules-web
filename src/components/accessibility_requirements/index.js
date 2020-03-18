@@ -2,30 +2,61 @@ import techniquesTitles from '../../../_data/techniques-titles'
 import scUrls from '../../../_data/sc-urls'
 import React from 'react'
 
+/**
+ * Conjugate outcome mapping
+ * @param {String} mappingType mapping type eg: technique, requirement, success criterion
+ * @param {String} outcome given string from accessibility requirement authored in frontmatte of the rule
+ * @returns {String}
+ */
+const getMappingOutcomeSentence = (mappingType, outcome) => {
+	const outcomeMap = {
+		satisfied: 'is satisfied',
+		'not satisfied': 'is not satisfied',
+		'further testing needed': 'needs further testing',
+	}
+
+	let outcomeValue = ``
+	if (outcomeMap[outcome]) {
+		outcomeValue = outcomeMap[outcome]
+	}
+
+	return `${mappingType} ${outcomeValue}`
+}
+
 function OutcomeMapping({
 	failed = 'not satisfied',
 	passed = 'further testing is needed',
 	inapplicable = 'further testing is needed',
+	type = 'success criterion',
 }) {
 	return (
 		<li>
 			Outcome mapping:
 			<ul>
 				<li>
-					Any <code>failed</code> outcomes: {failed}.
+					Any <code>failed</code> outcomes: {getMappingOutcomeSentence(type, failed)}.
 				</li>
 				<li>
-					All <code>passed</code> outcomes: {passed}.
+					All <code>passed</code> outcomes: {getMappingOutcomeSentence(type, passed)}.
 				</li>
 				<li>
-					An <code>inapplicable</code> outcome: {inapplicable}.
+					An <code>inapplicable</code> outcome: {getMappingOutcomeSentence(type, inapplicable)}.
 				</li>
 			</ul>
 		</li>
 	)
 }
 
-function AccessibilityRequirementsListing({ item, listType, title, learnMore, conformanceTo, url, mapping }) {
+function AccessibilityRequirementsListing({
+	item,
+	listType,
+	title,
+	learnMore,
+	conformanceTo,
+	url,
+	mapping,
+	mappingType,
+}) {
 	if (listType === 'text') {
 		return (
 			<li key={item}>
@@ -47,7 +78,12 @@ function AccessibilityRequirementsListing({ item, listType, title, learnMore, co
 						</a>
 					</li>
 					<li>{conformanceTo}</li>
-					<OutcomeMapping failed={mapping.failed} passed={mapping.passed} inapplicable={mapping.inapplicable} />
+					<OutcomeMapping
+						type={mappingType}
+						failed={mapping.failed}
+						passed={mapping.passed}
+						inapplicable={mapping.inapplicable}
+					/>
 				</ul>
 			</details>
 		</li>
@@ -80,6 +116,7 @@ function BasicListing({ accessibilityDocument, item, mapping, listType }) {
 			conformanceTo={conformanceTo}
 			url={`${baseURL}${item}`}
 			mapping={mapping}
+			mappingType={`requirement`}
 		/>
 	)
 }
@@ -114,6 +151,7 @@ function TechniqueListing({ item, mapping, listType }) {
 			conformanceTo="Not required to conformance to any W3C accessibility recommendation."
 			url={url}
 			mapping={mapping}
+			mappingType={`technique`}
 		/>
 	)
 }
@@ -135,6 +173,7 @@ function WcagListing({ item, mapping, listType }) {
 			}
 			url={url}
 			mapping={mapping}
+			mappingType={`success criterion`}
 		/>
 	)
 }
