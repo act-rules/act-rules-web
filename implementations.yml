@@ -7,7 +7,7 @@
   output: ./_data/implementations/rgaa.json
 
 - organisation: 'Deque Systems'
-  toolName: 'Axe Core'
+  toolName: 'axe-core'
   jsonReports: ./node_modules/act-rules-implementation-axe-core/report.json
   testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/axe.json
