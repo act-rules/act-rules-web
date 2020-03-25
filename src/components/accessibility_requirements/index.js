@@ -182,7 +182,7 @@ export default function AccessibilityRequirements({ accessibility_requirements, 
 	if (!accessibility_requirements) {
 		return (
 			<div className="meta">
-				<span className="heading">Accessibility Requirements Mapping</span>
+				<span className="heading">Accessibility Requirements Mapping:</span>
 				<ul>
 					<li>This rule is not required for conformance.</li>
 				</ul>
@@ -192,7 +192,7 @@ export default function AccessibilityRequirements({ accessibility_requirements, 
 
 	return (
 		<div className="meta">
-			<span className="heading">Accessibility Requirements Mapping</span>
+			<span className="heading">Accessibility Requirements Mapping:</span>
 			<ul>
 				{Object.entries(accessibility_requirements).map(([req, mapping]) => {
 					const [accessibilityDocument, accessibilityItem] = req.toLocaleLowerCase().split(':')

@@ -54,25 +54,13 @@ export const getGlossaryItemsUsedInRule = slug => {
 	return keys
 }
 
-export function getRuleType(rule_type) {
-	if (!rule_type) {
-		return null
-	}
-	return (
-		<li>
-			<span className="heading">Rule Type</span>
-			<span>{rule_type}</span>
-		</li>
-	)
-}
-
 export function getInputAspects(aspects, ruleFormatInputAspects) {
 	if (!aspects) {
 		return null
 	}
 	return (
 		<>
-			<span className="heading">Input Aspects</span>
+			<span className="heading">Input Aspects:</span>
 			<ul>
 				{aspects.map(aspect => {
 					const aHref = ruleFormatInputAspects[aspect]
