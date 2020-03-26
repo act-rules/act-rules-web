@@ -7,7 +7,6 @@ import { filterByConsistency } from './implementer'
 import AccessibilityRequirements from '../components/accessibility_requirements'
 import RuleHeader from '../components/rule-header'
 import Badge from '../components/badge'
-import Note from '../components/note'
 
 import './implementer-incomplete.scss'
 

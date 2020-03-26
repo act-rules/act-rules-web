@@ -13,7 +13,6 @@ import curateGitUrl from '../../utils/curate-git-url'
 import {
 	getGlossaryUsed,
 	getRuleUsageInRules,
-	getRuleType,
 	getInputRulesForRule,
 	getInputAspects,
 	getDateTimeFromUnixTimestamp,
@@ -63,9 +62,14 @@ export default ({ location, data }) => {
 				</header>
 				{/* frontmatter */}
 				<ul className="meta">
-					{getRuleType(frontmatter.rule_type)}
+					{frontmatter.rule_type && (
+						<li>
+							<span className="heading">Rule Type:</span>
+							<span>{frontmatter.rule_type}</span>
+						</li>
+					)}
 					<li>
-						<span className="heading">Rule ID:</span>
+						<span className="heading">Rule Id:</span>
 						<span> {ruleId}</span>
 					</li>
 					<li>
@@ -87,7 +91,7 @@ export default ({ location, data }) => {
 				<hr />
 				{/* Description */}
 				<h2 id="description">
-					<a href="#description" aria-label="description permalink" className="anchor">
+					<a href="#description" aria-label="description permalink" className="anchor before">
 						<svg aria-hidden="true" focusable="false" height="16" viewBox="0 0 16 16" width="16">
 							<path
 								fillRule="evenodd"
