@@ -22,11 +22,11 @@ program
  * Invoke
  */
 init(program)
+	.then(() => console.info('Completed'))
 	.catch(e => {
 		console.error(e)
 		process.exit(1)
 	})
-	.finally(() => console.info('Completed'))
 
 /**
  * Create test case files & other meta-data  from test case in each rule.
