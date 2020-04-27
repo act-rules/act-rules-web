@@ -2,7 +2,6 @@ const axios = require('axios')
 const fs = require('fs')
 const fastmatter = require('fastmatter')
 const { createFilePath } = require('gatsby-source-filesystem')
-const { exec } = require('child_process')
 
 /**
  * Get node data, to enhance metadata of pages
