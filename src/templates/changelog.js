@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../components/layout'
 import { graphql, Link } from 'gatsby'
 import SEO from '../components/seo'
-import { getDateTimeFromUnixTimestamp } from '../utils/render-fragments'
+import { format } from 'date-fns'
 
 import './changelog.scss'
 
@@ -40,21 +40,20 @@ const getChangelogTabulation = (changelog, url, file) => {
 		<table className="compact">
 			<thead>
 				<tr>
-					<th>Date</th>
+					<th width="100">Date</th>
 					<th>Description</th>
-					<th>See Changes</th>
+					<th width="100">See Changes</th>
 				</tr>
 			</thead>
 			<tbody>
 				{changelog.map(log => {
-					const { commit: hash, msg, date } = log
-					const changesUrl = `${url}/commit/${hash}`
+					const { sha, message, date, htmlUrl } = log
 					return (
-						<tr key={hash}>
-							<td nowrap="true">{getDateTimeFromUnixTimestamp(date)}</td>
-							<td>{msg}</td>
+						<tr key={sha}>
+							<td nowrap="true">{format(new Date(date), 'MMM dd, yyyy')}</td>
+							<td>{message}</td>
 							<td align="center">
-								<a target="_blank" rel="noopener noreferrer" href={changesUrl} title="See all changes in commit">
+								<a target="_blank" rel="noopener noreferrer" href={htmlUrl} title="See all changes in commit">
 									{changesSvgIcon()}
 								</a>
 							</td>

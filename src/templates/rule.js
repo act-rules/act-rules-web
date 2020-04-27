@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import showdown from 'showdown'
+import { format } from 'date-fns'
 
 import SEO from '../components/seo'
 import Layout from '../components/layout'
@@ -15,7 +16,6 @@ import {
 	getRuleUsageInRules,
 	getInputRulesForRule,
 	getInputAspects,
-	getDateTimeFromUnixTimestamp,
 } from './../utils/render-fragments'
 
 import implementers from '../../_data/implementers.json'
@@ -76,9 +76,7 @@ export default ({ location, data }) => {
 						<span className="heading">Last modified:</span>
 						<span>
 							{' '}
-							{ruleChangelog && ruleChangelog.length ? getDateTimeFromUnixTimestamp(ruleChangelog[0].date) : '-'
-							// todo: auto play audio rule merge fails getting git logs, to be investigated
-							}
+							{ruleChangelog && ruleChangelog.length ? format(new Date(ruleChangelog[0].date), 'MMM dd, yyyy') : '-'}
 						</span>
 					</li>
 					<li>

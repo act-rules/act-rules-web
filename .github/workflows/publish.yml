@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+      - fix-changelog
 
 jobs:
   publish:
@@ -15,7 +16,7 @@ jobs:
       - name: npm install & build
         run: |
           npm install
-          npm run build
+          GITHUB_TOKEN=${{ secrets.USER_PAT }} npm run build
       - shell: bash
         name: push to ACT R master branch
         run: |

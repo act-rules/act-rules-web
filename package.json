@@ -17,6 +17,7 @@
 		"axios": "^0.19.0",
 		"classnames": "^2.2.6",
 		"commander": "^3.0.1",
+		"date-fns": "^2.12.0",
 		"fastmatter": "^2.1.1",
 		"flat": "^4.1.0",
 		"fs-extra": "^8.1.0",
@@ -59,6 +60,7 @@
 		"zip-folder": "^1.0.0"
 	},
 	"devDependencies": {
+		"dotenv": "^8.2.0",
 		"husky": "^3.1.0",
 		"js-yaml": "^3.13.1",
 		"lint-staged": "^9.5.0",

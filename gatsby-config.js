@@ -1,3 +1,7 @@
+require('dotenv').config({
+	path: `.env.${process.env.NODE_ENV}`,
+})
+
 const packageJson = require('./package.json')
 const {
 	config: { actRulesCommunityPkgJson, actRulesCommunityRulesDir, actRulesCommunityPagesDir },
