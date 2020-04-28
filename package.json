@@ -65,6 +65,7 @@
 		"js-yaml": "^3.13.1",
 		"lint-staged": "^9.5.0",
 		"marked": "^0.7.0",
+		"node-env-run": "^3.0.2",
 		"prettier": "^1.19.1"
 	},
 	"keywords": [
