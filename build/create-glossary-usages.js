@@ -5,10 +5,10 @@
  */
 const assert = require('assert')
 const program = require('commander')
-const regexps = require('../utils/reg-exps')
 const createFile = require('../utils/create-file')
-const getAllMatchesForRegex = require('../utils/get-all-matches-for-regex')
 const getMarkdownData = require('../utils/get-markdown-data')
+const getMarkdownAstNodesOfType = require('../utils/get-markdown-ast-nodes-of-type')
+const isUrl = require('is-url')
 
 /**
  * Parse `args`
@@ -55,69 +55,27 @@ async function init({ rulesDir, outputDir }) {
 	 */
 	const glossaryUsages = {}
 
-	rulesData.forEach(ruleData => {
-		const { frontmatter, body } = ruleData
-		const { id: ruleId, name: ruleName, accessibility_requirements: ruleAccessibilityRequirements } = frontmatter
+	rulesData.forEach(({ frontmatter, markdownAST }) => {
+		// get all links -> eg: [Alpha](https://....) or [Beta](#semantic-role)
+		const pageLinks = getMarkdownAstNodesOfType(markdownAST, 'link').map(({ url }) => url)
+		// get all definition links  -> eg: [alpha]: https:// 'Link to something' or [beta]: #some-glossary 'Def to some glossary'
+		const definitionLinks = getMarkdownAstNodesOfType(markdownAST, 'definition').map(({ url }) => url)
+		// unique links and filter out url links
+		const glossaryRefs = [...new Set([...pageLinks, ...definitionLinks])].filter(link => !isUrl(link))
 
-		// Finding classical glossary usages: "this is a [link](key)"
-		const glossaryMatches = getAllMatchesForRegex(regexps.glossaryReferenceInRules, body, false)
-
-		glossaryMatches.forEach(glossaryItem => {
-			const hasGlossaryKey = regexps.glossaryKey.test(glossaryItem.block)
-			if (!hasGlossaryKey) {
-				return
-			}
-
-			const key = glossaryItem.block.match(regexps.glossaryKey)[1]
-			if (!key) {
-				return
-			}
-
+		glossaryRefs.forEach(key => {
 			const usage = {
-				name: ruleName,
-				slug: `rules/${ruleId}`,
+				name: frontmatter.name,
+				slug: `rules/${frontmatter.id}`,
 			}
 			if (!glossaryUsages[key]) {
 				glossaryUsages[key] = [usage]
 				return
 			}
-
 			const exists = glossaryUsages[key].some(u => u.slug === usage.slug)
 			if (exists) {
 				return
 			}
-
-			glossaryUsages[key] = glossaryUsages[key].concat(usage)
-		})
-
-		// Finding internal ref glossary usage: "[refname]: key"
-		const glossaryInlinedMatches = getAllMatchesForRegex(regexps.glossaryDefinitionInRules, body, false)
-
-		glossaryInlinedMatches.forEach(glossaryDef => {
-			const hasGlossaryKey = regexps.glossaryKeyInDefinition.test(glossaryDef.block)
-			if (!hasGlossaryKey) {
-				return
-			}
-
-			const key = glossaryDef.block.match(regexps.glossaryKeyInDefinition)[1]
-			if (!key) {
-				return
-			}
-
-			const usage = {
-				name: ruleName,
-				slug: `rules/${ruleId}`,
-			}
-			if (!glossaryUsages[key]) {
-				glossaryUsages[key] = [usage]
-				return
-			}
-
-			const exists = glossaryUsages[key].some(u => u.slug === usage.slug)
-			if (exists) {
-				return
-			}
-
 			glossaryUsages[key] = glossaryUsages[key].concat(usage)
 		})
 	})
