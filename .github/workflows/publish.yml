@@ -15,7 +15,7 @@ jobs:
       - name: npm install & build
         run: |
           npm install
-          GITHUB_TOKEN=${{ secrets.USER_PAT }} npm run build
+          GITHUB_TOKEN="${{ secrets.USER_NAME }}" npm run build
       - shell: bash
         name: push to ACT R master branch
         run: |
