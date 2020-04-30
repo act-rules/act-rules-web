@@ -11,10 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
-
-      - name: Install NPM dependencies
-        run: npm install
-
+      - name: npm install & build
+        run: |
+          npm install
+          GITHUB_TOKEN=${{ secrets.USER_PAT }} npm run build
       - name: Build Gatsby website
         run: npm run build
         env:

@@ -13,11 +13,9 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
       - name: npm install & build
-        env:
-          GITHUB_TOKEN: ${{ secrets.USER_PAT }}
         run: |
           npm install
-          GITHUB_TOKEN="$GITHUB_TOKEN" npm run build
+          GITHUB_TOKEN=${{ secrets.USER_PAT }} npm run build
       - shell: bash
         name: push to ACT R master branch
         run: |
