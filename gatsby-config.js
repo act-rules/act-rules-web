@@ -1,4 +1,5 @@
 const packageJson = require('./package.json')
+const testcasesJson = require('./_data/testcases/testcases.json')
 const {
 	config: { actRulesCommunityPkgJson, actRulesCommunityRulesDir, actRulesCommunityPagesDir },
 } = packageJson
@@ -58,7 +59,15 @@ module.exports = {
 							toHeadingDepth: 3,
 						},
 					},
-
+					{
+						resolve: `rule-example-open-in-new-tab`,
+						options: {
+							matchPath: /rules\//,
+							headingDepth: 4,
+							title: `Open in a new tab`,
+							testcases: JSON.stringify(testcasesJson.testcases),
+						},
+					},
 					`gatsby-remark-autolink-headers`,
 					`gatsby-remark-copy-linked-files`,
 					`gatsby-remark-prismjs`,
