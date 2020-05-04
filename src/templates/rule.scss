@@ -8,6 +8,12 @@
 	padding-top: 3rem;
 	overflow-y: auto;
 
+	div.open-ex-new-tab-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+
 	ul.meta,
 	div.meta {
 		@include reset-list();
