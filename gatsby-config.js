@@ -13,6 +13,12 @@ module.exports = {
 		actRulesPackage: JSON.stringify(actRulesPackageJson),
 	},
 	plugins: [
+		{
+			resolve: `gatsby-plugin-env-variables`,
+			options: {
+				whitelist: ['GITHUB_TOKEN'],
+			},
+		},
 		`gatsby-plugin-react-helmet`,
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-sharp`,

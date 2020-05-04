@@ -15,7 +15,7 @@ jobs:
         run: |
           npm install
           npm run prebuild
-          GITHUB_TOKEN="${{ secrets.USER_NAME }}" gatsby build
+          GITHUB_TOKEN="${{ secrets.USER_NAME }}" npm run build
       - name: Build Gatsby website
         run: npm run build
         env:
