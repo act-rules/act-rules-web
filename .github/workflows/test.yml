@@ -14,9 +14,7 @@ jobs:
       - name: set environment variables
         uses: allenevans/set-env@v1.0.0
         with:
-          RANDOM_VALUE_1: 'jey'
-          RANDOM_VALUE_2: act
-          GATSBY_GITHUB_TOKEN: ${{ secrets.USER.PAT }}
+          GATSBY_GITHUB_TOKEN: ${{ secrets.USER_PAT }}
       - name: install & build
         run: |
           npm install
