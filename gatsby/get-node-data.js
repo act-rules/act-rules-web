@@ -48,7 +48,9 @@ module.exports = getNodeData
  */
 async function getGitLog(url) {
 	console.log('Running in git log')
-	console.log(process.env)
+	console.log(process.env.RANDOM_VALUE_1)
+	console.log(process.env.RANDOM_VALUE_2)
+	console.log(process.env.GATSBY_GITHUB_TOKEN)
 	console.log('====')
 
 	if (!process.env.GATSBY_GITHUB_TOKEN) {
