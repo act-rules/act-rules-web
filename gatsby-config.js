@@ -16,7 +16,7 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-env-variables`,
 			options: {
-				whitelist: ['GITHUB_TOKEN'],
+				whitelist: ['GATSBY_GITHUB_TOKEN'],
 			},
 		},
 		`gatsby-plugin-react-helmet`,

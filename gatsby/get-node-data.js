@@ -47,14 +47,18 @@ module.exports = getNodeData
  * @param {string} url
  */
 async function getGitLog(url) {
-	if (!process.env.GITHUB_TOKEN) {
+	console.log('Running in git log')
+	console.log(process.env)
+	console.log('====')
+
+	if (!process.env.GATSBY_GITHUB_TOKEN) {
 		console.warn(`Please set up github access token as environment variable`)
 	}
 
 	const result = []
 	const { data } = await axios.get(url, {
 		headers: {
-			Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+			Authorization: `Bearer ${process.env.GATSBY_GITHUB_TOKEN}`,
 			'Content-Type': 'application/json',
 		},
 	})

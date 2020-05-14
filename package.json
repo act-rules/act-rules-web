@@ -83,7 +83,7 @@
 		"createGlossaryUsages": "node ./build/create-glossary-usages --rulesDir $npm_package_config_actRulesCommunityRulesDir --outputDir ${PWD}'/_data'",
 		"createRulesUsages": "node ./build/create-rules-usages.js --rulesDir $npm_package_config_actRulesCommunityRulesDir --outputDir ${PWD}'/_data'",
 		"pregetImplementationAxeCore": "npm --prefix './node_modules/act-rules-implementation-axe-core/' install && npm --prefix './node_modules/act-rules-implementation-axe-core/' run build -- --testsJson ${PWD}'/_data/testcases/testcases.json' --testsDir ${PWD}'/_data/testcases' --siteUrl $npm_package_www_url",
-		"getImplementations": "npm run pregetImplementationAxeCore && node ./build/get-implementations --implementationsFile './implementations.yml'",
+		"getImplementations": "node ./build/get-implementations --implementationsFile './implementations.yml'",
 		"createImplementationsMetrics": "node ./build/create-implementation-metrics --implementations ${PWD}'/_data/implementations/*.json' --outputDir ${PWD}'/_data'",
 		"implementations": "npm run getImplementations && npm run createImplementationsMetrics",
 		"getData": "npm run getWcagMetaData && npm run createTestcases && npm run createGlossaryUsages && npm run createRulesUsages && npm run implementations",
