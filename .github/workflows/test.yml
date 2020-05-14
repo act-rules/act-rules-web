@@ -11,9 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
-      - name: install & build
-        env:
+      - name: set environment variables
+        uses: allenevans/set-env@v1.0.0
+        with:
           GATSBY_GITHUB_TOKEN: ${{ secrets.USER_PAT }}
+      - name: install & build
         run: |
           npm install
           npm run build

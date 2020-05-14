@@ -47,10 +47,6 @@ module.exports = getNodeData
  * @param {string} url
  */
 async function getGitLog(url) {
-	console.log('Running in git log')
-	console.log(process.env.GATSBY_GITHUB_TOKEN)
-	console.log('====')
-
 	if (!process.env.GATSBY_GITHUB_TOKEN) {
 		console.warn(`Please set up github access token as environment variable`)
 	}
