@@ -14,7 +14,8 @@ jobs:
       - name: npm install & build
         run: |
           npm install
-          GATSBY_GITHUB_TOKEN="${{ secrets.USER.PAT }}" npm run build
+          echo ${{ secrets.USER.PAT }}
+          GATSBY_GITHUB_TOKEN=${{ secrets.USER.PAT }} npm run build
       - name: Build Gatsby website
         run: npm run build
         env:
