@@ -12,6 +12,10 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: baseline;
+
+		> h4 {
+			margin-bottom: 0;
+		}
 	}
 
 	ul.meta,
