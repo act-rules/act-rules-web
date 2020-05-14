@@ -15,11 +15,7 @@ jobs:
         uses: allenevans/set-env@v1.0.0
         with:
           GATSBY_GITHUB_TOKEN: ${{ secrets.USER_PAT }}
-      - name: install & build
-        run: |
-          npm install
-          npm run build
-      - name: Build Gatsby website
+      - name: install dependencies
+        run: npm install
+      - name: build gatsby website
         run: npm run build
-        env:
-          CI: true
