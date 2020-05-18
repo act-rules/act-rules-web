@@ -130,17 +130,3 @@ export function getRuleUsageInRules(ruleId) {
 		</div>
 	)
 }
-
-/**
- * Get formatted date from unix timestamp
- * @param {String} unixtimestamp UNIX timestamp
- */
-export function getDateTimeFromUnixTimestamp(unixtimestamp) {
-	const months_arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-	const date = new Date(unixtimestamp * 1000)
-	const year = date.getFullYear()
-	const month = months_arr[date.getMonth()]
-	const day = date.getDate()
-
-	return `${month} ${day}, ${year}`
-}

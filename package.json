@@ -56,9 +56,11 @@
 		"unified": "^8.4.2",
 		"unist-util-visit": "^2.0.2",
 		"vfile": "^4.0.2",
-		"zip-folder": "^1.0.0"
+		"zip-folder": "^1.0.0",
+		"date-fns": "^2.12.0"
 	},
 	"devDependencies": {
+		"dotenv": "^8.2.0",
 		"husky": "^3.1.0",
 		"js-yaml": "^3.13.1",
 		"lint-staged": "^9.5.0",
