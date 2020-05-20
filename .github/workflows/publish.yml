@@ -36,8 +36,8 @@ jobs:
           git checkout act-r-repo/master
           git pull act-r-repo master
 
-          # remove all files except the generated public directory and required git folders
-          find . -maxdepth 1 ! -name 'public' ! -name '.git' ! -name '.gitignore' -exec rm -rf {} \;	
+          # remove all files except the generated public (generated site), testcases, test-assets and required git folders
+          find . -maxdepth 1 ! -name 'public' ! -name '.git' ! -name '.gitignore' ! -name 'test-assets' ! -name 'testcases'  -exec rm -rf {} \;	
 
           # move generated public in the root folder and remove the empty generated public folder
           mv public/* .
