@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import showdown from 'showdown'
 import { format } from 'date-fns'
 import SEO from '../components/seo'
@@ -8,14 +8,10 @@ import Acknowledgments from '../components/acknowledgments'
 import AccessibilityRequirements from '../components/accessibility_requirements'
 import ListOfImplementers from '../components/list-of-implementers'
 import RuleTableOfContents from '../components/rule-table-of-contents'
-
+import ListWithHeading from '../components/list-with-heading'
+import rulesUsages from '../../_data/rules-usages.json'
 import curateGitUrl from '../../utils/curate-git-url'
-import {
-	getGlossaryUsed,
-	getRuleUsageInRules,
-	getInputRulesForRule,
-	getInputAspects,
-} from './../utils/render-fragments'
+import { getGlossaryUsed, getInputRulesForRule, getInputAspects } from './../utils/render-fragments'
 
 import implementers from '../../_data/implementers.json'
 
@@ -37,7 +33,7 @@ export default ({ location, data }) => {
 	const changelogUrl = `/rules/${ruleId}/changelog`
 	const issuesUrl = `${repositoryUrl}/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+${ruleId}+`
 	const ruleFormatInputAspects = config['rule-format-metadata']['input-aspects']
-
+	const usedInRules = rulesUsages[ruleId]
 	const validImplementers = implementers.filter(({ actMapping }) => {
 		const validMappings = actMapping.filter(({ ruleId: mappedRuleId, consistency }) => {
 			return mappedRuleId === ruleId && ['consistent', 'partially-consistent'].includes(consistency)
@@ -81,7 +77,23 @@ export default ({ location, data }) => {
 					<li>
 						<AccessibilityRequirements accessibility_requirements={parsedFrontmatter.accessibility_requirements} />
 					</li>
-					<li>{getRuleUsageInRules(ruleId)}</li>
+					<li>
+						<ListWithHeading
+							cls={`side-notes`}
+							headingTemplate={() => <span className="heading">Used in rules:</span>}
+							itemKey={`slug`}
+							itemTemplate={item => (
+								<Link to={item.slug}>
+									<span
+										dangerouslySetInnerHTML={{
+											__html: converter.makeHtml(item.name),
+										}}
+									/>
+								</Link>
+							)}
+							items={usedInRules}
+						/>
+					</li>
 					<li>{getInputAspects(frontmatter.input_aspects, ruleFormatInputAspects)}</li>
 					<li>{getInputRulesForRule(frontmatter.input_rules, allRules.edges, true)}</li>
 				</ul>
