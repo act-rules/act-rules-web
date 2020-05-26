@@ -40,7 +40,7 @@ jobs:
           find . -maxdepth 1 ! -name 'public' ! -name '.git' ! -name '.gitignore' ! -name 'test-assets' ! -name 'testcases'  -exec rm -rf {} \;	
 
           # move generated public in the root folder and remove the empty generated public folder
-          mv public/* .
+          cp -r public/* .
           rm -R public/
 
           # commit and push to ACT R repositories master branch
