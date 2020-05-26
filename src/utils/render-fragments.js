@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import glossaryUsages from './../../_data/glossary-usages.json'
-import rulesUsages from './../../_data/rules-usages.json'
 
 export const getGlossaryUsed = (slug, allGlossary) => {
 	const usedKeys = getGlossaryItemsUsedInRule(slug)
@@ -102,29 +100,6 @@ export function getInputRulesForRule(inputRules, allRules, stripBasePath = false
 							</li>
 						)
 					})}
-				</ul>
-			</div>
-		</div>
-	)
-}
-
-export function getRuleUsageInRules(ruleId) {
-	const usages = rulesUsages[ruleId]
-	if (!usages) {
-		return null
-	}
-	return (
-		<div className="side-notes">
-			<div className="meta">
-				<span className="heading">Used in rules</span>
-				<ul>
-					{usages.map(usage => (
-						<li key={usage.slug}>
-							<Link key={usage.slug} to={usage.slug}>
-								{usage.name}
-							</Link>
-						</li>
-					))}
 				</ul>
 			</div>
 		</div>

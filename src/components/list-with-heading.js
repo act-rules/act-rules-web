@@ -1,23 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ListWithHeading = props => {
-	const { cls, heading, items = [] } = props
+const ListWithHeading = ({ cls, headingTemplate, itemKey, itemTemplate, items = [] }) => {
 	return (
 		<div className={cls}>
 			{/* title  */}
-			<h3>
-				{heading} ({items.length}):
-			</h3>
+			{headingTemplate()}
 			{/* when there are no items, show a no data note  */}
 			{(!items || !items.length) && <div className="note">No Data</div>}
 			{/* render items if they exist  */}
 			{items.length > 0 && (
 				<ul>
-					{items.map(usage => (
-						<li key={usage.slug}>
-							<a href={`/${usage.slug}`}>{usage.name}</a>
-						</li>
+					{items.map(item => (
+						<li key={item[itemKey]}>{itemTemplate(item)}</li>
 					))}
 				</ul>
 			)}
@@ -27,7 +22,9 @@ const ListWithHeading = props => {
 
 ListWithHeading.propTypes = {
 	cls: PropTypes.string,
-	heading: PropTypes.string.isRequired,
+	itemKey: PropTypes.string,
+	headingTemplate: PropTypes.func.isRequired,
+	itemTemplate: PropTypes.func.isRequired,
 	items: PropTypes.array,
 }
 
