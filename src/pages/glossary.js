@@ -73,7 +73,6 @@ const Glossary = ({ location }) => {
 									<a id={frontmatter.key} href={`#${frontmatter.key}`}>
 										<h2>{frontmatter.title}</h2>
 									</a>
-									<i>key: {frontmatter.key}</i>
 									<div dangerouslySetInnerHTML={{ __html: html }} />
 								</section>
 								<ListWithHeading
