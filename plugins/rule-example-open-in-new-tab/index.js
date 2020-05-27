@@ -46,6 +46,7 @@ module.exports = ({ markdownAST, markdownNode }, pluginOptions) => {
 				id="${id}" 
 				style="position:relative;">
 				<a 
+					target="_blank"
 					href="#${id}" 
 					aria-label="${testcaseHeading} permalink" 
 					class="anchor before">
