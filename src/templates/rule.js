@@ -77,23 +77,25 @@ export default ({ location, data }) => {
 					<li>
 						<AccessibilityRequirements accessibility_requirements={parsedFrontmatter.accessibility_requirements} />
 					</li>
-					<li>
-						<ListWithHeading
-							cls={`side-notes`}
-							headingTemplate={() => <span className="heading">Used in rules:</span>}
-							itemKey={`slug`}
-							itemTemplate={item => (
-								<Link to={item.slug}>
-									<span
-										dangerouslySetInnerHTML={{
-											__html: converter.makeHtml(item.name),
-										}}
-									/>
-								</Link>
-							)}
-							items={usedInRules}
-						/>
-					</li>
+					{usedInRules && usedInRules.length > 0 && (
+						<li>
+							<ListWithHeading
+								cls={`side-notes`}
+								headingTemplate={() => <span className="heading">Used in rules:</span>}
+								itemKey={`slug`}
+								itemTemplate={item => (
+									<Link to={item.slug}>
+										<span
+											dangerouslySetInnerHTML={{
+												__html: converter.makeHtml(item.name),
+											}}
+										/>
+									</Link>
+								)}
+								items={usedInRules}
+							/>
+						</li>
+					)}
 					<li>{getInputAspects(frontmatter.input_aspects, ruleFormatInputAspects)}</li>
 					<li>{getInputRulesForRule(frontmatter.input_rules, allRules.edges, true)}</li>
 				</ul>
