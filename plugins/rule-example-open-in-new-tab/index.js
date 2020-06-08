@@ -46,7 +46,6 @@ module.exports = ({ markdownAST, markdownNode }, pluginOptions) => {
 				id="${id}" 
 				style="position:relative;">
 				<a 
-					target="_blank"
 					href="#${id}" 
 					aria-label="${testcaseHeading} permalink" 
 					class="anchor before">
@@ -66,6 +65,8 @@ module.exports = ({ markdownAST, markdownNode }, pluginOptions) => {
 				${testcaseHeading}
 			</h4>
 			<a 
+				target="_blank"
+				rel="noopener noreferrer"
 				href="${testcase.url}"
 				aria-label="Open ${testcaseHeading} in a new tab">
 				${title}
