@@ -56,8 +56,7 @@
 		"showdown": "^1.9.1",
 		"unified": "^8.4.2",
 		"unist-util-visit": "^2.0.2",
-		"vfile": "^4.0.2",
-		"zip-folder": "^1.0.0"
+		"vfile": "^4.0.2"
 	},
 	"devDependencies": {
 		"dotenv": "^8.2.0",
