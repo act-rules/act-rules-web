@@ -11,7 +11,7 @@ import RuleTableOfContents from '../components/rule-table-of-contents'
 import ListWithHeading from '../components/list-with-heading'
 import rulesUsages from '../../_data/rules-usages.json'
 import curateGitUrl from '../../utils/curate-git-url'
-import { getGlossaryUsed, getInputRulesForRule, getInputAspects } from './../utils/render-fragments'
+import { getGlossaryUsed } from './../utils/render-fragments'
 
 import implementers from '../../_data/implementers.json'
 
@@ -82,22 +82,67 @@ export default ({ location, data }) => {
 							<ListWithHeading
 								cls={`side-notes`}
 								headingTemplate={() => <span className="heading">Used in rules:</span>}
-								itemKey={`slug`}
 								itemTemplate={item => (
-									<Link to={item.slug}>
-										<span
-											dangerouslySetInnerHTML={{
-												__html: converter.makeHtml(item.name),
-											}}
-										/>
-									</Link>
+									<li key={item.slug}>
+										<Link to={item.slug}>
+											<span
+												dangerouslySetInnerHTML={{
+													__html: converter.makeHtml(item.name),
+												}}
+											/>
+										</Link>
+									</li>
 								)}
 								items={usedInRules}
 							/>
 						</li>
 					)}
-					<li>{getInputAspects(frontmatter.input_aspects, ruleFormatInputAspects)}</li>
-					<li>{getInputRulesForRule(frontmatter.input_rules, allRules.edges, true)}</li>
+					{frontmatter.input_aspects && frontmatter.input_aspects.length && (
+						<li>
+							<ListWithHeading
+								cls={`side-notes`}
+								headingTemplate={() => <span className="heading">Input Aspects:</span>}
+								itemTemplate={aspect => {
+									const aHref = ruleFormatInputAspects[aspect]
+										? ruleFormatInputAspects[aspect]
+										: ruleFormatInputAspects['default']
+									return (
+										<li key={aspect}>
+											<a className="sc-item block" href={aHref}>
+												{aspect}
+											</a>
+										</li>
+									)
+								}}
+								items={frontmatter.input_aspects}
+							/>
+						</li>
+					)}
+					{frontmatter.input_rules && frontmatter.input_rules.length && (
+						<li>
+							<ListWithHeading
+								cls={`side-notes`}
+								headingTemplate={() => <span className="heading">Input Rules:</span>}
+								itemTemplate={inputRuleId => {
+									const atomicRule = allRules.edges.find(rule => rule.node.frontmatter.id === inputRuleId)
+									const aHref = atomicRule.node.fields.slug.replace('rules/', '')
+									const name = atomicRule.node.frontmatter.name
+									return (
+										<li key={inputRuleId}>
+											<a
+												className="sc-item block"
+												href={aHref}
+												dangerouslySetInnerHTML={{
+													__html: converter.makeHtml(name),
+												}}
+											></a>
+										</li>
+									)
+								}}
+								items={frontmatter.input_rules}
+							/>
+						</li>
+					)}
 				</ul>
 				<hr />
 				{/* Description */}

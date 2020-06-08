@@ -37,6 +37,10 @@ article.ruleCard {
 			&:hover {
 				color: $accent;
 			}
+			p {
+				margin: 0;
+				padding: 0;
+			}
 		}
 	}
 
