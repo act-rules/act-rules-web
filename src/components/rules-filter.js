@@ -12,9 +12,9 @@ const RulesFilter = ({ onFilter, minimumFilterTextLength = 3, debounceTime = 300
 	return (
 		<form onSubmit={e => e.preventDefault()} className="rulesFilter">
 			<div className="filterTextInputGroup">
-				<label htmlFor="filterTextInput">Filter:</label>
+				<span id="filterRules">Filter:</span>
 				<input
-					id="filterTextInput"
+					aria-labelledby="filterRules"
 					type="text"
 					placeholder={`Enter more than ${minimumFilterTextLength} characters...`}
 					value={filterText}
