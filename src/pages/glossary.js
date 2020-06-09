@@ -78,15 +78,16 @@ const Glossary = ({ location }) => {
 								<ListWithHeading
 									cls={`used-rules`}
 									headingTemplate={() => <h3>Used In Rules: ({items ? items.length : '0'})</h3>}
-									itemKey={`slug`}
 									itemTemplate={item => (
-										<a href={`/${item.slug}`}>
-											<span
-												dangerouslySetInnerHTML={{
-													__html: converter.makeHtml(item.name),
-												}}
-											/>
-										</a>
+										<li key={item.slug}>
+											<a href={`/${item.slug}`}>
+												<span
+													dangerouslySetInnerHTML={{
+														__html: converter.makeHtml(item.name),
+													}}
+												/>
+											</a>
+										</li>
 									)}
 									items={glossaryUsages[`#${frontmatter.key}`]}
 								/>

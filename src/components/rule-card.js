@@ -4,8 +4,7 @@ import showdown from 'showdown'
 
 import AccessibilityRequirements from './accessibility_requirements'
 import CountImplementations from './count-implementations'
-
-import { getInputRulesForRule } from '../utils/render-fragments'
+import ListWithHeading from './list-with-heading'
 
 import './rule-card.scss'
 import RuleHeader from './rule-header'
@@ -35,7 +34,29 @@ const RuleCard = ({
 				{/* rule sc's */}
 				<AccessibilityRequirements accessibility_requirements={accessibilityRequirements} type="text" />
 				{/* input rules */}
-				{getInputRulesForRule(inputRules, allRules.edges, true)}
+				{inputRules && (
+					<ListWithHeading
+						cls={`meta`}
+						headingTemplate={() => <span className="heading">Input Rules:</span>}
+						itemTemplate={inputRuleId => {
+							const atomicRule = allRules.edges.find(rule => rule.node.frontmatter.id === inputRuleId)
+							const aHref = atomicRule.node.fields.slug.replace('rules/', '')
+							const name = atomicRule.node.frontmatter.name
+							return (
+								<li key={inputRuleId}>
+									<a
+										className="sc-item block"
+										href={aHref}
+										dangerouslySetInnerHTML={{
+											__html: converter.makeHtml(name),
+										}}
+									></a>
+								</li>
+							)
+						}}
+						items={inputRules}
+					/>
+				)}
 				{/* implementation count */}
 				<CountImplementations ruleId={id} />
 			</section>
