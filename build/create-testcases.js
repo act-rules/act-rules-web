@@ -159,12 +159,12 @@ function wrapCodeWithDoctype(lang, code) {
 		xhtml: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">`,
 	}
 
-	// if given code already containst doctype - return
-	if (/<!doctype/i.test(code)) {
-		return code
-	}
-
 	if (Object.keys(doctypeMap).includes(lang)) {
+		// if given code already containst doctype - return
+		if (/<!doctype/i.test(code)) {
+			return code
+		}
+
 		return `${doctypeMap[lang]} ${code}`
 	}
 
