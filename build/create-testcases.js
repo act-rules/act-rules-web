@@ -160,6 +160,11 @@ function wrapCodeWithDoctype(lang, code) {
 	}
 
 	if (Object.keys(doctypeMap).includes(lang)) {
+		// if given code already containst doctype - return
+		if (/<!doctype/i.test(code)) {
+			return code
+		}
+
 		return `${doctypeMap[lang]} ${code}`
 	}
 
