@@ -84,7 +84,7 @@ export default ({ location, data }) => {
 								headingTemplate={() => <span className="heading">Used in rules:</span>}
 								itemTemplate={item => (
 									<li key={item.slug}>
-										<Link to={item.slug}>
+										<Link to={`/${item.slug}`}>
 											<span
 												dangerouslySetInnerHTML={{
 													__html: converter.makeHtml(item.name),
