@@ -28,12 +28,7 @@ jobs:
           git checkout act-r-repo/jey
           git pull act-r-repo jey
 
-          # remove all files except the generated public (generated site), testcases, test-assets and required git folders
-          find . -maxdepth 1 ! -name 'public' ! -name '.git' ! -name '.gitignore'  -exec rm -rf {} \;	
-
-          # move generated public in the root folder and remove the empty generated public folder
-          cp -r public/* .
-          rm -R public/
+          touch jey.txt
 
           # commit and push to ACT R repositories master branch
           git add -fA
