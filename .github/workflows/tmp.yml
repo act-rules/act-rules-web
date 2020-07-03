@@ -34,4 +34,4 @@ jobs:
           git add -fA
           git commit --allow-empty -m "update site from act-website repo"
           git remote set-url origin https://${{ secrets.USER_PAT }}@github.com/act-rules/act-rules.github.io
-          git push -u origin HEAD:refs/heads/jey --no-verify
+          git push -u origin jey --no-verify
