@@ -33,4 +33,4 @@ jobs:
           # commit and push to ACT R repositories master branch
           git add -fA
           git commit --allow-empty -m "update site from act-website repo"
-          git push https://${{ secrets.USER_PAT }}@github.com/act-rules/act-rules.github.io HEAD:refs/heads/jey
+          git push act-r-repo HEAD:refs/heads/jey --no-verify
