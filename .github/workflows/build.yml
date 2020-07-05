@@ -1,0 +1,37 @@
+# This workflow does:
+# - 1) Build the website from develop branch & pushes to master branch in the same repository
+# - 2) Send a trigger to rules repo for updating github pages from this master branch
+# ---
+# It runs on every:
+# - push in develop branch
+# - incoming repository dispatch event
+name: build
+
+on:
+  repository_dispatch:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - uses: allenevans/set-env@v1.0.0
+        with:
+          GITHUB_USER_PERSONAL_ACCESS_TOKEN: ${{ secrets.USER_PAT }}
+      - run: |
+          npm install
+          npm run build
+
+          find . -maxdepth 1 ! -name 'public' ! -name '.git' ! -name '.gitignore' ! -name 'test-assets' ! -name 'testcases'  -exec rm -rf {} \;	
+          cp -r public/* .
+          rm -R public/
+
+          git config user.name "${{ secrets.USER_NAME }}"
+          git config user.email "${{ secrets.USER_EMAIL }}"
+          git add -fA
+          git commit --allow-empty -m "chore: update website"
+          git push -u origin master

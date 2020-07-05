@@ -1,9 +1,14 @@
+# This workflow ensures
+# - that the Gatsby website can build
+# ---
+# It runs on every:
+# - pull request that is opened to develop branch
 name: test
 
 on:
   pull_request:
     branches:
-      - master
+      - [develop]
 
 jobs:
   build:
@@ -11,11 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - name: Set env variables
-        uses: allenevans/set-env@v1.0.0
+      - uses: allenevans/set-env@v1.0.0
         with:
           GITHUB_USER_PERSONAL_ACCESS_TOKEN: ${{ secrets.USER_PAT }}
-      - name: Install dependencies
-        run: npm install
-      - name: Build website
-        run: npm run build
+      - run: npm install
+      - run: npm run build
