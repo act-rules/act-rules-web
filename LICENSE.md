@@ -1,3 +1,0 @@
-W3C COMMUNITY CONTRIBUTOR LICENSE AGREEMENT (CLA)
-
-[Learn More](./pages/license.md)
