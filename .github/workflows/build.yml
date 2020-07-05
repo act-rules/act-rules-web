@@ -25,13 +25,16 @@ jobs:
       - run: |
           npm install
           npm run build
-
-          find . -maxdepth 1 ! -name 'public' ! -name '.git' ! -name '.gitignore' ! -name 'test-assets' ! -name 'testcases'  -exec rm -rf {} \;	
-          cp -r public/* .
-          rm -R public/
-
           git config user.name "${{ secrets.USER_NAME }}"
           git config user.email "${{ secrets.USER_EMAIL }}"
+          git checkout -- package-lock.json
+          git fetch
+          git checkout master
+          find . -maxdepth 1 ! -name 'public' ! -name '.git' ! -name '.gitignore' -exec rm -rf {} \;	
+          cp -r public/* .
+          rm -R public/
           git add -fA
           git commit --allow-empty -m "chore: update website"
           git push -u origin master
+      - run: |
+          curl -XPOST -u "${{ secrets.USER_NAME }}:${{ secrets.USER_PAT }}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/act-rules/act-rules.github.io/dispatches --data '{ "event_type": "update_gh_pages" }'
