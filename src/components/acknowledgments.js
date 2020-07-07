@@ -38,29 +38,33 @@ const Acknowledgments = ({ scrollLinkId, items, contributors }) => {
 			<a id={scrollLinkId} href={`#${scrollLinkId}`}>
 				<h2>Acknowledgments</h2>
 			</a>
-			{Object.keys(curatedItems).map(key => {
-				const values = curatedItems[key] || []
-
+			{Object.entries(curatedItems).map(([key, values]) => {
 				if (!values || !values.length) {
 					return null
 				}
+
+				const heading = key.split('_').join(' ')
 				return (
 					<div className="meta" key={key}>
-						<h3 className="heading">{key.split('_').join(' ')}</h3>
+						<h3 className="heading">{heading}</h3>
 						<ul>
 							{values.map(value => {
-								const data = contributors.find(({ name }) => name.toLowerCase() === value.toLowerCase())
-								if (!data) {
-									console.warn(`${data}, not in contributor list.`)
-									return null
+								// only if acknowledgement is of type authors, get author name & url from contributors
+								if (['Previous Authors', 'Authors'].includes(key)) {
+									const contributor = contributors.find(({ name }) => name.toLowerCase() === value.toLowerCase())
+									if (!contributor) {
+										console.warn(`${value}, not in contributor list.`)
+										return <li key={value}>{value}</li>
+									}
+									return (
+										<li key={contributor.name}>
+											<a className="sc-item block" target="_blank" rel="noopener noreferrer" href={contributor.url}>
+												{contributor.name}
+											</a>
+										</li>
+									)
 								}
-								return (
-									<li key={data.name}>
-										<a className="sc-item block" target="_blank" rel="noopener noreferrer" href={data.url}>
-											{data.name}
-										</a>
-									</li>
-								)
+								return <li key={value}>{value}</li>
 							})}
 						</ul>
 					</div>
