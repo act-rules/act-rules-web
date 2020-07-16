@@ -105,6 +105,14 @@ function BasicListing({ accessibilityDocument, item, mapping, listType }) {
 			conformanceTo: 'Not required to conformance to any W3C accessibility recommendation.',
 			baseURL: 'https://www.w3.org/TR/using-aria/#',
 		},
+		'wcag-text': {
+			conformanceTo: (
+				<>
+					<strong>Required for conformance</strong> to WCAG 2.0 and above on level A and above.
+				</>
+			),
+			baseURL: 'https://www.w3.org/TR/WCAG21/#',
+		},
 	}[accessibilityDocument]
 
 	return (
@@ -200,6 +208,7 @@ export default function AccessibilityRequirements({ accessibility_requirements, 
 					switch (accessibilityDocument) {
 						case 'aria11':
 						case 'using-aria':
+						case 'wcag-text':
 							return (
 								<BasicListing
 									key={accessibilityItem}
