@@ -60,6 +60,9 @@
 	},
 	"devDependencies": {
 		"dotenv": "^8.2.0",
+		"eslint": "^7.6.0",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-react": "^7.20.5",
 		"husky": "^3.1.0",
 		"js-yaml": "^3.14.0",
 		"lint-staged": "^9.5.0",
@@ -86,6 +89,7 @@
 		"getData": "npm run getWcagMetaData && npm run createTestcases && npm run createGlossaryUsages && npm run createRulesUsages && npm run implementations",
 		"clean": "gatsby clean",
 		"develop": "gatsby develop",
+		"lint": "eslint {build,gatsby,plugins,src,utils}/**/*.js",
 		"prebuild": "npm run clean && npm --prefix './node_modules/act-rules-community' run formatRulesDir && npm run getData",
 		"build": "gatsby build",
 		"format": "prettier --write *.{html,js,jsx,json,md,scss,yml} './{.github,build,gatsby,plugins,src,utils}/**/*.{html,js,jsx,json,md,scss,yml}'",
@@ -115,6 +119,10 @@
 	"lint-staged": {
 		"*.{html,js,jsx,json,md,scss,yml}": [
 			"prettier --write",
+			"git add"
+		],
+		"*.{js,jsx}": [
+			"eslint --fix",
 			"git add"
 		]
 	},

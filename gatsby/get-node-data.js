@@ -22,7 +22,7 @@ const getNodeData = async options => {
 	}
 
 	switch (sourceInstanceName) {
-		case 'rules':
+		case 'rules': {
 			const { id } = attributes
 			const path = `${sourceInstanceName}/${id}`
 			const gitUrl = `https://api.github.com/repos/act-rules/act-rules.github.io/commits?path=_rules/${relativePath}`
@@ -33,6 +33,7 @@ const getNodeData = async options => {
 				path,
 				changelog: JSON.stringify(logs),
 			}
+		}
 		default:
 			return {
 				...defaults,

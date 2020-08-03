@@ -13,7 +13,7 @@ module.exports = ({ markdownAST, markdownNode }, pluginOptions) => {
 		return markdownAST
 	}
 
-	visit(markdownAST, 'heading', (node, index, parent) => {
+	visit(markdownAST, 'heading', node => {
 		if (node.depth !== fromHeadingDepth) {
 			return
 		}

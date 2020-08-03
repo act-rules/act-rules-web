@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import './footer.scss'
 
-const Footer = ({ actRulesRepoUrl }) => (
+const Footer = () => (
 	<footer className="appFooter">
 		{/* tags  */}
 		<div className="tags">

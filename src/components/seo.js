@@ -47,9 +47,9 @@ function SEO({ title, lang = 'en' }) {
 			{/* html attributes */}
 			<html lang={lang} />
 			{/* Busting cache as advised by Gatsby  */}
-			<meta http-equiv="Cache-Control" content="public, max-age=0, must-revalidate" />
-			<meta http-equiv="Pragma" content="no-cache" />
-			<meta http-equiv="Expires" content="0" />
+			<meta httpEquiv="Cache-Control" content="public, max-age=0, must-revalidate" />
+			<meta httpEquiv="Pragma" content="no-cache" />
+			<meta httpEquiv="Expires" content="0" />
 		</Helmet>
 	)
 }

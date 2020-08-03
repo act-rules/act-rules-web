@@ -37,19 +37,15 @@ async function init({ implementationsFile }) {
 	execCommand(`mkdir -p "./_data/implementations"`)
 
 	for (const { organisation, toolName, jsonReports, testcases: actTestcases, output, description } of implementations) {
-		try {
-			const earlReports = await loadJson(jsonReports)
-			const [testcases] = await loadJson(actTestcases)
-			const mapping = await actMapGenerator(earlReports, testcases, { organisation, toolName })
-			const result = {
-				...mapping,
-				description,
-			}
-			await createFile(output, JSON.stringify(result, undefined, 2))
-			console.info(`Generated implementations for ${toolName} from ${organisation}`)
-		} catch (error) {
-			throw error
+		const earlReports = await loadJson(jsonReports)
+		const [testcases] = await loadJson(actTestcases)
+		const mapping = await actMapGenerator(earlReports, testcases, { organisation, toolName })
+		const result = {
+			...mapping,
+			description,
 		}
+		await createFile(output, JSON.stringify(result, undefined, 2))
+		console.info(`Generated implementations for ${toolName} from ${organisation}`)
 	}
 }
 
