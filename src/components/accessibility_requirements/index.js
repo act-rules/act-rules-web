@@ -90,7 +90,7 @@ function AccessibilityRequirementsListing({
 	)
 }
 
-// For documents where we provide the title, and where the item is an URL anchor
+// For documents where we provide the title, and where the item is an URL anchor
 function BasicListing({ accessibilityDocument, item, mapping, listType }) {
 	const { conformanceTo, baseURL } = {
 		aria11: {
@@ -164,7 +164,7 @@ function TechniqueListing({ item, mapping, listType }) {
 	)
 }
 
-// For WCAG SC. Title, URL and more is grabbed from data fetched during build.
+// For WCAG SC. Title, URL and more is grabbed from data fetched during build.
 function WcagListing({ item, mapping, listType }) {
 	const { num, url, handle, wcagType, level } = scUrls[item]
 
