@@ -31,7 +31,7 @@ const changesSvgIcon = () => {
 	)
 }
 
-const getChangelogTabulation = (changelog, url, file) => {
+const getChangelogTabulation = changelog => {
 	if (!changelog.length) {
 		return null
 	}

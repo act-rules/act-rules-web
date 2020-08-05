@@ -20,4 +20,5 @@ jobs:
         with:
           GITHUB_USER_PERSONAL_ACCESS_TOKEN: ${{ secrets.USER_PAT }}
       - run: npm install
+      - run: npm run lint
       - run: npm run build

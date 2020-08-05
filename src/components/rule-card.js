@@ -9,15 +9,7 @@ import ListWithHeading from './list-with-heading'
 import './rule-card.scss'
 import RuleHeader from './rule-header'
 
-const RuleCard = ({
-	id = '',
-	name = '',
-	type = '',
-	description = '',
-	accessibilityRequirements,
-	inputRules,
-	allRules,
-}) => {
+const RuleCard = ({ id = '', name = '', description = '', accessibilityRequirements, inputRules, allRules }) => {
 	const converter = new showdown.Converter()
 
 	return (

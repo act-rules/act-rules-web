@@ -60,7 +60,7 @@ async function init(program) {
 	 * -> get code snippets
 	 * -> and their relevant titles
 	 */
-	for (const { frontmatter, body, markdownAST } of rulesData) {
+	for (const { frontmatter, markdownAST } of rulesData) {
 		const { id: ruleId, name: ruleName, accessibility_requirements: ruleAccessibilityRequirements } = frontmatter
 
 		/**
