@@ -8,7 +8,7 @@
 
 - organisation: 'Deque Systems'
   toolName: 'axe-core'
-  jsonReports: ./node_modules/act-rules-implementation-axe-core/report.json
+  jsonReports: ./_data/reports/axe-core-report.json
   testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/axe.json
   description: |

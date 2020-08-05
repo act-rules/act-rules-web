@@ -1,4 +1,3 @@
-const assert = require('assert')
 const program = require('commander')
 const { copy } = require('fs-extra')
 const objectHash = require('object-hash')
@@ -8,44 +7,27 @@ const createTestcasesOfRuleOfEmReportTool = require('./testcases/create-testcase
 const getMarkdownData = require('../utils/get-markdown-data')
 const getMarkdownAstNodesOfType = require('../utils/get-markdown-ast-nodes-of-type')
 
-/**
- * Parse `args`
- */
 program
-	.option('-r, --rulesDir <rulesDir>', 'Directory containing rules markdown files')
-	.option('-t, --testAssetsDir <testAssetsDir>', 'Test assets directory')
-	.option('-t, --actRulesCommunityPkgJson <actRulesCommunityPkgJson>', 'Package json file of act rules community')
-	.option('-o, --outputDir <outputDir>', 'output directory to create the meta data')
+	.requiredOption('-r, --rulesDir <rulesDir>', 'Directory containing rules markdown files')
+	.requiredOption('-t, --testAssetsDir <testAssetsDir>', 'Test assets directory')
+	.requiredOption(
+		'-t, --actRulesCommunityPkgJson <actRulesCommunityPkgJson>',
+		'Package json file of act rules community'
+	)
+	.requiredOption('-o, --outputDir <outputDir>', 'output directory to create the meta data')
 	.parse(process.argv)
 
-/**
- * Invoke
- */
-init(program)
-	.then(() => console.info('Completed'))
+createTestcases(program)
+	.then(() => {
+		console.info('Completed create-testcases')
+	})
 	.catch(e => {
 		console.error(e)
 		process.exit(1)
 	})
 
-/**
- * Create test case files & other meta-data  from test case in each rule.
- * -> create test cases files into `_data` directory
- * -> copy test assets into `_data` directory
- * -> create `testcases.json`
- * These files will be copied into `public` directory during gatsby `preBootstrap` hook/ build
- */
-async function init(program) {
+async function createTestcases(program) {
 	const { rulesDir, testAssetsDir, outputDir, actRulesCommunityPkgJson } = program
-
-	/**
-	 * assert `args`
-	 */
-	assert(rulesDir, '`rulesDir` is required')
-	assert(testAssetsDir, 'testAssetsDir is required')
-	assert(actRulesCommunityPkgJson, 'actRulesCommunityPkgJson is required')
-	assert(outputDir, '`outputDir` is required')
-
 	const actRulesCommunityPkg = require(actRulesCommunityPkgJson)
 
 	/**
