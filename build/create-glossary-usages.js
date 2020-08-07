@@ -1,58 +1,34 @@
-/**
- * Create glossary usages
- * -> for each glossary item (find references in each rule)
- * -> this is saved for later use in `pages/glossary`
- */
-const assert = require('assert')
 const program = require('commander')
-const createFile = require('../utils/create-file')
 const getMarkdownData = require('../utils/get-markdown-data')
 const getMarkdownAstNodesOfType = require('../utils/get-markdown-ast-nodes-of-type')
 const isUrl = require('is-url')
+const fs = require('fs-extra')
 
-/**
- * Parse `args`
- */
 program
-	.option('-r, --rulesDir <rulesDir>', 'Directory containing rules markdown files')
-	.option('-o, --outputDir <outputDir>', 'output directory to create the meta data')
+	.requiredOption('-r, --rulesDir <rulesDir>', 'Directory containing rules markdown files')
+	.requiredOption('-o, --outputDir <outputDir>', 'output directory to create the meta data')
 	.parse(process.argv)
 
-/**
- * Invoke
- */
-init(program)
-	.then(() => console.info('Completed'))
+createGlossaryUsage(program)
+	.then(() => {
+		console.info('Completed create-glossary-usages')
+		process.exit()
+	})
 	.catch(e => {
 		console.error(e)
 		process.exit(1)
 	})
 
-/**
- * Init
- */
-async function init({ rulesDir, outputDir }) {
-	/**
-	 * assert `args`
-	 */
-	assert(rulesDir, '`rulesDir` is required')
-	assert(outputDir, '`outputDir` is required')
-
-	/**
-	 * Get all rules `markdown` data
-	 */
+async function createGlossaryUsage({ rulesDir, outputDir }) {
 	const rulesData = getMarkdownData(rulesDir)
+	const glossaryUsages = getGlossaryUsage(rulesData)
 
-	/**
-	 * Eg:
-	 * {
-	 *  `non-empty`: [
-	 *    { name: `aria valid ...`, slug: `rules/XXXXX` },
-	 *    ....
-	 *  ]
-	 *  ....
-	 * }
-	 */
+	const filePath = `${outputDir}/glossary-usages.json`
+	await fs.ensureFile(filePath)
+	await fs.writeJson(filePath, glossaryUsages, { spaces: 2 })
+}
+
+function getGlossaryUsage(rulesData) {
 	const glossaryUsages = {}
 
 	rulesData.forEach(({ frontmatter, markdownAST }) => {
@@ -79,9 +55,5 @@ async function init({ rulesDir, outputDir }) {
 			glossaryUsages[key] = glossaryUsages[key].concat(usage)
 		})
 	})
-
-	/**
-	 * Create `glossary-usages.json`
-	 */
-	await createFile(`${outputDir}/glossary-usages.json`, JSON.stringify(glossaryUsages, undefined, 2))
+	return glossaryUsages
 }
