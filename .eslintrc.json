@@ -3,8 +3,7 @@
 	"env": {
 		"browser": true,
 		"es2020": true,
-		"node": true,
-		"jest": true
+		"node": true
 	},
 	"extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
 	"parserOptions": {
@@ -23,5 +22,15 @@
 	"rules": {
 		"react/prop-types": "off",
 		"react/display-name": "off"
-	}
+	},
+	"overrides": [
+		{
+			"files": ["**/*.{spec,test}.{js,jsx}", "**/__tests__/**/*.{js,jsx}"],
+			"env": {
+				"jest": true
+			},
+			"plugins": ["jest"],
+			"rules": {}
+		}
+	]
 }
