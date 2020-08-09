@@ -73,6 +73,7 @@ function getMarkdownType(path, sourceInstanceName) {
 async function getGitLog(url) {
 	if (!process.env.GITHUB_USER_PERSONAL_ACCESS_TOKEN) {
 		console.warn(`Please set up github access token as environment variable`)
+		return []
 	}
 
 	const result = []

@@ -30,6 +30,9 @@ typings/
 # Optional npm cache directory
 .npm
 
+# NPM config
+.npmrc
+
 # Optional eslint cache
 .eslintcache
 

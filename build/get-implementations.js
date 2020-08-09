@@ -27,9 +27,10 @@ async function getImplementations({ implementationsFile }) {
 	await fs.ensureDir('./_data/implementations')
 
 	for (const implementation of implementations) {
-		const { output, toolName, organisation } = implementation
-		const report = await createReport(implementation)
-		await createFile(output, JSON.stringify(report, undefined, 2))
+		const { organisation, toolName, output } = implementation
+		const result = await createReport(implementation)
+
+		await createFile(output, JSON.stringify(result, undefined, 2))
 		console.info(`Generated implementations for ${toolName} from ${organisation}`)
 	}
 }
