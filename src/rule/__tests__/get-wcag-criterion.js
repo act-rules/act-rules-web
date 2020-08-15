@@ -1,4 +1,4 @@
-import getWcagCriterion from '../get-wcag-criterion'
+const { getWcagCriterion } = require('../get-wcag-criterion')
 
 describe('getWcagCriterion', () => {
 	it('returns a criterion for WCAG 2.0 level A', () => {

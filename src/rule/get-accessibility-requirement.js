@@ -1,5 +1,5 @@
-import wcagListing from './get-wcag-criterion'
-import techniqueListing from './get-wcag-technique'
+const { getWcagCriterion } = require('./get-wcag-criterion')
+const { getWcagTechnique } = require('./get-wcag-technique')
 
 const accessibilityDocs = {
 	aria11: {
@@ -11,16 +11,20 @@ const accessibilityDocs = {
 		baseURL: 'https://www.w3.org/TR/using-aria/#',
 		requirementType: 'WAI-ARIA rule',
 	},
+	'wcag-text': {
+		baseURL: 'https://www.w3.org/TR/WCAG21/',
+		requirementType: 'WCAG 2 conformance requirement',
+	},
 }
 
-export default function getAccessibilityRequirement({ requirementId, title, shortTitle }) {
+function getAccessibilityRequirement({ requirementId, title, shortTitle }) {
 	shortTitle = shortTitle || title
 	const [accDocument, accRequirement] = requirementId.toLowerCase().split(':')
 
 	if (accDocument.substr(0, 5) === 'wcag2') {
-		return wcagListing(accRequirement)
+		return getWcagCriterion(accRequirement)
 	} else if (['technique', 'wcag-technique'].includes(accDocument)) {
-		return techniqueListing(accRequirement)
+		return getWcagTechnique(accRequirement)
 	} else if (accessibilityDocs[accDocument]) {
 		const { baseURL, conformanceLevel, requirementType } = accessibilityDocs[accDocument]
 		return {
@@ -32,3 +36,5 @@ export default function getAccessibilityRequirement({ requirementId, title, shor
 		}
 	}
 }
+
+module.exports = { getAccessibilityRequirement }

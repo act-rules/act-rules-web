@@ -1,11 +1,11 @@
-import scUrls from '../../_data/sc-urls.json'
+const scUrls = require('../../_data/sc-urls.json')
 
 const requirementType = 'success criterion'
 const latestWcagVersion = '2.1'
 const highestLevel = 'AAA'
 
 // For WCAG SC. Title, URL and more is grabbed from data fetched during build.
-export default function getWcagCriterion(scNumber) {
+function getWcagCriterion(scNumber) {
 	if (!scUrls[scNumber]) {
 		return fallbackCriterion(scNumber)
 	}
@@ -39,3 +39,5 @@ function fallbackCriterion(scNumber) {
 		url: 'https://www.w3.org/TR/WCAG21/',
 	}
 }
+
+module.exports = { getWcagCriterion }

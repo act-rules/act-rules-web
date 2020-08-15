@@ -1,7 +1,7 @@
-import techniquesTitles from '../../_data/techniques-titles.json'
+const techniquesTitles = require('../../_data/techniques-titles.json')
 
 // For WCAG techniques. Title is grabbed from data fetched during build. URL is handcrafted.
-export default function getWcagTechnique(tecuniqueId) {
+function getWcagTechnique(tecuniqueId) {
 	const techniqueId = tecuniqueId.toUpperCase()
 	const techniqueName = techniquesTitles[techniqueId] || `Unknown technique`
 
@@ -42,3 +42,5 @@ function getTechniqueUrl(techniqueId) {
 	}
 	return `${baseUrl}${techniqueType}/${techniqueId}`
 }
+
+module.exports = { getWcagTechnique }

@@ -1,4 +1,4 @@
-import getWcagTechnique from '../get-wcag-technique'
+const { getWcagTechnique } = require('../get-wcag-technique')
 
 describe('getWcagTechnique', () => {
 	it('returns a wcag technique', () => {

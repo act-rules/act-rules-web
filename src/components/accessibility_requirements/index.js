@@ -1,6 +1,6 @@
 import React from 'react'
-import getAccessibilityRequirement from '../../rule/get-accessibility-requirement'
 import AccessibilityRequirement from './accessibility-requirement'
+import { getAccessibilityRequirement } from '../../rule/get-accessibility-requirement'
 
 export default function AccessibilityRequirements({ accessibility_requirements, type = 'details' }) {
 	return (
@@ -12,7 +12,6 @@ export default function AccessibilityRequirements({ accessibility_requirements, 
 }
 
 function accRequirementItems(accRequirements, listType) {
-	console.log(accRequirements)
 	const accMapping = Object.entries(accRequirements || {})
 	if (accMapping.length === 0) {
 		return <li>This rule is not required for conformance.</li>

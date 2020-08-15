@@ -1,4 +1,4 @@
-import getAccessibilityRequirement from '../get-accessibility-requirement'
+const { getAccessibilityRequirement } = require('../get-accessibility-requirement')
 
 describe('getAccessibilityRequirement', () => {
 	it('returns techniques', () => {
