@@ -45,5 +45,18 @@ describe('taskforce-markdown', () => {
 				},
 			})
 		})
+
+		it('does not include markdown in the title', () => {
+			const frontmatter = getFrontmatter({
+				filename: `${filenameNoExt}.md`,
+				frontmatter: {
+					name: '`*Hello*` **world, welcome** to _ACT_taskforce_ **',
+				},
+			})
+			const frontmatterData = stripDashes(frontmatter)
+			const data = yaml.safeLoad(frontmatterData)
+
+			expect(data).toHaveProperty('title', '*Hello* world, welcome to ACT_taskforce **')
+		})
 	})
 })

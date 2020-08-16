@@ -1,16 +1,19 @@
 const path = require('path')
 const getMarkdownData = require('../utils/get-markdown-data')
-const taskforceRulePage = require('./taskforce-rule-page/index.js')
 const createFile = require('../utils/create-file')
+
+const sectionMethodsInOrder = [
+	require('./taskforce-rule-page/get-frontmatter'),
+	require('./taskforce-rule-page/get-rule-metadata'),
+	require('./taskforce-rule-page/get-rule-description'),
+	require('./taskforce-rule-page/get-rule-body'),
+	require('./taskforce-rule-page/get-glossary'),
+	require('./taskforce-rule-page/get-acknowledgements'),
+	require('./taskforce-rule-page/get-reference-links'),
+]
 
 const rulesDirDefault = path.resolve(__dirname, '../node_modules/act-rules-community/_rules')
 const glossaryDirDefault = path.resolve(__dirname, '../node_modules/act-rules-community/pages/glossary')
-
-module.exports = {
-	taskforceMarkdown,
-	buildTfRuleFile,
-	getRuleContents,
-}
 
 async function taskforceMarkdown(rulesDir = rulesDirDefault, glossaryDir = glossaryDirDefault) {
 	const rulesData = getMarkdownData(rulesDir)
@@ -29,21 +32,17 @@ function buildTfRuleFile(ruleData, glossary) {
 	}
 }
 
-const sectionMethodsInOrder = [
-	taskforceRulePage.getFrontmatter,
-	taskforceRulePage.getRuleMetadata,
-	taskforceRulePage.getRuleDescription,
-	taskforceRulePage.getRuleBody,
-	taskforceRulePage.getGlossary,
-	taskforceRulePage.getAcknowledgements,
-	taskforceRulePage.getReferenceLinks,
-]
-
 function getRuleContents(ruleData, glossary) {
 	const rulePageSections = sectionMethodsInOrder.map(createContent => {
 		return createContent(ruleData, glossary)
 	})
 	return rulePageSections.join('\n\n')
+}
+
+module.exports = {
+	taskforceMarkdown,
+	buildTfRuleFile,
+	getRuleContents,
 }
 
 // Execute if invoked directly with node
