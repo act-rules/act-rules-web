@@ -9,6 +9,7 @@ const sectionMethodsInOrder = [
 	require('./taskforce-rule-page/get-rule-body'),
 	require('./taskforce-rule-page/get-glossary'),
 	require('./taskforce-rule-page/get-acknowledgements'),
+	require('./taskforce-rule-page/get-changelog'),
 	require('./taskforce-rule-page/get-reference-links'),
 ]
 

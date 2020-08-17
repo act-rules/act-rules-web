@@ -81,10 +81,17 @@ describe('getRuleContents', () => {
       World of the [ACT-rules community]
       
       ## Acknowledgements
+
+      This rule was written in the [ACT Rules community group](https://w3.org/community/act-r/), 
+      with the support of the EU-funded [WAI-Tools Project](https://www.w3.org/WAI/about/projects/wai-tools/).
       
       ### Authors
-
+      
       - [Wilco Fiers](https://github.com/wilcofiers)
+      
+      ## Changelog
+      
+      This is the first version of this ACT rule
       
       [act-rules community]: //act-rules.github.io
       [hello]: #hello
