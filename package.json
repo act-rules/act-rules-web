@@ -8,7 +8,7 @@
 		"act-rules-implementation-access-engine": "github:act-rules/act-rules-implementation-access-engine",
 		"act-rules-implementation-alfa": "github:act-rules/act-rules-implementation-alfa",
 		"act-rules-implementation-axe-core": "github:act-rules/act-rules-implementation-axe-core",
-		"act-rules-implementation-mapper": "github:act-rules/act-rules-implementation-mapper",
+		"act-rules-implementation-mapper": "github:act-rules/act-rules-implementation-mapper#fix/deps-types-node",
 		"act-rules-implementation-qualweb": "github:act-rules/act-rules-implementation-qualweb",
 		"act-rules-implementation-rgaa": "github:act-rules/act-rules-implementation-rgaa",
 		"act-rules-implementation-sortsite": "github:act-rules/act-rules-implementation-sortsite",
