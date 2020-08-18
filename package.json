@@ -53,15 +53,22 @@
 		"vfile": "^4.0.2"
 	},
 	"devDependencies": {
+		"babel-jest": "^26.2.2",
+		"babel-preset-gatsby": "^0.5.5",
 		"dotenv": "^8.2.0",
 		"eslint": "^7.6.0",
 		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-jest": "^23.20.0",
 		"eslint-plugin-react": "^7.20.5",
 		"husky": "^3.1.0",
+		"identity-obj-proxy": "^3.0.0",
+		"jest": "^26.2.2",
 		"js-yaml": "^3.14.0",
 		"lint-staged": "^9.5.0",
 		"marked": "^0.7.0",
-		"prettier": "^1.19.1"
+		"outdent": "^0.7.1",
+		"prettier": "^1.19.1",
+		"react-test-renderer": "^16.13.1"
 	},
 	"keywords": [
 		"WCAG",
@@ -86,6 +93,7 @@
 		"format": "prettier --write *.{html,js,jsx,json,md,scss,yml} './{.github,build,gatsby,plugins,src,utils}/**/*.{html,js,jsx,json,md,scss,yml}'",
 		"start": "npm run clean && npm run develop",
 		"serve": "gatsby serve",
+		"test": "jest",
 		"lint": "eslint {build,gatsby,plugins,src,utils}/**/*.js"
 	},
 	"homepage": "https://github.com/act-rules/act-rules-web",
@@ -107,6 +115,12 @@
 		"actRulesCommunityRulesDir": "node_modules/act-rules-community/_rules",
 		"actRulesCommunityPagesDir": "node_modules/act-rules-community/pages",
 		"actRulesCommunityTestAssetsDir": "node_modules/act-rules-community/test-assets"
+	},
+	"jest": {
+		"testEnvironment": "node",
+		"modulePathIgnorePatterns": [
+			"<rootDir>/.cache/"
+		]
 	},
 	"lint-staged": {
 		"*.{html,js,jsx,json,md,scss,yml}": [

@@ -22,5 +22,15 @@
 	"rules": {
 		"react/prop-types": "off",
 		"react/display-name": "off"
-	}
+	},
+	"overrides": [
+		{
+			"files": ["**/*.{spec,test}.{js,jsx}", "**/__tests__/**/*.{js,jsx}"],
+			"env": {
+				"jest": true
+			},
+			"plugins": ["jest"],
+			"rules": {}
+		}
+	]
 }

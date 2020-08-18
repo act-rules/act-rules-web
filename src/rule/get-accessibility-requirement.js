@@ -1,0 +1,40 @@
+const { getWcagCriterion } = require('./get-wcag-criterion')
+const { getWcagTechnique } = require('./get-wcag-technique')
+
+const accessibilityDocs = {
+	aria11: {
+		conformanceLevel: 'WAI-ARIA 1.1 author requirements',
+		baseURL: 'https://www.w3.org/TR/wai-aria-1.1/#',
+		requirementType: 'WAI-ARIA requirement',
+	},
+	'using-aria': {
+		baseURL: 'https://www.w3.org/TR/using-aria/#',
+		requirementType: 'WAI-ARIA rule',
+	},
+	'wcag-text': {
+		baseURL: 'https://www.w3.org/TR/WCAG21/',
+		requirementType: 'WCAG 2 conformance requirement',
+	},
+}
+
+function getAccessibilityRequirement({ requirementId, title, shortTitle }) {
+	shortTitle = shortTitle || title
+	const [accDocument, accRequirement] = requirementId.toLowerCase().split(':')
+
+	if (accDocument.substr(0, 5) === 'wcag2') {
+		return getWcagCriterion(accRequirement)
+	} else if (['technique', 'wcag-technique'].includes(accDocument)) {
+		return getWcagTechnique(accRequirement)
+	} else if (accessibilityDocs[accDocument]) {
+		const { baseURL, conformanceLevel, requirementType } = accessibilityDocs[accDocument]
+		return {
+			requirementType,
+			conformanceLevel,
+			title,
+			shortTitle,
+			url: `${baseURL}${accRequirement}`,
+		}
+	}
+}
+
+module.exports = { getAccessibilityRequirement }
