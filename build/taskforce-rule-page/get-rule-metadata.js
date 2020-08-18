@@ -79,9 +79,9 @@ function accessibilityRequirement([requirementId, mapping]) {
     [${title}](${url})
     - ${getConformanceRequirement(conformanceLevel, mapping)}
     - [Outcome](#outcome) mapping:
-      - Any \`failed\` outcomes: ${requirementType} ${mapOutcome(mapping.failed)}
-      - All \`passed\` outcomes: ${requirementType} ${mapOutcome(mapping.passed)}
-      - An \`inapplicable\` outcome: ${requirementType} ${mapOutcome(mapping.inapplicable)}
+        - Any \`failed\` outcomes: ${requirementType} ${mapOutcome(mapping.failed)}
+        - All \`passed\` outcomes: ${requirementType} ${mapOutcome(mapping.passed)}
+        - An \`inapplicable\` outcome: ${requirementType} ${mapOutcome(mapping.inapplicable)}
   `
 }
 

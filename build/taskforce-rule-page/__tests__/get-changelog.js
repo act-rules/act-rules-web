@@ -8,7 +8,7 @@ describe('taskforce-markdown', () => {
 			expect(log).toBe(outdent`
         ## Changelog
 
-        This is the first version of this ACT rule
+        This is the first version of this ACT rule.
       `)
 		})
 	})

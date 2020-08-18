@@ -91,7 +91,7 @@ describe('getRuleContents', () => {
       
       ## Changelog
       
-      This is the first version of this ACT rule
+      This is the first version of this ACT rule.
       
       [act-rules community]: //act-rules.github.io
       [hello]: #hello

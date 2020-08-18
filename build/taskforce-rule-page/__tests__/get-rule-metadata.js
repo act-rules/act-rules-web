@@ -121,18 +121,18 @@ describe('taskforce-markdown', () => {
         :   [1.2.1 Audio-only and Video-only (Prerecorded) (Level A)](https://www.w3.org/TR/WCAG21/#audio-only-and-video-only-prerecorded)
             - **Required for conformance** to WCAG 2.0 and later on level A and higher
             - [Outcome](#outcome) mapping:
-              - Any \`failed\` outcomes: success criterion is not satisfied
-              - All \`passed\` outcomes: success criterion needs further testing
-              - An \`inapplicable\` outcome: success criterion needs further testing
+                - Any \`failed\` outcomes: success criterion is not satisfied
+                - All \`passed\` outcomes: success criterion needs further testing
+                - An \`inapplicable\` outcome: success criterion needs further testing
         `
 
 				const techniqueMapping = outdent`
         :   [G159: Providing an alternative for time-based media for video-only content](https://www.w3.org/WAI/WCAG21/Techniques/general/G159)
             - Not required to conformance to any W3C accessibility recommendation.
             - [Outcome](#outcome) mapping:
-              - Any \`failed\` outcomes: technique is not satisfied
-              - All \`passed\` outcomes: technique is satisfied
-              - An \`inapplicable\` outcome: technique needs further testing
+                - Any \`failed\` outcomes: technique is not satisfied
+                - All \`passed\` outcomes: technique is satisfied
+                - An \`inapplicable\` outcome: technique needs further testing
         `
 				expect(dfnObject).toHaveProperty(propName, [scMapping, techniqueMapping])
 			})
@@ -144,17 +144,17 @@ describe('taskforce-markdown', () => {
         :   [Fourth rule of ARIA use](https://www.w3.org/TR/using-aria/#fourth)
             - Not required to conformance to any W3C accessibility recommendation.
             - [Outcome](#outcome) mapping:
-              - Any \`failed\` outcomes: WAI-ARIA rule is not satisfied
-              - All \`passed\` outcomes: WAI-ARIA rule needs further testing
-              - An \`inapplicable\` outcome: WAI-ARIA rule needs further testing
+                - Any \`failed\` outcomes: WAI-ARIA rule is not satisfied
+                - All \`passed\` outcomes: WAI-ARIA rule needs further testing
+                - An \`inapplicable\` outcome: WAI-ARIA rule needs further testing
         `
 				const ariaReq = outdent`
         :   [ARIA 1.1, 7.6 State and Property Attribute Processing](https://www.w3.org/TR/wai-aria-1.1/#state_property_processing)
             - **Required for conformance** to WAI-ARIA 1.1 author requirements
             - [Outcome](#outcome) mapping:
-              - Any \`failed\` outcomes: WAI-ARIA requirement is not satisfied
-              - All \`passed\` outcomes: WAI-ARIA requirement is satisfied
-              - An \`inapplicable\` outcome: WAI-ARIA requirement is satisfied
+                - Any \`failed\` outcomes: WAI-ARIA requirement is not satisfied
+                - All \`passed\` outcomes: WAI-ARIA requirement is satisfied
+                - An \`inapplicable\` outcome: WAI-ARIA requirement is satisfied
         `
 				expect(dfnObject).toHaveProperty(propName, [ariaRule, ariaReq])
 			})
