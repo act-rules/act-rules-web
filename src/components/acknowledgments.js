@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { getAcknowledgements } from '../rule/get-acknowledgements'
 
 /**
  * Component to render [key,value] pairs, where
@@ -16,56 +17,24 @@ import PropTypes from 'prop-types'
  * @param {Object} props Props
  */
 const Acknowledgments = ({ scrollLinkId, items, contributors }) => {
-	const preferredAcknowledgmentsOrder = ['authors', 'previous_authors', 'reviewers', 'funding']
-
-	const otherItems = Object.keys(items).reduce((out, key) => {
-		if (!preferredAcknowledgmentsOrder.includes(key)) {
-			out[key] = items[key]
-		}
-		return out
-	}, {})
-
-	const curatedItems = {
-		Authors: items['authors'],
-		'Previous Authors': items['previous_authors'],
-		Reviewers: items['reviewers'],
-		funding: items['funding'],
-		...otherItems,
-	}
-
+	const acknowledgements = getAcknowledgements(items, contributors)
 	return (
 		<>
 			<a id={scrollLinkId} href={`#${scrollLinkId}`}>
 				<h2>Acknowledgments</h2>
 			</a>
-			{Object.entries(curatedItems).map(([key, values]) => {
-				if (!values || !values.length) {
+			{acknowledgements.map(({ title, items }) => {
+				if (!items || !items.length) {
 					return null
 				}
 
-				const heading = key.split('_').join(' ')
 				return (
-					<div className="meta" key={key}>
-						<h3 className="heading">{heading}</h3>
+					<div className="meta" key={title}>
+						<h3 className="heading">{title}</h3>
 						<ul>
-							{values.map(value => {
-								// only if acknowledgement is of type authors, get author name & url from contributors
-								if (['Previous Authors', 'Authors'].includes(key)) {
-									const contributor = contributors.find(({ name }) => name.toLowerCase() === value.toLowerCase())
-									if (!contributor) {
-										console.warn(`${value}, not in contributor list.`)
-										return <li key={value}>{value}</li>
-									}
-									return (
-										<li key={contributor.name}>
-											<a className="sc-item block" target="_blank" rel="noopener noreferrer" href={contributor.url}>
-												{contributor.name}
-											</a>
-										</li>
-									)
-								}
-								return <li key={value}>{value}</li>
-							})}
+							{items.map(({ text, url }) => (
+								<AcknItem url={url} text={text} key={text} />
+							))}
 						</ul>
 					</div>
 				)
@@ -88,6 +57,20 @@ Acknowledgments.defaultProps = {
 		reviewers: [],
 	},
 	contributors: [],
+}
+
+function AcknItem({ text, url }) {
+	if (!url) {
+		return <li>{text}</li>
+	}
+
+	return (
+		<li>
+			<a className="sc-item block" target="_blank" rel="noopener noreferrer" href={url}>
+				{text}
+			</a>
+		</li>
+	)
 }
 
 export default Acknowledgments
