@@ -22,12 +22,13 @@ const accessibilityDocs = {
 		requirementType: 'WAI-ARIA rule',
 	},
 	'wcag-text': {
-		baseURL: 'https://www.w3.org/TR/WCAG21/',
+		conformanceLevel: 'WCAG 2.1',
+		baseURL: 'https://www.w3.org/TR/WCAG21/#',
 		requirementType: 'WCAG 2 conformance requirement',
 	},
 }
 
-function getAccessibilityRequirement({ requirementId, title, shortTitle }) {
+function getAccessibilityRequirement({ requirementId, title, shortTitle, forConformance }) {
 	shortTitle = shortTitle || title
 	const [accDocument, accRequirement] = requirementId.toLowerCase().split(':')
 
@@ -39,7 +40,7 @@ function getAccessibilityRequirement({ requirementId, title, shortTitle }) {
 		const { baseURL, conformanceLevel, requirementType } = accessibilityDocs[accDocument]
 		return {
 			requirementType,
-			conformanceLevel,
+			conformanceLevel: forConformance ? conformanceLevel : null,
 			title,
 			shortTitle,
 			url: `${baseURL}${accRequirement}`,
