@@ -5,7 +5,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import ReactMedia from 'react-media'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import glossaryUsages from './../../_data/glossary-usages.json'
+import glossaryUsages from './../../_data/glossary-used-in-rules.json'
 import ListWithHeading from '../components/list-with-heading'
 import showdown from 'showdown'
 const converter = new showdown.Converter()

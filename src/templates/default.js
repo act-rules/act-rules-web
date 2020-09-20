@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import SEO from '../components/seo'
-import glossaryUsages from './../../_data/glossary-usages.json'
+import glossaryUsages from './../../_data/glossary-used-in-rules.json'
 
 import './default.scss'
 

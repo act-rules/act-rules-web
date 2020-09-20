@@ -82,7 +82,7 @@
 		"getData": "npm run getData:wcag && npm run getData:testcases && npm run getData:glossary && npm run getData:rulesUsages && npm run getData:implementations",
 		"getData:wcag": "node ./build/get-wcag-meta-data --url 'https://raw.githubusercontent.com/w3c/wai-wcag-quickref/gh-pages/_data/wcag21.json' --outputDir ${PWD}'/_data'",
 		"getData:testcases": "node ./build/create-testcases --rulesDir $npm_package_config_actRulesCommunityRulesDir --testAssetsDir $npm_package_config_actRulesCommunityTestAssetsDir --actRulesCommunityPkgJson ${PWD}/$npm_package_config_actRulesCommunityPkgJson --outputDir ${PWD}'/_data/testcases'",
-		"getData:glossary": "node ./build/create-glossary-usages --rulesDir $npm_package_config_actRulesCommunityRulesDir --outputDir ${PWD}'/_data'",
+		"getData:glossary": "node ./build/create-glossary-usages --rulesDir $npm_package_config_actRulesCommunityRulesDir --glossaryDir $npm_package_config_actRulesCommunityGlossaryDir --outputDir ${PWD}'/_data'",
 		"getData:rulesUsages": "node ./build/create-rules-usages.js --rulesDir $npm_package_config_actRulesCommunityRulesDir --outputDir ${PWD}'/_data'",
 		"getData:implementations": "npm run getData:implementations:axe-core && node ./build/get-implementations && node ./build/create-implementation-metrics",
 		"getData:implementations:axe-core": "act-rules-implementation-axe-core --testsJson ${PWD}'/_data/testcases/testcases.json' --testsDir ${PWD}'/_data/testcases' --siteUrl $npm_package_www_url --outfile ${PWD}'/_data/reports/axe-core-report.json'",
@@ -114,6 +114,7 @@
 		"actRulesCommunityPkgJson": "node_modules/act-rules-community/package.json",
 		"actRulesCommunityRulesDir": "node_modules/act-rules-community/_rules",
 		"actRulesCommunityPagesDir": "node_modules/act-rules-community/pages",
+		"actRulesCommunityGlossaryDir": "node_modules/act-rules-community/pages/glossary",
 		"actRulesCommunityTestAssetsDir": "node_modules/act-rules-community/test-assets"
 	},
 	"jest": {
