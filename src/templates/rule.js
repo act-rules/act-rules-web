@@ -19,7 +19,7 @@ import './rule.scss'
 export default ({ location, data }) => {
 	const { rule, allRules, allGlossary, site } = data
 	const { html, frontmatter, tableOfContents, fields } = rule
-	const { slug, fastmatterAttributes, changelog, fileName } = fields
+	const { fastmatterAttributes, changelog, fileName } = fields
 	const { relativePath } = fileName
 	const ruleChangelog = JSON.parse(changelog)
 	const parsedFrontmatter = JSON.parse(fastmatterAttributes)
@@ -169,7 +169,7 @@ export default ({ location, data }) => {
 				/>
 				<hr />
 				{/* glossary */}
-				<Glossary slug={slug} glossaryData={allGlossary} />
+				<Glossary ruleId={ruleId} glossaryData={allGlossary} />
 				<hr />
 				{/* Useful links */}
 				<a href="#useful-links" id="useful-links">

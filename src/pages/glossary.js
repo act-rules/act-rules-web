@@ -5,13 +5,13 @@ import { graphql, useStaticQuery } from 'gatsby'
 import ReactMedia from 'react-media'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import glossaryUsages from './../../_data/glossary-used-in-rules.json'
 import ListWithHeading from '../components/list-with-heading'
 import showdown from 'showdown'
+import { getRulesForGlossaryKey } from '../utils/get-rules-for-glossary-key'
 const converter = new showdown.Converter()
 
 const Glossary = ({ location }) => {
-	const { glossaryData } = useStaticQuery(
+	const { glossaryData, allRules } = useStaticQuery(
 		graphql`
 			query {
 				glossaryData: allMarkdownRemark(
@@ -30,6 +30,24 @@ const Glossary = ({ location }) => {
 								markdownType
 							}
 							excerpt
+						}
+					}
+				}
+				allRules: allMarkdownRemark(filter: { fields: { markdownType: { eq: "rules" } } }) {
+					totalCount
+					edges {
+						node {
+							fields {
+								fileName {
+									relativePath
+								}
+								markdownType
+								slug
+							}
+							frontmatter {
+								id
+								name
+							}
 						}
 					}
 				}
@@ -66,30 +84,33 @@ const Glossary = ({ location }) => {
 				<section className={classnames('listing', viewportSize)}>
 					{glossaryData.edges.map(({ node }) => {
 						const { frontmatter, html } = node
-						const items = glossaryUsages[`#${frontmatter.key}`]
+						const ruleIdsUsingGlossaryKey = getRulesForGlossaryKey(`#${frontmatter.key}`)
+						const items = allRules.edges.filter(rule => ruleIdsUsingGlossaryKey.includes(rule.node.frontmatter.id))
 						return (
 							<article key={frontmatter.key}>
+								{/* glossary item  */}
 								<section>
 									<a id={frontmatter.key} href={`#${frontmatter.key}`}>
 										<h2>{frontmatter.title}</h2>
 									</a>
 									<div dangerouslySetInnerHTML={{ __html: html }} />
 								</section>
+								{/* list of rules using glossary item  */}
 								<ListWithHeading
 									cls={`used-rules`}
 									headingTemplate={() => <h3>Used In Rules: ({items ? items.length : '0'})</h3>}
 									itemTemplate={item => (
-										<li key={item.slug}>
-											<a href={`/${item.slug}`}>
+										<li key={item.node.frontmatter.id}>
+											<a href={`/rules/${item.node.frontmatter.id}`}>
 												<span
 													dangerouslySetInnerHTML={{
-														__html: converter.makeHtml(item.name),
+														__html: converter.makeHtml(item.node.frontmatter.name),
 													}}
 												/>
 											</a>
 										</li>
 									)}
-									items={glossaryUsages[`#${frontmatter.key}`]}
+									items={items}
 								/>
 							</article>
 						)

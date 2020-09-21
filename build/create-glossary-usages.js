@@ -3,6 +3,7 @@ const getMarkdownData = require('../utils/get-markdown-data')
 const getMarkdownAstNodesOfType = require('../utils/get-markdown-ast-nodes-of-type')
 const isUrl = require('is-url')
 const fs = require('fs-extra')
+const path = require('path')
 
 program
 	.requiredOption('-r, --rulesDir <rulesDir>', 'Directory containing rules markdown files')
@@ -21,63 +22,58 @@ createGlossaryUsage(program)
 	})
 
 async function createGlossaryUsage({ rulesDir, glossaryDir, outputDir }) {
+	const result = getGlossaryUsages(rulesDir, glossaryDir)
+	const outputFile = path.join(outputDir, 'glossary-usages.json')
+	await fs.ensureFile(outputFile)
+	await fs.writeJson(outputFile, result, { spaces: 2 })
+}
+
+/**
+ * Get a map of glossary keys used for each rule
+ * eg: "59br37": ["#attribute-value","#clipped-by-overflow"]
+ * @param {String} rulesDir
+ * @param {String} glossaryDir
+ */
+function getGlossaryUsages(rulesDir, glossaryDir) {
 	const rulesData = getMarkdownData(rulesDir)
 	const glossaryData = getMarkdownData(glossaryDir)
+	const recursiveGlossaryRefs = getResursiveGlossaryReferences(glossaryData)
 
-	const glossaryUsedInRules = getGlossaryReferencedInRules(rulesData)
-	await createGlossaryData(outputDir, 'glossary-used-in-rules.json', glossaryUsedInRules)
+	const result = new Map()
 
-	const glossaryUsedInGlossary = getGlossaryReferencedInGlossary(glossaryData)
-	await createGlossaryData(outputDir, 'glossary-used-in-glossary.json', glossaryUsedInGlossary)
-}
+	for (const { frontmatter, markdownAST } of rulesData) {
+		const glossaryKeys = getGlossaryKeysFromMarkdown(markdownAST)
 
-async function createGlossaryData(outputDir, fileName, data) {
-	const filePath = `${outputDir}/${fileName}`
-	await fs.ensureFile(filePath)
-	await fs.writeJson(filePath, data, { spaces: 2 })
-}
-
-function getGlossaryReferencedInGlossary(glossaryData) {
-	return glossaryData.reduce((out, { frontmatter, markdownAST }) => {
-		const links = getGlossaryLinks(markdownAST)
-		if (!links || !links.length) {
-			return out
+		let recursiveKeys = []
+		for (const key of glossaryKeys) {
+			recursiveKeys = recursiveKeys.concat(recursiveGlossaryRefs.get(key))
 		}
-		const key = `#${frontmatter.key}`
-		if (!out[key]) {
-			out[key] = []
-		}
-		out[key] = out[key].concat(links)
-		return out
-	}, {})
+		const values = [...new Set([...glossaryKeys, ...recursiveKeys])].sort((a, b) => a.localeCompare(b))
+
+		result.set(frontmatter.id, values)
+	}
+
+	return Object.fromEntries(result)
 }
 
-function getGlossaryReferencedInRules(rulesData) {
-	return rulesData.reduce((out, { frontmatter, markdownAST }) => {
-		const links = getGlossaryLinks(markdownAST)
-		if (!links || !links.length) {
-			return out
-		}
-		links.forEach(key => {
-			const usage = {
-				name: frontmatter.name,
-				slug: `rules/${frontmatter.id}`,
-			}
-			if (!out[key]) {
-				out[key] = [usage]
-				return
-			}
-			const exists = out[key].some(u => u.slug === usage.slug)
-			if (exists) {
-				return
-			}
-			out[key] = out[key].concat(usage)
-		})
-		return out
-	}, {})
+/**
+ * Build a map of recursive references to glossary data
+ * @param {Object} glossaryData
+ */
+function getResursiveGlossaryReferences(glossaryData) {
+	const result = new Map()
+	for (const { frontmatter, markdownAST } of glossaryData) {
+		const glossaryKeys = getGlossaryKeysFromMarkdown(markdownAST)
+		result.set(`#${frontmatter.key}`, glossaryKeys)
+	}
+	return result
 }
 
-function getGlossaryLinks(markdownAST) {
+/**
+ * Walk the markdown tree and get all links that are glossary references
+ * @param {Object} markdownAST
+ */
+function getGlossaryKeysFromMarkdown(markdownAST) {
 	// get all links -> eg: [Alpha](https://....) or [Beta](#semantic-role)
 	const pageLinks = getMarkdownAstNodesOfType(markdownAST, 'link').map(({ url }) => url)
 	// get all definition links  -> eg: [alpha]: https:// 'Link to something' or [beta]: #some-glossary 'Def to some glossary'
