@@ -2,12 +2,11 @@ import React from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import SEO from '../components/seo'
-import glossaryUsages from './../../_data/glossary-usages.json'
 
 import './default.scss'
 
 export default ({ location, data }) => {
-	const { markdownRemark, site } = data
+	const { markdownRemark, site, glossaryData } = data
 	const {
 		www: { url },
 	} = JSON.parse(site.siteMetadata.actRulesPackage)
@@ -33,8 +32,11 @@ export default ({ location, data }) => {
 		})
 	}
 
-	const glossaryPaths = Object.keys(glossaryUsages).reduce((out, key) => {
-		out[key] = `glossary/${key}`
+	const glossaryPaths = glossaryData.edges.reduce((out, { node }) => {
+		const {
+			frontmatter: { key },
+		} = node
+		out[key] = `glossary/#${key}`
 		return out
 	}, {})
 
@@ -59,6 +61,25 @@ export const query = graphql`
 			html
 			frontmatter {
 				title
+			}
+		}
+		glossaryData: allMarkdownRemark(
+			sort: { fields: [frontmatter___title], order: ASC }
+			filter: { fields: { markdownType: { eq: "glossary" } } }
+		) {
+			edges {
+				node {
+					id
+					html
+					frontmatter {
+						title
+						key
+					}
+					fields {
+						markdownType
+					}
+					excerpt
+				}
 			}
 		}
 		site {

@@ -5,14 +5,13 @@ import { format } from 'date-fns'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
 import Acknowledgments from '../components/acknowledgments'
+import Glossary from '../components/glossary'
 import AccessibilityRequirements from '../components/accessibility_requirements'
 import ListOfImplementers from '../components/list-of-implementers'
 import RuleTableOfContents from '../components/rule-table-of-contents'
 import ListWithHeading from '../components/list-with-heading'
 import rulesUsages from '../../_data/rules-usages.json'
 import curateGitUrl from '../../utils/curate-git-url'
-import { getGlossaryUsed } from './../utils/render-fragments'
-
 import implementers from '../../_data/implementers.json'
 
 import './rule.scss'
@@ -20,7 +19,7 @@ import './rule.scss'
 export default ({ location, data }) => {
 	const { rule, allRules, allGlossary, site } = data
 	const { html, frontmatter, tableOfContents, fields } = rule
-	const { slug, fastmatterAttributes, changelog, fileName } = fields
+	const { fastmatterAttributes, changelog, fileName } = fields
 	const { relativePath } = fileName
 	const ruleChangelog = JSON.parse(changelog)
 	const parsedFrontmatter = JSON.parse(fastmatterAttributes)
@@ -170,7 +169,7 @@ export default ({ location, data }) => {
 				/>
 				<hr />
 				{/* glossary */}
-				{getGlossaryUsed(slug, allGlossary)}
+				<Glossary ruleId={ruleId} glossaryData={allGlossary} />
 				<hr />
 				{/* Useful links */}
 				<a href="#useful-links" id="useful-links">
