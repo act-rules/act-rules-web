@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import glossaryUsages from './../../_data/glossary-usages.json'
-import './glossary.scss'
 
 const Glossary = ({ ruleId, glossaryData }) => {
 	const glossaryKeysForRule = glossaryUsages[ruleId]
@@ -26,7 +25,7 @@ const Glossary = ({ ruleId, glossaryData }) => {
 						<a id={frontmatter.key} href={`#${frontmatter.key}`}>
 							<h3>{frontmatter.title}</h3>
 						</a>
-						<div className="glossaryContent" dangerouslySetInnerHTML={{ __html: html }} />
+						<div dangerouslySetInnerHTML={{ __html: html }} />
 					</article>
 				)
 			})}
