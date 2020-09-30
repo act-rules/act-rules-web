@@ -7,12 +7,23 @@ const accessibilityDocs = {
 		baseURL: 'https://www.w3.org/TR/wai-aria-1.1/#',
 		requirementType: 'WAI-ARIA requirement',
 	},
+	'dpub-aria': {
+		conformanceLevel: 'WAI-ARIA Digital Publishing Module 1.0 author requirements',
+		baseURL: 'https://www.w3.org/TR/dpub-aria-1.0/#',
+		requirementType: 'WAI-ARIA Digital Publishing Module requirement',
+	},
+	'graphics-aria': {
+		conformanceLevel: 'WAI-ARIA Graphics Module 1.0 author requirements',
+		baseURL: 'https://www.w3.org/TR/graphics-aria-1.0/#',
+		requirementType: 'WAI-ARIA Graphics Module requirement',
+	},
 	'using-aria': {
 		baseURL: 'https://www.w3.org/TR/using-aria/#',
 		requirementType: 'WAI-ARIA rule',
 	},
 	'wcag-text': {
-		baseURL: 'https://www.w3.org/TR/WCAG21/',
+		conformanceLevel: 'WCAG 2.1',
+		baseURL: 'https://www.w3.org/TR/WCAG21/#',
 		requirementType: 'WCAG 2 conformance requirement',
 	},
 }

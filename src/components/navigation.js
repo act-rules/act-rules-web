@@ -14,7 +14,7 @@ const Navigation = ({ name, navigateTo, isMenuShown, onToggleMenu }) => {
 			query {
 				getTopLevelNavigation: allSitePage(
 					sort: { fields: [context___title], order: ASC }
-					filter: { context: { markdownType: { eq: "default" } } }
+					filter: { path: { regex: "/^((?!examples).)*$/" }, context: { markdownType: { eq: "default" } } }
 				) {
 					group(field: context___markdownType) {
 						fieldValue
