@@ -1,13 +1,14 @@
 const getRuleGlossary = require('../../utils/get-rule-glossary')
-const stripReferenceLinks = require('./get-rule-body')
 
 function getGlossary({ markdownAST }, glossary) {
 	const ruleGlossary = getRuleGlossary(markdownAST, glossary)
-	return `## Glossary\n\n` + ruleGlossary.map(getGlossaryMarkdown).join('\n\n')
+	const glossaryIncludes = ruleGlossary.map(getGlossaryMarkdown).join('\n')
+
+	return `## Glossary\n\n` + glossaryIncludes
 }
 
-function getGlossaryMarkdown({ frontmatter, body, markdownAST }) {
-	return `### ${frontmatter.title}\n\n` + stripReferenceLinks({ body, markdownAST })
+function getGlossaryMarkdown({ frontmatter }) {
+	return `{% include_relative glossary/${frontmatter.key}.md %}`
 }
 
 module.exports = getGlossary

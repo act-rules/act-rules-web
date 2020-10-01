@@ -1,4 +1,3 @@
-const outdent = require('outdent').default
 const parsePage = require('../../../utils/parse-page')
 const getGlossary = require('../get-glossary')
 const { createGlossary } = require('../../__test-utils')
@@ -16,7 +15,7 @@ describe('taskforce-markdown', () => {
 			const rulePage = parsePage('Without definitions [w3](//w3.org)')
 			const ruleGlossary = getGlossary(rulePage, glossary)
 
-			expect(ruleGlossary).toBe(['## Glossary', '### Outcome', glossaryBase.outcome].join('\n\n'))
+			expect(ruleGlossary).toBe('## Glossary\n\n{% include_relative glossary/outcome.md %}')
 		})
 
 		it('sorts definitions in alphabetic order', () => {
@@ -24,14 +23,11 @@ describe('taskforce-markdown', () => {
 			const ruleGlossary = getGlossary(rulePage, glossary)
 			expect(ruleGlossary).toBe(
 				[
-					'## Glossary',
-					'### Hello',
-					glossaryBase.hello,
-					'### Outcome',
-					glossaryBase.outcome,
-					'### World',
-					glossaryBase.world,
-				].join('\n\n')
+					'## Glossary\n',
+					'{% include_relative glossary/hello.md %}',
+					'{% include_relative glossary/outcome.md %}',
+					'{% include_relative glossary/world.md %}',
+				].join('\n')
 			)
 		})
 
@@ -40,35 +36,11 @@ describe('taskforce-markdown', () => {
 			const ruleGlossary = getGlossary(rulePage, glossary)
 			expect(ruleGlossary).toBe(
 				[
-					'## Glossary',
-					'### Hello',
-					glossaryBase.hello,
-					'### Outcome',
-					glossaryBase.outcome,
-					'### World',
-					glossaryBase.world,
-				].join('\n\n')
-			)
-		})
-
-		it('includes footnote links', () => {
-			const rulePage = parsePage(outdent`
-        [hello][] [world][]
-
-        [hello]: #hello
-        [world]: #world
-      `)
-			const ruleGlossary = getGlossary(rulePage, glossary)
-			expect(ruleGlossary).toBe(
-				[
-					'## Glossary',
-					'### Hello',
-					glossaryBase.hello,
-					'### Outcome',
-					glossaryBase.outcome,
-					'### World',
-					glossaryBase.world,
-				].join('\n\n')
+					'## Glossary\n',
+					'{% include_relative glossary/hello.md %}',
+					'{% include_relative glossary/outcome.md %}',
+					'{% include_relative glossary/world.md %}',
+				].join('\n')
 			)
 		})
 	})

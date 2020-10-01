@@ -1,26 +1,29 @@
 const getMarkdownAstNodesOfType = require('./get-markdown-ast-nodes-of-type')
 
 function getRuleGlossary(markdownAST, glossary) {
-	const ruleGlossary = {
+	const keysSearched = {
 		outcome: getDefinition('outcome', glossary),
 	}
-	const dfnLinks = getDefinitionLinks(markdownAST)
-	while (dfnLinks.length > 0) {
-		const dfnLink = dfnLinks.pop()
-		if (typeof ruleGlossary[dfnLink] !== 'undefined') {
-			continue
-		}
+	const keysToSearch = getDefinitionLinks(markdownAST)
 
-		const definition = getDefinition(dfnLink, glossary)
-		ruleGlossary[dfnLink] = definition
+	while (keysToSearch.length > 0) {
+		// Move the key to the "searched" list
+		const currentKey = keysToSearch.pop()
 
-		if (definition) {
-			const newDfnLinks = getDefinitionLinks(definition.markdownAST)
-			dfnLinks.push(...newDfnLinks)
-		}
+		// Find all keys in the current definition
+		const definition = getDefinition(currentKey, glossary)
+		const newKeys = getDefinitionLinks(definition.markdownAST)
+		keysSearched[currentKey] = definition
+
+		// Add new keys to the search list
+		newKeys.forEach(definitionKey => {
+			if (!keysSearched[definitionKey] && !keysToSearch.includes(definitionKey)) {
+				keysToSearch.push(definitionKey)
+			}
+		})
 	}
 
-	return Object.values(ruleGlossary)
+	return Object.values(keysSearched)
 		.filter(val => val !== null)
 		.sort((a, b) => (a.frontmatter.key > b.frontmatter.key ? 1 : -1))
 }

@@ -1,9 +1,9 @@
 const outdent = require('outdent').default
-const parsePage = require('../../utils/parse-page')
-const { createGlossary } = require('../__test-utils')
-const { getRuleContents } = require('../taskforce-markdown')
+const parsePage = require('../../../utils/parse-page')
+const { createGlossary } = require('../../__test-utils')
+const getRuleContent = require('../get-rule-content')
 
-describe('getRuleContents', () => {
+describe('getRuleContent', () => {
 	const glossaryBase = {
 		hello: outdent`
       Hello [world][]
@@ -36,7 +36,7 @@ describe('getRuleContents', () => {
       [hello]: #hello
       [w3c]: //w3.org 'W3C website'
     `)
-		const taskforceMarkdown = getRuleContents({ filename: '123abc.md', ...rulePage }, glossary)
+		const taskforceMarkdown = getRuleContent({ filename: '123abc.md', ...rulePage }, glossary)
 
 		expect(taskforceMarkdown).toBe(outdent`
       ---
@@ -68,17 +68,9 @@ describe('getRuleContents', () => {
       
       ## Glossary
       
-      ### Hello
-      
-      Hello [world][]
-      
-      ### Outcome
-      
-      All good.
-      
-      ### World
-      
-      World of the [ACT-rules community]
+      {% include_relative glossary/hello.md %}
+      {% include_relative glossary/outcome.md %}
+      {% include_relative glossary/world.md %}
       
       ## Acknowledgements
 
@@ -93,10 +85,8 @@ describe('getRuleContents', () => {
       
       This is the first version of this ACT rule.
       
-      [act-rules community]: //act-rules.github.io
       [hello]: #hello
       [w3c]: //w3.org 'W3C website'
-      [world]: #world
     `)
 	})
 })
