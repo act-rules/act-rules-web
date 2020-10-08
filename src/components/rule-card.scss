@@ -32,10 +32,9 @@ article.ruleCard {
 		}
 		a.sc-item {
 			cursor: pointer;
-			text-decoration: none;
 			text-transform: capitalize;
 			&:hover {
-				color: $accent;
+				opacity: 0.9;
 			}
 			p {
 				margin: 0;
