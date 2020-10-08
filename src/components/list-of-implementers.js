@@ -74,7 +74,7 @@ const ListOfImplementers = ({ implementers = [], cls = ``, ruleId }) => {
 			<thead>
 				<tr>
 					<th>Tool</th>
-					<th>Consitency</th>
+					<th>Consistency</th>
 					<th>Complete</th>
 					<th>Report</th>
 				</tr>
