@@ -12,6 +12,9 @@ function getRuleGlossary(markdownAST, glossary) {
 
 		// Find all keys in the current definition
 		const definition = getDefinition(currentKey, glossary)
+		if (!definition) {
+			continue
+		}
 		const newKeys = getDefinitionLinks(definition.markdownAST)
 		keysSearched[currentKey] = definition
 
