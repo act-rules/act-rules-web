@@ -27,18 +27,10 @@ module.exports = {
 			},
 		},
 		{
-			resolve: `gatsby-plugin-prefetch-google-fonts`,
+			resolve: `gatsby-plugin-google-fonts`,
 			options: {
-				fonts: [
-					{
-						family: `Lora`,
-						variants: [`400`, `700`],
-					},
-					{
-						family: `Roboto`,
-						variants: [`400`, `700`],
-					},
-				],
+				// eslint-disable-next-line
+				fonts: [`Lora\:400,700`, `Roboto\:400,700`],
 			},
 		},
 		{
