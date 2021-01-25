@@ -22,15 +22,24 @@ module.exports = {
 			options: {
 				name: `gatsby-starter-default`,
 				start_url: `/`,
-
 				icon: `src/images/logo.png`,
 			},
 		},
 		{
-			resolve: `gatsby-plugin-google-fonts`,
+			resolve: `gatsby-plugin-webfonts`,
 			options: {
-				// eslint-disable-next-line
-				fonts: [`Lora\:400,700`, `Roboto\:400,700`],
+				fonts: {
+					google: [
+						{
+							family: `Lora`,
+							variants: [`400`, `700`],
+						},
+						{
+							family: `Roboto`,
+							variants: [`400`, `700`],
+						},
+					],
+				},
 			},
 		},
 		{
