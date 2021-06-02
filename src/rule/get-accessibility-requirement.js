@@ -28,7 +28,7 @@ const accessibilityDocs = {
 	},
 }
 
-function getAccessibilityRequirement({ requirementId, title, shortTitle, forConformance }) {
+function getAccessibilityRequirement({ requirementId, title, shortTitle }) {
 	shortTitle = shortTitle || title
 	const [accDocument, accRequirement] = requirementId.toLowerCase().split(':')
 
@@ -40,7 +40,7 @@ function getAccessibilityRequirement({ requirementId, title, shortTitle, forConf
 		const { baseURL, conformanceLevel, requirementType } = accessibilityDocs[accDocument]
 		return {
 			requirementType,
-			conformanceLevel: forConformance ? conformanceLevel : null,
+			conformanceLevel,
 			title,
 			shortTitle,
 			url: `${baseURL}${accRequirement}`,

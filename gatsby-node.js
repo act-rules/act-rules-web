@@ -11,7 +11,7 @@ exports.onPreBootstrap = async () => {
 		{
 			name: 'act-rules.github.io',
 			version: '1.0.0',
-			main: 'testcases.json'
+			main: 'testcases.json',
 		},
 		null,
 		2
