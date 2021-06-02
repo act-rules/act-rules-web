@@ -27,7 +27,6 @@ jobs:
           GITHUB_USER_PERSONAL_ACCESS_TOKEN: ${{ secrets.USER_PAT }}
       - run: |
           npm install
-          npm run lint
           npm run build
           git config user.name "${{ secrets.USER_NAME }}"
           git config user.email "${{ secrets.USER_EMAIL }}"
