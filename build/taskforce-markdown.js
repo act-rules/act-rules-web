@@ -13,6 +13,7 @@ program
 	.option('-o, --outDir <dirname>', 'Path to output dir')
 	.option('-r, --rulesDir <dirname>', 'Path to _rules directory')
 	.option('-g, --glossaryDir <dirname>', 'Path to glossary directory')
+	.option('-p, --proposed', 'List the rule with the Proposed rule template')
 	.parse(process.argv)
 
 taskforceMarkdown(program)
@@ -30,6 +31,7 @@ async function taskforceMarkdown({
 	glossaryDir = glossaryDirDefault,
 	ruleIds = [],
 	outDir = './content/',
+	proposed = false,
 }) {
 	const rulesData = getMarkdownData(rulesDir)
 	const glossary = getMarkdownData(glossaryDir)
@@ -39,7 +41,7 @@ async function taskforceMarkdown({
 		if (ruleIds.length && !ruleIds.includes(ruleData.frontmatter.id)) {
 			continue
 		}
-		const { filepath, content } = buildTfRuleFile(ruleData, glossary)
+		const { filepath, content } = buildTfRuleFile({ ...ruleData, proposed }, glossary)
 		await createFile(path.resolve(outDir, filepath), content)
 
 		const definitions = parseDefinitions(content)
