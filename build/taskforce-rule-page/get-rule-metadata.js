@@ -3,7 +3,7 @@ const { getAccessibilityRequirement } = require('../../src/rule/get-accessibilit
 
 module.exports = getRuleMetadata
 
-function getRuleMetadata({ frontmatter }) {
+function getRuleMetadata({ frontmatter, proposed }) {
 	const metadata = [
 		'Rule Type:\n' + toDfnTerm(frontmatter.rule_type),
 		'Rule ID:\n' + toDfnTerm(frontmatter.id),
@@ -12,6 +12,9 @@ function getRuleMetadata({ frontmatter }) {
 		inputAspects(frontmatter),
 		inputRules(frontmatter),
 	]
+	if (proposed) {
+		metadata.unshift('{% include_relative _proposed-banner.html %}')
+	}
 
 	return metadata.filter(str => str !== '').join('\n\n')
 }
