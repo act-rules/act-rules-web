@@ -26,6 +26,7 @@ const Navigation = ({ name, navigateTo, isMenuShown, onToggleMenu }) => {
 									sourceInstanceName
 									title
 									markdownType
+									fastmatterAttributes
 								}
 							}
 						}
@@ -124,8 +125,9 @@ export default Navigation
  * @param {Object[]} items array of items to be rendered as menu items
  */
 function getListItems(items) {
-	return items.map(({ node }) => {
+	return items.sort(sortByOrder).map(({ node }) => {
 		const { path, context } = node
+
 		if (!context || !context.title) {
 			return null
 		}
@@ -139,4 +141,23 @@ function getListItems(items) {
 			</li>
 		)
 	})
+}
+
+/**
+ * Given two menu items sorts them based on their fastmatterAttribute order, or retain their order if they do not have the order attribute
+ * @param {Object[]} item1 first menu item to be sorted
+ * @param {Object[]} item2 second menu item to be sorted
+ */
+function sortByOrder(item1, item2) {
+	if (
+		item1.node.context &&
+		item1.node.context.fastmatterAttributes &&
+		item2.node.context &&
+		item2.node.context.fastmatterAttributes
+	) {
+		const order1 = JSON.parse(item1.node.context.fastmatterAttributes).order
+		const order2 = JSON.parse(item2.node.context.fastmatterAttributes).order
+		return order1 - order2
+	}
+	return 0
 }
