@@ -29,7 +29,7 @@ To make sure the implementation works, you can run the following command locally
 npm run getData:implementations:after
 ```
 
-Check that the script does not error, and that a the a file is created for the new implementation in `_data/implementations/`. If an error occurs, this is most likely due because of an issue in the EARL+JSON format.
+Check that the script does not return any error, and that a file is created for the new implementation in `_data/implementations/`. If an error occurs, this is most likely due because of an issue in the EARL+JSON format.
 
 ### Step 4: Push and publish
 
