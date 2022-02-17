@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import showdown from 'showdown'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import ListOfImplementations from '../components/list-of-implementations'
@@ -12,6 +13,7 @@ import './implementer.scss'
 const Implementer = ({ location, data }) => {
 	const { implementerData } = data.sitePage.context
 	const { organisation, toolName, actMapping, description } = JSON.parse(implementerData)
+	const converter = new showdown.Converter()
 
 	const title = `Implementation report of ${toolName} (${organisation})`
 	const completeMaps = filterByConsistency(actMapping, ['consistent', 'partially-consistent'])
@@ -39,7 +41,13 @@ const Implementer = ({ location, data }) => {
 				{/* title  */}
 				<h1>{title}</h1>
 				{/* desc  */}
-				{description && <p>{description}</p>}
+				{description && (
+					<section
+						dangerouslySetInnerHTML={{
+							__html: converter.makeHtml(description),
+						}}
+					/>
+				)}
 				{/* impl  */}
 				{data.allRules.edges.map(({ node }) => {
 					const {
