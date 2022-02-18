@@ -62,7 +62,7 @@
 		"jest": "^26.2.2",
 		"js-yaml": "^3.14.0",
 		"lint-staged": "^9.5.0",
-		"marked": "^0.7.0",
+		"marked": "^4.0.10",
 		"outdent": "^0.7.1",
 		"prettier": "^1.19.1",
 		"react-test-renderer": "^16.13.1"
