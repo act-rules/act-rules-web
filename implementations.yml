@@ -16,6 +16,18 @@
     For these results, all rules including “experimental” rules are enabled. 
     Checks with “unsupported” in its ID are disabled, which deal with issues of accessibility support issues which ACT rules do not account for, often by design.
 
+- organisation: 'Deque Systems'
+  toolName: 'axe DevTools Pro'
+  jsonReports: https://raw.githubusercontent.com/act-rules/act-rules-implementation-axe-pro/master/axe-devtool-pro.json
+  testcases: ./_data/testcases/testcases.json
+  output: ./_data/implementations/axe-devtools.json
+  description: |
+    Results are produced using different Intelligent Guided Test (IGT) tools. Tools
+    can produced multiple issue types. The ID of each issue type is given as the
+    name of the procedure, with the tool that returns it in brackets. For example 
+    `alt-text-not-meaningful (Images)` is the `alt-text-not-meaningful` issue type
+    reported by the `Images` tool. Inapplicable is reported when a tool finds nothing to test.
+
 - organisation: 'LASIGE, Faculdade de Ciências da Universidade de Lisboa'
   toolName: 'QualWeb'
   jsonReports: ./node_modules/act-rules-implementation-qualweb/reports/*.json
