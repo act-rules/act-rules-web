@@ -15,11 +15,11 @@ All ACT implementations require a valid report using the [JSON+EARL data format]
 
 Organizations that do not maintain their own GitHub repository can request the chairs of the ACT-Rules community group for access to a repository in the [ACT Rules GitHub organization](https://github.com/act-rules/).
 
-When using a GitHub repository, a raw GitHub URL can be used. When using a GitHub URL, make sure to use one that includes a branch name so that the URL won't need to be updated when the report is updated. An example of such a URL is the following, used by QualWeb: https://raw.githubusercontent.com/act-rules/act-rules-implementation-qualweb/master/reports/qualweb-report.json
+When using a GitHub repository, a raw GitHub URL can be used. When using a GitHub URL, make sure to use one that includes a branch name so that the URL won't need to be updated when the report is updated. An example of such a URL is the following, used by QualWeb: `https://raw.githubusercontent.com/act-rules/act-rules-implementation-qualweb/master/reports/qualweb-report.json`
 
-### Step 2: Update implementations.yml
+### Step 2: Update `implementations.yml`
 
-In the root of this repository is the `implementations.yml` file. This file contains a list of all implementations on the ACT Rules website. To add an implementation, copy an existing implementation and adjust the properties as needed. The `description` property is optional, although we strongly recommend providing this too.
+On a local branch, edit the [`implementations.yml`](./implementations.yml) file in the root of this repository; it contains a list of all implementations on the ACT Rules website. Copy an existing implementation and adjust the properties as needed. The `description` property is optional, although we strongly recommend providing this too.
 
 ### Step 3: Test the implementation
 
