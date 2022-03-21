@@ -9,7 +9,6 @@
 		"act-rules-implementation-axe-core": "github:act-rules/act-rules-implementation-axe-core",
 		"act-rules-implementation-mapper": "github:act-rules/act-rules-implementation-mapper",
 		"act-rules-implementation-rgaa": "github:act-rules/act-rules-implementation-rgaa",
-		"act-rules-implementation-trusted-tester": "github:act-rules/act-rules-implementation-trusted-tester",
 		"axios": "^0.21.4",
 		"classnames": "^2.2.6",
 		"commander": "^6.0.0",
