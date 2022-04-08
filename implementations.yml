@@ -18,7 +18,7 @@
 
 - organisation: 'IBM Accessibility'
   toolName: 'Equal Access Accessibility Checker'
-  jsonReports: https://raw.githubusercontent.com/IBMa/equal-access/master/accessibility-checker/test-act/earlResult.json
+  jsonReports: https://cdn.jsdelivr.net/npm/accessibility-checker-engine@next/earlResult.json
   testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/accessibility-checker.json
   description: |
@@ -26,8 +26,7 @@
     from NPM using the [ACT test driver](https://github.com/IBMa/equal-access/tree/master/accessibility-checker/test-act).
     Results were created using the `preview` archive and the `IBM_Accessibility` policy.
     Mappings from ACT rules to Accessibility Checker rule ids and reason codes can be 
-    found in [`act_aligned.json`](https://github.com/IBMa/equal-access/blob/master/accessibility-checker/test-act/act_aligned.json) 
-    and [`ace_mapping.js`](https://github.com/IBMa/equal-access/blob/master/accessibility-checker/test-act/ace_mapping.js). 
+    found in the `ace` property of the [relevant rule files](https://github.com/IBMa/equal-access/tree/master/accessibility-checker-engine/src/v4/rules. 
     Results indicate the rule ids and reason codes related to the ACT rule are  generated in the following format: 
 
     `RuleId1:ReasonCode1,ReasonCode2|RuleId2:ReasonCode3,ReasonCode4`.
