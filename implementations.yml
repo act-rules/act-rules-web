@@ -51,7 +51,7 @@
 
 - organisation: 'Siteimprove'
   toolName: 'Alfa'
-  jsonReports: https://raw.githubusercontent.com/act-rules/act-rules-implementation-alfa/master/report.json
+  jsonReports: https://raw.githubusercontent.com/Siteimprove/alfa-act-r/main/reports/alfa-act-r.json
   testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/alfa.json
 
