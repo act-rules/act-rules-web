@@ -57,6 +57,6 @@
 
 - organisation: 'Trusted Tester'
   toolName: 'Trusted Tester'
-  jsonReports: https://raw.githubusercontent.com/Section508Coordinators/act-tt/main/act-trusted-tester.json
+  jsonReports: https://raw.githubusercontent.com/Section508Coordinators/act-tt/main/old-act-trusted-tester.json
   testcases: ./_data/testcases/testcases.json
   output: ./_data/implementations/trusted-tester.json
