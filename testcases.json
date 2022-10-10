@@ -12850,7 +12850,7 @@
       "relativePath": "testcases/0va7u6/bd472eb44b2853b4bf7eaf7f88ffeb5f6e8e7f8f.html",
       "expected": "passed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -12875,7 +12875,7 @@
       "relativePath": "testcases/0va7u6/58c4edcf154896a265b73314180db6bd37efc6d1.html",
       "expected": "passed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -12900,7 +12900,7 @@
       "relativePath": "testcases/0va7u6/09f2e26101fbedec4be3556213ad302236ab13f2.html",
       "expected": "passed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -12925,7 +12925,7 @@
       "relativePath": "testcases/0va7u6/3fb4eeff95cbc01eb7e9dec5460486b4a3cd1db9.html",
       "expected": "passed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -12950,7 +12950,7 @@
       "relativePath": "testcases/0va7u6/6685213ba1e67946fad8971aa0029d4bfbd62e69.html",
       "expected": "passed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -12975,7 +12975,7 @@
       "relativePath": "testcases/0va7u6/fa340d3fa83fbc9819edd7d31cdfebd465056644.html",
       "expected": "passed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -13000,7 +13000,7 @@
       "relativePath": "testcases/0va7u6/30562e91bfa69774976ad8eb5b99c8b9f79a0033.html",
       "expected": "passed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -13025,7 +13025,7 @@
       "relativePath": "testcases/0va7u6/d90d6256fb0742b3bdad088c1dfdf37b34af1668.html",
       "expected": "passed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -13050,7 +13050,7 @@
       "relativePath": "testcases/0va7u6/67b27814b7da90341ba474265af9ec0bc9198238.html",
       "expected": "failed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -13075,7 +13075,7 @@
       "relativePath": "testcases/0va7u6/942866fcc4781a2e2d442a29e7d841058796eac8.html",
       "expected": "failed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -13100,7 +13100,7 @@
       "relativePath": "testcases/0va7u6/f70991c23997820c3b3f61c0a6c5beb56c8a4e14.html",
       "expected": "failed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -13125,7 +13125,7 @@
       "relativePath": "testcases/0va7u6/9e1a5c362cd64bcf97744e48b407b6fe60caa1e9.html",
       "expected": "failed",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -13150,7 +13150,7 @@
       "relativePath": "testcases/0va7u6/16fe8037b7b217310433b24eaab4ca0bc315afae.html",
       "expected": "inapplicable",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
@@ -13175,7 +13175,7 @@
       "relativePath": "testcases/0va7u6/0b64fa851ffa99c820affa46009eb96b49c86488.html",
       "expected": "inapplicable",
       "ruleId": "0va7u6",
-      "ruleName": "HTML graphics contain no text",
+      "ruleName": "HTML images contain no text",
       "rulePage": "https://act-rules.github.io/rules/0va7u6",
       "ruleAccessibilityRequirements": {
         "wcag20:1.4.5": {
