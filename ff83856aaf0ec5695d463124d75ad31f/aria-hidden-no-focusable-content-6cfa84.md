@@ -139,6 +139,19 @@ This `button` element is [focusable][], but not part of the [sequential focus na
 </div>
 ```
 
+#### Passed Example 6
+
+This `svg` element with `aria-hidden` does not have a focusable descendant, focusable ancestors are not a problem for this rule.
+
+```html
+<a href="#">
+	<svg width="16" height="16" aria-hidden="true">
+		<circle cx="8" cy="11" r="4" stroke="black" stroke-width="2" fill="transparent" />
+	</svg>
+	Hello ACT
+</a>
+```
+
 ### Failed
 
 #### Failed Example 1
