@@ -99,7 +99,7 @@
           "type": "Technology"
         }
       ],
-      "title": "Report for ACT-R Rule - Iframe with negative tabindex has no interactive elements",
+      "title": "Report for ACT-R Rule - Iframe with interactive elements is not excluded from tab-order",
       "evaluationScope": {
         "type": "EvaluationScope",
         "conformanceTarget": "wai:WCAG2AA-Conformance",
@@ -110,7 +110,7 @@
             "WebSite"
           ],
           "id": "_:website",
-          "siteName": "ACT-R Rule - Iframe with negative tabindex has no interactive elements",
+          "siteName": "ACT-R Rule - Iframe with interactive elements is not excluded from tab-order",
           "siteScope": "https://act-rules.github.io/testcases/akn7bn/"
         },
         "accessibilitySupportBaseline": "<< Fill out >>"
@@ -1139,9 +1139,9 @@
               "WebPage"
             ],
             "id": "_:struct_0",
-            "description": "https://act-rules.github.io/testcases/akn7bn/9f51cc873f37c786f03e13d96f00a44b77d965ae.html",
-            "source": "https://act-rules.github.io/testcases/akn7bn/9f51cc873f37c786f03e13d96f00a44b77d965ae.html",
-            "title": "9f51cc873f37c786f03e13d96f00a44b77d965ae",
+            "description": "https://act-rules.github.io/testcases/akn7bn/d36812320a62736b09ccf0306b0c8537c9cf7470.html",
+            "source": "https://act-rules.github.io/testcases/akn7bn/d36812320a62736b09ccf0306b0c8537c9cf7470.html",
+            "title": "d36812320a62736b09ccf0306b0c8537c9cf7470",
             "tested": false
           },
           {
@@ -1150,9 +1150,9 @@
               "WebPage"
             ],
             "id": "_:struct_1",
-            "description": "https://act-rules.github.io/testcases/akn7bn/4cee29f54888120f0b99fb7a1a4646556a0d10a0.html",
-            "source": "https://act-rules.github.io/testcases/akn7bn/4cee29f54888120f0b99fb7a1a4646556a0d10a0.html",
-            "title": "4cee29f54888120f0b99fb7a1a4646556a0d10a0",
+            "description": "https://act-rules.github.io/testcases/akn7bn/04a4eca0f7fe8fb25d070e83cee67a44eca7ae19.html",
+            "source": "https://act-rules.github.io/testcases/akn7bn/04a4eca0f7fe8fb25d070e83cee67a44eca7ae19.html",
+            "title": "04a4eca0f7fe8fb25d070e83cee67a44eca7ae19",
             "tested": false
           },
           {
@@ -1161,28 +1161,6 @@
               "WebPage"
             ],
             "id": "_:struct_2",
-            "description": "https://act-rules.github.io/testcases/akn7bn/1dca03a88ba0738f5a15e7636f534b826af870dc.html",
-            "source": "https://act-rules.github.io/testcases/akn7bn/1dca03a88ba0738f5a15e7636f534b826af870dc.html",
-            "title": "1dca03a88ba0738f5a15e7636f534b826af870dc",
-            "tested": false
-          },
-          {
-            "type": [
-              "TestSubject",
-              "WebPage"
-            ],
-            "id": "_:struct_3",
-            "description": "https://act-rules.github.io/testcases/akn7bn/524d02eed5b71e279febb083f70c463f99318806.html",
-            "source": "https://act-rules.github.io/testcases/akn7bn/524d02eed5b71e279febb083f70c463f99318806.html",
-            "title": "524d02eed5b71e279febb083f70c463f99318806",
-            "tested": false
-          },
-          {
-            "type": [
-              "TestSubject",
-              "WebPage"
-            ],
-            "id": "_:struct_4",
             "description": "https://act-rules.github.io/testcases/akn7bn/346253fff2e5fa725402c99e97dba9f3a2cbbf65.html",
             "source": "https://act-rules.github.io/testcases/akn7bn/346253fff2e5fa725402c99e97dba9f3a2cbbf65.html",
             "title": "346253fff2e5fa725402c99e97dba9f3a2cbbf65",
@@ -1193,10 +1171,43 @@
               "TestSubject",
               "WebPage"
             ],
+            "id": "_:struct_3",
+            "description": "https://act-rules.github.io/testcases/akn7bn/9f51cc873f37c786f03e13d96f00a44b77d965ae.html",
+            "source": "https://act-rules.github.io/testcases/akn7bn/9f51cc873f37c786f03e13d96f00a44b77d965ae.html",
+            "title": "9f51cc873f37c786f03e13d96f00a44b77d965ae",
+            "tested": false
+          },
+          {
+            "type": [
+              "TestSubject",
+              "WebPage"
+            ],
+            "id": "_:struct_4",
+            "description": "https://act-rules.github.io/testcases/akn7bn/524d02eed5b71e279febb083f70c463f99318806.html",
+            "source": "https://act-rules.github.io/testcases/akn7bn/524d02eed5b71e279febb083f70c463f99318806.html",
+            "title": "524d02eed5b71e279febb083f70c463f99318806",
+            "tested": false
+          },
+          {
+            "type": [
+              "TestSubject",
+              "WebPage"
+            ],
             "id": "_:struct_5",
-            "description": "https://act-rules.github.io/testcases/akn7bn/04a4eca0f7fe8fb25d070e83cee67a44eca7ae19.html",
-            "source": "https://act-rules.github.io/testcases/akn7bn/04a4eca0f7fe8fb25d070e83cee67a44eca7ae19.html",
-            "title": "04a4eca0f7fe8fb25d070e83cee67a44eca7ae19",
+            "description": "https://act-rules.github.io/testcases/akn7bn/1dca03a88ba0738f5a15e7636f534b826af870dc.html",
+            "source": "https://act-rules.github.io/testcases/akn7bn/1dca03a88ba0738f5a15e7636f534b826af870dc.html",
+            "title": "1dca03a88ba0738f5a15e7636f534b826af870dc",
+            "tested": false
+          },
+          {
+            "type": [
+              "TestSubject",
+              "WebPage"
+            ],
+            "id": "_:struct_6",
+            "description": "https://act-rules.github.io/testcases/akn7bn/4cee29f54888120f0b99fb7a1a4646556a0d10a0.html",
+            "source": "https://act-rules.github.io/testcases/akn7bn/4cee29f54888120f0b99fb7a1a4646556a0d10a0.html",
+            "title": "4cee29f54888120f0b99fb7a1a4646556a0d10a0",
             "tested": false
           }
         ]
