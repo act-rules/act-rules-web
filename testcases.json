@@ -11561,10 +11561,10 @@
       }
     },
     {
-      "testcaseId": "0876ff7b440ce2905768c310348d5d05a4f0982e",
+      "testcaseId": "bb94e09d43f8cb5a6e3944364a4649bf94ee4bc0",
       "testcaseTitle": "Passed Example 2",
-      "url": "https://act-rules.github.io/testcases/qt1vmo/0876ff7b440ce2905768c310348d5d05a4f0982e.html",
-      "relativePath": "testcases/qt1vmo/0876ff7b440ce2905768c310348d5d05a4f0982e.html",
+      "url": "https://act-rules.github.io/testcases/qt1vmo/bb94e09d43f8cb5a6e3944364a4649bf94ee4bc0.html",
+      "relativePath": "testcases/qt1vmo/bb94e09d43f8cb5a6e3944364a4649bf94ee4bc0.html",
       "expected": "passed",
       "ruleId": "qt1vmo",
       "ruleName": "Image accessible name is descriptive",
