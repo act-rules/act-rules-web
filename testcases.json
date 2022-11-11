@@ -3,7 +3,7 @@
   "website": "https://act-rules.github.io",
   "license": "https://act-rules.github.io/pages/license/",
   "description": "Accessibility conformance testing rules for HTML",
-  "count": 1139,
+  "count": 1146,
   "testcases": [
     {
       "testcaseId": "9a417788dfd68b83820b01deb71e427f8d8edc3a",
@@ -818,26 +818,8 @@
       }
     },
     {
-      "testcaseId": "d226543d65b0d49a03e7ea45f2de82bf0cbc1726",
-      "testcaseTitle": "Passed Example 6",
-      "url": "https://act-rules.github.io/testcases/bc4a75/d226543d65b0d49a03e7ea45f2de82bf0cbc1726.html",
-      "relativePath": "testcases/bc4a75/d226543d65b0d49a03e7ea45f2de82bf0cbc1726.html",
-      "expected": "passed",
-      "ruleId": "bc4a75",
-      "ruleName": "ARIA required owned elements",
-      "rulePage": "https://act-rules.github.io/rules/bc4a75",
-      "ruleAccessibilityRequirements": {
-        "wcag20:1.3.1": {
-          "forConformance": true,
-          "failed": "not satisfied",
-          "passed": "further testing needed",
-          "inapplicable": "further testing needed"
-        }
-      }
-    },
-    {
       "testcaseId": "21c5ee18656453fbe61e1bde4b87f2a8688f9caf",
-      "testcaseTitle": "Passed Example 7",
+      "testcaseTitle": "Passed Example 6",
       "url": "https://act-rules.github.io/testcases/bc4a75/21c5ee18656453fbe61e1bde4b87f2a8688f9caf.html",
       "relativePath": "testcases/bc4a75/21c5ee18656453fbe61e1bde4b87f2a8688f9caf.html",
       "expected": "passed",
@@ -944,10 +926,10 @@
       }
     },
     {
-      "testcaseId": "8ddfd4feb48c2f7630e6ff2758de03bd661797b5",
+      "testcaseId": "a7a314ced1f32dcfec0b00c0defd7858e2c77415",
       "testcaseTitle": "Failed Example 6",
-      "url": "https://act-rules.github.io/testcases/bc4a75/8ddfd4feb48c2f7630e6ff2758de03bd661797b5.html",
-      "relativePath": "testcases/bc4a75/8ddfd4feb48c2f7630e6ff2758de03bd661797b5.html",
+      "url": "https://act-rules.github.io/testcases/bc4a75/a7a314ced1f32dcfec0b00c0defd7858e2c77415.html",
+      "relativePath": "testcases/bc4a75/a7a314ced1f32dcfec0b00c0defd7858e2c77415.html",
       "expected": "failed",
       "ruleId": "bc4a75",
       "ruleName": "ARIA required owned elements",
@@ -962,10 +944,10 @@
       }
     },
     {
-      "testcaseId": "a7a314ced1f32dcfec0b00c0defd7858e2c77415",
+      "testcaseId": "d226543d65b0d49a03e7ea45f2de82bf0cbc1726",
       "testcaseTitle": "Failed Example 7",
-      "url": "https://act-rules.github.io/testcases/bc4a75/a7a314ced1f32dcfec0b00c0defd7858e2c77415.html",
-      "relativePath": "testcases/bc4a75/a7a314ced1f32dcfec0b00c0defd7858e2c77415.html",
+      "url": "https://act-rules.github.io/testcases/bc4a75/d226543d65b0d49a03e7ea45f2de82bf0cbc1726.html",
+      "relativePath": "testcases/bc4a75/d226543d65b0d49a03e7ea45f2de82bf0cbc1726.html",
       "expected": "failed",
       "ruleId": "bc4a75",
       "ruleName": "ARIA required owned elements",
@@ -1052,24 +1034,6 @@
       }
     },
     {
-      "testcaseId": "53e6031392d279eddb2b8f7e2db60a76f82bfa30",
-      "testcaseTitle": "Inapplicable Example 5",
-      "url": "https://act-rules.github.io/testcases/bc4a75/53e6031392d279eddb2b8f7e2db60a76f82bfa30.html",
-      "relativePath": "testcases/bc4a75/53e6031392d279eddb2b8f7e2db60a76f82bfa30.html",
-      "expected": "inapplicable",
-      "ruleId": "bc4a75",
-      "ruleName": "ARIA required owned elements",
-      "rulePage": "https://act-rules.github.io/rules/bc4a75",
-      "ruleAccessibilityRequirements": {
-        "wcag20:1.3.1": {
-          "forConformance": true,
-          "failed": "not satisfied",
-          "passed": "further testing needed",
-          "inapplicable": "further testing needed"
-        }
-      }
-    },
-    {
       "testcaseId": "797e195f77480efbf1817c09b9cea1dc42f79a4c",
       "testcaseTitle": "Passed Example 1",
       "url": "https://act-rules.github.io/testcases/5c01ea/797e195f77480efbf1817c09b9cea1dc42f79a4c.html",
@@ -1085,8 +1049,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1110,8 +1074,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1135,8 +1099,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1160,8 +1124,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1185,8 +1149,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1210,8 +1174,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1235,8 +1199,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1260,8 +1224,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1285,8 +1249,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1310,8 +1274,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1335,8 +1299,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1360,8 +1324,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1385,8 +1349,33 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
+        }
+      }
+    },
+    {
+      "testcaseId": "7715ce131e2fbba2680a6aeff091063b56ab173b",
+      "testcaseTitle": "Failed Example 3",
+      "url": "https://act-rules.github.io/testcases/5c01ea/7715ce131e2fbba2680a6aeff091063b56ab173b.html",
+      "relativePath": "testcases/5c01ea/7715ce131e2fbba2680a6aeff091063b56ab173b.html",
+      "expected": "failed",
+      "ruleId": "5c01ea",
+      "ruleName": "ARIA state or property is permitted",
+      "rulePage": "https://act-rules.github.io/rules/5c01ea",
+      "ruleAccessibilityRequirements": {
+        "wcag-technique:ARIA5": {
+          "forConformance": false,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1410,8 +1399,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1435,8 +1424,8 @@
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
         },
-        "aria11:state_property_processing": {
-          "title": "ARIA 1.1, 7.6 State and Property Attribute Processing",
+        "aria12:state_property_processing": {
+          "title": "ARIA 1.2, 8.6 State and Property Attribute Processing",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1454,8 +1443,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1473,8 +1462,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1492,8 +1481,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1511,8 +1500,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1530,8 +1519,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1549,8 +1538,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1568,8 +1557,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1587,8 +1576,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1597,17 +1586,17 @@
       }
     },
     {
-      "testcaseId": "a01acd7006c46782d796ab9444eb42692d1bcfef",
+      "testcaseId": "9b146fdabf3a6655a6ddcc1fcac011e16daaece8",
       "testcaseTitle": "Passed Example 9",
-      "url": "https://act-rules.github.io/testcases/6a7281/a01acd7006c46782d796ab9444eb42692d1bcfef.html",
-      "relativePath": "testcases/6a7281/a01acd7006c46782d796ab9444eb42692d1bcfef.html",
+      "url": "https://act-rules.github.io/testcases/6a7281/9b146fdabf3a6655a6ddcc1fcac011e16daaece8.html",
+      "relativePath": "testcases/6a7281/9b146fdabf3a6655a6ddcc1fcac011e16daaece8.html",
       "expected": "passed",
       "ruleId": "6a7281",
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1625,8 +1614,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1644,8 +1633,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1663,8 +1652,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1682,8 +1671,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1701,8 +1690,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1720,8 +1709,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1739,8 +1728,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1758,8 +1747,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1768,17 +1757,17 @@
       }
     },
     {
-      "testcaseId": "2568fcdeefbba2bb1d9932f8ed5490c03264b0cd",
+      "testcaseId": "6991b6130765f22017feead6ede4f4617f567c23",
       "testcaseTitle": "Failed Example 8",
-      "url": "https://act-rules.github.io/testcases/6a7281/2568fcdeefbba2bb1d9932f8ed5490c03264b0cd.html",
-      "relativePath": "testcases/6a7281/2568fcdeefbba2bb1d9932f8ed5490c03264b0cd.html",
+      "url": "https://act-rules.github.io/testcases/6a7281/6991b6130765f22017feead6ede4f4617f567c23.html",
+      "relativePath": "testcases/6a7281/6991b6130765f22017feead6ede4f4617f567c23.html",
       "expected": "failed",
       "ruleId": "6a7281",
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1796,8 +1785,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1815,8 +1804,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1834,8 +1823,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1853,8 +1842,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1872,8 +1861,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -1891,8 +1880,8 @@
       "ruleName": "ARIA state or property has valid value",
       "rulePage": "https://act-rules.github.io/rules/6a7281",
       "ruleAccessibilityRequirements": {
-        "aria11:state_prop_values": {
-          "title": "ARIA 1.1, 6.3 Values for States and Properties",
+        "aria12:propcharacteristic_value": {
+          "title": "ARIA 1.2, 6.2.4 Value (Characteristics of States and Properties)",
           "forConformance": true,
           "failed": "not satisfied",
           "passed": "satisfied",
@@ -8261,6 +8250,24 @@
       }
     },
     {
+      "testcaseId": "372073f4787fc9aec9bfda96d25c9a7b5b0c720e",
+      "testcaseTitle": "Passed Example 8",
+      "url": "https://act-rules.github.io/testcases/e086e5/372073f4787fc9aec9bfda96d25c9a7b5b0c720e.html",
+      "relativePath": "testcases/e086e5/372073f4787fc9aec9bfda96d25c9a7b5b0c720e.html",
+      "expected": "passed",
+      "ruleId": "e086e5",
+      "ruleName": "Form field has non-empty accessible name",
+      "rulePage": "https://act-rules.github.io/rules/e086e5",
+      "ruleAccessibilityRequirements": {
+        "wcag20:4.1.2": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        }
+      }
+    },
+    {
       "testcaseId": "2531f5fa4a4c2f8f357de91cc8a54e244fd1e3d1",
       "testcaseTitle": "Failed Example 1",
       "url": "https://act-rules.github.io/testcases/e086e5/2531f5fa4a4c2f8f357de91cc8a54e244fd1e3d1.html",
@@ -8373,6 +8380,24 @@
       "testcaseTitle": "Failed Example 7",
       "url": "https://act-rules.github.io/testcases/e086e5/a9ff16fec8b977eb20b51b2150574b06bb81a177.html",
       "relativePath": "testcases/e086e5/a9ff16fec8b977eb20b51b2150574b06bb81a177.html",
+      "expected": "failed",
+      "ruleId": "e086e5",
+      "ruleName": "Form field has non-empty accessible name",
+      "rulePage": "https://act-rules.github.io/rules/e086e5",
+      "ruleAccessibilityRequirements": {
+        "wcag20:4.1.2": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        }
+      }
+    },
+    {
+      "testcaseId": "b07ac90c0290f9318956937a6d8f9886aeca0876",
+      "testcaseTitle": "Failed Example 8",
+      "url": "https://act-rules.github.io/testcases/e086e5/b07ac90c0290f9318956937a6d8f9886aeca0876.html",
+      "relativePath": "testcases/e086e5/b07ac90c0290f9318956937a6d8f9886aeca0876.html",
       "expected": "failed",
       "ruleId": "e086e5",
       "ruleName": "Form field has non-empty accessible name",
@@ -18396,10 +18421,10 @@
       }
     },
     {
-      "testcaseId": "d789ff3d0c087c77117a02527e71a646a343d4a3",
+      "testcaseId": "0dc5df3d431477ff08c664f363c160845f8deb4a",
       "testcaseTitle": "Passed Example 2",
-      "url": "https://act-rules.github.io/testcases/bisz58/d789ff3d0c087c77117a02527e71a646a343d4a3.html",
-      "relativePath": "testcases/bisz58/d789ff3d0c087c77117a02527e71a646a343d4a3.html",
+      "url": "https://act-rules.github.io/testcases/bisz58/0dc5df3d431477ff08c664f363c160845f8deb4a.html",
+      "relativePath": "testcases/bisz58/0dc5df3d431477ff08c664f363c160845f8deb4a.html",
       "expected": "passed",
       "ruleId": "bisz58",
       "ruleName": "Meta element has no refresh delay (no exception)",
@@ -18432,10 +18457,10 @@
       }
     },
     {
-      "testcaseId": "293add8170d86d1f418c0620470920105003da42",
+      "testcaseId": "0d7498cb3b712d2c05d48cc35075236f9c205152",
       "testcaseTitle": "Failed Example 1",
-      "url": "https://act-rules.github.io/testcases/bisz58/293add8170d86d1f418c0620470920105003da42.html",
-      "relativePath": "testcases/bisz58/293add8170d86d1f418c0620470920105003da42.html",
+      "url": "https://act-rules.github.io/testcases/bisz58/0d7498cb3b712d2c05d48cc35075236f9c205152.html",
+      "relativePath": "testcases/bisz58/0d7498cb3b712d2c05d48cc35075236f9c205152.html",
       "expected": "failed",
       "ruleId": "bisz58",
       "ruleName": "Meta element has no refresh delay (no exception)",
@@ -18468,10 +18493,10 @@
       }
     },
     {
-      "testcaseId": "0c9b0abdee645fa6145f02913a76e809a244708d",
+      "testcaseId": "6da5ecff97760b153c4d87ad3cf5364f00101192",
       "testcaseTitle": "Failed Example 2",
-      "url": "https://act-rules.github.io/testcases/bisz58/0c9b0abdee645fa6145f02913a76e809a244708d.html",
-      "relativePath": "testcases/bisz58/0c9b0abdee645fa6145f02913a76e809a244708d.html",
+      "url": "https://act-rules.github.io/testcases/bisz58/6da5ecff97760b153c4d87ad3cf5364f00101192.html",
+      "relativePath": "testcases/bisz58/6da5ecff97760b153c4d87ad3cf5364f00101192.html",
       "expected": "failed",
       "ruleId": "bisz58",
       "ruleName": "Meta element has no refresh delay (no exception)",
@@ -18504,46 +18529,10 @@
       }
     },
     {
-      "testcaseId": "459353149c69b2ee77944c5641cbff66396829e0",
+      "testcaseId": "658ed4102c7cb7b0d396216091fb6008a11b0fcb",
       "testcaseTitle": "Failed Example 3",
-      "url": "https://act-rules.github.io/testcases/bisz58/459353149c69b2ee77944c5641cbff66396829e0.html",
-      "relativePath": "testcases/bisz58/459353149c69b2ee77944c5641cbff66396829e0.html",
-      "expected": "failed",
-      "ruleId": "bisz58",
-      "ruleName": "Meta element has no refresh delay (no exception)",
-      "rulePage": "https://act-rules.github.io/rules/bisz58",
-      "ruleAccessibilityRequirements": {
-        "wcag20:2.2.4": {
-          "forConformance": true,
-          "failed": "not satisfied",
-          "passed": "further testing needed",
-          "inapplicable": "further testing needed"
-        },
-        "wcag20:3.2.5": {
-          "forConformance": true,
-          "failed": "not satisfied",
-          "passed": "further testing needed",
-          "inapplicable": "further testing needed"
-        },
-        "wcag-technique:G110": {
-          "forConformance": false,
-          "failed": "not satisfied",
-          "passed": "further testing needed",
-          "inapplicable": "further testing needed"
-        },
-        "wcag-technique:H76": {
-          "forConformance": false,
-          "failed": "not satisfied",
-          "passed": "further testing needed",
-          "inapplicable": "further testing needed"
-        }
-      }
-    },
-    {
-      "testcaseId": "4f9bb0a8ab7bd76505483c47da831440b864fe50",
-      "testcaseTitle": "Failed Example 4",
-      "url": "https://act-rules.github.io/testcases/bisz58/4f9bb0a8ab7bd76505483c47da831440b864fe50.html",
-      "relativePath": "testcases/bisz58/4f9bb0a8ab7bd76505483c47da831440b864fe50.html",
+      "url": "https://act-rules.github.io/testcases/bisz58/658ed4102c7cb7b0d396216091fb6008a11b0fcb.html",
+      "relativePath": "testcases/bisz58/658ed4102c7cb7b0d396216091fb6008a11b0fcb.html",
       "expected": "failed",
       "ruleId": "bisz58",
       "ruleName": "Meta element has no refresh delay (no exception)",
@@ -18612,10 +18601,10 @@
       }
     },
     {
-      "testcaseId": "1d1c596243bc75f495b61d89bc2a6396ea29442a",
+      "testcaseId": "11c7614cf8d1a621d96e7dd29800f364171cc32e",
       "testcaseTitle": "Inapplicable Example 2",
-      "url": "https://act-rules.github.io/testcases/bisz58/1d1c596243bc75f495b61d89bc2a6396ea29442a.html",
-      "relativePath": "testcases/bisz58/1d1c596243bc75f495b61d89bc2a6396ea29442a.html",
+      "url": "https://act-rules.github.io/testcases/bisz58/11c7614cf8d1a621d96e7dd29800f364171cc32e.html",
+      "relativePath": "testcases/bisz58/11c7614cf8d1a621d96e7dd29800f364171cc32e.html",
       "expected": "inapplicable",
       "ruleId": "bisz58",
       "ruleName": "Meta element has no refresh delay (no exception)",
@@ -18720,10 +18709,10 @@
       }
     },
     {
-      "testcaseId": "a1a1550e2be737918ba96c4cc7237060515ef8cb",
+      "testcaseId": "66dd2e2a3d9be6f2cc5f0bebc4c63e9852c453c5",
       "testcaseTitle": "Inapplicable Example 5",
-      "url": "https://act-rules.github.io/testcases/bisz58/a1a1550e2be737918ba96c4cc7237060515ef8cb.html",
-      "relativePath": "testcases/bisz58/a1a1550e2be737918ba96c4cc7237060515ef8cb.html",
+      "url": "https://act-rules.github.io/testcases/bisz58/66dd2e2a3d9be6f2cc5f0bebc4c63e9852c453c5.html",
+      "relativePath": "testcases/bisz58/66dd2e2a3d9be6f2cc5f0bebc4c63e9852c453c5.html",
       "expected": "inapplicable",
       "ruleId": "bisz58",
       "ruleName": "Meta element has no refresh delay (no exception)",
@@ -18792,10 +18781,10 @@
       }
     },
     {
-      "testcaseId": "ffa9d5785ba84df4dfacbafc5fdb8b82a365f5b4",
+      "testcaseId": "8a2fb5afc7973e134dd96553ea4333fba5fcb872",
       "testcaseTitle": "Inapplicable Example 7",
-      "url": "https://act-rules.github.io/testcases/bisz58/ffa9d5785ba84df4dfacbafc5fdb8b82a365f5b4.html",
-      "relativePath": "testcases/bisz58/ffa9d5785ba84df4dfacbafc5fdb8b82a365f5b4.html",
+      "url": "https://act-rules.github.io/testcases/bisz58/8a2fb5afc7973e134dd96553ea4333fba5fcb872.html",
+      "relativePath": "testcases/bisz58/8a2fb5afc7973e134dd96553ea4333fba5fcb872.html",
       "expected": "inapplicable",
       "ruleId": "bisz58",
       "ruleName": "Meta element has no refresh delay (no exception)",
@@ -20496,10 +20485,10 @@
       }
     },
     {
-      "testcaseId": "2549eb63af24ea8b5d659afd53374c96bc344278",
+      "testcaseId": "97d6541ceadff4462f6648c7c2a1e681ca5617a7",
       "testcaseTitle": "Passed Example 1",
-      "url": "https://act-rules.github.io/testcases/4e8ab6/2549eb63af24ea8b5d659afd53374c96bc344278.html",
-      "relativePath": "testcases/4e8ab6/2549eb63af24ea8b5d659afd53374c96bc344278.html",
+      "url": "https://act-rules.github.io/testcases/4e8ab6/97d6541ceadff4462f6648c7c2a1e681ca5617a7.html",
+      "relativePath": "testcases/4e8ab6/97d6541ceadff4462f6648c7c2a1e681ca5617a7.html",
       "expected": "passed",
       "ruleId": "4e8ab6",
       "ruleName": "Element with role attribute has required states and properties",
@@ -20516,12 +20505,48 @@
           "failed": "not satisfied",
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
+        }
+      }
+    },
+    {
+      "testcaseId": "fc0265e2dc2b09b236538927287ab8403bbef1e5",
+      "testcaseTitle": "Passed Example 2",
+      "url": "https://act-rules.github.io/testcases/4e8ab6/fc0265e2dc2b09b236538927287ab8403bbef1e5.html",
+      "relativePath": "testcases/4e8ab6/fc0265e2dc2b09b236538927287ab8403bbef1e5.html",
+      "expected": "passed",
+      "ruleId": "4e8ab6",
+      "ruleName": "Element with role attribute has required states and properties",
+      "rulePage": "https://act-rules.github.io/rules/4e8ab6",
+      "ruleAccessibilityRequirements": {
+        "wcag20:4.1.2": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag-technique:ARIA5": {
+          "forConformance": false,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
         }
       }
     },
     {
       "testcaseId": "9131439ea2fa6ebb37e3c8ccadffabef4762eefe",
-      "testcaseTitle": "Passed Example 2",
+      "testcaseTitle": "Passed Example 3",
       "url": "https://act-rules.github.io/testcases/4e8ab6/9131439ea2fa6ebb37e3c8ccadffabef4762eefe.html",
       "relativePath": "testcases/4e8ab6/9131439ea2fa6ebb37e3c8ccadffabef4762eefe.html",
       "expected": "passed",
@@ -20540,14 +20565,20 @@
           "failed": "not satisfied",
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
         }
       }
     },
     {
-      "testcaseId": "6c8f7ec672c71b94f4ba517049208f66b4ec2dc1",
-      "testcaseTitle": "Passed Example 3",
-      "url": "https://act-rules.github.io/testcases/4e8ab6/6c8f7ec672c71b94f4ba517049208f66b4ec2dc1.html",
-      "relativePath": "testcases/4e8ab6/6c8f7ec672c71b94f4ba517049208f66b4ec2dc1.html",
+      "testcaseId": "c619d104840c53fa5d9dcf21d4839b5e02fa6bc3",
+      "testcaseTitle": "Passed Example 4",
+      "url": "https://act-rules.github.io/testcases/4e8ab6/c619d104840c53fa5d9dcf21d4839b5e02fa6bc3.html",
+      "relativePath": "testcases/4e8ab6/c619d104840c53fa5d9dcf21d4839b5e02fa6bc3.html",
       "expected": "passed",
       "ruleId": "4e8ab6",
       "ruleName": "Element with role attribute has required states and properties",
@@ -20564,14 +20595,80 @@
           "failed": "not satisfied",
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
         }
       }
     },
     {
-      "testcaseId": "2d7dadf8c1245fb59907fb770e7a2ac55c6de6d3",
+      "testcaseId": "1737281511d47208a98e2805165d8cabd57e0003",
+      "testcaseTitle": "Passed Example 5",
+      "url": "https://act-rules.github.io/testcases/4e8ab6/1737281511d47208a98e2805165d8cabd57e0003.html",
+      "relativePath": "testcases/4e8ab6/1737281511d47208a98e2805165d8cabd57e0003.html",
+      "expected": "passed",
+      "ruleId": "4e8ab6",
+      "ruleName": "Element with role attribute has required states and properties",
+      "rulePage": "https://act-rules.github.io/rules/4e8ab6",
+      "ruleAccessibilityRequirements": {
+        "wcag20:4.1.2": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag-technique:ARIA5": {
+          "forConformance": false,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
+        }
+      }
+    },
+    {
+      "testcaseId": "2542f28a44e9d5bd264fe98bb93f451fb474378d",
+      "testcaseTitle": "Passed Example 6",
+      "url": "https://act-rules.github.io/testcases/4e8ab6/2542f28a44e9d5bd264fe98bb93f451fb474378d.html",
+      "relativePath": "testcases/4e8ab6/2542f28a44e9d5bd264fe98bb93f451fb474378d.html",
+      "expected": "passed",
+      "ruleId": "4e8ab6",
+      "ruleName": "Element with role attribute has required states and properties",
+      "rulePage": "https://act-rules.github.io/rules/4e8ab6",
+      "ruleAccessibilityRequirements": {
+        "wcag20:4.1.2": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag-technique:ARIA5": {
+          "forConformance": false,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
+        }
+      }
+    },
+    {
+      "testcaseId": "aadc4805996f92eda94fcdb569f96ed57927c5b6",
       "testcaseTitle": "Failed Example 1",
-      "url": "https://act-rules.github.io/testcases/4e8ab6/2d7dadf8c1245fb59907fb770e7a2ac55c6de6d3.html",
-      "relativePath": "testcases/4e8ab6/2d7dadf8c1245fb59907fb770e7a2ac55c6de6d3.html",
+      "url": "https://act-rules.github.io/testcases/4e8ab6/aadc4805996f92eda94fcdb569f96ed57927c5b6.html",
+      "relativePath": "testcases/4e8ab6/aadc4805996f92eda94fcdb569f96ed57927c5b6.html",
       "expected": "failed",
       "ruleId": "4e8ab6",
       "ruleName": "Element with role attribute has required states and properties",
@@ -20588,14 +20685,20 @@
           "failed": "not satisfied",
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
         }
       }
     },
     {
-      "testcaseId": "da13a6ea7c396248be37fd2c1b724bef551b5e02",
+      "testcaseId": "415c994cd14ed3e1dcca397e02c5a98ec61c7377",
       "testcaseTitle": "Failed Example 2",
-      "url": "https://act-rules.github.io/testcases/4e8ab6/da13a6ea7c396248be37fd2c1b724bef551b5e02.html",
-      "relativePath": "testcases/4e8ab6/da13a6ea7c396248be37fd2c1b724bef551b5e02.html",
+      "url": "https://act-rules.github.io/testcases/4e8ab6/415c994cd14ed3e1dcca397e02c5a98ec61c7377.html",
+      "relativePath": "testcases/4e8ab6/415c994cd14ed3e1dcca397e02c5a98ec61c7377.html",
       "expected": "failed",
       "ruleId": "4e8ab6",
       "ruleName": "Element with role attribute has required states and properties",
@@ -20612,6 +20715,132 @@
           "failed": "not satisfied",
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
+        }
+      }
+    },
+    {
+      "testcaseId": "a2835fa1ed7e7adf2f6dcd0179ae9b5ee64a96f8",
+      "testcaseTitle": "Failed Example 3",
+      "url": "https://act-rules.github.io/testcases/4e8ab6/a2835fa1ed7e7adf2f6dcd0179ae9b5ee64a96f8.html",
+      "relativePath": "testcases/4e8ab6/a2835fa1ed7e7adf2f6dcd0179ae9b5ee64a96f8.html",
+      "expected": "failed",
+      "ruleId": "4e8ab6",
+      "ruleName": "Element with role attribute has required states and properties",
+      "rulePage": "https://act-rules.github.io/rules/4e8ab6",
+      "ruleAccessibilityRequirements": {
+        "wcag20:4.1.2": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag-technique:ARIA5": {
+          "forConformance": false,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
+        }
+      }
+    },
+    {
+      "testcaseId": "bc629e431fca2944f7ee868def4b1496218d8c66",
+      "testcaseTitle": "Failed Example 4",
+      "url": "https://act-rules.github.io/testcases/4e8ab6/bc629e431fca2944f7ee868def4b1496218d8c66.html",
+      "relativePath": "testcases/4e8ab6/bc629e431fca2944f7ee868def4b1496218d8c66.html",
+      "expected": "failed",
+      "ruleId": "4e8ab6",
+      "ruleName": "Element with role attribute has required states and properties",
+      "rulePage": "https://act-rules.github.io/rules/4e8ab6",
+      "ruleAccessibilityRequirements": {
+        "wcag20:4.1.2": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag-technique:ARIA5": {
+          "forConformance": false,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
+        }
+      }
+    },
+    {
+      "testcaseId": "885d2057942a72ceed56b522732b2af8817b4d86",
+      "testcaseTitle": "Failed Example 5",
+      "url": "https://act-rules.github.io/testcases/4e8ab6/885d2057942a72ceed56b522732b2af8817b4d86.html",
+      "relativePath": "testcases/4e8ab6/885d2057942a72ceed56b522732b2af8817b4d86.html",
+      "expected": "failed",
+      "ruleId": "4e8ab6",
+      "ruleName": "Element with role attribute has required states and properties",
+      "rulePage": "https://act-rules.github.io/rules/4e8ab6",
+      "ruleAccessibilityRequirements": {
+        "wcag20:4.1.2": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag-technique:ARIA5": {
+          "forConformance": false,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
+        }
+      }
+    },
+    {
+      "testcaseId": "aef258609f685c051e390cc3415ace10bc5d7308",
+      "testcaseTitle": "Failed Example 6",
+      "url": "https://act-rules.github.io/testcases/4e8ab6/aef258609f685c051e390cc3415ace10bc5d7308.html",
+      "relativePath": "testcases/4e8ab6/aef258609f685c051e390cc3415ace10bc5d7308.html",
+      "expected": "failed",
+      "ruleId": "4e8ab6",
+      "ruleName": "Element with role attribute has required states and properties",
+      "rulePage": "https://act-rules.github.io/rules/4e8ab6",
+      "ruleAccessibilityRequirements": {
+        "wcag20:4.1.2": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag-technique:ARIA5": {
+          "forConformance": false,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
         }
       }
     },
@@ -20636,6 +20865,12 @@
           "failed": "not satisfied",
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
         }
       }
     },
@@ -20660,6 +20895,12 @@
           "failed": "not satisfied",
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
         }
       }
     },
@@ -20684,6 +20925,12 @@
           "failed": "not satisfied",
           "passed": "further testing needed",
           "inapplicable": "further testing needed"
+        },
+        "aria12:requiredState": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "satisfied",
+          "inapplicable": "satisfied"
         }
       }
     },
