@@ -3,7 +3,7 @@
   "website": "https://act-rules.github.io",
   "license": "https://act-rules.github.io/pages/license/",
   "description": "Accessibility conformance testing rules for HTML",
-  "count": 1155,
+  "count": 1156,
   "testcases": [
     {
       "testcaseId": "9a417788dfd68b83820b01deb71e427f8d8edc3a",
@@ -13227,6 +13227,31 @@
       "testcaseTitle": "Failed Example 4",
       "url": "https://act-rules.github.io/testcases/0va7u6/9e1a5c362cd64bcf97744e48b407b6fe60caa1e9.html",
       "relativePath": "testcases/0va7u6/9e1a5c362cd64bcf97744e48b407b6fe60caa1e9.html",
+      "expected": "failed",
+      "ruleId": "0va7u6",
+      "ruleName": "HTML images contain no text",
+      "rulePage": "https://act-rules.github.io/rules/0va7u6",
+      "ruleAccessibilityRequirements": {
+        "wcag20:1.4.5": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag20:1.4.9": {
+          "forConformance": true,
+          "secondary": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        }
+      }
+    },
+    {
+      "testcaseId": "8a414ab3d7b84187c0e89613845eb9ee97ffa346",
+      "testcaseTitle": "Failed Example 5",
+      "url": "https://act-rules.github.io/testcases/0va7u6/8a414ab3d7b84187c0e89613845eb9ee97ffa346.html",
+      "relativePath": "testcases/0va7u6/8a414ab3d7b84187c0e89613845eb9ee97ffa346.html",
       "expected": "failed",
       "ruleId": "0va7u6",
       "ruleName": "HTML images contain no text",
