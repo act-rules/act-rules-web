@@ -22771,10 +22771,10 @@
       }
     },
     {
-      "testcaseId": "ae9c5ac945546b60ea8bb7bba64680da26dfe7e4",
+      "testcaseId": "d4891535774ba62a54c603b0fa8ba3f0b2818ea8",
       "testcaseTitle": "Passed Example 10",
-      "url": "https://act-rules.github.io/testcases/afw4f7/ae9c5ac945546b60ea8bb7bba64680da26dfe7e4.html",
-      "relativePath": "testcases/afw4f7/ae9c5ac945546b60ea8bb7bba64680da26dfe7e4.html",
+      "url": "https://act-rules.github.io/testcases/afw4f7/d4891535774ba62a54c603b0fa8ba3f0b2818ea8.html",
+      "relativePath": "testcases/afw4f7/d4891535774ba62a54c603b0fa8ba3f0b2818ea8.html",
       "expected": "passed",
       "ruleId": "afw4f7",
       "ruleName": "Text has minimum contrast",
@@ -23610,10 +23610,10 @@
       }
     },
     {
-      "testcaseId": "7acf59add8c6fd0cb580a1f6e72c200731acebc0",
+      "testcaseId": "d0e923e71ceb7617e9403feb86bf888460eccde9",
       "testcaseTitle": "Passed Example 9",
-      "url": "https://act-rules.github.io/testcases/09o5cg/7acf59add8c6fd0cb580a1f6e72c200731acebc0.html",
-      "relativePath": "testcases/09o5cg/7acf59add8c6fd0cb580a1f6e72c200731acebc0.html",
+      "url": "https://act-rules.github.io/testcases/09o5cg/d0e923e71ceb7617e9403feb86bf888460eccde9.html",
+      "relativePath": "testcases/09o5cg/d0e923e71ceb7617e9403feb86bf888460eccde9.html",
       "expected": "passed",
       "ruleId": "09o5cg",
       "ruleName": "Text has enhanced contrast",
