@@ -99,7 +99,7 @@
           "type": "Technology"
         }
       ],
-      "title": "Report for ACT-R Rule - Scrollable element is keyboard accessible",
+      "title": "Report for ACT-R Rule - Scrollable content can be reached with sequential focus navigation",
       "evaluationScope": {
         "type": "EvaluationScope",
         "conformanceTarget": "wai:WCAG2AA-Conformance",
@@ -110,7 +110,7 @@
             "WebSite"
           ],
           "id": "_:website",
-          "siteName": "ACT-R Rule - Scrollable element is keyboard accessible",
+          "siteName": "ACT-R Rule - Scrollable content can be reached with sequential focus navigation",
           "siteScope": "https://act-rules.github.io/testcases/0ssw9k/"
         },
         "accessibilitySupportBaseline": "<< Fill out >>"
@@ -1150,9 +1150,9 @@
               "WebPage"
             ],
             "id": "_:struct_1",
-            "description": "https://act-rules.github.io/testcases/0ssw9k/adc5d08798ae9c0ca0417db3b00fa1b72439e07f.html",
-            "source": "https://act-rules.github.io/testcases/0ssw9k/adc5d08798ae9c0ca0417db3b00fa1b72439e07f.html",
-            "title": "adc5d08798ae9c0ca0417db3b00fa1b72439e07f",
+            "description": "https://act-rules.github.io/testcases/0ssw9k/65a6bf4cd6b38c1667ab64e4a38dc9b401976093.html",
+            "source": "https://act-rules.github.io/testcases/0ssw9k/65a6bf4cd6b38c1667ab64e4a38dc9b401976093.html",
+            "title": "65a6bf4cd6b38c1667ab64e4a38dc9b401976093",
             "tested": false
           },
           {
@@ -1194,9 +1194,9 @@
               "WebPage"
             ],
             "id": "_:struct_5",
-            "description": "https://act-rules.github.io/testcases/0ssw9k/f212c413aa44af24e4f91145ef693c9af8afa43e.html",
-            "source": "https://act-rules.github.io/testcases/0ssw9k/f212c413aa44af24e4f91145ef693c9af8afa43e.html",
-            "title": "f212c413aa44af24e4f91145ef693c9af8afa43e",
+            "description": "https://act-rules.github.io/testcases/0ssw9k/09f93a743e707d4c4315751aa4559cf1ffaefb47.html",
+            "source": "https://act-rules.github.io/testcases/0ssw9k/09f93a743e707d4c4315751aa4559cf1ffaefb47.html",
+            "title": "09f93a743e707d4c4315751aa4559cf1ffaefb47",
             "tested": false
           },
           {
@@ -1205,9 +1205,9 @@
               "WebPage"
             ],
             "id": "_:struct_6",
-            "description": "https://act-rules.github.io/testcases/0ssw9k/d2b3882cadab2dbceab406958ee1e78d24757640.html",
-            "source": "https://act-rules.github.io/testcases/0ssw9k/d2b3882cadab2dbceab406958ee1e78d24757640.html",
-            "title": "d2b3882cadab2dbceab406958ee1e78d24757640",
+            "description": "https://act-rules.github.io/testcases/0ssw9k/42121fc49237836227343e33c8e42a563dffab66.html",
+            "source": "https://act-rules.github.io/testcases/0ssw9k/42121fc49237836227343e33c8e42a563dffab66.html",
+            "title": "42121fc49237836227343e33c8e42a563dffab66",
             "tested": false
           },
           {
@@ -1238,9 +1238,9 @@
               "WebPage"
             ],
             "id": "_:struct_9",
-            "description": "https://act-rules.github.io/testcases/0ssw9k/f8e4885e0caa16841e4bf206ccd8dd21d1454067.html",
-            "source": "https://act-rules.github.io/testcases/0ssw9k/f8e4885e0caa16841e4bf206ccd8dd21d1454067.html",
-            "title": "f8e4885e0caa16841e4bf206ccd8dd21d1454067",
+            "description": "https://act-rules.github.io/testcases/0ssw9k/7354772e6eb18fa903639623195c84953f3dfdd5.html",
+            "source": "https://act-rules.github.io/testcases/0ssw9k/7354772e6eb18fa903639623195c84953f3dfdd5.html",
+            "title": "7354772e6eb18fa903639623195c84953f3dfdd5",
             "tested": false
           }
         ]

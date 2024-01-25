@@ -1209,6 +1209,28 @@
             "source": "https://act-rules.github.io/testcases/akn7bn/4cee29f54888120f0b99fb7a1a4646556a0d10a0.html",
             "title": "4cee29f54888120f0b99fb7a1a4646556a0d10a0",
             "tested": false
+          },
+          {
+            "type": [
+              "TestSubject",
+              "WebPage"
+            ],
+            "id": "_:struct_7",
+            "description": "https://act-rules.github.io/testcases/akn7bn/87828bcb44386bec9f48c00c0775604bcbbe7425.html",
+            "source": "https://act-rules.github.io/testcases/akn7bn/87828bcb44386bec9f48c00c0775604bcbbe7425.html",
+            "title": "87828bcb44386bec9f48c00c0775604bcbbe7425",
+            "tested": false
+          },
+          {
+            "type": [
+              "TestSubject",
+              "WebPage"
+            ],
+            "id": "_:struct_8",
+            "description": "https://act-rules.github.io/testcases/akn7bn/9c0eeeef2bd687ca66d3407fbc607d2734468a28.html",
+            "source": "https://act-rules.github.io/testcases/akn7bn/9c0eeeef2bd687ca66d3407fbc607d2734468a28.html",
+            "title": "9c0eeeef2bd687ca66d3407fbc607d2734468a28",
+            "tested": false
           }
         ]
       }
