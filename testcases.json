@@ -1020,10 +1020,10 @@
       }
     },
     {
-      "testcaseId": "b2d47a491cf45c05994eea84bdfc219dfd3c6d16",
+      "testcaseId": "be12b35f9d8764f3b6e658742754defbc6dd3920",
       "testcaseTitle": "Passed Example 2",
-      "url": "https://act-rules.github.io/testcases/bc4a75/b2d47a491cf45c05994eea84bdfc219dfd3c6d16.html",
-      "relativePath": "testcases/bc4a75/b2d47a491cf45c05994eea84bdfc219dfd3c6d16.html",
+      "url": "https://act-rules.github.io/testcases/bc4a75/be12b35f9d8764f3b6e658742754defbc6dd3920.html",
+      "relativePath": "testcases/bc4a75/be12b35f9d8764f3b6e658742754defbc6dd3920.html",
       "expected": "passed",
       "ruleId": "bc4a75",
       "ruleName": "ARIA required owned elements",
