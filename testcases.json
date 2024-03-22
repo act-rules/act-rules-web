@@ -3,7 +3,7 @@
   "website": "https://act-rules.github.io",
   "license": "https://act-rules.github.io/pages/license/",
   "description": "Accessibility conformance testing rules for HTML",
-  "count": 1189,
+  "count": 1194,
   "testcases": [
     {
       "testcaseId": "9a417788dfd68b83820b01deb71e427f8d8edc3a",
@@ -18275,9 +18275,30 @@
     },
     {
       "testcaseId": "32628c06b3d06830418d289544424b2268956cdb",
-      "testcaseTitle": "Failed Example 1",
+      "testcaseTitle": "Passed Example 9",
       "url": "https://act-rules.github.io/testcases/fd3a94/32628c06b3d06830418d289544424b2268956cdb.html",
       "relativePath": "testcases/fd3a94/32628c06b3d06830418d289544424b2268956cdb.html",
+      "expected": "passed",
+      "ruleId": "fd3a94",
+      "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
+      "rulePage": "https://act-rules.github.io/rules/fd3a94",
+      "ruleAccessibilityRequirements": {
+        "wcag20:2.4.4": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag20:2.4.9": {
+          "secondary": "This success criterion is **more strict** than this rule. This is because the rule also considers the context of the link, in addition to the link text. Some of the passed examples do not satisfy this success criterion."
+        }
+      }
+    },
+    {
+      "testcaseId": "a53853cd0bb404cc16d845a95bf8862d8d62b7bc",
+      "testcaseTitle": "Failed Example 1",
+      "url": "https://act-rules.github.io/testcases/fd3a94/a53853cd0bb404cc16d845a95bf8862d8d62b7bc.html",
+      "relativePath": "testcases/fd3a94/a53853cd0bb404cc16d845a95bf8862d8d62b7bc.html",
       "expected": "failed",
       "ruleId": "fd3a94",
       "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
@@ -18295,10 +18316,10 @@
       }
     },
     {
-      "testcaseId": "49b96fff7b6caabd37e13b7c9f0e153603abbe9a",
+      "testcaseId": "3e64e27ae9b2e3ac44397783b95204bbae29939d",
       "testcaseTitle": "Failed Example 2",
-      "url": "https://act-rules.github.io/testcases/fd3a94/49b96fff7b6caabd37e13b7c9f0e153603abbe9a.html",
-      "relativePath": "testcases/fd3a94/49b96fff7b6caabd37e13b7c9f0e153603abbe9a.html",
+      "url": "https://act-rules.github.io/testcases/fd3a94/3e64e27ae9b2e3ac44397783b95204bbae29939d.html",
+      "relativePath": "testcases/fd3a94/3e64e27ae9b2e3ac44397783b95204bbae29939d.html",
       "expected": "failed",
       "ruleId": "fd3a94",
       "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
@@ -18316,10 +18337,10 @@
       }
     },
     {
-      "testcaseId": "7b98642d1913388b61cc8be382d44bf203413715",
+      "testcaseId": "7db7595e9d4f1c57dae8d3a31149366a04fdcca7",
       "testcaseTitle": "Failed Example 3",
-      "url": "https://act-rules.github.io/testcases/fd3a94/7b98642d1913388b61cc8be382d44bf203413715.html",
-      "relativePath": "testcases/fd3a94/7b98642d1913388b61cc8be382d44bf203413715.html",
+      "url": "https://act-rules.github.io/testcases/fd3a94/7db7595e9d4f1c57dae8d3a31149366a04fdcca7.html",
+      "relativePath": "testcases/fd3a94/7db7595e9d4f1c57dae8d3a31149366a04fdcca7.html",
       "expected": "failed",
       "ruleId": "fd3a94",
       "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
@@ -18337,10 +18358,10 @@
       }
     },
     {
-      "testcaseId": "2aa7c1665f9b88e2caf93c15efa910a5ef2561a4",
+      "testcaseId": "017b7a92c2f301bc82e31ff7b43bc8086ad5f376",
       "testcaseTitle": "Failed Example 4",
-      "url": "https://act-rules.github.io/testcases/fd3a94/2aa7c1665f9b88e2caf93c15efa910a5ef2561a4.html",
-      "relativePath": "testcases/fd3a94/2aa7c1665f9b88e2caf93c15efa910a5ef2561a4.html",
+      "url": "https://act-rules.github.io/testcases/fd3a94/017b7a92c2f301bc82e31ff7b43bc8086ad5f376.html",
+      "relativePath": "testcases/fd3a94/017b7a92c2f301bc82e31ff7b43bc8086ad5f376.html",
       "expected": "failed",
       "ruleId": "fd3a94",
       "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
@@ -18358,10 +18379,73 @@
       }
     },
     {
-      "testcaseId": "bba222dd7808f61061be2bd00960e54060e893fa",
+      "testcaseId": "fb87f1e4a623838ddafb22a4882ed71128975dae",
       "testcaseTitle": "Failed Example 5",
-      "url": "https://act-rules.github.io/testcases/fd3a94/bba222dd7808f61061be2bd00960e54060e893fa.html",
-      "relativePath": "testcases/fd3a94/bba222dd7808f61061be2bd00960e54060e893fa.html",
+      "url": "https://act-rules.github.io/testcases/fd3a94/fb87f1e4a623838ddafb22a4882ed71128975dae.html",
+      "relativePath": "testcases/fd3a94/fb87f1e4a623838ddafb22a4882ed71128975dae.html",
+      "expected": "failed",
+      "ruleId": "fd3a94",
+      "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
+      "rulePage": "https://act-rules.github.io/rules/fd3a94",
+      "ruleAccessibilityRequirements": {
+        "wcag20:2.4.4": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag20:2.4.9": {
+          "secondary": "This success criterion is **more strict** than this rule. This is because the rule also considers the context of the link, in addition to the link text. Some of the passed examples do not satisfy this success criterion."
+        }
+      }
+    },
+    {
+      "testcaseId": "b4c537fccdc755c1af6be03ab3ccef8c58363ccc",
+      "testcaseTitle": "Failed Example 6",
+      "url": "https://act-rules.github.io/testcases/fd3a94/b4c537fccdc755c1af6be03ab3ccef8c58363ccc.html",
+      "relativePath": "testcases/fd3a94/b4c537fccdc755c1af6be03ab3ccef8c58363ccc.html",
+      "expected": "failed",
+      "ruleId": "fd3a94",
+      "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
+      "rulePage": "https://act-rules.github.io/rules/fd3a94",
+      "ruleAccessibilityRequirements": {
+        "wcag20:2.4.4": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag20:2.4.9": {
+          "secondary": "This success criterion is **more strict** than this rule. This is because the rule also considers the context of the link, in addition to the link text. Some of the passed examples do not satisfy this success criterion."
+        }
+      }
+    },
+    {
+      "testcaseId": "7642230dd0b964e0f65fe08fac7f2242087cc04d",
+      "testcaseTitle": "Failed Example 7",
+      "url": "https://act-rules.github.io/testcases/fd3a94/7642230dd0b964e0f65fe08fac7f2242087cc04d.html",
+      "relativePath": "testcases/fd3a94/7642230dd0b964e0f65fe08fac7f2242087cc04d.html",
+      "expected": "failed",
+      "ruleId": "fd3a94",
+      "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
+      "rulePage": "https://act-rules.github.io/rules/fd3a94",
+      "ruleAccessibilityRequirements": {
+        "wcag20:2.4.4": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag20:2.4.9": {
+          "secondary": "This success criterion is **more strict** than this rule. This is because the rule also considers the context of the link, in addition to the link text. Some of the passed examples do not satisfy this success criterion."
+        }
+      }
+    },
+    {
+      "testcaseId": "34bd1efe1aca6c188e651d602c8bbae7ad45d540",
+      "testcaseTitle": "Failed Example 8",
+      "url": "https://act-rules.github.io/testcases/fd3a94/34bd1efe1aca6c188e651d602c8bbae7ad45d540.html",
+      "relativePath": "testcases/fd3a94/34bd1efe1aca6c188e651d602c8bbae7ad45d540.html",
       "expected": "failed",
       "ruleId": "fd3a94",
       "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
@@ -18488,6 +18572,27 @@
       "testcaseTitle": "Inapplicable Example 6",
       "url": "https://act-rules.github.io/testcases/fd3a94/f63a0bd36b1e7762299df130e1c3b0569b6d57ad.html",
       "relativePath": "testcases/fd3a94/f63a0bd36b1e7762299df130e1c3b0569b6d57ad.html",
+      "expected": "inapplicable",
+      "ruleId": "fd3a94",
+      "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
+      "rulePage": "https://act-rules.github.io/rules/fd3a94",
+      "ruleAccessibilityRequirements": {
+        "wcag20:2.4.4": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag20:2.4.9": {
+          "secondary": "This success criterion is **more strict** than this rule. This is because the rule also considers the context of the link, in addition to the link text. Some of the passed examples do not satisfy this success criterion."
+        }
+      }
+    },
+    {
+      "testcaseId": "b3f0bf36e2ea9b6d0aa3e19dfbd8bf5d2619a10c",
+      "testcaseTitle": "Inapplicable Example 7",
+      "url": "https://act-rules.github.io/testcases/fd3a94/b3f0bf36e2ea9b6d0aa3e19dfbd8bf5d2619a10c.html",
+      "relativePath": "testcases/fd3a94/b3f0bf36e2ea9b6d0aa3e19dfbd8bf5d2619a10c.html",
       "expected": "inapplicable",
       "ruleId": "fd3a94",
       "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
