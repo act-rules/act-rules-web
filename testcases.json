@@ -3591,10 +3591,10 @@
       }
     },
     {
-      "testcaseId": "b13d65523ad27d9c763caca8bcc0fcce4b5ca5fb",
+      "testcaseId": "a66fd200de516b670088aec87ab034a796585f82",
       "testcaseTitle": "Inapplicable Example 2",
-      "url": "https://act-rules.github.io/testcases/4c31df/b13d65523ad27d9c763caca8bcc0fcce4b5ca5fb.html",
-      "relativePath": "testcases/4c31df/b13d65523ad27d9c763caca8bcc0fcce4b5ca5fb.html",
+      "url": "https://act-rules.github.io/testcases/4c31df/a66fd200de516b670088aec87ab034a796585f82.html",
+      "relativePath": "testcases/4c31df/a66fd200de516b670088aec87ab034a796585f82.html",
       "expected": "inapplicable",
       "ruleId": "4c31df",
       "ruleName": "Audio or video element that plays automatically has a control mechanism",
