@@ -18454,10 +18454,10 @@
       }
     },
     {
-      "testcaseId": "017b7a92c2f301bc82e31ff7b43bc8086ad5f376",
+      "testcaseId": "7e6bbf69018839393beb137d9eafc86d722e2381",
       "testcaseTitle": "Failed Example 4",
-      "url": "https://act-rules.github.io/testcases/fd3a94/017b7a92c2f301bc82e31ff7b43bc8086ad5f376.html",
-      "relativePath": "testcases/fd3a94/017b7a92c2f301bc82e31ff7b43bc8086ad5f376.html",
+      "url": "https://act-rules.github.io/testcases/fd3a94/7e6bbf69018839393beb137d9eafc86d722e2381.html",
+      "relativePath": "testcases/fd3a94/7e6bbf69018839393beb137d9eafc86d722e2381.html",
       "expected": "failed",
       "ruleId": "fd3a94",
       "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
@@ -18475,10 +18475,10 @@
       }
     },
     {
-      "testcaseId": "fb87f1e4a623838ddafb22a4882ed71128975dae",
+      "testcaseId": "41596f7fdc083598bec027a397fb2057480aad51",
       "testcaseTitle": "Failed Example 5",
-      "url": "https://act-rules.github.io/testcases/fd3a94/fb87f1e4a623838ddafb22a4882ed71128975dae.html",
-      "relativePath": "testcases/fd3a94/fb87f1e4a623838ddafb22a4882ed71128975dae.html",
+      "url": "https://act-rules.github.io/testcases/fd3a94/41596f7fdc083598bec027a397fb2057480aad51.html",
+      "relativePath": "testcases/fd3a94/41596f7fdc083598bec027a397fb2057480aad51.html",
       "expected": "failed",
       "ruleId": "fd3a94",
       "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
@@ -18496,10 +18496,10 @@
       }
     },
     {
-      "testcaseId": "b4c537fccdc755c1af6be03ab3ccef8c58363ccc",
+      "testcaseId": "667e45ae82370e4180c9be29901ead23c661bf2c",
       "testcaseTitle": "Failed Example 6",
-      "url": "https://act-rules.github.io/testcases/fd3a94/b4c537fccdc755c1af6be03ab3ccef8c58363ccc.html",
-      "relativePath": "testcases/fd3a94/b4c537fccdc755c1af6be03ab3ccef8c58363ccc.html",
+      "url": "https://act-rules.github.io/testcases/fd3a94/667e45ae82370e4180c9be29901ead23c661bf2c.html",
+      "relativePath": "testcases/fd3a94/667e45ae82370e4180c9be29901ead23c661bf2c.html",
       "expected": "failed",
       "ruleId": "fd3a94",
       "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
@@ -18517,10 +18517,10 @@
       }
     },
     {
-      "testcaseId": "7642230dd0b964e0f65fe08fac7f2242087cc04d",
+      "testcaseId": "72bb3afa0e02f959d607c99117e31e684239cec1",
       "testcaseTitle": "Failed Example 7",
-      "url": "https://act-rules.github.io/testcases/fd3a94/7642230dd0b964e0f65fe08fac7f2242087cc04d.html",
-      "relativePath": "testcases/fd3a94/7642230dd0b964e0f65fe08fac7f2242087cc04d.html",
+      "url": "https://act-rules.github.io/testcases/fd3a94/72bb3afa0e02f959d607c99117e31e684239cec1.html",
+      "relativePath": "testcases/fd3a94/72bb3afa0e02f959d607c99117e31e684239cec1.html",
       "expected": "failed",
       "ruleId": "fd3a94",
       "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
@@ -18538,10 +18538,10 @@
       }
     },
     {
-      "testcaseId": "34bd1efe1aca6c188e651d602c8bbae7ad45d540",
+      "testcaseId": "41a869c111bf0dbb9412f1a266daf588e6afb1d4",
       "testcaseTitle": "Failed Example 8",
-      "url": "https://act-rules.github.io/testcases/fd3a94/34bd1efe1aca6c188e651d602c8bbae7ad45d540.html",
-      "relativePath": "testcases/fd3a94/34bd1efe1aca6c188e651d602c8bbae7ad45d540.html",
+      "url": "https://act-rules.github.io/testcases/fd3a94/41a869c111bf0dbb9412f1a266daf588e6afb1d4.html",
+      "relativePath": "testcases/fd3a94/41a869c111bf0dbb9412f1a266daf588e6afb1d4.html",
       "expected": "failed",
       "ruleId": "fd3a94",
       "ruleName": "Links with identical accessible names and same context serve equivalent purpose",
