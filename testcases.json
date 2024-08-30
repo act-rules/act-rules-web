@@ -3,7 +3,7 @@
   "website": "https://act-rules.github.io",
   "license": "https://act-rules.github.io/pages/license/",
   "description": "Accessibility conformance testing rules for HTML",
-  "count": 1205,
+  "count": 1206,
   "testcases": [
     {
       "testcaseId": "9a417788dfd68b83820b01deb71e427f8d8edc3a",
@@ -23903,6 +23903,27 @@
       "testcaseTitle": "Failed Example 10",
       "url": "https://act-rules.github.io/testcases/afw4f7/316d2398eceba05efc2f7b851d47dc7270f597b2.html",
       "relativePath": "testcases/afw4f7/316d2398eceba05efc2f7b851d47dc7270f597b2.html",
+      "expected": "failed",
+      "ruleId": "afw4f7",
+      "ruleName": "Text has minimum contrast",
+      "rulePage": "https://act-rules.github.io/rules/afw4f7",
+      "ruleAccessibilityRequirements": {
+        "wcag20:1.4.3": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag20:1.4.6": {
+          "secondary": "This success criterion is **more strict** than this rule. This is because this criterion has a higher minimum contrast. Some of the passed examples do not satisfy this success criterion."
+        }
+      }
+    },
+    {
+      "testcaseId": "77b673a133116cdbe7c02e1f28cc902fae33283d",
+      "testcaseTitle": "Failed Example 11",
+      "url": "https://act-rules.github.io/testcases/afw4f7/77b673a133116cdbe7c02e1f28cc902fae33283d.html",
+      "relativePath": "testcases/afw4f7/77b673a133116cdbe7c02e1f28cc902fae33283d.html",
       "expected": "failed",
       "ruleId": "afw4f7",
       "ruleName": "Text has minimum contrast",
