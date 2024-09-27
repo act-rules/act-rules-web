@@ -7,6 +7,16 @@ const accessibilityDocs = {
 		baseURL: 'https://www.w3.org/TR/wai-aria-1.1/#',
 		requirementType: 'WAI-ARIA requirement',
 	},
+	aria12: {
+		conformanceLevel: 'WAI-ARIA 1.2 author requirements',
+		baseURL: 'https://www.w3.org/TR/wai-aria-1.2/#',
+		requirementType: 'WAI-ARIA requirement',
+	},
+	aria13: {
+		conformanceLevel: 'WAI-ARIA 1.3 author requirements',
+		baseURL: 'https://www.w3.org/TR/wai-aria-1.3/#',
+		requirementType: 'WAI-ARIA requirement',
+	},
 	'dpub-aria': {
 		conformanceLevel: 'WAI-ARIA Digital Publishing Module 1.0 author requirements',
 		baseURL: 'https://www.w3.org/TR/dpub-aria-1.0/#',
