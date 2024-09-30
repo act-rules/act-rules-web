@@ -3,7 +3,7 @@
   "website": "https://act-rules.github.io",
   "license": "https://act-rules.github.io/pages/license/",
   "description": "Accessibility conformance testing rules for HTML",
-  "count": 1206,
+  "count": 1207,
   "testcases": [
     {
       "testcaseId": "9a417788dfd68b83820b01deb71e427f8d8edc3a",
@@ -10904,6 +10904,36 @@
       "testcaseTitle": "Failed Example 5",
       "url": "https://act-rules.github.io/testcases/2779a5/3e323dce62702058007bf2e045076f03a6c62c21.html",
       "relativePath": "testcases/2779a5/3e323dce62702058007bf2e045076f03a6c62c21.html",
+      "expected": "failed",
+      "ruleId": "2779a5",
+      "ruleName": "HTML page has non-empty title",
+      "rulePage": "https://act-rules.github.io/rules/2779a5",
+      "ruleAccessibilityRequirements": {
+        "wcag20:2.4.2": {
+          "forConformance": true,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag-technique:G88": {
+          "forConformance": false,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        },
+        "wcag-technique:H25": {
+          "forConformance": false,
+          "failed": "not satisfied",
+          "passed": "further testing needed",
+          "inapplicable": "further testing needed"
+        }
+      }
+    },
+    {
+      "testcaseId": "47cb7f3d327f6ab7ba45fdd3962ebdd953494eaf",
+      "testcaseTitle": "Failed Example 6",
+      "url": "https://act-rules.github.io/testcases/2779a5/47cb7f3d327f6ab7ba45fdd3962ebdd953494eaf.html",
+      "relativePath": "testcases/2779a5/47cb7f3d327f6ab7ba45fdd3962ebdd953494eaf.html",
       "expected": "failed",
       "ruleId": "2779a5",
       "ruleName": "HTML page has non-empty title",
